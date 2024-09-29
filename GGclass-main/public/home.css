@@ -1,0 +1,97 @@
+/* General Body Styles */
+body {
+  background-color: #F2F4F7; /* Neutral light grey background */
+  font-family: 'Press Start 2P', cursive; /* Retro font style */
+}
+
+/* Logo Styling */
+.ggclass-logo {
+  height: 50px; /* Logo height */
+  width: 70px; /* Logo width */
+}
+
+/* Login Button Styles */
+.login-button {
+  background-color: #FFC62E; /* Deep vibrant orange */
+  color: #2A2E34; /* White text */
+  font-size: 16px; /* Font size */
+  padding: 8px 20px; /* Padding around the text */
+  border-radius: 10px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s; /* Smooth transition on hover */
+  margin-right: 20px; /* Spacing to the right */
+}
+
+.login-button:hover {
+  background-color: #2A2E34; /* Vibrant teal on hover */
+  color: #F5F5F5;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #212121; /* Dark grey background */
+}
+
+.navbar-toggler {
+  border: none; /* Remove default border */
+  font-size: 1.25rem; /* Increase font size for the toggle icon */
+  background-color: #FFC62E; /* Deep vibrant orange */
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+  box-shadow: none; /* Remove focus outline */
+  outline: none; /* Remove default outline */
+}
+
+.btn-close {
+  filter: invert(1); /* Make button close icon white */
+}
+
+.btn-close svg {
+  fill: white; /* Change to white for better visibility */
+}
+
+/* Navigation Link Styles */
+.nav-link {
+  color: #F5F5F5; /* Very light grey text */
+  font-weight: 500; /* Medium font weight */
+  position: relative; /* Required for pseudo-elements */
+  background-color: transparent; /* No background color */
+  text-decoration: none; /* Remove underline */
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #F5F5F5; /* Bright cyan on hover */
+  background-color: rgba(0, 0, 0, 0.1); /* Light background on hover for contrast */
+}
+
+@media (min-width: 991px) {
+  .nav-link::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    bottom: 0; /* Position at the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Centering correction */
+    width: 0; /* Start with no width */
+    height: 2px; /* Thin underline */
+    background-color: #FFC62E; /* Vibrant pink */
+    visibility: hidden; /* Hidden by default */
+    transition: width 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth transition */
+  }
+  .nav-link:hover::before, .nav-link.active::before {
+    width: 100%; /* Full width on hover/active */
+    visibility: visible; /* Make visible on hover/active */
+  }
+}
+
+/* Offcanvas Styles */
+.offcanvas {
+  background-color: #000; /* Black background for offcanvas menu */
+  color: #F5F5F5; /* Very light grey text */
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid #F5F5F5; /* Light grey border for header separation */
+}
+
+/* Hero Section (Optional: Add styles here if needed) */

@@ -1,0 +1,126 @@
+body {
+    background-color: #1C1F26;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif; /* Use a modern font for a gamified look */
+}
+
+/* Main container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, #14171D, #2A2E34); /* Gamified gradient */
+    padding: 40px;
+    border-radius: 25px; /* Rounder corners for a gamified look */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7); /* Deep shadow for depth */
+    width: 50%; /* Adjust the width of the container */
+    max-width: 1000px; /* Max width for large screens */
+    color: #FFC62E; /* Text color */
+    border: 2px solid #FFC62E; /* Adding a slight border for a game-like feel */
+}
+
+/* Logo container */
+.logo-container {
+    text-align: center;
+    margin-bottom: auto; /* Add some space below the logo */
+}
+
+.logo {
+    max-width: 320px; /* Slightly smaller for a gamified feel */
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 0;
+    border-radius: 50%; /* Circular logo for a modern look */
+    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.4); /* Soft glowing shadow */
+}
+
+.logo-container p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFC62E; /* Text color for GGclass */
+    margin-top: 5px;
+    text-shadow: 2px 2px 10px rgba(255, 198, 46, 0.5); /* Glowing effect */
+}
+
+/* Content container */
+.content-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px; /* Spacing between elements */
+    margin-left: 70px; /* Adds 20px space between logo and content */
+}
+
+/* Button styles */
+.login-button, .signup-teacher-button, .signup-student-button {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFC62E;
+    background: linear-gradient(145deg, #2A2E34, #1E2127); /* Dark gradient */
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    justify-content: center;
+    width: 250px;
+}
+
+.login-button:hover, .signup-teacher-button:hover, .signup-student-button:hover {
+    background-color: #3A4049;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.8), 0px 0px 15px rgba(255, 198, 46, 0.5);
+    transform: translateY(-5px); /* Elevates the button on hover */
+}
+
+.google-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.signup-teacher-button, .signup-student-button {
+    width: 200px;
+}
+
+/* Sign-up text */
+.sign-up-text {
+    font-size: 20px;
+    color: #FFC62E;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(255, 198, 46, 0.4);
+}
+
+/* Gamified neon hover effect for buttons */
+.signup-teacher-button:hover, .signup-student-button:hover {
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.8), 0px 0px 20px rgba(46, 198, 255, 0.8);
+}
+
+.back-button {
+    position: fixed; /* Fixed position */
+    top: 20px; /* Distance from the top */
+    right: 30px; /* Distance from the left */
+    background-color: #2A2E34;
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the button inline-block */
+    font-size: 16px; /* Increase font size */
+    margin: 0; /* Remove margins */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.back-button:hover {
+    background-color: #FFC62E; /* Darker green on hover */
+    color: #2A2E34;
+}

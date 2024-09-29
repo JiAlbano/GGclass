@@ -1,0 +1,443 @@
+/* General reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(145deg, #14171D, #2A2E34); /* Dark gradient for a modern feel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
+    color: #FFC62E;
+    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    border-bottom: 2px solid #FFC62E;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+}
+
+.ggclass-font {
+    font-size: 16px;
+    color: #FFC62E;
+    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    margin-right: 10px;
+}
+
+.section-font {
+    font-size: 16px;
+    color: #FFC62E;
+    opacity: 0.8;
+    margin-left: 10px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+.info-container {
+    border: 2px solid #FFC62E;
+    padding: 20px;
+    background-color: #2A2E34;
+    width: 300px;
+    text-align: center;
+    margin: 20px auto;
+    float: left;
+    margin: 50px;
+    margin-top: 10.5%;
+    border-radius: 20px;
+    position: relative;
+    width: 265px;
+    height: 490px;
+    position: fixed;
+}
+
+.container-picture {
+    width: 80px; /* Adjust the size of the image as needed */
+    height: 80px; /* Ensure the height is equal to the width for a perfect circle */
+    border-radius: 50%; /* This makes the image circular */
+    object-fit: cover; /* Ensures the image covers the entire circle without distortion */
+    display: block; /* Optional: Ensures the image is a block element */
+    margin: 0 auto; /* Optional: Center the image horizontally */
+    border: 3px solid #2A2E34;
+    position: absolute; /* Position the image relative to the container */
+    top: -8%; /* Move the image up to flow outside the container */
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-50%); /* Center the image based on its own width */
+}
+
+.container-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #f0f0f0;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 50px;
+    margin-bottom: 35px;
+    
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #E4E4E4;
+    margin: 10px 0;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+.container-info-section {
+    margin: 10px 0;
+    font-size: 12px;
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.container-info-name {
+    margin: 0;
+    font-size: 9px;
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.container-info-email {
+    margin: 10px 0;
+    font-size: 10px;
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 7px;
+}
+
+/* .container-info p {
+    margin: 5px 0;
+} */
+
+.container-buttons {
+    margin: 20px 0;
+    margin-top: 20px; /* Adds space between the info and the buttons */
+    width: 100%; /* Ensures buttons take up full width */
+    display: flex;
+    flex-direction: column; /* Stacks buttons vertically */
+    align-items: center; /* Centers the buttons horizontally */
+    gap: 8px; /* Adds space between the buttons */
+}
+
+.btn {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    border: none;
+    padding: 10px 20px;
+    margin: 0px;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100px;
+    height: 25px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 7px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.btn:hover {
+    background-color: #FFC62E;
+}
+
+/* Add these styles to your CSS file */
+
+.top-buttons {
+    margin-top: 5.5%;
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: right; /* Center the buttons horizontally */
+    gap: 10px; /* Add space between the buttons */
+    margin-bottom: 1%; /* Add space below the buttons */
+    font-size: 12px;
+}
+
+.top-buttons .btn {
+    padding: 10px 15px; /* Add padding inside the buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #676767;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 11%;
+}
+
+.challenge-btn.active {
+    color: #2A2E34; /* White text color for the active button */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
+                0 0 10px rgba(255, 198, 46, 0.8),
+                0 0 15px rgba(255, 198, 46, 0.8);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    color: #2A2E34; /* Lighter text color on hover */
+    font-weight: bold;
+}
+
+/* Existing .half-line styles */
+.half-line {
+    width: 100%; /* Make the line container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: right; /* Center the line horizontally */
+}
+
+.half-line hr {
+    width: 72.7%; /* Set the line to be 75% of its container width */
+    border: 0; /* Remove default border */
+    height: 1px; /* Set the height of the line */
+    background-color: #2A2E34; /* Set the color of the line */
+    margin: 0; /* Remove default margin */
+    margin-top: 8%;
+    position: fixed;
+}
+
+.half-line2 {
+    width: 100%; /* Make the line container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: right; /* Center the line horizontally */
+}
+
+.half-line2 hr {
+    width: 72.7%; /* Set the line to be 75% of its container width */
+    border: 0; /* Remove default border */
+    height: 1px; /* Set the height of the line */
+    background-color: #2A2E34; /* Set the color of the line */
+    margin: 0; /* Remove default margin */
+    margin-top: 11.5%;
+    position: fixed;
+}
+
+/* Style for the back button */
+.back-button {
+    background-color: #E4E4E4;
+    color:#2A2E34;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.2s;
+    font-family: 'Press Start 2P', cursive;
+    margin-left: 945px;
+}
+
+.back-button:hover {
+    background-color: #FFC62E; 
+}
+
+.quiz {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    margin-bottom: 1%; /* Add space below the buttons */
+    font-size: 13.5px;
+    margin-top: 9.5%;
+    margin-left: 27.8%;
+    color:#2A2E34
+}
+
+.create-quiz {
+    margin: 20px 0;
+    margin-top: 140px; /* Adds space between the info and the buttons */
+    width: 100%; /* Ensures buttons take up full width */
+    display: flex;
+    flex-direction: column; /* Stacks buttons vertically */
+    gap: 8px; /* Adds space between the buttons */
+    margin-left: 92%;
+}
+
+.create-quiz .btn{
+    color: #f0f0f0;
+    background-color: #2A2E34;
+    font-size: x-small;
+    border-radius: 25px;
+}
+
+.create-quiz .btn:hover {
+    color: #2A2E34; /* Change text color on hover */
+    background-color: #FFC62E; /* Change background color on hover */
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+}   
+
+.quiz-title {
+    /* text-align: center; Center the button within the container */
+    margin: 20px auto; /* Center the container on the page */
+}
+
+.quiz-button {
+    background-color: #2A2E34; /* Green background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Padding for the button */
+    font-size: 10px; /* Larger font size */
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    margin-top: 200px;
+    margin-left: 27.5%;
+    width: 200px;
+    height: 180px;
+}
+
+.quiz-button:hover {
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+/* Gamified Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.6); /* Background color with opacity */
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    margin-top: 20px;
+}
+
+/* Modal Content Styles */
+.modal-content {
+    background: linear-gradient(145deg, #2e2e2e, #1a1a1a); /* Dark gradient background */
+    border-radius: 10px; /* Rounded corners */
+    width: 60%;
+    max-height: 85vh; /* Limit the height of the modal */
+    margin: 5% auto; /* Centered horizontally and slightly below top */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    color: #fff; /* Text color */
+    position: relative; /* For positioning the close button */
+    overflow: hidden; /* Hide overflow */
+    margin-top: 65px;
+    margin-bottom: 20px;
+}
+
+
+.modal h2 {
+    font-size: 1.5em; /* Larger font for heading */
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffcc00; /* Bright color for heading */
+    margin-top: 20px;
+}
+
+.modal label {
+    display: block;
+    margin: 10px 0 5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.modal input, .modal textarea, .modal select {
+    width: calc(100% - 20px); /* Full width with padding */
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ffcc00; /* Border color */
+    background: #2e2e2e; /* Dark background for inputs */
+    color: #fff; /* Text color */
+}
+
+.modal button {
+    background-color: #ffcc00; /* Bright button background */
+    border: none;
+    color: #000; /* Text color */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for button */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+.modal button:hover {
+    background-color: #e6b800; /* Lighter on hover */
+    transform: scale(1.05); /* Slightly grow on hover */
+}
+
+
+/* Modal Footer Styles */
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Close Button Styles */
+.close-button {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00; /* Color for the close button */
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: 10px;
+    margin-left: 865px;
+}
+
+.close-button:hover {
+    color: #e6b800; /* Change color on hover */
+}
+
+/* Scrollable Container */
+.modal-body {
+    max-height: 60vh; /* Limit height of scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 20px; /* Space for footer */
+}

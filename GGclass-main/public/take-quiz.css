@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(145deg, #14171D, #2A2E34); /* Dark gradient for a modern feel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
+    color: #FFC62E;
+    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    border-bottom: 2px solid #FFC62E;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+}
+
+.ggclass-font {
+    font-size: 16px;
+    color: #FFC62E;
+    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    margin-right: 10px;
+}
+
+.section-font {
+    font-size: 16px;
+    color: #FFC62E;
+    opacity: 0.8;
+    margin-left: 10px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+
+
+/* Style for the back button */
+.back-button {
+    background-color: #E4E4E4;
+    color:#2A2E34;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.2s;
+    font-family: 'Press Start 2P', cursive;
+    margin-left: 945px;
+}
+
+.back-button:hover {
+    background-color: #FFC62E; 
+}
+
+.timer-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #282c34;
+    color: #FFC62E;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 85px;
+    margin-left: 619px;
+    font-size: 8px;
+    border: 2px solid #FFC62E; /* Border width, style, and color */
+}
+
+#minutes-input {
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+.time-display {
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.question-container {
+    background-color: #2c2f33;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 700px;
+    margin: 20px auto;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #FFC62E; /* Border width, style, and color */
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-left: 10px;
+}
+
+.edit-btn {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: xx-small;
+}
+
+.edit-btn:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+.options-container,
+.true-false-container,
+.identification-container {
+    margin-bottom: 15px;
+}
+
+.option-btn {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-left: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: x-small;
+    margin-bottom: 15px;
+}
+
+.option-btn:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+.option-btn.active {
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+.nav-btn {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 171.5px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: x-small;
+}
+
+.nav-btn:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+.question-numbers {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.question-numbers button {
+    background-color: #2A2E34;
+    color: #f0f0f0;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question-numbers button.active {
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+.question-numbers button:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Press Start 2P', cursive; /* Retro game font */
+}
+
+.modal-content {
+    background-color: #2A2E34; /* Dark gradient */
+    padding: 25px;
+    border-radius: 15px;
+    width: 500px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Strong shadow */
+    border: 4px solid #FFC62E; /* Neon border */
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 520px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #FFC62E;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #FFC62E; /* Hover color */
+}
+
+
+label {
+    font-family: 'Press Start 2P', cursive;
+    color: #f0f0f0;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #2A2E34;
+    color: #f0f0f0;
+    border: 2px solid #FFC62E;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+input[type="text"]:focus {
+    border-color: #FFC62E; /* Focus effect */
+}
+
+button.save-btn {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.save-btn:hover {
+    background-color: #FFC62E;
+    color: #2A2E34;
+}
+
+input[type="radio"] {
+    accent-color: #ffc62e;
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+label input[type="radio"] {
+    margin-right: 5px;
+}
+
+label.radio {
+    font-family: 'Press Start 2P', cursive;
+    color: #FFC62E;
+    margin-right: 20px;
+}

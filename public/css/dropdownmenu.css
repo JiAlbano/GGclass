@@ -1,0 +1,66 @@
+/* Container for the dropdown menu */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1e1e1e; /* Dark background for contrast */
+  border: 2px solid #00ff00; /* Match border with button color */
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Enhanced shadow for a floating effect */
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Show the dropdown menu when the button is clicked */
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
+/* Individual item container */
+.dropdown-item-container {
+  padding: 0;
+  margin: 0;
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+  display: block;
+  padding: 12px 20px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', cursive;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 2px solid #333; /* Dark border for separation */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+  background-color: #ff5722; /* Bright color on hover */
+  color: #ffffff;
+  transform: scale(1.02); /* Slight scale effect on hover */
+}
+
+/* Remove bottom border for the last item */
+.dropdown-item-container:last-child .dropdown-item {
+  border-bottom: none;
+}
+
+/* Ensure the dropdown-menu width adjusts to the content */
+.dropdown-menu {
+  width: auto; /* Adjust width to fit content */
+  min-width: 150px; /* Optional: minimum width for consistency */
+}
+

@@ -1,0 +1,108 @@
+/* Modal Styles */
+.modal-content {
+  background-color: #2e2e2e; /* Dark background for a sleek look */
+  color: #ffffff; /* White text for contrast */
+  border-radius: 12px;
+  border: 2px solid #00ff00; /* Neon green border */
+  box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* Neon green shadow */
+  font-family: 'Press Start 2P', cursive; /* Font for modal text */
+}
+
+/* Modal Header */
+.modal-header {
+  background-color: #1a1a1a; /* Slightly darker background */
+  border-bottom: 1px solid #00ff00; /* Neon green border */
+}
+
+.modal-title {
+  font-family: 'Press Start 2P', cursive; /* Gaming-themed font */
+  color: white; /* Neon green title */
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 30px; /* Increased padding for better spacing */
+  overflow: hidden; /* Prevent scrolling inside the modal body */
+}
+
+/* Form Sections */
+.modal-form-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between sections */
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between form fields */
+}
+
+.mb-3 {
+  flex: 1;
+}
+
+/* Form Controls */
+.form-control {
+  background-color: #222; /* Slightly lighter background for better contrast */
+  color: #ffffff; /* White text */
+  border: 1px solid #00ff00; /* Neon green border */
+  border-radius: 8px;
+  padding: 10px;
+  transition: border-color 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.form-control:focus {
+  border-color: #00cc00; /* Darker neon green on focus */
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.7); /* More pronounced glow */
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #00ff00; /* Neon green button */
+  border: none;
+  color: #000; /* Black text for contrast */
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', cursive; /* Gaming-themed font */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #00cc00; /* Darker green on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.btn-secondary {
+  background-color: #444; /* Darker background for secondary button */
+  border: none;
+  color: #ffffff; /* White text */
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #666; /* Slightly lighter on hover */
+}
+
+/* Disable scrolling on the body */
+body.modal-open {
+  overflow: hidden; /* Prevent scrolling on the body when modal is open */
+}
+
+/* Center the Modal */
+.modal-dialog {
+  display: flex;
+  align-items: center; /* Vertically center the modal */
+  justify-content: center; /* Horizontally center the modal */
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Limit modal height and enable scrolling if needed */
+.modal-dialog .modal-content {
+  max-height: 90vh; /* Limit the height of the modal content */
+  overflow-y: auto; /* Enable scrolling if modal content is too tall */
+}
+

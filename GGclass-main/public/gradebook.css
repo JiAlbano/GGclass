@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(145deg, #14171D, #2A2E34); /* Dark gradient for a modern feel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
+    color: #FFC62E;
+    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    border-bottom: 2px solid #FFC62E;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+}
+
+.ggclass-font {
+    font-size: 16px;
+    color: #FFC62E;
+    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    margin-right: 10px;
+}
+
+.section-font {
+    font-size: 16px;
+    color: #FFC62E;
+    opacity: 0.8;
+    margin-left: 10px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+
+
+/* Style for the back button */
+.back-button {
+    background-color: #E4E4E4;
+    color:#2A2E34;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.2s;
+    font-family: 'Press Start 2P', cursive;
+    margin-left: 440px;
+}
+
+.back-button:hover {
+    background-color: #FFC62E; 
+}
+
+.gradebook{
+    margin-left: 330px;
+}
