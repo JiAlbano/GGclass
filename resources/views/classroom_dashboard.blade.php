@@ -24,45 +24,58 @@
     <link rel="stylesheet" href="{{ asset('css/class-card.css') }}">
         <!-- JS -->
         <script>
-            
             document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.class-card').forEach(function (card) {
-        card.addEventListener('click', function (event) {
-            // Only handle redirection if the dropdown menu is not open or a modal button is not clicked
-            const isDropdownOrModal = event.target.closest('.dropdown') || event.target.closest('.modal');
-            
-            if (!isDropdownOrModal && !document.querySelector('.dropdown-menu.show')) {
-                window.location.href = this.getAttribute('data-href');
-            }
-        });
-    });
+                // Handle class card clicks for redirection
+                document.querySelectorAll('.class-card').forEach(function (card) {
+                    card.addEventListener('click', function (event) {
+                        const isDropdownOrModal = event.target.closest('.dropdown') || event.target.closest('.modal');
 
-    // Enable dropdown functionality
-    document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(function (button) {
-        button.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevents the click from bubbling up and triggering other handlers
-            const target = document.querySelector(this.getAttribute('data-bs-target'));
-            if (target) {
-                target.classList.toggle('show');
-            }
-        });
-    });
+                        if (!isDropdownOrModal && !document.querySelector('.dropdown-menu.show')) {
+                            window.location.href = this.getAttribute('data-href');
+                        }
+                    });
+                });
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function (event) {
-        if (!event.target.matches('[data-bs-toggle="dropdown"]')) {
-            document.querySelectorAll('.dropdown-menu.show').forEach(function (menu) {
-                menu.classList.remove('show');
+                // Enable dropdown functionality
+                document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(function (button) {
+                    button.addEventListener('click', function (event) {
+                        event.stopPropagation(); // Prevents the click from bubbling up and triggering other handlers
+                        const target = document.querySelector(this.getAttribute('data-bs-target'));
+                        if (target) {
+                            target.classList.toggle('show');
+                        }
+                    });
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (event) {
+                    if (!event.target.matches('[data-bs-toggle="dropdown"]')) {
+                        document.querySelectorAll('.dropdown-menu.show').forEach(function (menu) {
+                            menu.classList.remove('show');
+                        });
+                    }
+                });
+
+                // Initialize Join Class modal
+                const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
+                document.getElementById('join-class-option').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    joinClassModal.show();
+                });
+
+                // Initialize Create Class modal
+                const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
+                document.getElementById('create-class-option').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    createClassModal.show();
+                });
             });
-        }
-    });
-});
+        </script>
 
-</script>
 </head>
 
 <body>
-    
+
         <!-- Checking -->
 
             @if(session('success'))
@@ -70,7 +83,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        
+
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -81,7 +94,7 @@
             </div>
         @endif
             <!-- Checking -->
-            
+
     <!---Header-->
     <header>
         <div class="header">
@@ -99,25 +112,30 @@
                 <!-- Dropdown Menu -->
                 <div class="dropdown-container">
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        @if(auth()->user()->user_type === 'teacher')
                         <li class="dropdown-item-container">
-                      
                             <a class="dropdown-item" href="#" id="create-class-option">Create Class</a>
-                 
                         </li>
+                    @endif
                         <li class="dropdown-item-container">
+
                             <a class="dropdown-item" href="#" id="join-class-option">Join Class</a>
+
                         </li>
                     </ul>
                 </div>
 
                 <!-- Modal for Create Class -->
                    <!-- Teacher can create and join classes -->
-               
+
                 <div class="modal fade" id="createClassModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createClassModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
+
                                 <h5 class="modal-title" id="createClassModalLabel">Create Class</h5>
+
                                 <button type="button" class="btn-close" style="background-color: rgb(246, 246, 246)" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -175,14 +193,17 @@
                         </div>
                     </div>
                 </div>
-      
+
 
                 <!-- Modal for Join Class -->
+
                 <div class="modal fade" id="joinClassModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="joinClassModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
+
                                 <h5 class="modal-title" id="joinClassModalLabel">Join Class</h5>
+
                                 <button type="button" class="btn-close" style="background-color: rgb(246, 246, 246)" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -200,122 +221,22 @@
                 </div>
 
                 <!-- User Profile-->
-                <img class="profile-img" src="{{ asset('img/ainz.jpg') }}" alt="Profile">
-            </div>
-            <!---End of Right Section-->
+
+                    <img class="profile-img dropdown-toggle" src="{{ asset('img/ainz.jpg') }}" alt="Profile">
         </div>
     </header>
         <!---End Header-->
 
         <!--ClassCard -->
-
 <div class="container mt-5">
     <div class="row">
-        @foreach($classes as $class)
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="class-card" data-href="{{ route('bulletins', ['classId' => $class->id]) }}" style="cursor: pointer;">
-                    <div class="class-card-image" style="background-image: url('{{ asset('storage/' . $class->image_path) }}');"></div>
-                    <div class="class-card-info">
-                        <div class="d-flex justify-content-center align-items-center position-relative">
-                            <h3 class="class-name text-center">{{ $class->class_name }}</h3>
-                            <div class="dropdown position-absolute" style="right: 0;">
-                                <button class="btn btn-link p-0 m-0" type="button" id="dropdownMenuButton{{ $class->id }}" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('img/pencil.png') }}" alt="Edit" width="24" height="24">
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $class->id }}">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editClassModal{{ $class->id }}">Edit</a></li>
-                                    <li><a class="dropdown-item text-danger" href="#" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $class->id }}').submit();">Delete</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Class Info -->
-                        <p class="subject">{{ $class->subject }}</p>
-                        <p class="section">{{ $class->section }}</p>
-                        <p class="schedule">{{ $class->schedule }}</p>
-                        <p class="room">{{ $class->room }}</p>
-                    </div>
-                </div>
-
-                <!-- Modal for Editing Class Details -->
-                <div class="modal fade" id="editClassModal{{ $class->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editClassModalLabel{{ $class->id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editClassModalLabel{{ $class->id }}">Edit Class</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Multi-step Form for Editing Class Details -->
-                                <form id="editClassForm{{ $class->id }}" action="{{ route('classes.update', $class->id) }}" method="POST" enctype="multipart/form-data" autocomplete="off">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="modal-form-sections">
-                                        <!-- Section 1: Class Name, Section, and Image Upload -->
-                                        <div id="edit-section-1-{{ $class->id }}">
-                                            <div class="form-section">
-                                                <div class="mb-3">
-                                                    <label for="editClassName{{ $class->id }}" class="form-label">Class Name</label>
-                                                    <input type="text" class="form-control" id="editClassName{{ $class->id }}" name="class_name" value="{{ $class->class_name }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="editSection{{ $class->id }}" class="form-label">Section</label>
-                                                    <input type="text" class="form-control" id="editSection{{ $class->id }}" name="section" value="{{ $class->section }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="editImage{{ $class->id }}" class="form-label">Class Image</label>
-                                                    <input type="file" class="form-control" id="editImage{{ $class->id }}" name="image" accept="image/*">
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-primary" id="edit-next-to-2-{{ $class->id }}">Next</button>
-                                            <div id="edit-error-message-1-{{ $class->id }}" class="text-danger mt-2" style="display: none;">Please fill in all required fields.</div>
-                                        </div>
-                                        <!-- Section 2: Subject and Room -->
-                                        <div id="edit-section-2-{{ $class->id }}" style="display: none;">
-                                            <div class="form-section">
-                                                <div class="mb-3">
-                                                    <label for="editSubject{{ $class->id }}" class="form-label">Subject</label>
-                                                    <input type="text" class="form-control" id="editSubject{{ $class->id }}" name="subject" value="{{ $class->subject }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="editRoom{{ $class->id }}" class="form-label">Room</label>
-                                                    <input type="text" class="form-control" id="editRoom{{ $class->id }}" name="room" value="{{ $class->room }}">
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary" id="edit-back-to-1-{{ $class->id }}">Back</button>
-                                            <button type="button" class="btn btn-primary" id="edit-next-to-3-{{ $class->id }}">Next</button>
-                                            <div id="edit-error-message-2-{{ $class->id }}" class="text-danger mt-2" style="display: none;">Please fill in all required fields.</div>
-                                        </div>
-                                        <!-- Section 3: Schedule -->
-                                        <div id="edit-section-3-{{ $class->id }}" style="display: none;">
-                                            <div class="mb-3">
-                                                <label for="editSchedule{{ $class->id }}" class="form-label">Schedule</label>
-                                                <input type="text" class="form-control" id="editSchedule{{ $class->id }}" name="schedule" value="{{ $class->schedule }}">
-                                            </div>
-                                            <button type="button" class="btn btn-secondary" id="edit-back-to-2-{{ $class->id }}">Back</button>
-                                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                                            <div id="edit-error-message-3-{{ $class->id }}" class="text-danger mt-2" style="display: none;">Please fill in all required fields.</div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-</div>
-
-                        <!-- Form for Deleting a Class -->
-                        <form id="delete-form-{{ $class->id }}" action="{{ route('classes.destroy', $class->id) }}" method="POST" style="display: none;">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                    </div>
-                @endforeach
+    @foreach($classes as $class)
+            @component('components.class_card', ['class' => $class]) @endcomponent
+    @endforeach
             </div>
         </div>
         <!--End ClassCard -->
+
 
     <script>
         function deleteClass(classId) {

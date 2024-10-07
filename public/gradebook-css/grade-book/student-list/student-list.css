@@ -1,0 +1,57 @@
+.right-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  left: 50px;
+}
+
+
+.student-col {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; 
+}
+
+.col-5 {
+  margin-right: 30px; 
+}
+
+.student-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 25px;
+  background-color: #2A2E34;
+  height: 100px;
+  width: 400px;
+  padding: 20px 1px;
+  color: white;
+  border: 3px solid #FFC300;
+}
+
+.student-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #FFC300;
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.student-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+  color: #ffffff;
+}
+
+.student-list:hover {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+}

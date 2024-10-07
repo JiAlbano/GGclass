@@ -12,13 +12,40 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\QuiztitleController;
+use App\Http\Controllers\TutorialsController;
+use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\GradebookController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\GradequizController;
+use App\Http\Controllers\GradequiztitleController;
+use App\Http\Controllers\GradecomponentsController;
+use App\Http\Controllers\GradedataController;
+use App\Http\Controllers\GradeclassrecordController;
+use App\Http\Controllers\StudentBulletinsController;
+use App\Http\Controllers\StudentchallengesController;
+use App\Http\Controllers\StudenttutorialsController;
+use App\Http\Controllers\StudentplayersController;
+use App\Http\Controllers\StudentprofilestudentController;
+use App\Http\Controllers\StudentattendanceController;
+use App\Http\Controllers\StudentgradeController;
+use App\Http\Controllers\StudentfeedbackController;
+use App\Http\Controllers\StudentgradequiztitleController;
+use App\Http\Controllers\StudentquizController;
+use App\Http\Controllers\StudentquiztitleController;
+use App\Http\Controllers\StudentquiztakeController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AuthenticatedSessionController;
 
 // Public Routes
 Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/auth.view', [AuthController::class, 'login'])->name('login');
+Route::post('/auth.view', function () {
+    return view('login');
+})->name('login');
 
 Route::get('/auth.view', function () {
     return view('welcome');
@@ -43,10 +70,43 @@ Route::post('signup-student', [SignupStudentController::class, 'handleSignup']);
 Route::middleware('auth')->group(function () {
     // Classroom Routes
     Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.index');
-    Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class')->middleware('check.user.type:teacher');
+    Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
     Route::post('/join-class', [ClassController::class, 'joinClass'])->name('join.class');
 
     Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
+    Route::get('/tutorials/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
+    Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');
+    Route::get('/attendance/{classId}', [AttendanceController::class, 'show'])->name('attendance');
+    Route::get('/grade/{classId}', [GradeController::class, 'show'])->name('grade');
+    Route::get('/feedback/{classId}', [FeedbackController::class, 'show'])->name('feedback');
+    Route::get('/gradebook/{classId}', [GradebookController::class, 'show'])->name('gradebook');
+    Route::get('/grade/{classId}/grade-quiz-title', [GradequiztitleController::class, 'show'])->name('grade-quiz-title');
+    Route::get('/grade/{classId}/grade-quiz-title/grade-quiz', [GradequizController::class, 'show'])->name('grade-quiz');
+    Route::get('/gradebook/{classId}/grade-components', [GradecomponentsController::class, 'show'])->name('grade-components');
+    Route::get('/gradebook/{classId}/data', [GradedataController::class, 'show'])->name(name: 'data');
+    Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
+
+
+
+
+    //Student routes
+    Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');
+     //Student quiz routes
+    Route::get('/studentchallenges/{classId}', [StudentchallengesController::class, 'show'])->name('challenges-student');
+    Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::class, 'show'])->name('quiz-student');
+    Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
+    Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
+
+
+    Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
+    Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');
+    //Student Info routes
+    Route::get('/profile/{classId}', [StudentprofilestudentController::class, 'show'])->name('profile-student');
+    Route::get('/studentattendance/{classId}', [StudentattendanceController::class, 'show'])->name('attendance-student');
+    //student grades
+    Route::get('/studentgrade/{classId}', [StudentgradeController::class, 'show'])->name('grade-student');
+    Route::get('/studentgradequiz/{classId}', [StudentgradequiztitleController::class, 'show'])->name('grade-quiz-title-student');
+    Route::get('/studentfeedback/{classId}', [StudentfeedbackController::class, 'show'])->name('feedback-student');
 
     // Challenges Routes
     Route::get('/challenges/{classId}', [ChallengesController::class, 'index'])->name('challenges');
@@ -65,21 +125,36 @@ Route::get('/quiz/{classId}/quiz-titles', [QuiztitleController::class, 'show'])-
 Route::post('/quiz/{quizId}/update', [QuizController::class, 'update'])->name('quiz.update');
 // Route to display the quiz-taking interface
 Route::get('/class/{classId}/quiz/{quizId}/take', [QuizController::class, 'showQuiz'])->name('quiz.take');
+// Route for saving changes to a question
+Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController::class, 'updateQuestion'])->name('quiz.updateQuestion');
 
 Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');
 
-});
-
-// Static Page Routes
-Route::view('/tutorials', 'tutorials')->name('tutorials');
-Route::view('/players.view', 'players')->name('players');
-Route::view('/attendance.view', 'attendance')->name('attendance');
-Route::view('/grade.view', 'grade')->name('grade');
-Route::view('/feedback.view', 'feedback')->name('feedback');
-Route::view('/gradebook.view', 'gradebook')->name('gradebook');
-
-
 // Class Update and Delete Routes
 Route::put('/classes/{id}', [ClassController::class, 'update'])->name('classes.update');
 Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('classes.destroy');
+
+
+//gradebook functionality
+
+// students-list.blade.php
+Route::get('/students-list/{classId}', [StudentController::class, 'display'])->name('student-list');
+
+// student-data.blade.php
+// Route::view('/students-data', 'grade-book.student-data.student-data')->name('student-data');
+Route::get('/student/{school_id}', [StudentController::class, 'show'])->name('student.show');
+
+// student-assessment.blade.php
+Route::get('/student-assessment/{school_id}/{assessment_id}', [StudentController::class, 'assessment'])->name('student-assessment');
+
+// log out
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+});
+
+// Static Page Routes
+
+
+
+

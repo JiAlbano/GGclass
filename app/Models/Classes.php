@@ -10,9 +10,10 @@ class Classes extends Model
     use HasFactory;
 
     // Specify the table name if it does not follow Laravel's default naming convention
+  
     protected $table = 'classes';
 
     // Specify which attributes are mass assignable
-    protected $fillable = ['class_name', 'subject' , 'section' , 'schedule' , 'room' , 'image_path', ];
+    protected $fillable = ['class_name', 'subject' , 'section' , 'schedule' , 'room' , 'class_code', 'image_path', ];
 
 }

@@ -1,4 +1,4 @@
-* {
+* { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -92,15 +92,15 @@ body {
 }
 
 .timer-container {
-    width: 300px;
+    width: 250px;
+    height: 120px;
     padding: 20px;
     background-color: #282c34;
     color: #FFC62E;
     border-radius: 10px;
-    text-align: center;
+    justify-content: center;
     font-family: 'Press Start 2P', cursive;
-    margin-top: 85px;
-    margin-left: 619px;
+    margin-top: 25px;
     font-size: 8px;
     border: 2px solid #FFC62E; /* Border width, style, and color */
 }
@@ -115,15 +115,15 @@ body {
 
 .time-display {
     font-size: 23px;
-    margin-bottom: 20px;
 }
+
 
 .question-container {
     background-color: #2c2f33;
     padding: 20px;
     border-radius: 10px;
-    max-width: 800px;
-    width: 700px;
+    /* max-width: 800px; */
+    width: 50%  ;
     margin: 20px auto;
     color: #fff;
     font-family: 'Press Start 2P', cursive;
@@ -183,22 +183,20 @@ body {
     color: #2A2E34;
 }
 
-.nav-btn {
+.btn-bn{
     background-color: #E4E4E4;
     color: #2A2E34;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 171.5px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: x-small;
+    padding: 10px 10px 10px;
+    border-radius: 10px;
+    font-size: smaller;
+    margin-top: 20px;
 }
 
-.nav-btn:hover{
+.btn-bn:hover{
     background-color: #FFC62E;
     color: #2A2E34;
 }
+
 
 .question-numbers {
     text-align: center;
@@ -224,31 +222,42 @@ body {
     color: #2A2E34;
 }
 
+
 .modal {
-    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    background-color: rgba(0, 0, 0, 0.8); 
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    font-family: 'Press Start 2P', cursive; /* Retro game font */
+    font-family: 'Press Start 2P', cursive;
+    
 }
 
+.input-question{
+    width: 75%;
+}
+.question-text{
+    margin-bottom: 20px;
+}
+.question{
+    color:#2A2E34;
+}
+
+.option-text{
+    color:#2A2E34;
+}
 .modal-content {
-    background-color: #2A2E34; /* Dark gradient */
+    background-color: #2A2E34;
     padding: 25px;
     border-radius: 15px;
-    width: 500px;
     position: relative;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Strong shadow */
-    border: 4px solid #FFC62E; /* Neon border */
+    border: 4px solid #FFC62E; 
     text-align: center;
     margin-top: 100px;
-    margin-left: 520px;
+    color: #2A2E34;
+
 }
 
 .close-btn {
@@ -262,7 +271,7 @@ body {
 }
 
 .close-btn:hover {
-    color: #FFC62E; /* Hover color */
+    color: #FFC62E;
 }
 
 
@@ -279,7 +288,6 @@ input[type="text"] {
     color: #f0f0f0;
     border: 2px solid #FFC62E;
     padding: 8px;
-    width: 100%;
     margin-bottom: 15px;
     margin-top: 5px;
     border-radius: 5px;
@@ -288,18 +296,26 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    border-color: #FFC62E; /* Focus effect */
+    border-color: #FFC62E; 
 }
 
 button.save-btn {
     font-family: 'Press Start 2P', cursive;
-    background-color: #E4E4E4;
-    color: #2A2E34;
+    background-color: #2A2E34;
+    color: #f0f0f0;
     padding: 12px 25px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 25%; /* Optional: Adjust this width if needed */
     transition: all 0.3s ease;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    align-items: center; /* Centers the button vertically (optional if needed) */
+    height: 100%; /* Optional: Adjust this based on your container's height */
+    margin-top: 20px;
 }
 
 button.save-btn:hover {
@@ -323,8 +339,34 @@ label.radio {
     margin-right: 20px;
 }
 
-.identification-input {
-    border: 1px solid grey;
-    padding: 5px;
-    width: 100%;
-}
+    /* Style for True label */
+    #edit-truefalse-container label:nth-child(1) {
+        color: green; /* Change to desired color */
+        font-weight: bold; /* Optional: make it bold */
+    }
+
+    /* Style for False label */
+    #edit-truefalse-container label:nth-child(2) {
+        color: red; /* Change to desired color */
+        font-weight: bold; /* Optional: make it bold */
+    }   
+
+    .identification-label {
+        color: #2A2E34; 
+        font-weight: bold; /* Optional: make it bold */
+    }
+
+    .identification-input {
+        border: 2px solid #ccc; /* Border color */
+        border-radius: 5px; /* Rounded corners */
+        padding: 8px; /* Padding inside the input */
+        width: 25%; /* Make it full width */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow */
+    }
+
+    /* Style when the input is focused */
+    .identification-input:focus {
+        border-color: blue; /* Change border color when focused */
+        outline: none; /* Remove default outline */
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Optional: change shadow on focus */
+    }

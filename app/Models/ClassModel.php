@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class ClassModel extends Model
 {
@@ -15,11 +16,13 @@ class ClassModel extends Model
     // Specify which attributes are mass assignable
     protected $fillable = [
         'id',
-        'class_name', 
-        'section', 
-        'subject', 
-        'room', 
+        'class_name',
+        'section',
+        'subject',
+        'room',
         'schedule',
+        'teacher_id' => $user->user_type,
+        'class_code',
         'image_path' // Added image_path to mass assignable attributes
     ];
 }

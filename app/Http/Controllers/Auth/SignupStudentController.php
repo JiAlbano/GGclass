@@ -37,7 +37,6 @@ class SignupStudentController extends Controller
             'course_id' => $request->course,
             'gender' => $request->gender,
             'user_type' => 'student',
-            'is_approve' => 0,
         ]);
 
 

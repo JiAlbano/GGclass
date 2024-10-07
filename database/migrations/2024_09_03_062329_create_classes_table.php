@@ -21,6 +21,7 @@ class CreateClassesTable extends Migration
             $table->string('schedule');
             $table->string('room');
             $table->string('image_path')->nullable(); // For the class image
+            $table->string('class_code')->unique(); // Add unique class code
             $table->timestamps();
         });
     }

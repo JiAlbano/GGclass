@@ -1,0 +1,87 @@
+.navigation {
+  height: 75px;
+  background: black;
+}
+
+.navbar-brand.logo-text{
+  color: white; 
+  display:flex;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 24px;
+}
+
+.navbar-brand.logo-text:hover {
+  color: #ffcc00;
+}
+
+.logo-img {
+  height: 60px; 
+  margin-right: 10px; 
+
+}
+
+.header a {
+  font-family: 'Press Start 2P', cursive;
+  color: black;
+  font-size: 15px;
+  margin-right: 160px; 
+  text-decoration: none;
+  position:relative;
+  left: 130px;
+}
+
+.header a:hover {
+  color: #ffcc00;
+}
+.header {
+  position: relative;
+  left: 120px;
+  top: 5px;
+}
+
+.custom-line {
+  height: 2px; 
+  background-color: black; 
+  position: relative;
+  left: 330px;
+  top:20px;
+}
+
+.first-line {
+  position: relative;
+  left: 320px;
+  top: 10px;
+}
+.text{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 17px;
+  position:relative;
+  top: 10px;
+}
+
+.export {
+  background-color: #2A2E34;
+  color:white;
+  height: 35px;
+  width: 120px;
+  border-radius: 20px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 13px;
+  text-align: center;
+  position:relative;
+  left: 1px;
+
+  
+}
+.export:hover {
+  color: #ffcc00;
+}
+
+.custom-line-2 {
+  height: 2px; 
+  background-color: black; 
+  position: relative;
+  left: 330px;
+  top:30px;
+}

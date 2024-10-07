@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         sectionToShow.style.display = 'block';
     }
-  
+
     function validateSection(fields) {
         let valid = true;
         fields.forEach(({ id, errorId }) => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         return valid;
     }
-  
+
     function resetForm() {
         document.getElementById('createClassForm').reset();
         document.querySelectorAll('.modal-form-sections > div').forEach(section => {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             errorMessage.style.display = 'none';
         });
     }
-  
+
     document.addEventListener('click', function(event) {
         if (event.target.matches('#next-to-2')) {
             if (validateSection([
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSection(document.getElementById('section-2'));
         }
     });
-  
+
     document.getElementById('createClassForm').addEventListener('submit', function(event) {
         if (!validateSection([
             { id: 'schedule', errorId: 'error-message-3' }
@@ -61,18 +61,22 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault(); // Prevent form submission
         }
     });
-  
-    const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
-    const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
-  
-    document.getElementById('create-class-option').addEventListener('click', function() {
-        createClassModal.show();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
+        const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
+        document.getElementById('join-class-option').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            joinClassModal.show();
+        });
+        document.getElementById('create-class-option').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            createClassModal.show();
+        });
+
+
     });
-  
-    document.getElementById('join-class-option').addEventListener('click', function() {
-        joinClassModal.show();
-    });
-  
+
     // Reset form fields when the modal is hidden
     document.getElementById('createClassModal').addEventListener('hidden.bs.modal', function () {
         resetForm();

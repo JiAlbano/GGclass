@@ -6,14 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Classes as Classroom;
 use App\Models\ClassModel;
 use App\Models\User;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ClassController extends Controller
 {
     public function index()
     {
-        // Fetch all classes from the database
-        $classes = Classroom::all();
+        $classes = null;
+
+        $user = User::find(Auth::id());
+        if ($user->user_type === 'teacher') {
+            // Fetch all classes from the database
+            $classes = Classroom::all();
+        } else {
+            $classes = $user->classes()->get();
+        }
 
         // Pass the classes to the welcome view
         return view('classroom_dashboard', compact('classes'));
@@ -40,6 +49,10 @@ class ClassController extends Controller
             $imagePath = $request->file('image')->store('class_images', 'public');
         }
 
+        do {
+            $classCode = strtoupper(Str::random(6)); // 6-character random string
+        } while (Classroom::where('class_code', $classCode)->exists());
+
         // Create a new class
         Classroom::create([
             'class_name' => $request->input('class_name'),
@@ -47,7 +60,8 @@ class ClassController extends Controller
             'subject' => $request->input('subject'),
             'room' => $request->input('room'),
             'schedule' => $request->input('schedule'),
-            'image_path' => $imagePath // Save the image path
+            'image_path' => $imagePath, // Save the image path
+            'class_code' => $classCode, // Store the generated class code
         ]);
 
         return redirect()->back()->with('success', 'Class created successfully!');
@@ -55,16 +69,30 @@ class ClassController extends Controller
 
     public function joinClass(Request $request)
     {
-        // Validation logic here
+        // Validate the class code
         $request->validate([
-            'class_code' => 'required|string|exists:classes,id', // Assuming 'id' is used as the class code
+            'class_code' => 'required|string|exists:classes,class_code', // Ensure class_code exists
         ]);
 
-        // Logic to join the class
+             // Retrieve the specific class by the class_code
 
-        return redirect()->back()->with('success', 'Joined class successfully!');
+        // Find the class by the provided class code
+        $class = Classroom::where('class_code', $request->class_code)->firstOrFail();
+
+        // Find the currently authenticated user
+        $user = User::find(Auth::id()); // Using User:: to find the authenticated user
+
+        // Check if the student is already enrolled in the class
+        if ($user->classes()->where('class_id', $class->id)->exists()) {
+            return redirect()->back()->with('error', 'You are already enrolled in this class.');
+        }
+
+        // Add the student to the class (many-to-many relationship)
+        $user->classes()->attach($class->id);
+
+        // return view('classroom_dashboard', ['class' => $class, 'class_code' => $request->class_code]);
+        return redirect()->back()->with('success', 'Class joined successfully!');
     }
-
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -85,7 +113,7 @@ class ClassController extends Controller
             $imagePath = $request->file('image')->store('class_images', 'public');
             // Delete the old image if it exists
         if ($class->image_path) {
-            \Storage::disk('public')->delete($class->image_path);
+            Storage::disk('public')->delete($class->image_path);
         }
 
         $class->image_path = $imagePath; // This is the correct field
@@ -100,7 +128,7 @@ class ClassController extends Controller
         $class->save();
 
          // Redirect to the bulletins route
-    return redirect()->route('classroom.index')->with('success', 'Class created successfully!');
+        return redirect()->route('classroom.index')->with('success', 'Class created successfully!');
     }
 
     public function destroy($id)

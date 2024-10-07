@@ -45,6 +45,7 @@ body {
     color: #FFC62E;
     text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 .section-font {
@@ -52,28 +53,7 @@ body {
     color: #FFC62E;
     opacity: 0.8;
     margin-left: 10px;
-}
-
-.right-section {
-    display: flex;
-    align-items: center;
-}
-
-.back-button {
-    background-color: #FFC62E;
-    color: #14171D;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-right: 15px;
-    cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #FFB700;
+    margin-top: 10px;
 }
 
 .profile-img {
@@ -89,6 +69,59 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
+.challenge-btn.active {
+    color: #2A2E34; /* White text color for the active button */
+    font-weight: bold;
+    background-color: #FFC62E;
+    transition: all 0.3s ease;
+}
+.row {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align the buttons to the right */
+    font-size: 12px;
+    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    padding: 0 15px; /* Add padding to the left and right */
+    margin-left: 10px;
+    position: inherit;
+}
+
+.row .col-12 {
+    padding: 0 10px; /* Add horizontal padding for equal spacing between buttons */
+}
+
+.row .btn {
+    padding: 10px 15px; /* Add padding inside the buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #676767;
+    cursor: pointer;
+    width: 100%; /* Make buttons take the full width of their column */
+}
+
+.btn:hover {
+    color: #2A2E34;
+    font-weight: bold;
+}
+
+    .back-button {
+        background-color: #FFC62E;
+        color: #14171D;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #FFB700;
+    }
+
 .info-container {
     border: 2px solid #FFC62E;
     padding: 20px;
@@ -98,12 +131,12 @@ body {
     margin: 20px auto;
     float: left;
     margin: 50px;
-    margin-top: 10.5%;
+    margin-top: 60px;
     border-radius: 20px;
     position: relative;
     width: 265px;
     height: 490px;
-    position: fixed;
+    position: relative;
 }
 
 .container-picture {
@@ -128,7 +161,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
     margin-bottom: 35px;
-    
+
 }
 
 hr {
@@ -139,20 +172,20 @@ hr {
     margin-top: 35px;
 }
 
-.container-info-section {
+/* .container-info-section {
     margin: 10px 0;
     font-size: 12px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 30px;
-}
-.container-info-name {
+} */
+/* .container-info-name {
     margin: 0;
     font-size: 9px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-}
+}*/
 
 
 .container-info-email {
@@ -161,7 +194,7 @@ hr {
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 7px;
+    font-size: 8px;
 }
 
 /* .container-info p {
@@ -176,11 +209,6 @@ hr {
     flex-direction: column; /* Stacks buttons vertically */
     align-items: center; /* Centers the buttons horizontally */
     gap: 8px; /* Adds space between the buttons */
-
-}
-
-.btn.active {
-    background-color: #FFC62E; /* Orange */
 }
 
 .btn {
@@ -205,79 +233,40 @@ hr {
     background-color: #FFC62E;
 }
 
-/* Add these styles to your CSS file */
-
-.top-buttons {
-    margin-top: 5.5%;
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the buttons horizontally */
-    gap: 10px; /* Add space between the buttons */
-    margin-bottom: 1%; /* Add space below the buttons */
-    font-size: 12px;
+.class-name {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #4CAF50;              /* Green color for class name */
+    background-color: rgba(76, 175, 80, 0.1); /* Light green background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
-.top-buttons .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
-    border: none;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    color: #676767;
-    cursor: pointer;
-    font-size: 1em;
-    margin-right: 11%;
+.subject {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #2196F3;              /* Blue color for subject */
+    background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
-.challenge-btn.active {
-    color: #2A2E34; /* White text color for the active button */
-    font-weight: bold;
+.section {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #FF9800;              /* Orange color for section */
+    background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
-.btn:hover {
-    color: #2A2E34; /* Lighter text color on hover */
-    font-weight: bold;
-}
-
-/* Existing .half-line styles */
-.half-line {
-    width: 100%; /* Make the line container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the line horizontally */
-}
-
-.half-line hr {
-    width: 72.7%; /* Set the line to be 75% of its container width */
-    border: 0; /* Remove default border */
-    height: 1px; /* Set the height of the line */
-    background-color: #2A2E34; /* Set the color of the line */
-    margin: 0; /* Remove default margin */
-    margin-top: 8%;
-    position: fixed;
-}
-
-.half-line2 {
-    width: 100%; /* Make the line container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the line horizontally */
-}
-
-.half-line2 hr {
-    width: 72.7%; /* Set the line to be 75% of its container width */
-    border: 0; /* Remove default border */
-    height: 1px; /* Set the height of the line */
-    background-color: #2A2E34; /* Set the color of the line */
-    margin: 0; /* Remove default margin */
-    margin-top: 11.5%;
-    position: fixed;
-}
-
-.feedback {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    margin-bottom: 1%; /* Add space below the buttons */
-    font-size: 13.5px;
-    margin-top: 9.5%;
-    margin-left: 27.8%;
-    color:#2A2E34
-}
 

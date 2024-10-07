@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,11 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('take-quiz.css') }}"> <!-- New CSS file for the container -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
     <div class="navbar">
@@ -25,170 +30,301 @@
             <h2 class="section-font">Section</h2>
         </div>
 
-        <div class="back-container">
-            <button class="back-button" onclick="goBack()">Back</button>
-        </div>
-
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-
         <div class="right-section">
             <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
         </div>
     </div>
 
-        <div class="timer-container">
+    <!-- Bootstrap container for responsiveness -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <!-- Timer container in the center -->
+        <div class="timer-container text-center p-3">
+            <!-- Time display -->
             <div class="time-display" id="time-display">00:00</div>
-            <input type="number" id="minutes-input" placeholder="Enter minutes" min="0">
-        </div>
-
-        <script>
-            //Get references to the DOM elements: the timer display and the minutes input field
-            const timeDisplay = document.getElementById('time-display');
-            const minutesInput = document.getElementById('minutes-input');
-
-            // Add an event listener that triggers whenever the user changes the value in the input field
-            minutesInput.addEventListener('input', () => {
-
-            // Parse the input value to get the number of minutes, or set to 0 if invalid
-            let minutes = parseInt(minutesInput.value) || 0;
-            let seconds = 0; // Set the seconds to 0 since we're only updating minutes
-
-            // Call the function to update the timer display
-            updateDisplay(minutes, seconds);
-            });
-
-            // Function to update the time display with formatted minutes and seconds
-            function updateDisplay(minutes, seconds) {
-            let minutesDisplay = minutes < 10 ? "0" + minutes : minutes;
-            let secondsDisplay = seconds < 10 ? "0" + seconds : seconds;
-
-            // Update the timeDisplay element with the formatted time (MM:SS)
-            timeDisplay.textContent = `${minutesDisplay}:${secondsDisplay}`;
-            }
-        </script>
-
-<div class="question-container">
-    <div class="question-header">
-        <span id="question-text">{{ $questions[0]->question }}</span>
-        <button id="edit-btn" class="edit-btn">Edit</button>
-    </div>
-
-    <div id="question-type-container">
-        <!-- Multiple choice question (default) -->
-        <div class="options-container" style="display: {{ $questions[0]->type === 'multipleChoice' ? 'block' : 'none' }};">
-            @if(is_array($questions[0]->options))
-                @foreach($questions[0]->options as $key => $option)
-                    <button class="option-btn" onclick="selectOption({{ $key + 1 }})">{{ $option }}</button>
-                @endforeach
-            @endif
-        </div>
-
-
-        <!-- True/False question -->
-        <div class="true-false-container" style="display: {{ $questions[0]->type === 'trueFalse' ? 'block' : 'none' }};">
-            <button class="option-btn" onclick="selectOption(1)">True</button>
-            <button class="option-btn" onclick="selectOption(2)">False</button>
-        </div>
-
-        <!-- Identification question -->
-        <div class="identification-container" style="display: {{ $questions[0]->type === 'identification' ? 'block' : 'none' }};">
-            <span id="identification-answer">Correct Answer: {{ $questions[0]->correct_answer }}</span>
-            <input type="text" placeholder="Enter your answer here" class="identification-input" style="border: 1px solid grey; padding: 5px;">
+            <!-- Input for minutes with Bootstrap form-control for styling -->
+            <input type="number" id="minutes-input" class="form-control mt-3" placeholder="Enter minutes" min="0">
         </div>
     </div>
 
-    <div class="navigation-container">
-        <button id="back-btn" class="nav-btn" onclick="previousQuestion()">Back</button>
-        <button id="next-btn" class="nav-btn" onclick="nextQuestion()">Next</button>
-    </div>
-</div>
+    <div class="question-container">
+        <div class="question-header">
+            <span id="question-text">{{ $questions[0]->question }}</span>
+            <button id="edit-btn" class="edit-btn" onclick="openEditModal()">Edit</button>
 
-<div class="question-numbers">
-    @foreach($questions as $key => $question)
+        </div>
+
+        <div id="question-type-container">
+            <!-- Multiple choice question (default) -->
+            <div class="options-container"
+                style="display: {{ $questions[0]->type === 'multipleChoice' ? 'block' : 'none' }};">
+                @if(is_array($questions[0]->options))
+                    @foreach($questions[0]->options as $key => $option)
+                        <button class="option-btn" onclick="selectOption({{ $key + 1 }})">{{ $option }}</button>
+                    @endforeach
+                @endif
+            </div>
+
+            <!-- True/False question -->
+            <div class="true-false-container"
+                style="display: {{ $questions[0]->type === 'trueFalse' ? 'block' : 'none' }};">
+                <button class="option-btn" onclick="selectOption(1)">True</button>
+                <button class="option-btn" onclick="selectOption(2)">False</button>
+            </div>
+
+            <!-- Identification question -->
+            <div class="identification-container"
+                style="display: {{ $questions[0]->type === 'identification' ? 'block' : 'none' }};">
+                <span id="identification-answer">Correct Answer: {{ $questions[0]->correct_answer }}</span>
+
+            </div>
+        </div>
+
+        <!-- Navigation buttons aligned using Bootstrap flex utilities -->
+        <div class="navigation-container d-flex justify-content-between mt-4">
+            <button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button>
+            <button id="next-btn" class="btn-bn" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+
+    <div class="question-numbers">
+        @foreach($questions as $key => $question)
         <button class="question-number" onclick="switchQuestion({{ $key + 1 }})">{{ $key + 1 }}</button>
-    @endforeach
-</div>
+        @endforeach
+    </div>
 
-<script>
-    let currentQuestion = 1;
-    const totalQuestions = {{ count($questions) }};
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = {{ count($questions) }};
 
-    function selectOption(option) {
-        let questionType = document.querySelector('.options-container').style.display;
-        let buttons;
 
-        if (questionType === 'block') {
-            buttons = document.querySelectorAll('.options-container .option-btn');
-        } else {
-            buttons = document.querySelectorAll('.true-false-container .option-btn');
-        }
+        function selectOption(option) {
+            let questionType = document.querySelector('.options-container').style.display;
+            let buttons;
 
-        buttons.forEach(btn => btn.classList.remove('active'));
-        buttons[option - 1].classList.add('active');
-    }
-
-    function nextQuestion() {
-        if (currentQuestion < totalQuestions) {
-            currentQuestion++;
-            switchQuestion(currentQuestion);
-        }
-    }
-
-    function previousQuestion() {
-        if (currentQuestion > 1) {
-            currentQuestion--;
-            switchQuestion(currentQuestion);
-        }
-    }
-
-    function switchQuestion(number) {
-        currentQuestion = number;
-        let question = @json($questions);
-
-        document.getElementById('question-text').innerText = question[number - 1].question;
-
-        let multipleChoice = document.querySelector('.options-container');
-        let trueFalse = document.querySelector('.true-false-container');
-        let identification = document.querySelector('.identification-container');
-
-        multipleChoice.style.display = 'none';
-        trueFalse.style.display = 'none';
-        identification.style.display = 'none';
-
-   // Check the question type and display the correct one
-   if (question[number - 1].type === 'multipleChoice') {
-        multipleChoice.style.display = 'block';
-
-        // Update multiple-choice options
-        let optionButtons = multipleChoice.querySelectorAll('.option-btn');
-        let options = question[number - 1].options || [];
-
-        // Update button text with the options and reset active class
-        optionButtons.forEach((btn, idx) => {
-            if (options[idx]) {
-                btn.innerText = options[idx];  // Set the option text
-                btn.style.display = 'inline-block';  // Show button
+            if (questionType === 'block') {
+                buttons = document.querySelectorAll('.options-container .option-btn');
             } else {
-                btn.style.display = 'none';  // Hide extra buttons
+                buttons = document.querySelectorAll('.true-false-container .option-btn');
             }
-            btn.classList.remove('active');  // Remove active class
-        });
 
-        } else if (question[number - 1].type === 'trueFalse') {
-            trueFalse.style.display = 'block';
-        } else if (question[number - 1].type === 'identification') {
-            identification.style.display = 'block';
-             // Set the correct answer and prepare the identification input
-        document.getElementById('identification-answer').innerText = `Correct Answer: ${question[number - 1].correct_answer}`;
-    }
-    }
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[option - 1].classList.add('active');
+        }
 
-    switchQuestion(1);
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                switchQuestion(currentQuestion);
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                switchQuestion(currentQuestion);
+            }
+        }
+
+        function switchQuestion(number) {
+            currentQuestion = number;
+            let question = @json($questions);
+
+            document.getElementById('question-text').innerText = question[number - 1].question;
+
+            let multipleChoice = document.querySelector('.options-container');
+            let trueFalse = document.querySelector('.true-false-container');
+            let identification = document.querySelector('.identification-container');
+
+            multipleChoice.style.display = 'none';
+            trueFalse.style.display = 'none';
+            identification.style.display = 'none';
+
+            // Check the question type and display the correct one
+            if (question[number - 1].type === 'multipleChoice') {
+                multipleChoice.style.display = 'block';
+
+                let optionButtons = multipleChoice.querySelectorAll('.option-btn');
+                let options = question[number - 1].options ?? [];
+
+                optionButtons.forEach((btn, idx) => {
+                    if (options[idx]) {
+                        btn.innerText = options[idx]; // Set the option text
+                        btn.style.display = 'inline-block'; // Show button
+                    } else {
+                        btn.style.display = 'none'; // Hide extra buttons
+                    }
+                    btn.classList.remove('active'); // Remove active class
+                });
+            } else if (question[number - 1].type === 'trueFalse') {
+                trueFalse.style.display = 'block';
+            } else if (question[number - 1].type === 'identification') {
+                identification.style.display = 'block';
+                document.getElementById('identification-answer').innerText = `Correct Answer: ${question[number - 1].correct_answer}`;
+            }
+
+            // Update active question number button
+            const questionButtons = document.querySelectorAll('.question-number');
+            questionButtons.forEach(btn => btn.classList.remove('active'));
+            questionButtons[number - 1].classList.add('active');
+        }
+
+        // Call switchQuestion(1) to initialize
+        switchQuestion(1);
+
+
+    </script>
+
+    <!-- Edit Question Modal -->
+    <div id="edit-modal" class="modal" style="display:none;">
+        <div class="modal-content ">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Edit Question</h3>
+            <div class="question-text">
+                <label for="edit-question-text" class="question">Question:</label>
+                <input type="text" class="input-question" id="edit-question-text" />
+            </div>
+            <!-- Options for Multiple Choice -->
+            <div id="edit-options-container" style="display:none;">
+                <label for="edit-option-1" class="option-text">Option 1:</label>
+                <input type="text" id="edit-option-1" />
+                <br>
+                <label for="edit-option-2" class="option-text">Option 2:</label>
+                <input type="text" id="edit-option-2" />
+                <br>
+                <label for="edit-option-3" class="option-text">Option 3:</label>
+                <input type="text" id="edit-option-3" />
+                <br>
+                <label for="edit-option-4" class="option-text">Option 4:</label>
+                <input type="text" id="edit-option-4" />
+            </div>
+            <!-- True/False Options -->
+            <div id="edit-truefalse-container" style="display:none;">
+                <label>
+                    <input type="radio" name="edit-truefalse" value="True" /> True
+                </label>
+                <label>
+                    <input type="radio" name="edit-truefalse" value="False" /> False
+                </label>
+            </div>
+            <!-- Identification Answer -->
+            <div id="edit-identification-container" style="display:none;">
+                <label for="edit-identification-answer" class="identification-label">Correct Answer:</label>
+                <input type="text" id="edit-identification-answer" class="identification-input" />
+            </div>
+            <div class="button-container">
+
+                <button class="save-btn" id="save-btn" onclick="saveChanges()">Save</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function openEditModal() {
+    // Get the current question
+    let question = @json($questions)[currentQuestion - 1];
+
+    // Open the modal
+    document.getElementById('edit-modal').style.display = 'block';
+
+    // Set the question text in the modal input field
+    document.getElementById('edit-question-text').value = question.question;
+
+    // Handle different question types
+    if (question.type === 'multipleChoice') {
+        document.getElementById('edit-options-container').style.display = 'block';
+        document.getElementById('edit-truefalse-container').style.display = 'none';
+        document.getElementById('edit-identification-container').style.display = 'none';
+
+        // Populate options
+        let options = question.options || [];
+        for (let i = 0; i < 4; i++) {
+            document.getElementById('edit-option-' + (i + 1)).value = options[i] || '';
+        }
+
+    } else if (question.type === 'trueFalse') {
+        document.getElementById('edit-options-container').style.display = 'none';
+        document.getElementById('edit-truefalse-container').style.display = 'block';
+        document.getElementById('edit-identification-container').style.display = 'none';
+
+        // Set true/false radio buttons
+        let trueFalseValue = question.correct_answer === 'True' ? 'True' : 'False';
+        document.querySelector(`input[name="edit-truefalse"][value="${trueFalseValue}"]`).checked = true;
+
+    } else if (question.type === 'identification') {
+        document.getElementById('edit-options-container').style.display = 'none';
+        document.getElementById('edit-truefalse-container').style.display = 'none';
+        document.getElementById('edit-identification-container').style.display = 'block';
+
+        // Set the identification correct answer
+        document.getElementById('edit-identification-answer').value = question.correct_answer;
+    }
+}
+
+function closeModal() {
+
+    document.getElementById('edit-modal').style.display = 'none';
+}
+function saveChanges() {
+
+    // Get the updated question text and options from the modal
+    let updatedQuestion = document.getElementById('edit-question-text').value;
+    let question = @json($questions)[currentQuestion - 1]; // Ensure this variable is correctly defined
+
+    // Prepare the data to be sent
+    let data = {
+        id: question.id,
+        question: updatedQuestion,
+        options: [], // This will hold the updated options
+        correct_answer: ''
+    };
+
+    // Update for multiple choice options
+    if (question.type === 'multipleChoice') {
+        for (let i = 0; i < 4; i++) {
+            let optionValue = document.getElementById('edit-option-' + (i + 1)).value;
+            data.options.push(optionValue);
+        }
+        question.options = data.options;
+
+    } else if (question.type === 'trueFalse') {
+        // Get the updated true/false value
+        let updatedTrueFalse = document.querySelector('input[name="edit-truefalse"]:checked').value;
+        data.correct_answer = updatedTrueFalse;
+
+    } else if (question.type === 'identification') {
+        // Get the updated identification answer
+        let updatedAnswer = document.getElementById('edit-identification-answer').value;
+        data.correct_answer = updatedAnswer;
+    }   
+
+    let questionId = question.id; // Get the question ID
+
+   // Make the AJAX request to save changes
+   fetch("{{ route('quiz.updateQuestion', ['classId' => $class->id, 'quizId' => $quiz->id]) }}", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Laravel CSRF token for security
+    },
+    body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        // Update the UI with the new question text
+        document.getElementById('question-text').innerText = data.updatedQuestion;
+        closeModal();
+    } else {
+        console.error('Error updating question:', data);
+    }
+})
+.catch(error => console.error('Error:', error));
+}
 </script>
 
+
+    
+
 </body>
+
 </html>

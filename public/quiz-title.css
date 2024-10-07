@@ -45,6 +45,7 @@ body {
     color: #FFC62E;
     text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 .section-font {
@@ -52,11 +53,7 @@ body {
     color: #FFC62E;
     opacity: 0.8;
     margin-left: 10px;
-}
-
-.right-section {
-    display: flex;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .profile-img {
@@ -72,6 +69,61 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
+.challenge-btn.active {
+    color: #2A2E34; /* White text color for the active button */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
+                0 0 10px rgba(255, 198, 46, 0.8),
+                0 0 15px rgba(255, 198, 46, 0.8);
+    transition: all 0.3s ease;
+}
+.row {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align the buttons to the right */
+    font-size: 12px;
+    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    padding: 0 15px; /* Add padding to the left and right */
+    margin-left: 10px;
+    position: inherit;
+}
+
+.row .col-12 {
+    padding: 0 10px; /* Add horizontal padding for equal spacing between buttons */
+}
+
+.row .btn {
+    padding: 10px 15px; /* Add padding inside the buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #676767;
+    cursor: pointer;
+    width: 100%; /* Make buttons take the full width of their column */
+}
+
+.btn:hover {
+    color: #2A2E34;
+    font-weight: bold;
+}
+
+    .back-button {
+        background-color: #FFC62E;
+        color: #14171D;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #FFB700;
+    }
+
 .info-container {
     border: 2px solid #FFC62E;
     padding: 20px;
@@ -81,12 +133,12 @@ body {
     margin: 20px auto;
     float: left;
     margin: 50px;
-    margin-top: 10.5%;
+    margin-top: 60px;
     border-radius: 20px;
     position: relative;
     width: 265px;
     height: 490px;
-    position: fixed;
+    position: relative;
 }
 
 .container-picture {
@@ -111,7 +163,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
     margin-bottom: 35px;
-    
+
 }
 
 hr {
@@ -122,20 +174,20 @@ hr {
     margin-top: 35px;
 }
 
-.container-info-section {
+/* .container-info-section {
     margin: 10px 0;
     font-size: 12px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 30px;
-}
-.container-info-name {
+} */
+/* .container-info-name {
     margin: 0;
     font-size: 9px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-}
+}*/
 
 
 .container-info-email {
@@ -144,7 +196,7 @@ hr {
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 7px;
+    font-size: 8px;
 }
 
 /* .container-info p {
@@ -183,120 +235,90 @@ hr {
     background-color: #FFC62E;
 }
 
-/* Add these styles to your CSS file */
-
-.top-buttons {
-    margin-top: 5.5%;
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the buttons horizontally */
-    gap: 10px; /* Add space between the buttons */
-    margin-bottom: 1%; /* Add space below the buttons */
-    font-size: 12px;
-}
-
-.top-buttons .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
-    border: none;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    color: #676767;
-    cursor: pointer;
-    font-size: 1em;
-    margin-right: 11%;
-}
-
-.challenge-btn.active {
-    color: #2A2E34; /* White text color for the active button */
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
-                0 0 10px rgba(255, 198, 46, 0.8),
-                0 0 15px rgba(255, 198, 46, 0.8);
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    color: #2A2E34; /* Lighter text color on hover */
-    font-weight: bold;
-}
-
-/* Existing .half-line styles */
-.half-line {
-    width: 100%; /* Make the line container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the line horizontally */
-}
-
-.half-line hr {
-    width: 72.7%; /* Set the line to be 75% of its container width */
-    border: 0; /* Remove default border */
-    height: 1px; /* Set the height of the line */
-    background-color: #2A2E34; /* Set the color of the line */
-    margin: 0; /* Remove default margin */
-    margin-top: 8%;
-    position: fixed;
-}
-
-.half-line2 {
-    width: 100%; /* Make the line container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the line horizontally */
-}
-
-.half-line2 hr {
-    width: 72.7%; /* Set the line to be 75% of its container width */
-    border: 0; /* Remove default border */
-    height: 1px; /* Set the height of the line */
-    background-color: #2A2E34; /* Set the color of the line */
-    margin: 0; /* Remove default margin */
-    margin-top: 11.5%;
-    position: fixed;
-}
-
-/* Style for the back button */
-.back-button {
-    background-color: #E4E4E4;
-    color:#2A2E34;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+.class-name {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #4CAF50;              /* Green color for class name */
+    background-color: rgba(76, 175, 80, 0.1); /* Light green background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
     font-size: 10px;
-    transition: background-color 0.2s;
-    font-family: 'Press Start 2P', cursive;
-    margin-left: 945px;
 }
 
-.back-button:hover {
-    background-color: #FFC62E; 
+.subject {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #2196F3;              /* Blue color for subject */
+    background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
-.quiz-title {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    margin-bottom: 1%; /* Add space below the buttons */
-    font-size: 13.5px;
-    margin-top: 9.5%;
-    margin-left: 27.8%;
-    color:#2A2E34
+.section {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #FF9800;              /* Orange color for section */
+    background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
 
-.quiz-container {
+
+.container-sm{
+    display: flex;
+    align-items: center;
+    border: 2px solid #FFC62E;
+    padding: 10px;
+    border-radius: 10px;
     background-color: #2A2E34;
-    color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 1070px;
-    margin: 20px auto;
-    position: relative; /* Allows positioning of child elements */
-    text-align: left; /* Align text to the left */
-    margin-top: 200px;
-    margin-left: 420px;
-    height: auto;
+    width: 1070px;
+    height: 488px;
+    margin-top: 60px;
+    /* max-height: 352px; */
+    overflow-x: auto; /* Enable horizontal scrollbar */
 }
 
+.container-adviser h3 {
+    font-size: 1.5rem; /* Adjust title font size */
+    color: #FFC62E; /* Darker text color for better readability */
+    font-weight: 700;
+    margin-bottom: 10px; /* Space between title and description */
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+/* Description styles */
+.container-adviser p {
+    font-size: 1rem; /* Normal paragraph size */
+    color: #f0f0f0; /* Softer gray color for description text */
+    line-height: 1.5; /* Increase line spacing for readability */
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.container-adviser .btn-open {
+    background-color: #E4E4E4;
+    font-size: 13px;
+    padding: 15px 15px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+    bottom: 30px; /* Adjust as needed */
+    right: 30px; /* Adjust as needed */
+}
+
+.container-adviser .btn-open:hover {
+    background-color: #FFC62E;
+}
 
 .edit-button {
     position: absolute;
@@ -316,36 +338,6 @@ hr {
     color: #2A2E34;
 }
 
-#quiz-title2 {
-    margin-top: 10px;
-    margin-bottom: 40px;
-    font-size:medium;
-}
-
-#quiz-description {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    color: #f0f0f0; /* Light grey color for the label text */
-    font-size: 11px; /* Adjust font size if needed */
-    display: block; /* Ensure the label is displayed as a block element */
-}
-
-.open-button {
-    display: block;
-    margin: 20px auto 0; /* Center the button horizontally and add margin */
-    padding: 10px 20px;
-    background-color: #E4E4E4;
-    color: #2A2E34;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
-    font-size: small;
-}
-
-.open-button:hover {
-    background-color: #FFC62E;
-    color: #2A2E34;
-}
 
 .modal {
     display: none;
@@ -357,7 +349,7 @@ hr {
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .modal-content {
@@ -431,7 +423,7 @@ textarea {
 }
 
 textarea:focus {
-    border-color: #FFC62E; 
+    border-color: #FFC62E;
 }
 
 /* Styling for the button */

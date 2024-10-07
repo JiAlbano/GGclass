@@ -12,6 +12,7 @@ class AddGoogleIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('google_id')->nullable()->unique();
+            $table->string('google_access_token')->nullable(); // Add access token column
         });
     }
 
@@ -19,6 +20,7 @@ class AddGoogleIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('google_id');
+            $table->dropColumn('google_access_token'); // Drop access token column
         });
     }
 }

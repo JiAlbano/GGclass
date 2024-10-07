@@ -12,8 +12,6 @@ class kernel extends HttpKernel
         'check.google' => \App\Http\Middleware\CheckGoogleOAuth::class,
         // Other middleware...
         'check.user.type' => \App\Http\Middleware\CheckUserType::class,
-        'redirect.if.authenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'authenticate' => \Illuminate\Auth\Middleware\Authenticate::class,
 
     ];
 }

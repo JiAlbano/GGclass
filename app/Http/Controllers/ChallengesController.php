@@ -13,7 +13,7 @@ class ChallengesController extends Controller
     public function index($classId)
     {
         // Fetch all users
-        $users = User::all();
+        $user = Auth::user();
 
         // Fetch the class details
         $class = Classroom::findOrFail($classId);
@@ -22,7 +22,7 @@ class ChallengesController extends Controller
         $challenges = Challenge::where('class_id', $classId)->get();
 
         // Pass class, users, and challenges to the view
-        return view('challenges', compact('class', 'users', 'challenges'));
+        return view('challenges', compact('class', 'user', 'challenges'));
     }
 
     // Function to handle adding new challenges (optional)

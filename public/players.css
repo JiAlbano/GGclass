@@ -3,13 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
     background-color: #f0f0f0;
+    overflow-x: auto; /* Enable horizontal scrollbar */
+
 }
 
 .navbar {
@@ -45,6 +46,7 @@ body {
     color: #FFC62E;
     text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 .section-font {
@@ -52,28 +54,7 @@ body {
     color: #FFC62E;
     opacity: 0.8;
     margin-left: 10px;
-}
-
-.right-section {
-    display: flex;
-    align-items: center;
-}
-
-.back-button {
-    background-color: #FFC62E;
-    color: #14171D;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-right: 15px;
-    cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #FFB700;
+    margin-top: 10px;
 }
 
 .profile-img {
@@ -89,6 +70,45 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
+.challenge-btn.active {
+    color: #2A2E34; /* White text color for the active button */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
+                0 0 10px rgba(255, 198, 46, 0.8),
+                0 0 15px rgba(255, 198, 46, 0.8);
+    transition: all 0.3s ease;
+}
+
+.row {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align the buttons to the right */
+    font-size: 12px;
+    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    padding: 0 15px; /* Add padding to the left and right */
+    margin-left: 10px;
+    position: inherit;
+}
+
+.row .col-12 {
+    padding: 0 10px; /* Add horizontal padding for equal spacing between buttons */
+}
+
+.row .btn {
+    padding: 10px 15px; /* Add padding inside the buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #676767;
+    cursor: pointer;
+    width: 100%; /* Make buttons take the full width of their column */
+}
+
+.btn:hover {
+    color: #2A2E34;
+    font-weight: bold;
+}
+
 .info-container {
     border: 2px solid #FFC62E;
     padding: 20px;
@@ -98,12 +118,12 @@ body {
     margin: 20px auto;
     float: left;
     margin: 50px;
-    margin-top: 10.5%;
+    margin-top: 40px;
     border-radius: 20px;
     position: relative;
     width: 265px;
     height: 490px;
-    position: fixed;
+    position: relative;
 }
 
 .container-picture {
@@ -128,8 +148,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
     margin-bottom: 35px;
-    
-    
+
 }
 
 hr {
@@ -201,56 +220,279 @@ hr {
     background-color: #FFC62E;
 }
 
-/* Add these styles to your CSS file */
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-.top-buttons {
-    margin-top: 5.5%;
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the buttons horizontally */
-    gap: 10px; /* Add space between the buttons */
-    margin-bottom: 1%; /* Add space below the buttons */
+.role {
+    text-align: right;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #FFC62E;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2A2E34;
+    margin-top: 40px;
+    width: 1070px;
+    height: 70px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.profile-name {
+    font-size: 11px;
+    font-weight: bold;
+    color: #f0f0f0;
+    margin-left: 15px;
+}
+
+.profile-role {
+    font-size: 10px;
+    color: #f0f0f0;
+    text-align:right;
+    margin-right: 15px;
+}
+
+/* Members */
+.container-sm{
+    display: flex;
+    align-items: center;
+    border: 2px solid #FFC62E;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2A2E34;
+    width: 1070px;
+    height: 346px;
+    /* max-height: 380px; */
+    overflow-x: auto; /* Enable horizontal scrollbar */
+    overflow-y: scroll; /* Always show vertical scrollbar */
+}
+
+.profile-member, .profile-rank {
+    font-size: 12px; /* Adjust as needed */
+    font-weight: bold;
+    color: #f0f0f0;
+    margin-top: 5px;
+}
+
+.profile-member {
+    margin-left: 35px; /* Adjust spacing between elements */
+}
+
+.profile-rank {
+    margin-right: 35px;
+}
+
+.container2 {
+    display: flex;
+    align-items: center;
+    border: 2px solid #FFC62E;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2A2E34;
+    width: 1000px;
+    height: 70px;
+    align-self: flex-start; /* Ensures it stays at the top */
+    margin-top: 15px;
+}
+
+
+.rank-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+    margin-right: 30px;
+}
+
+.btn-add2{
+    margin-right: 45px;
+    background-color: #2A2E34;
+    border: 2px solid #FFC62E;
+    border-radius: 15px;
+    color: #f0f0f0;
+    width: 75px;
+    height: 25px;
+    font-size: x-small;
+}
+
+.btn-add2:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
+}
+
+/* Modal */
+/* Modal general styles */
+.modal-content {
+    background-color: #2A2E34; /* Dark background */
+    border-radius: 10px;
+    border: 2px solid #FFC62E; /* Neon border */
+    color: #fff;
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+}
+
+/* Modal header styling */
+.modal-header {
+    border-bottom: 2px solid #FFC62E;
+}
+
+.modal-title {
+    color: #FFC62E; /* Vibrant title color */
+}
+
+/* Close button */
+.btn-close {
+    background: none;
+    border: none;
+}
+
+.btn-close:hover {
+    filter: brightness(1.5);
+}
+
+/* Modal body styling */
+.modal-body {
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Input field styling */
+#gboxAccount {
+    background-color: #2A2E34; /* Dark input background */
+    border: 2px solid #FFC62E; /* Neon border */
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
     font-size: 12px;
 }
 
-.top-buttons .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
-    border: none;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    color: #676767;
-    cursor: pointer;
-    font-size: 1em;
-    margin-right: 11%;
+#gboxAccount::placeholder {
+    color: #f0f0f0;
 }
 
-.challenge-btn.active {
-    color: #2A2E34; /* White text color for the active button */
-    font-weight: bold;
-        text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
-                0 0 10px rgba(255, 198, 46, 0.8),
-                0 0 15px rgba(255, 198, 46, 0.8);
+/* Modal footer */
+.modal-footer {
+    border-top: 2px solid #FFC62E;
+}
+
+/* Button styling */
+.btn {
+    font-family: 'Press Start 2P', cursive;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
     transition: all 0.3s ease;
 }
 
-.btn:hover {
-    color: #2A2E34; /* Lighter text color on hover */
-    font-weight: bold;
+/* Primary button */
+.btn-primary {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
 }
 
-/* Existing .half-line styles */
-.half-line {
-    width: 100%; /* Make the line container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: right; /* Center the line horizontally */
+.btn-primary:hover {
+    background-color: #FFC62E;
 }
 
-.half-line hr {
-    width: 72.7%; /* Set the line to be 75% of its container width */
-    border: 0; /* Remove default border */
-    height: 1px; /* Set the height of the line */
-    background-color: #2A2E34; /* Set the color of the line */
-    margin: 0; /* Remove default margin */
-    margin-top: 8%;
-    position: fixed;
+/* Secondary button */
+.btn-secondary {
+    background-color: #E4E4E4;
+    color: #2A2E34;
 }
+
+.btn-secondary:hover {
+    background-color: #FFC62E;
+    border: 2px solid #2A2E34;
+}
+
+
+
+
+.btn-add2{
+    margin-right: 45px;
+    background-color: #2A2E34;
+    border: 2px solid #FFC62E;
+    border-radius: 15px;
+    color: #f0f0f0;
+    width: 75px;
+    height: 25px;
+    font-size: x-small;
+}
+
+.btn-add2:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
+}
+
+.class-name {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #4CAF50;              /* Green color for class name */
+    background-color: rgba(76, 175, 80, 0.1); /* Light green background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+    }
+
+    .subject {
+        margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #2196F3;              /* Blue color for subject */
+    background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+}
+
+.section {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #FF9800;              /* Orange color for section */
+    background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+    }
+
+    .back-button {
+        background-color: #FFC62E;
+        color: #14171D;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #FFB700;
+    }
+
+

@@ -15,7 +15,7 @@ class QuizController extends Controller
     public function show($classId)
     {
         // Fetch all users
-        $users = User::all();
+        $user = Auth::user();
 
         // Fetch the class details
         $class = Classroom::findOrFail($classId);
@@ -24,8 +24,9 @@ class QuizController extends Controller
         $quizzes = Quiz::where('class_id', $classId)->get();
 
         // Pass class, users, and quizzes to the view
-        return view('quiz', compact('class', 'users', 'quizzes'));
+        return view('quiz', compact('class', 'user', 'quizzes'));
     }
+
 
     // Function to handle adding new quizzes
     public function store(Request $request)
@@ -60,7 +61,7 @@ class QuizController extends Controller
         $quiz = Quiz::where('id', $quizId)->where('class_id', $classId)->firstOrFail();
 
         // Fetch all users
-        $users = User::all();
+        $user = Auth::user();
 
         // Optionally, fetch related data like questions
         $questions = $quiz->questions;
@@ -69,8 +70,9 @@ class QuizController extends Controller
         $class = Classroom::findOrFail($classId);
 
         // Pass the quiz, class, questions, and users to the view
-        return view('quiz-title', compact('class', 'quiz', 'questions', 'users'));
+        return view('quiz-title', compact('class', 'quiz', 'questions', 'user'));
     }
+
     public function update(Request $request, $quizId)
     {
         $request->validate([
@@ -101,6 +103,53 @@ public function showQuiz($classId, $quizId)
     // Pass the quiz, class, and questions to the view
     return view('take-quiz', compact('class', 'quiz', 'questions'));
 }
+
+public function updateQuestion(Request $request, $classId, $quizId)
+{
+    // Retrieve the question by ID
+    $questionId = $request->input('id');
+    $question = Question::find($questionId);
+
+    // Update the question text
+    $question->question = $request->input('question');
+
+    // Check question type and update accordingly
+    if ($question->type === 'multipleChoice') {
+        // Store the options as an array, not a string
+        $options = $request->input('options');
+
+        // Assuming 'options' column in your database is of type JSON
+        $question->options = $options;
+    }
+
+    if ($question->type === 'trueFalse') {
+        // Get the correct answer from the request (should be 'true' or 'false')
+        $correctAnswer = $request->input('correct_answer');
+
+        // Ensure the value is either 'true' or 'false'
+        if (in_array($correctAnswer, ['True', 'False'])) {
+            $question->correct_answer = $correctAnswer;
+        } else {
+            return response()->json(['error' => 'Invalid answer for True/False question'], 400);
+        }
+    }
+
+    if ($question->type === 'identification') {
+        // Update correct answer for identification
+        $question->correct_answer = $request->input('correct_answer');
+    }
+
+    // Save the updated question
+    $question->save();
+
+    // Return a success response with the updated question text
+    return response()->json([
+        'success' => true,
+        'updatedQuestion' => $question->question,
+    ]);
+}
+
+
 
 }
 

@@ -1,0 +1,112 @@
+.left-right {
+  display: flex;
+ 
+}
+.left-container {
+  position: relative;
+  height: 450px;
+  width: 340px;
+  margin-right: 30px;
+  border: 2px solid black;
+  text-align: center;
+  background-color: #2A2E34;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  border-radius: 20px;
+  left: 60px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2A2E34;
+  position: absolute;
+  top: -50px; 
+  left: 100px;
+  
+}
+.custome-line-3 {
+  width: 220px;        
+  margin: 0 auto;     
+  border: none;      
+  height: 1px;       
+  background-color: white; 
+  height: 2px;
+}
+
+.buttons {
+  margin-top: 20px;
+  width: 166px;
+  height: 20px;
+  
+}
+
+.first-button {
+  height: 40px;
+  width: 190px;
+  background-color: #D9D9D9;
+  position: relative;
+  left: 40px;
+  top: 15px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btns {
+  color: #2A2E34;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+}
+.first-button:hover, .second-button:hover, .third-button:hover , .fourth-button:hover{
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+  background-color: #FFC62E;
+}
+
+.second-button {
+  height: 40px;
+  width: 190px;
+  background-color: #D9D9D9;
+  position: relative;
+  left: 40px;
+  top: 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.third-button {
+  height: 40px;
+  width: 190px;
+  background-color: #D9D9D9;
+  position: relative;
+  left: 40px;
+  top: 35px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fourth-button {
+  height: 40px;
+  width: 190px;
+  background-color: #FFC62E;
+  position: relative;
+  left: 40px;
+  top: 45px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

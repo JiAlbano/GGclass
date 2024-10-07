@@ -64,3 +64,44 @@
   min-width: 150px; /* Optional: minimum width for consistency */
 }
 
+/* Dropdown styles */
+.dropdown-menu {
+    background-color: #444;
+    border: none;
+    padding: 10px;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu .dropdown-item {
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #555;
+}
+
+.dropdown-menu-end {
+    right: 0;
+}
+
+/* Logout button style */
+.logout-btn {
+    background-color: transparent;
+    border: none;
+    color: #ff5e5e;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #ff5e5e;
+    color: white;
+}

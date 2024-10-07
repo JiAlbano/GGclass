@@ -17,6 +17,7 @@
 .modal-title {
   font-family: 'Press Start 2P', cursive; /* Gaming-themed font */
   color: white; /* Neon green title */
+  text-decoration: none;
 }
 
 /* Modal Body */

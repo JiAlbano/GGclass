@@ -31,10 +31,9 @@ class SignupTeacherController extends Controller
             'birthday' => $request->birthday,
             'gender' => $request->gender,
             'user_type' => 'teacher',
-            'is_approve' => 0,
         ]);
 
         // Redirect or send a response after successful sign-up
-        return redirect('/auth.view')->with('message', 'You have signup already, please wait for the admin to approve your account.');
+        return redirect('/auth.view');
     }
 }
