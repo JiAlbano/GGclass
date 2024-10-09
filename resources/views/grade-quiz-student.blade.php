@@ -22,16 +22,21 @@
 </head>
 <body>
 
-<div class="navbar">
-    <div class="left-section">
-        <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-        <h1 class="ggclass-font">GGclass ></h1>
-        <h2 class="section-font">{{ $class->section }}</h2>
+    <div class="navbar">
+        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
+            <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
+            <h1 class="ggclass-font">GGclass ></h1>
+            <h2 class="section-font">{{ $class->section }}</h2>
     </div>
 
     <div class="right-section">
-        <!-- Back Button -->
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Back to Classroom</button>
+        <button class="back-button" onclick="goBack()">Back</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>

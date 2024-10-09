@@ -19,12 +19,14 @@ return new class extends Migration
             $table->string('id_number')->unique();
             $table->datetime('birthday');
             $table->enum('gender', ['male', 'female', 'other']); // Fixed typo
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->string('user_type');
             $table->string('google_profile_image')->nullable(); // For Google profile image
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

@@ -18,7 +18,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('gradebook-css/components/header.css')}}">
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -31,17 +31,27 @@
                 <a class="navbar-brand logo-text" href="#">
                 <img src="{{ asset('img/logo.png') }}" alt="Logo" class=" logo-img d-inline-block align-text-top ">
                 GGclass
+
                 </a>
             </div>
+            <div class="back-container">
+                <button class="back-button" onclick="goBack()">Back</button>
+            </div>
+
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
         </nav>
     </header>
 
-    <main>  
+    <main>
 
         @yield('landing')
         @yield('data')
         @yield('gradecomponents')
-        
+
     </main>
 
 

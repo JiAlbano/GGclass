@@ -22,18 +22,23 @@
 
 <body>
 
-<div class="navbar">
-        <div class="left-section">
+    <div class="navbar">
+        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass ></h1>
             <h2 class="section-font">{{ $class->section }}</h2>
-        </div>
-
+    </div>
 
 
 
     <div class="right-section">
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Back to Classroom</button>
+        <button class="back-button" onclick="goBack()">Back</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>
@@ -71,14 +76,14 @@
     <div class="container-info-email">
         <p>{{ $user->email }}</p>
     </div>
-    
+
 
         <hr>
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
             <button class="btn"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
             <button class="btn challenge-btn active"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-            <button class="btn"onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">GRADEBOOK</button>
+            <button class="btn"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
         </div>
     </div>
 </body>

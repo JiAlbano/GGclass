@@ -29,6 +29,13 @@
         </div>
 
         <div class="right-section">
+            <button class="back-button" onclick="goBack()">Back</button>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+            <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
             <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
         </div>
     </div>
