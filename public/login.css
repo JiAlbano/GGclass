@@ -4,6 +4,7 @@ body {
     padding: 0;
     height: 100vh;
     display: flex;
+    overflow-x: hidden;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif; /* Use a modern font for a gamified look */

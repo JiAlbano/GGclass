@@ -295,12 +295,12 @@ function saveChanges() {
         // Get the updated identification answer
         let updatedAnswer = document.getElementById('edit-identification-answer').value;
         data.correct_answer = updatedAnswer;
-    }   
+    }
 
     let questionId = question.id; // Get the question ID
 
    // Make the AJAX request to save changes
-   fetch("{{ route('quiz.updateQuestion', ['classId' => $class->id, 'quizId' => $quiz->id]) }}", {
+   fetch("{{ route('test_and_quizzes.updateQuestion', ['classId' => $class->id, 'quizId' => $quiz->id]) }}", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -323,7 +323,7 @@ function saveChanges() {
 </script>
 
 
-    
+
 
 </body>
 

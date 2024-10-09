@@ -46,3 +46,7 @@
   transform: scale(1.03);
   transition: transform 0.2s ease;
 }
+
+body {
+    overflow-x: hidden;
+}

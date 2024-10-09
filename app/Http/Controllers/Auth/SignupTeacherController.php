@@ -14,8 +14,7 @@ class SignupTeacherController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'id_number' => 'required|string|unique:users,id_number',
-            'birthday' => 'required|date',
-            'gender' => 'required|in:male,female,other',
+
         ]);
 
         if(!$validatedData) {
@@ -28,8 +27,7 @@ class SignupTeacherController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'id_number' => $request->id_number,
-            'birthday' => $request->birthday,
-            'gender' => $request->gender,
+
             'user_type' => 'teacher',
         ]);
 

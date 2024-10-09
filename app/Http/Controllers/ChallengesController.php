@@ -29,7 +29,7 @@ class ChallengesController extends Controller
     public function create(Request $request, $classId)
     {
         $request->validate([
-            'challengeType' => 'required|in:exam,quiz,activity',
+            'challengeType' => 'required|in:exam,test_and_quizzes,activity',
         ]);
 
         $challenge = new Challenge();

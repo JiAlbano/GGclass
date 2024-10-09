@@ -7,6 +7,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Google\Client as GoogleClient;
+use Illuminate\Support\Facades\Log;
 
 class GoogleController extends Controller
 {
@@ -27,35 +28,52 @@ class GoogleController extends Controller
                 return redirect('/auth.view')->withErrors('Only Gbox account are allowed.');
             }
 
-               // Check if the account is already registered in the database
-               $user = User::where('email', '=', $googleUser->getEmail())->first();
+   // Find the user by email
+   $user = User::where('email', $googleUser->getEmail())->first();
 
-        // if user doesn't exist
-        if ($user === null) {
-            return redirect('/auth.view')->withErrors('Please sign up your account first.');
-        }
+   // If user doesn't exist, redirect to signup
+   if (!$user) {
+       return redirect('/auth.view')->withErrors('Please sign up your account first.');
+   }
 
-        //logged in account
-        Auth::login($user);
+   // Update Google-related fields
+   $user->google_id = $googleUser->getId();
+   $user->google_access_token = $googleUser->token;
+   $user->google_profile_image = $googleUser->getAvatar(); // Optional if you want to store profile image
+   $user->save();
+
+
+    // Log in the user
+    Auth::login($user); // This should now be a User model instance
+
 
         return redirect()->intended(route('classroom.index')); // redirect to the intended page after login
     }
     public function logout()
     {
-        // Create a Google client instance
         $client = new GoogleClient();
 
         // Set the access token for the client
-        $client->setAccessToken(Auth::user()->google_access_token); // Get access token
+        $accessToken = Auth::user()->google_access_token;
 
-        // Revoke access to the Google account
-        $client->revokeToken();
+        if ($accessToken) {
+            try {
+                // Set the access token
+                $client->setAccessToken($accessToken);
+
+                // Revoke access to the Google account
+                $client->revokeToken();
+            } catch (\Exception $e) {
+                // Handle error if revocation fails
+                Log::error('Error revoking Google token: ' . $e->getMessage());
+            }
+        }
 
         // Log the user out of your application
         Auth::logout();
 
         // Redirect to a specific route after logging out
-        return redirect('/'); // Redirect to the home page or any other route
+        return redirect('https://accounts.google.com/Logout'); // Redirect to Google logout
     }
 
 }

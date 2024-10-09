@@ -1,12 +1,14 @@
 /* General reset and box-sizing */
 * {
     margin: 0;
+
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;

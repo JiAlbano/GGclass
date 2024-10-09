@@ -103,7 +103,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
     margin-bottom: 35px;
-    
+
 }
 
 hr {
@@ -234,7 +234,7 @@ hr {
     background-color: #f4f4f4; /* Background color of the container */
     margin-top: 150px;
     margin-left: 395px;
-    
+
 }
 
 .container2 {
@@ -246,7 +246,7 @@ hr {
     margin-top: 20px;
     margin-left: 520px;
     margin-right: 120px;
-    
+
 }
 
 /* Styles for each box */
@@ -333,4 +333,42 @@ hr {
 .cancel-btn {
     background-color: #dc3545;
     color: white;
+}
+
+.logout-container {
+    position: absolute; /* Position relative to the nearest positioned ancestor */
+    top: 60px; /* Adjust this to position below the profile image */
+    right: 0; /* Align to the right */
+    display: none; /* Hide by default */
+    background-color: white; /* Background color of the dropdown */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Drop shadow for depth */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Show the dropdown when toggled */
+.logout-container.show {
+    display: block; /* Show dropdown */
+}
+
+/* Menu item styles */
+.logout-menu {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.logout-item {
+    padding: 10px 20px; /* Padding for the item */
+}
+
+.logout-item:hover {
+    background-color: #f8f8f8; /* Background on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.dropdown-item {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+    font-weight: bold; /* Bold text */
 }

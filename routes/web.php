@@ -47,6 +47,8 @@ Route::post('/auth.view', function () {
     return view('login');
 })->name('login');
 
+Route::post('/logout', [GoogleController::class, 'logout'])->name('logout');
+
 Route::get('/auth.view', function () {
     return view('welcome');
 })->name('welcome');
@@ -114,19 +116,19 @@ Route::middleware('auth')->group(function () {
 
 // Routes for different types of challenges
 // Display quizzes for a class (GET request)
-Route::get('/quiz/{classId}', [QuizController::class, 'show'])->name('quiz.show');
+Route::get('/quiz/{classId}', [QuizController::class, 'show'])->name('test_and_quizzes.show');
 
 // Store a newly created quiz (POST request)
-Route::post('/quiz', [QuizController::class, 'store'])->name('quiz.store');
-Route::get('/quiz/{classId}/quiz/{quizId}', [QuizController::class, 'displayQuiz'])->name('quiz.showQuiz');
+Route::post('/quiz', [QuizController::class, 'store'])->name('test_and_quizzes.store');
+Route::get('/quiz/{classId}/quiz/{quizId}', [QuizController::class, 'displayQuiz'])->name('test_and_quizzes.showQuiz');
 // Route for showing quiz titles for a specific class (GET request)
-Route::get('/quiz/{classId}/quiz-titles', [QuiztitleController::class, 'show'])->name('quiz.titles');
+Route::get('/quiz/{classId}/quiz-titles', [QuiztitleController::class, 'show'])->name('test_and_quizzes.titles');
 // Route for updating quiz
-Route::post('/quiz/{quizId}/update', [QuizController::class, 'update'])->name('quiz.update');
+Route::post('/quiz/{quizId}/update', [QuizController::class, 'update'])->name('test_and_quizzes.update');
 // Route to display the quiz-taking interface
-Route::get('/class/{classId}/quiz/{quizId}/take', [QuizController::class, 'showQuiz'])->name('quiz.take');
+Route::get('/class/{classId}/quiz/{quizId}/take', [QuizController::class, 'showQuiz'])->name('test_and_quizzes.take');
 // Route for saving changes to a question
-Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController::class, 'updateQuestion'])->name('quiz.updateQuestion');
+Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController::class, 'updateQuestion'])->name('test_and_quizzes.updateQuestion');
 
 Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');

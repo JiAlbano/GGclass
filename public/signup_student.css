@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P';
     background-color: #E4E4E4;
     margin: 0;
     padding: 0;
@@ -22,14 +22,14 @@ body {
 
 .logo {
     max-width: 120px;
-    margin-bottom: 20px;
+    /* margin-bottom: 10px; */
 }
 
 /* Form Styles */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
 }
 
 .form-group {
@@ -38,7 +38,7 @@ form {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     font-weight: bold;
     color: #E4E4E4;
 }
@@ -102,4 +102,16 @@ select:focus {
     .btn {
         font-size: 14px;
     }
+
+}
+
+
+.sign-up-title {
+
+   font-size: 28px; /* Increase font size */
+   color: #dcb908; /* Change color *
+   text-align: center; /* Center text */
+   padding: 10px; /* Add padding */
+
+   margin-bottom: 5px; /* Space below title */
 }

@@ -89,19 +89,40 @@
 }
 
 /* Logout button style */
-.logout-btn {
-    background-color: transparent;
-    border: none;
-    color: #ff5e5e;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 14px;
-    text-align: left;
-    width: 100%;
-    transition: background-color 0.3s;
+.logout-container {
+    position: absolute;
+    top: 60px; /* Adjust to position correctly under the profile image */
+    right: 0;
+    display: none; /* Initially hidden */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
-.logout-btn:hover {
-    background-color: #ff5e5e;
-    color: white;
+.logout-container.show {
+    display: block; /* Show the dropdown when active */
 }
+
+.logout-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-item {
+    padding: 10px 20px;
+}
+
+.logout-item:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+

@@ -104,9 +104,10 @@
             <h3 class="mb-2">{{ $quiz->title }}</h3>
             <p class="mb-0">{{ $quiz->description }}</p>
             <!-- Open Button -->
-            <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('quiz.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+            <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
         </div>
     </div>
+
 
     {{-- <div class="quiz-container">
         <button id="edit-button" class="edit-button">Edit</button>
@@ -149,7 +150,7 @@
     // Check if new title and description are provided
     if (newTitle && newDescription) {
         // Send an AJAX request to update the quiz
-        fetch("{{ route('quiz.update', ['quizId' => $quiz->id]) }}", {
+        fetch("{{ route('test_and_quizzes.update', ['quizId' => $quiz->id]) }}", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

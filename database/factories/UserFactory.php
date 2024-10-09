@@ -25,9 +25,9 @@ class UserFactory extends Factory
             'password' => bcrypt('password'), // Default password for testing
             'user_type' => $this->faker->randomElement(['student', 'teacher']), // Randomly assign user type
             'id_number' => $this->faker->unique()->numerify('######'), // 6-digit unique ID number
-            'birthday' => $this->faker->date(),
+
             'course_id' => \App\Models\Course::inRandomOrder()->first()->id, // Random course ID
-            'gender' => $this->faker->randomElement(['male', 'female', 'other']), // Random gender
+     
             'google_id' => $this->faker->unique()->numerify('##########'), // Simulate Google ID
             'google_access_token' => Str::random(40), // Generate a random Google access token
             'google_profile_image' => $this->faker->imageUrl(), // Simulate a Google profile image URL

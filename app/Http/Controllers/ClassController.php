@@ -15,7 +15,7 @@ class ClassController extends Controller
     public function index()
     {
         $classes = null;
-
+        $user = Auth::user();
         $user = User::find(Auth::id());
         if ($user->user_type === 'teacher') {
             // Fetch all classes from the database
@@ -25,7 +25,7 @@ class ClassController extends Controller
         }
 
         // Pass the classes to the welcome view
-        return view('classroom_dashboard', compact('classes'));
+        return view('classroom_dashboard', compact('classes', 'user'));
     }
     // New index method to fetch class information for the logged-in user
 

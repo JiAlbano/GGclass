@@ -3,11 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
+    overflow-x: hidden;
     background-color: #f0f0f0;
     overflow-x: auto; /* Enable horizontal scrollbar */
 
@@ -271,5 +272,5 @@ hr {
 }
 
 .btn-back:hover {
-    background-color: #FFC62E; 
+    background-color: #FFC62E;
 }

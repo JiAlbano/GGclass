@@ -1,6 +1,6 @@
 .left-right {
   display: flex;
- 
+
 }
 .left-container {
   position: relative;
@@ -25,16 +25,16 @@
   object-fit: cover;
   border: 3px solid #2A2E34;
   position: absolute;
-  top: -50px; 
+  top: -50px;
   left: 100px;
-  
+
 }
 .custome-line-3 {
-  width: 220px;        
-  margin: 0 auto;     
-  border: none;      
-  height: 1px;       
-  background-color: white; 
+  width: 220px;
+  margin: 0 auto;
+  border: none;
+  height: 1px;
+  background-color: white;
   height: 2px;
 }
 
@@ -42,7 +42,7 @@
   margin-top: 20px;
   width: 166px;
   height: 20px;
-  
+
 }
 
 .first-button {
@@ -109,4 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+body {
+    overflow-x: hidden;
 }

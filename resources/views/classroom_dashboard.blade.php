@@ -36,6 +36,7 @@
                     });
                 });
 
+
                 // Enable dropdown functionality
                 document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(function (button) {
                     button.addEventListener('click', function (event) {
@@ -69,7 +70,27 @@
                     event.preventDefault();
                     createClassModal.show();
                 });
+
             });
+
+            document.addEventListener('DOMContentLoaded', function () {
+    const logoutButton = document.querySelector('#logout-btn');
+    const logoutDropdown = document.querySelector('.logout-container');
+
+    // Toggle the dropdown when the profile image is clicked
+    logoutButton.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevents the click from bubbling up
+        logoutDropdown.classList.toggle('show'); // Toggle visibility of the dropdown
+    });
+
+    // Close the dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!logoutButton.contains(event.target)) {
+            logoutDropdown.classList.remove('show'); // Hide the dropdown
+        }
+    });
+});
+
         </script>
 
 </head>
@@ -115,12 +136,12 @@
 
                         @if(auth()->user()->user_type === 'teacher')
                         <li class="dropdown-item-container">
-                            <a class="dropdown-item" href="#" id="create-class-option">Create Class</a>
+                            <a class="dropdown-item" href="{{ route('create.class') }}" id="create-class-option">Create Class</a>
                         </li>
                     @endif
                         <li class="dropdown-item-container">
 
-                            <a class="dropdown-item" href="#" id="join-class-option">Join Class</a>
+                            <a class="dropdown-item" href="{{ route('join.class') }}" id="join-class-option">Join Class</a>
 
                         </li>
                     </ul>
@@ -222,9 +243,26 @@
 
                 <!-- User Profile-->
 
-                    <img class="profile-img dropdown-toggle" src="{{ asset('img/ainz.jpg') }}" alt="Profile">
-        </div>
-    </header>
+                <img class="profile-img"
+                src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+                alt="Profile"
+                id="logout-btn"
+
+                aria-expanded="false">
+
+           <!-- Logout Dropdown -->
+           <div class="logout-container">
+               <ul class="logout-menu">
+                   <li class="logout-item">
+                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           @csrf
+                       </form>
+                       <a class="dropdown-item" href="#"
+                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
+                   </li>
+               </ul>
+           </div>
+            </header>
         <!---End Header-->
 
         <!--ClassCard -->

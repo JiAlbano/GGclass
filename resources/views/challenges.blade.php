@@ -105,9 +105,10 @@
                 @csrf
                 <label for="challengeType" class="gamified-label">Challenge Type:</label>
                 <select id="challengeType" name="challengeType" class="gamified-input" required>
-                    <option value="quiz">Quiz</option>
+                    <option value="test_and_quizzes">Test and Quizzes</option>
                     <option value="exam">Exam</option>
                     <option value="activity">Activity</option>
+
                 </select>
                 <button type="submit" id="createBtn" class="btn create-btn gamified-button">Create</button>
             </form>
@@ -120,9 +121,9 @@
     <div class="container1">
         <div class="grid-container">
             @foreach($challenges as $challenge)
-                @if(in_array($challenge->type, ['quiz', 'exam', 'activity']))
+                @if(in_array($challenge->type, ['test_and_quizzes', 'exam', 'activity']))
                 <button class="box" onclick="window.location.href='{{ route($challenge->type .'.show', ['classId' => $class->id]) }}'">
-                    {{ ucfirst($challenge->type) }}
+                    {{ str_replace('_', ' ', ucfirst($challenge->type)) }}
                 </button>
                 @endif
             @endforeach

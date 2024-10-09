@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{{ asset('signup_teacher.css') }}"> <!-- Link to external CSS file -->
 </head>
 <body>
-    
+
+
     <div class="container">
 
         @if ($errors->any())
@@ -19,17 +20,20 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+        @endif
 
         <!-- Logo -->
+
         <img src="{{ asset('finalLogo.png') }}" alt="Logo" class="logo">
+        <div class="sign-up-title">Sign-up as Teacher</div>
 
         <!-- Sign Up Form -->
         <form action="{{ url('signup-teacher') }}" method="POST">
             @csrf
             <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required 
-                    pattern="[a-zA-Z0-9._%+-]+@gbox\.adnu\.edu\.ph" 
+                <label for="first_name" class="form-label">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required
+                    pattern="[a-zA-Z0-9._%+-]+@gbox\.adnu\.edu\.ph"
                     title="Please enter a valid email address ending with @gbox.adnu.edu.ph">
             </div>
                 <script> //for gbox invalidation sign up
@@ -44,7 +48,7 @@
                     });
                 </script>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" required>
                     </div>
 
@@ -54,9 +58,12 @@
 
                     <div class="form-group">
                         <input type="text" name="id_number" id=id_number class="form-control" placeholder="ID Number" required>
+
+                    </form>
+                    <button type="submit" class="btn">Sign Up</button>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="birthday">Birthday</label>
                         <input type="date" name="birthday" id="birthday" class="form-control" required>
                     </div>
@@ -69,10 +76,41 @@
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
-                    </div>
-                    <button type="submit" class="btn">Sign Up</button>
-        </form>
+                    </div> --}}
 
-    </div>
+                    <div class="form-group">
+                        <label for="first_name" class="form-label">First Name:</label> <!-- Added label -->
+                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" required oninput="updateNameDisplay()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name" class="form-label">Last Name:</label> <!-- Added label -->
+                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_number" class="form-label">ID Number:</label> <!-- Added label -->
+                        <input type="text" name="id_number" id="id_number" class="form-control" placeholder="ID Number" required>
+                    </div>
+
+                    {{-- <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" name="birthday" id="birthday" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select> --}}
+                        <button type="submit" class="btn">Sign Up</button>
+
+                    </div>
+
+
+
 </body>
 </html>

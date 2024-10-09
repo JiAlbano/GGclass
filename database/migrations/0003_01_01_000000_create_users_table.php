@@ -17,13 +17,11 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('id_number')->unique();
-            $table->datetime('birthday');
-            $table->enum('gender', ['male', 'female', 'other']); // Fixed typo
             $table->unsignedBigInteger('course_id')->nullable();
             $table->string('user_type');
             $table->string('google_profile_image')->nullable(); // For Google profile image
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
+            $table->string('password')->nullable(); 
             $table->rememberToken();
             $table->timestamps();
 
