@@ -26,6 +26,7 @@
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass ></h1>
             <h2 class="section-font">Section</h2>
+            
         </div>
 
         <div class="right-section">

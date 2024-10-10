@@ -54,27 +54,25 @@
 </div>
 
 
-<div class="info-container ">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-    
-
-        <hr>
-        <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn  challenge-btn active"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-            <button class="btn"onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-        </div>
+    <div class="info-container ">
+        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
+            <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
+            <div class="container-info-section">
+                <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
+                <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
+                <p class="section">Section: <span>{{ $class->section }}</span></p>
+                <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
+            </div>
+            <div class="container-info-email">
+                <p>{{ $user->email }}</p>
+            </div>
+            <hr>
+            <div class="container-buttons">
+                <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+                <button class="btn  challenge-btn active"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
+                <button class="btn"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
+                <button class="btn"onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">GRADEBOOK</button>
+            </div>
     </div>
 
     <div class="container-q">

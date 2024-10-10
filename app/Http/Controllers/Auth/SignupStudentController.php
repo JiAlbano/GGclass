@@ -41,7 +41,7 @@ class SignupStudentController extends Controller
 
 
         // Redirect or send a response after successful sign-up
-        return redirect('/auth.view')->with('message', 'You have signup already, please wait for the admin to approve your account.');
+        return redirect('/auth.view')->with('message', 'You have signup already, you may now log-in.');
     }
 
     public function showSignupForm()

@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    @foreach($users as $user)
+    {{-- @foreach($users as $user) --}}
 
     <div class="info-container ">
         <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
@@ -67,7 +67,7 @@
         <div class="container-info-email">
             <p>{{ $user->email }}</p>
         </div>
-    @endforeach
+    {{-- @endforeach --}}
     
         <hr>
         <div class="container-buttons">

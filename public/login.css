@@ -121,6 +121,6 @@ body {
 }
 
 .back-button:hover {
-    background-color: #FFC62E; /* Darker green on hover */
+    background-color: #FFC62E; 
     color: #2A2E34;
 }

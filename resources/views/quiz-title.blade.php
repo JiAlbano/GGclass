@@ -73,7 +73,7 @@
 
 
 <!-- Display profile picture -->
-@foreach($users as $user)
+{{-- @foreach($users as $user) --}}
     <div class="info-container">
         <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
     <!-- Display user info -->
@@ -87,7 +87,7 @@
         <div class="container-info-email">
             <p>{{ $user->email }}</p>
         </div>
-    @endforeach
+    {{-- @endforeach --}}
         <hr>
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
@@ -101,8 +101,8 @@
     <div class="container-adviser my-4">
         <div class="container-sm d-flex flex-column justify-content-start align-items-start position-relative p-3 border">
             <button id="edit-button" class="edit-button">Edit</button>
-            <h3 class="mb-2">{{ $quiz->title }}</h3>
-            <p class="mb-0">{{ $quiz->description }}</p>
+            <h3 class="mb-2" id="quiz-title2">{{ $quiz->title }}</h3>
+            <p class="mb-0" id="quiz-description">{{ $quiz->description }}</p>
             <!-- Open Button -->
             <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('quiz.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
         </div>
@@ -143,34 +143,34 @@
 
         // Save the new title and description
         document.getElementById('save-button').addEventListener('click', () => {
-    const newTitle = document.getElementById('new-title').value;
-    const newDescription = document.getElementById('new-description').value;
+            const newTitle = document.getElementById('new-title').value;
+            const newDescription = document.getElementById('new-description').value;
 
-    // Check if new title and description are provided
-    if (newTitle && newDescription) {
-        // Send an AJAX request to update the quiz
-        fetch("{{ route('quiz.update', ['quizId' => $quiz->id]) }}", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-            },
-            body: JSON.stringify({
-                title: newTitle,
-                description: newDescription,
-            }),
-        }).then(response => {
-            if (response.ok) {
-                // Update the displayed title and description
-                document.getElementById('quiz-title2').textContent = newTitle;
-                document.getElementById('quiz-description').textContent = newDescription;
-                // Close the modal after saving
-                document.getElementById('edit-modal').style.display = 'none';
-            } else {
-                alert('Failed to update quiz');
+            // Check if new title and description are provided
+            if (newTitle && newDescription) {
+                // Send an AJAX request to update the quiz
+                fetch("{{ route('quiz.update', ['quizId' => $quiz->id]) }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({
+                        title: newTitle,
+                        description: newDescription,
+                    }),
+                }).then(response => {
+                    if (response.ok) {
+                        // Update the displayed title and description
+                        document.getElementById('quiz-title2').textContent = newTitle;
+                        document.getElementById('quiz-description').textContent = newDescription;
+                        // Close the modal after saving
+                        document.getElementById('edit-modal').style.display = 'none';
+                    } else {
+                        alert('Failed to update quiz');
+                    }
+                });
             }
-        });
-    }
         });
     </script>
 </body>

@@ -130,7 +130,7 @@ body {
     background-color: #2A2E34;
     width: 300px;
     text-align: center;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     float: left;
     margin: 50px;
     margin-top: 60px;
@@ -204,7 +204,7 @@ hr {
 } */
 
 .container-buttons {
-    margin: 20px 0;
+    /* margin: 20px 0; */
     margin-top: 20px; /* Adds space between the info and the buttons */
     width: 100%; /* Ensures buttons take up full width */
     display: flex;
@@ -218,7 +218,6 @@ hr {
     color: #2A2E34;
     border: none;
     padding: 10px 20px;
-    margin: 0px;
     cursor: pointer;
     border-radius: 20px;
     width: 100px;

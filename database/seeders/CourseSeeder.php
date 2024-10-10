@@ -16,7 +16,8 @@ class CourseSeeder extends Seeder
         Course::insert([
         ['course_name' => 'Computer Science'],
         ['course_name' => 'Information Technology'],
-        ['course_name' => 'Information System']
+        ['course_name' => 'Information System'],
+        ['course_name' => 'Civil Engineering']
         ]);
     }
 }

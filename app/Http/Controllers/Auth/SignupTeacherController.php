@@ -31,9 +31,16 @@ class SignupTeacherController extends Controller
             'birthday' => $request->birthday,
             'gender' => $request->gender,
             'user_type' => 'teacher',
+            'course_id' => '0',
         ]);
 
         // Redirect or send a response after successful sign-up
-        return redirect('/auth.view');
+        return redirect('/auth.view')->with('message', 'You have signup already, you may now log-in.');
+    }
+
+    public function showSignupForm()
+    {
+        $courses = Course::all();
+        return view('signup_teacher', compact('courses'));
     }
 }

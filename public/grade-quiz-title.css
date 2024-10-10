@@ -146,7 +146,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
     margin-bottom: 35px;
-    
+
 }
 
 hr {
@@ -157,20 +157,20 @@ hr {
     margin-top: 35px;
 }
 
-.container-info-section {
+/* .container-info-section {
     margin: 10px 0;
     font-size: 12px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 30px;
-}
-.container-info-name {
+} */
+/* .container-info-name {
     margin: 0;
     font-size: 9px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-}
+}*/
 
 
 .container-info-email {
@@ -179,7 +179,7 @@ hr {
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 7px;
+    font-size: 8px;
 }
 
 /* .container-info p {
@@ -216,6 +216,42 @@ hr {
 
 .btn:hover {
     background-color: #FFC62E;
+}
+
+.class-name {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #4CAF50;              /* Green color for class name */
+    background-color: rgba(76, 175, 80, 0.1); /* Light green background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+}
+
+.subject {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #2196F3;              /* Blue color for subject */
+    background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+}
+
+.section {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #FF9800;              /* Orange color for section */
+    background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
 .container-q{

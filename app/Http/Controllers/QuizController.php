@@ -22,7 +22,6 @@ class QuizController extends Controller
 
         // Fetch quizzes related to the class
         $quizzes = Quiz::where('class_id', $classId)->get();
-
         // Pass class, users, and quizzes to the view
         return view('quiz', compact('class', 'user', 'quizzes'));
     }
@@ -146,6 +145,8 @@ public function updateQuestion(Request $request, $classId, $quizId)
     return response()->json([
         'success' => true,
         'updatedQuestion' => $question->question,
+        'updatedAnswer' => $question->correct_answer ?? '',
+        'options' => $question->options ?? ''
     ]);
 }
 

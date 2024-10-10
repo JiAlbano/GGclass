@@ -77,9 +77,8 @@
     </div>
 
 
-  <!-- Display profile picture -->
-@foreach($users as $user)
-
+    <!-- Display profile picture -->
+{{-- @foreach($users as $user) --}}
         <div class="info-container">
             <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
         <!-- Display user info -->
@@ -93,7 +92,8 @@
             <div class="container-info-email">
                 <p>{{ $user->email }}</p>
             </div>
-        @endforeach
+        {{-- @endforeach --}}
+
                     <hr>
                     <div class="container-buttons">
                         <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
