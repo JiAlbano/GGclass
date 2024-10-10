@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('student-view/quiz-take-student.css') }}"> <!-- New CSS file for the container -->
@@ -27,12 +28,17 @@
         <h1 class="ggclass-font">GGclass ></h1>
         <h2 class="section-font">{{ $class->section }}</h2>
     </div>
-
     <div class="right-section">
         <!-- Back Button -->
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>
+
+    <div class="top-right">
+        <input type="text" placeholder="Insert Token">
+        <img class="img-token" src="{{ asset('token.png') }}" alt="Image">
+        <span class="text-number">123</span>
+    </div>
 
     <!-- Bootstrap container for responsiveness -->
 <div class="container d-flex justify-content-center align-items-center">
@@ -42,6 +48,11 @@
         <div class="time-display" id="time-display">00:00</div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <div class="question-container">
     <div class="question-header">

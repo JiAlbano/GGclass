@@ -72,21 +72,19 @@ body {
 
 .timer-container {
     width: 250px;
-    height: 120px;
-    padding: 20px;
+    height: 80px;
     background-color: #282c34;
     color: #FFC62E;
     border-radius: 10px;
     justify-content: center;
     font-family: 'Press Start 2P', cursive;
-    margin-top: 25px;
     font-size: 8px;
     border: 2px solid #FFC62E; /* Border width, style, and color */
 }
 
 .time-display {
-    font-size: 30px;
-    padding: 20px;
+    font-size: 25px;
+    padding:6px;
     justify-content: center;
     text-align: center;
     display: flex;
@@ -247,4 +245,30 @@ body {
     font-size: 8px;
 }
 
+.top-right {
+    display: flex;
+    align-items: center; /* Center text vertically with the image */
+    justify-content: flex-end;
+    margin: 0;
+}
 
+.img-token {
+    width: 120px;
+    height: 60px;
+    margin: 0;
+
+}
+
+.text-number {
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bolder;
+    margin: 0;
+    margin-right: 30px;
+}
+
+input {
+    padding: 10px; /* Padding inside the input */
+    font-size: 16px; /* Font size of the input text */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+}
