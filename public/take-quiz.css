@@ -406,3 +406,33 @@ label.radio {
     justify-content: center;
 
 }
+
+.switch-container {
+    position: absolute; /* Position relative to nearest positioned ancestor */
+    top: 80px;         /* Distance from the top */
+    right: 0;         /* Align to the right */
+    /* Optional: Add some padding or margin */
+    padding: 10px;    /* Adjust as needed */
+}
+
+.form-check-label{
+    color: #2A2E34;
+    margin-top: 3.5px;
+}
+
+.form-check-input {
+    appearance: none; /* Remove default appearance */
+    width: 40px; /* Width of the switch */
+    height: 20px; /* Height of the switch */
+    background-color: red; /* Default background color */
+    border-radius: 10px; /* Round corners for the switch */
+    position: relative; /* Positioning for the toggle effect */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for color changes */
+}
+
+/* Customize the slider effect */
+.form-check-input:checked {
+    background-color: #FFC62E; /* Color when checked */
+}
+

@@ -12,6 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('take-quiz.css') }}"> <!-- New CSS file for the container -->
@@ -86,6 +90,14 @@
             editButton.style.display = 'block';
         });
     </script>
+
+
+<div class="switch-container">
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1" checked>
+        <label class="form-check-label" for="flexSwitchCheckChecked1">Token</label>
+    </div>
+</div>
 
 
     <div class="question-container">
