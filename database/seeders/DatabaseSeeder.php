@@ -28,8 +28,6 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Doe',
             'email' => 'john.doe@example.com',
             'id_number' => '123456',
-            'birthday' => '2000-01-01',
-            'gender' => 'male', // Male user
             'user_type' => 'student',
         ]);
 
@@ -39,9 +37,8 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Smith',
             'email' => 'jane.smith@example.com',
             'id_number' => '654321',
-            'birthday' => '1995-05-15',
-            'gender' => 'female', // Female user
             'user_type' => 'student',
         ]);
     }
 }
+

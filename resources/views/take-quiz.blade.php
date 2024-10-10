@@ -85,7 +85,6 @@
             saveButton.style.display = 'none';
             editButton.style.display = 'block';
         });
-
     </script>
 
 
@@ -93,9 +92,7 @@
         <div class="question-header">
             <span id="question-text">{{ $questions[0]->question }}</span>
             <button id="edit-btn" class="edit-btn" onclick="openEditModal()">Edit</button>
-
         </div>
-
         <div id="question-type-container">
             <!-- Multiple choice question (default) -->
             <div class="options-container"
@@ -107,7 +104,6 @@
                     @endforeach
                 @endif
             </div>
-
             <!-- True/False question -->
             <div class="true-false-container"
                 style="display: {{ $questions[0]->type === 'trueFalse' ? 'block' : 'none' }};">
@@ -352,7 +348,7 @@
         let questionId = question.id; // Get the question ID
 
     // Make the AJAX request to save changes
-    fetch("{{ route('quiz.updateQuestion', ['classId' => $class->id, 'quizId' => $quiz->id]) }}", {
+    fetch("{{ route('test_and_quizzes.updateQuestion', ['classId' => $class->id, 'quizId' => $quiz->id]) }}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -387,7 +383,6 @@
         }
     })
     .catch(error => console.error('Error:', error))
-    // .finally(location.reload()) 
 }
 </script>
 

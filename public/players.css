@@ -9,9 +9,9 @@
 body {
     font-family: 'Press Start 2P', cursive;
     background-color: #f0f0f0;
-    overflow-x: auto; /* Enable horizontal scrollbar */
-
+    overflow-x: hidden;
 }
+
 
 .navbar {
     display: flex;

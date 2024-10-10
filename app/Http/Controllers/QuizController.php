@@ -23,7 +23,7 @@ class QuizController extends Controller
         // Fetch quizzes related to the class
         $quizzes = Quiz::where('class_id', $classId)->get();
         // Pass class, users, and quizzes to the view
-        return view('quiz', compact('class', 'user', 'quizzes'));
+        return view('test_and_quizzes', compact('class', 'user', 'quizzes'));
     }
 
 
@@ -51,8 +51,8 @@ class QuizController extends Controller
         }
 
         // Redirect to the show route (which is a GET request)
-        return redirect()->route('quiz.show', ['classId' => $validated['class_id'], 'quizId' => $quiz->id])
-                         ->with('success', 'Quiz created successfully!');
+        return redirect()->route('test_and_quizzes.show', ['classId' => $validated['class_id'], 'quizId' => $quiz->id])
+                ->with('success', 'Quiz created successfully!');
     }
     public function displayQuiz($classId, $quizId)
     {

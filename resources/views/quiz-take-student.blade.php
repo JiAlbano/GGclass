@@ -30,7 +30,6 @@
 
     <div class="right-section">
         <!-- Back Button -->
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Back to Classroom</button>
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>

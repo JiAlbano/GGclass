@@ -22,11 +22,11 @@
 
 <body>
     <div class="navbar">
-        <div class="left-section">
+        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass ></h1>
             <h2 class="section-font">{{ $class->section }}</h2>
-        </div>
+    </div>
 
 {{-- <div class="navbar">
     <div class="left-section">
@@ -37,16 +37,16 @@
 
 
     <div class="right-section">
-            <button class="back-button"onclick="goBack()">Back</button>
+        <button class="back-button" onclick="goBack()">Back</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>
-
-<script>
-    function goBack(){
-        window.history.back();
-    }
-</script>
 
     {{-- <div class="right-section">
         <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Back to Classroom</button>
@@ -73,7 +73,6 @@
 
 
 <!-- Display profile picture -->
-{{-- @foreach($users as $user) --}}
     <div class="info-container">
         <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
     <!-- Display user info -->
@@ -87,7 +86,6 @@
         <div class="container-info-email">
             <p>{{ $user->email }}</p>
         </div>
-    {{-- @endforeach --}}
         <hr>
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
@@ -104,9 +102,10 @@
             <h3 class="mb-2" id="quiz-title2">{{ $quiz->title }}</h3>
             <p class="mb-0" id="quiz-description">{{ $quiz->description }}</p>
             <!-- Open Button -->
-            <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('quiz.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+            <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
         </div>
     </div>
+
 
     {{-- <div class="quiz-container">
         <button id="edit-button" class="edit-button">Edit</button>
@@ -149,7 +148,7 @@
             // Check if new title and description are provided
             if (newTitle && newDescription) {
                 // Send an AJAX request to update the quiz
-                fetch("{{ route('quiz.update', ['quizId' => $quiz->id]) }}", {
+                fetch("{{ route('test_and_quizzes.update', ['quizId' => $quiz->id]) }}", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

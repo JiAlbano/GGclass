@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    overflow-x: hidden;
 }
 
 .navbar {
@@ -284,7 +285,7 @@ hr {
     height: 488px;
     margin-top: 60px;
     /* max-height: 352px; */
-    overflow-x: auto; /* Enable horizontal scrollbar */
+
 }
 
 .container-adviser h3 {

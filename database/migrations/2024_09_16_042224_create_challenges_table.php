@@ -13,7 +13,7 @@ class CreateChallengesTable extends Migration
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade'); // Make user_id nullable
             $table->string('title');
-            $table->enum('type', ['exam', 'quiz', 'activity']);
+            $table->enum('type', ['exam', 'test_and_quizzes', 'activity', 'term paper', 'project']);
             $table->timestamps();
         });
     }
