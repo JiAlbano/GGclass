@@ -153,6 +153,9 @@ Route::get('/student-assessment/{school_id}/{assessment_id}', [StudentController
 // log out
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
+//update token
+Route::post('/quiz/edit-token', [QuizController::class, 'editToken']);
+
 });
 
 // Static Page Routes

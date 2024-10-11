@@ -15,6 +15,7 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
 
     <!--CSS-->
@@ -94,7 +95,7 @@
 
 <div class="switch-container">
     <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1" checked>
+        <input class="form-check-input" type="checkbox" role="switch" data-quizid = {{$quiz->id}} id="flexSwitchCheckChecked1" {{$quiz->enable_token ? 'checked' : ''}}>
         <label class="form-check-label" for="flexSwitchCheckChecked1">Token</label>
     </div>
 </div>
@@ -307,7 +308,8 @@
             document.getElementById('edit-identification-container').style.display = 'none';
 
             // Set true/false radio buttons
-            let trueFalseValue = document.getElementById('true-false-value').value === 'True' ? 'True' : 'False';
+            let trueFalseValue = document.getElementById('true-false-value').value.toLowerCase() === 'true' ? 'True' : 'False';
+            console.log(trueFalseValue)
             document.querySelector(`input[name="edit-truefalse"][value="${trueFalseValue}"]`).checked = true;
 
         } else if (question.type === 'identification') {
@@ -396,6 +398,26 @@
     })
     .catch(error => console.error('Error:', error))
 }
+
+// token
+$("#flexSwitchCheckChecked1").change(function() {
+    const tokenStatus = ($(this).prop('checked')) ? 1 : 0;
+    const quizId = $(this).data('quizid');
+    $.ajax({
+            url: '/quiz/edit-token',  // URL where you want to send the PUT request
+            type: 'POST',           // Laravel uses POST to handle PUT requests
+            data: {tokenStatus: tokenStatus, quizId: quizId},
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'  // Add CSRF token in headers
+            },
+            success: function(response) {
+                console.log('Success:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+})
 </script>
 
 </body>
