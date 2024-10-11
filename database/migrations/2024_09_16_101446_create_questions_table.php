@@ -16,6 +16,7 @@ class CreateQuestionsTable extends Migration
             $table->json('options')->nullable(); // Store multiple choice options as JSON if needed
             $table->string('answer_key')->nullable(); // Store the answer key for MCQs
             $table->string('correct_answer')->nullable(); // For true/false and identification
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

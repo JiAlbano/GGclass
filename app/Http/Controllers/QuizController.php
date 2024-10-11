@@ -36,6 +36,9 @@ class QuizController extends Controller
             'description' => 'nullable|string',
             'class_id' => 'required|exists:classes,id',
             'questions' => 'required|array',
+            'questions.*.type' => 'required|string',
+            'questions.*.question' => 'required|string',
+            'questions.*.uploadFile' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048', // file validation for each question
         ]);
 
         // Create a new quiz
@@ -46,14 +49,32 @@ class QuizController extends Controller
         ]);
 
         // Store questions
+        $index = 1;
         foreach ($validated['questions'] as $question) {
-            $quiz->questions()->create($question);
+            // Create the question in the quiz
+            $createdQuiz = $quiz->questions()->create([
+                'type' => $question['type'],
+                'question' => $question['question'],
+                'correct_answer' => $question['correct_answer'] ?? null, // Handle if 'correct_answer' is nullable
+            ]);
+            if ($request->hasFile("questions.$index.uploadFile")) {
+                $file = $request->file("questions.$index.uploadFile");
+                // Store the uploaded file
+                $filePath = $file->store('quiz-files', 'public');
+                // Save the file path in the created question
+                $createdQuiz->image = $filePath;
+                $createdQuiz->save();
+            }
+            $index++;
         }
 
         // Redirect to the show route (which is a GET request)
-        return redirect()->route('test_and_quizzes.show', ['classId' => $validated['class_id'], 'quizId' => $quiz->id])
-                ->with('success', 'Quiz created successfully!');
+        return redirect()->route('test_and_quizzes.show', [
+            'classId' => $validated['class_id'],
+            'quizId' => $quiz->id
+        ])->with('success', 'Quiz created successfully!');
     }
+
     public function displayQuiz($classId, $quizId)
     {
         // Fetch the specific quiz by ID
