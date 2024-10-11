@@ -45,7 +45,7 @@
     <!-- Timer container in the center -->
     <div class="timer-container text-center p-3">
         <!-- Time display -->
-        <div class="time-display" id="time-display">00:00</div>
+        <div class="time-display" id="time-display">{{$quiz->time_duration}}:00</div>
         
         <!-- Input for minutes (initially hidden) -->
         <input type="number" id="minutes-input" class="form-control mt-3" placeholder="Enter minutes" min="0" style="display:none;">
@@ -417,6 +417,25 @@ $("#flexSwitchCheckChecked1").change(function() {
                 console.error('Error:', error);
             }
         });
+});
+
+$("#save-button").click(function(){
+    const timer = $("#minutes-input").val();
+    const quizId = $("#flexSwitchCheckChecked1").data('quizid');
+    $.ajax({
+        url: '/quiz/edit-timer',  // URL where you want to send the PUT request
+        type: 'POST',           // Laravel uses POST to handle PUT requests
+        data: {timer: timer, quizId: quizId},
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'  // Add CSRF token in headers
+        },
+        success: function(response) {
+            console.log('Success:', response);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
 })
 </script>
 

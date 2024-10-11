@@ -14,6 +14,7 @@ class CreateQuizzesTable extends Migration
             $table->text('description')->nullable();
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade'); // Assuming you have a 'classes' table
             $table->integer('enable_token')->default(0);
+            $table->integer('time_duration')->default(0);
             $table->timestamps();
         });
     }

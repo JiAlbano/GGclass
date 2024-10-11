@@ -176,6 +176,13 @@ public function editToken(Request $request) {
     return $quiz->save();
 }
 
+public function editTimer(Request $request) {
+    $timer = $request->input('timer');
+    $quizId = $request->input('quizId');
+    $quiz = Quiz::findOrFail($quizId);
+    $quiz->time_duration = $timer;
+    return $quiz->save();
+}
 
 }
 

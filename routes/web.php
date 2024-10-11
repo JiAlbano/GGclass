@@ -155,6 +155,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 //update token
 Route::post('/quiz/edit-token', [QuizController::class, 'editToken']);
+Route::post('/quiz/edit-timer', [QuizController::class, 'editTimer']);
 
 });
 
