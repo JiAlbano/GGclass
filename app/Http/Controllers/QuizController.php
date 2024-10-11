@@ -36,11 +36,7 @@ class QuizController extends Controller
             'description' => 'nullable|string',
             'class_id' => 'required|exists:classes,id',
             'questions' => 'required|array',
-            'questions.*.type' => 'required|string',
-            'questions.*.question' => 'required|string',
-            'questions.*.uploadFile' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048', // file validation for each question
         ]);
-
         // Create a new quiz
         $quiz = Quiz::create([
             'title' => $validated['title'],
@@ -56,6 +52,7 @@ class QuizController extends Controller
                 'type' => $question['type'],
                 'question' => $question['question'],
                 'correct_answer' => $question['correct_answer'] ?? null, // Handle if 'correct_answer' is nullable
+                'options'   => $question['options'] ?? null
             ]);
             if ($request->hasFile("questions.$index.uploadFile")) {
                 $file = $request->file("questions.$index.uploadFile");
@@ -171,6 +168,13 @@ public function updateQuestion(Request $request, $classId, $quizId)
     ]);
 }
 
+public function editToken(Request $request) {
+    $quizId = $request->input('quizId');
+    $enableToken = $request->input('tokenStatus');
+    $quiz = Quiz::findOrFail($quizId);
+    $quiz->enable_token = $enableToken;
+    return $quiz->save();
+}
 
 
 }
