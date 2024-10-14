@@ -36,7 +36,7 @@
 </div>
 
     <div class="top-right">
-        <input type="text" id="token-used" placeholder="Insert Token">
+        <input type="text" {{$quiz->enable_token === 0 ? 'disabled' : ''}} id="token-used" placeholder="Insert Token">
         <img class="img-token" src="{{ asset('token.png') }}" alt="Image">
         <span class="text-number">{{Auth::user()->token_count}}</span>
     </div>
@@ -92,6 +92,7 @@ let questions = <?php echo $questions; ?>;
 let runningScore = 0;
 let studentScore = [];
 let token_count = <?php echo Auth::user()->token_count; ?>;
+const tokenIsEnabled = <?php echo ($quiz->enable_token === 1); ?>
 
 function selectOption(option) {
     let questionType = document.querySelector('#question-type-container').children[0].style.display;
@@ -232,7 +233,9 @@ async function submitQuiz() {
         alert("Invalid token count used.");
         return;
     }
-    token_count = token_count -token_used;
+    if(tokenIsEnabled) {
+        token_count = token_count -token_used;
+    }
     await $.ajax({
             url: '/challenges/record-score',  // URL where you want to send the PUT request
             type: 'POST',           // Laravel uses POST to handle PUT requests
