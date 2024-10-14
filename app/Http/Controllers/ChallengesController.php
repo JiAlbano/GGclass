@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Classes as Classroom;
 use App\Models\Challenge;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\StudentQuestionAnswers;
+use App\Models\StudentChallengeScore;
+
 class ChallengesController extends Controller
 {
     // Function to display the challenges page
@@ -40,5 +44,25 @@ class ChallengesController extends Controller
         $challenge->save();
 
         return redirect()->route('challenges', ['classId' => $classId]);
+    }
+
+    public function recordScore(Request $request) {
+        $answers = $request->input('answer');
+        $studentScore = $request->input('studentScore');
+        $modifiedAnswerData = array_map(function($answer) {
+            $answer['student_id'] = Auth::id();  // Add student_id to each answer
+            $answer['created_at'] = Date('Y-m-d H:i:s');
+            return $answer;
+        }, $answers);
+        $studentScore[0]['student_id'] = Auth::id();
+        $studentScore[0]['created_at'] = Date('Y-m-d H:i:s');
+
+        try {
+            StudentQuestionAnswers::insert($modifiedAnswerData);
+            StudentChallengeScore::insert($studentScore);
+            return 1;
+        } catch(Exception $e) {
+            return $e;
+        }
     }
 }

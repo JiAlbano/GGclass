@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('student-view/quiz-take-student.css') }}"> <!-- New CSS file for the container -->
@@ -35,7 +36,7 @@
 </div>
 
     <div class="top-right">
-        <input type="text" placeholder="Insert Token">
+        <input type="text" id="token-used" placeholder="Insert Token">
         <img class="img-token" src="{{ asset('token.png') }}" alt="Image">
         <span class="text-number">123</span>
     </div>
@@ -45,167 +46,202 @@
     <!-- Timer container in the center -->
     <div class="timer-container text-center p-3">
         <!-- Time display -->
-        <div class="time-display" id="time-display">00:00</div>
+        <div class="time-display" id="time-display">{{$quiz->time_duration}}:00</div>
     </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <div class="question-container">
     <div class="question-header">
-        <span id="question-text">What is the capital of France?</span>
+        <span id="question-text"></span>
     </div>
 
     <div id="question-type-container">
-        <!-- Multiple choice question (default) -->
-        <div class="options-container">
-            <button class="option-btn" onclick="selectOption(1)">Paris</button>
-            <button class="option-btn" onclick="selectOption(2)">Berlin</button>
-            <button class="option-btn" onclick="selectOption(3)">Madrid</button>
-            <button class="option-btn" onclick="selectOption(4)">Rome</button>
-        </div>
-
+        <input type="hidden" id="answer-holder">
+        <div class="options-container"></div>
         <!-- True/False question -->
-        <div class="true-false-container" style="display:none;">
-            <button class="option-btn" onclick="selectOption(1)">True</button>
-            <button class="option-btn" onclick="selectOption(2)">False</button>
-        </div>
-
-        <!-- Identification question -->
-        <div class="identification-container" style="display:none;">
-            <div class="form-group">
-                <label for="identification-answer">Answer:</label>
-                <input type="text" class="form-control" id="identification-answer" placeholder="Enter answer">
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 d-flex justify-content-between">
-        <!-- Back button on the left -->
-        <button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button>
-        <!-- Next button on the right -->
-        <button id="next-btn" class="btn-bn" onclick="nextQuestion()">Next</button>
-        <!-- Submit button (initially hidden) -->
-        <button id="submit-btn" class="btn-bn" style="display:none;" onclick="submitQuiz()">Submit</button>
-    </div>
+        <div class="true-false-container" style="display:none;"></div>
+            <!-- Identification question -->
+        <div class="identification-container" style="display:none;"></div>
+</div>
+<div class="col-12 d-flex justify-content-between">
+<!-- Back button on the left -->
+<button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button>
+<!-- Next button on the right -->
+<button id="next-btn" class="btn-bn" onclick="nextQuestion()">Next</button>
+<!-- Submit button (initially hidden) -->
+<button id="submit-btn" class="btn-bn" style="display:none;" onclick="submitQuiz()">Submit</button>
+</div>
 </div>
 
 <div class="question-numbers">
-    <button class="question-number" onclick="switchQuestion(1)">1</button>
-    <button class="question-number" onclick="switchQuestion(2)">2</button>
-    <button class="question-number" onclick="switchQuestion(3)">3</button>
+@for($i = 1; $i <= count($questions); $i++)
+<button class="question-number" onclick="switchQuestion({{$i}})">{{$i}}</button>
+@endfor
 </div>
 
 <script>
-    let currentQuestion = 1;
-    const totalQuestions = 3;
+let currentQuestion = 1;
+const totalQuestions = <?php echo count($questions); ?>;
+let answer = [];
+let questions = <?php echo $questions; ?>;
+let runningScore = 0;
+let studentScore = [];
 
-    function selectOption(option) {
-        let questionType = document.querySelector('#question-type-container').children[0].style.display;
-        let buttons;
+function selectOption(option) {
+    let questionType = document.querySelector('#question-type-container').children[0].style.display;
+    let buttons;
+    $(".option-btn").removeClass('active');
+    $(`#option-btn-${option}`).addClass('active');
+    $("#answer-holder").val(option);
+}
 
-        if (questionType === 'block') {
-            buttons = document.querySelectorAll('.options-container .option-btn');
-        } else {
-            buttons = document.querySelectorAll('.true-false-container .option-btn');
+function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+        if (questions[currentQuestion - 1].type === 'identification') {
+            $("#answer-holder").val($("#identification-answer").val());
         }
-
-        buttons.forEach(btn => btn.classList.remove('active'));
-        buttons[option - 1].classList.add('active');
+        recordAnswer()
+        currentQuestion++;
+        switchQuestion(currentQuestion);
     }
 
-    function nextQuestion() {
-        if (currentQuestion < totalQuestions) {
-            currentQuestion++;
-            switchQuestion(currentQuestion);
-        }
-
-        // Show the submit button on the last question
-        if (currentQuestion === totalQuestions) {
-            document.getElementById('next-btn').style.display = 'none';
-            document.getElementById('submit-btn').style.display = 'block';
-        }
+    // Show the submit button on the last question
+    if (currentQuestion === totalQuestions) {
+        document.getElementById('next-btn').style.display = 'none';
+        document.getElementById('submit-btn').style.display = 'block';
     }
+}
 
-    function previousQuestion() {
-        if (currentQuestion > 1) {
-            currentQuestion--;
-            switchQuestion(currentQuestion);
-
-            // If moving back from the last question, hide the submit button
-            if (currentQuestion < totalQuestions) {
-                document.getElementById('submit-btn').style.display = 'none';
-                document.getElementById('next-btn').style.display = 'block';
-            }
+function recordAnswer() {
+    const is_correct = $("#answer-holder").val().toLowerCase() === questions[currentQuestion - 1].correct_answer.toLowerCase() ? 1 : 0;
+    const studentAnswer = answer.find(q => q.question_id === questions[currentQuestion - 1].id);
+    if(studentAnswer) {
+        const prevAnswer =studentAnswer.answer;
+        studentAnswer.answer = $("#answer-holder").val();
+        studentAnswer.is_correct = is_correct;
+        if(studentAnswer.answer !== prevAnswer) {
+            is_correct ? runningScore++ :runningScore--;
         }
+    } else {
+        answer.push({
+            question_id: questions[currentQuestion-1].id,
+            challenge_id: questions[currentQuestion-1].quiz_id,
+            answer: $("#answer-holder").val(),
+            is_correct:is_correct,
+        })
+        if(is_correct)
+            runningScore++;
     }
+    const token_used = $("#token-used").val() !== "" ? $("#token-used").val() : 0;
+    studentScore = [{
+        challenge_id: questions[currentQuestion-1].quiz_id,
+        score: runningScore,
+        token_used: token_used,
+        total_score: parseFloat(token_used) +parseFloat(runningScore),
+    }]
+}
 
-    function switchQuestion(number) {
-        currentQuestion = number;
+function previousQuestion() {
+if (currentQuestion > 1) {
+    currentQuestion--;
+    switchQuestion(currentQuestion);
 
-        let questionText = document.getElementById('question-text');
-        let multipleChoice = document.querySelector('.options-container');
-        let trueFalse = document.querySelector('.true-false-container');
-        let identification = document.querySelector('.identification-container');
+    // If moving back from the last question, hide the submit button
+    if (currentQuestion < totalQuestions) {
+        document.getElementById('submit-btn').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'block';
+    }
+}
+}
 
-        let questions = [
-            { type: 'multiple', text: "What is the capital of France?", options: ["Paris", "Berlin", "Madrid", "Rome"] },
-            { type: 'truefalse', text: "The sky is blue.", options: ["True", "False"] },
-            { type: 'identification', text: "Identify the chemical symbol for water.", options: [] }
-        ];
+function switchQuestion(number) {
+currentQuestion = number;
 
-        questionText.innerText = questions[number - 1].text;
+let questionText = document.getElementById('question-text');
+let multipleChoice = document.querySelector('.options-container');
+let trueFalse = document.querySelector('.true-false-container');
+let identification = document.querySelector('.identification-container');
 
-        multipleChoice.style.display = 'none';
-        trueFalse.style.display = 'none';
-        identification.style.display = 'none';
+questionText.innerText = questions[number - 1].question;
 
-        if (questions[number - 1].type === 'multiple') {
-            multipleChoice.style.display = 'block';
-            let optionButtons = multipleChoice.querySelectorAll('.option-btn');
-            optionButtons.forEach((btn, idx) => {
-                btn.innerText = questions[number - 1].options[idx];
-                btn.classList.remove('active');
-            });
-        } else if (questions[number - 1].type === 'truefalse') {
-            trueFalse.style.display = 'block';
-            let trueFalseButtons = trueFalse.querySelectorAll('.option-btn');
-            trueFalseButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-        } else if (questions[number - 1].type === 'identification') {
-            identification.style.display = 'block';
-            document.getElementById('identification-answer').value = '';
-        }
+multipleChoice.style.display = 'none';
+trueFalse.style.display = 'none';
+identification.style.display = 'none';
 
-        let questionNumbers = document.querySelectorAll('.question-number');
-        questionNumbers.forEach((btn, idx) => {
-            btn.classList.remove('active');
-            if (idx === number - 1) {
-                btn.classList.add('active');
+if (questions[number - 1].type === 'multipleChoice') {
+    multipleChoice.style.display = 'block';
+    const options = questions[number - 1].options;
+    let optionHtml = ``;
+    options.map(item => {
+        optionHtml += `<button class="option-btn" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+    })
+    $(".options-container").html(optionHtml)
+} else if (questions[number - 1].type === 'trueFalse') {
+    trueFalse.style.display = 'block';
+    $(".true-false-container").html(
+        `<button class="option-btn" id="option-btn-true" onclick="selectOption(true)">True</button>
+        <button class="option-btn" id="option-btn-false" onclick="selectOption(false)">False</button>`
+    )
+    let trueFalseButtons = trueFalse.querySelectorAll('.option-btn');
+    trueFalseButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+} else if (questions[number - 1].type === 'identification') {
+    identification.style.display = 'block';
+    $(".identification-container").html(
+        `<div class="form-group">
+            <label for="identification-answer">Answer:</label>
+            <input type="text" class="form-control" id="identification-answer" placeholder="Enter answer">
+        </div>`
+    );
+    document.getElementById('identification-answer').value = '';
+}
+
+let questionNumbers = document.querySelectorAll('.question-number');
+questionNumbers.forEach((btn, idx) => {
+    btn.classList.remove('active');
+    if (idx === number - 1) {
+        btn.classList.add('active');
+    }
+});
+
+// If on the last question, show the submit button
+if (currentQuestion === totalQuestions) {
+    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'block';
+} else {
+    document.getElementById('submit-btn').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'block';
+}
+}
+
+async function submitQuiz() {
+    recordAnswer();
+    await $.ajax({
+            url: '/challenges/record-score',  // URL where you want to send the PUT request
+            type: 'POST',           // Laravel uses POST to handle PUT requests
+            data: {answer: answer, studentScore: studentScore},
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'  // Add CSRF token in headers
+            },
+            success: function(response) {
+                if(response == 1) {
+                    alert("You have successfully submitted your answers.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
             }
         });
+}
 
-        // If on the last question, show the submit button
-        if (currentQuestion === totalQuestions) {
-            document.getElementById('next-btn').style.display = 'none';
-            document.getElementById('submit-btn').style.display = 'block';
-        } else {
-            document.getElementById('submit-btn').style.display = 'none';
-            document.getElementById('next-btn').style.display = 'block';
-        }
-    }
-
-    function submitQuiz() {
-        // Handle quiz submission logic here
-        alert("Quiz submitted!");
-    }
-
-    // Initialize the first question
-    switchQuestion(1);
+// Initialize the first question
+switchQuestion(1);
 </script>
 
 <!-- Bootstrap CSS -->

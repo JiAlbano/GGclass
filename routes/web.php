@@ -96,8 +96,8 @@ Route::middleware('auth')->group(function () {
      //Student quiz routes
     Route::get('/studentchallenges/{classId}', [StudentchallengesController::class, 'show'])->name('challenges-student');
     Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::class, 'show'])->name('quiz-student');
-    Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
-    Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
+    Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student/{quizId}', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
+    Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student/{quizId}', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
 
 
     Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
@@ -156,6 +156,9 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 //update token
 Route::post('/quiz/edit-token', [QuizController::class, 'editToken']);
 Route::post('/quiz/edit-timer', [QuizController::class, 'editTimer']);
+
+// record student score for challenges
+Route::post('/challenges/record-score', [ChallengesController::class, 'recordScore']);
 
 });
 

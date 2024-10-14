@@ -82,16 +82,13 @@
     </div>
 
     <div class="container-q">
-        <div class="container quiz-container">
-            <button type="button" class="quiz-button" onclick="window.location.href='{{  route('quiz-title-student', ['classId' => $class->id]) }}'">
-                Quiz title
-            </button>
-        </div>
-        <div class="container quiz-container">
-            <button type="button" class="quiz-button">
-                Quiz title
-            </button>
-        </div>
+        @foreach($quizzes as $quiz)
+            <div class="container quiz-container">
+                <button type="button" class="quiz-button" onclick="window.location.href='{{  route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+                    {{ $quiz->title }}
+                </button>
+            </div>
+        @endforeach
     </div>
 
     <!-- Bootstrap JS and dependencies -->

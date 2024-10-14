@@ -84,10 +84,10 @@
 
     <div class="container-adviser ">
        <div class="container-sm d-flex flex-column justify-content-start align-items-start position-relative p-3 border">
-            <h3 class="mb-2">Quiz Title</h3>
-            <p class="mb-0">Quiz description goes here. This is a brief overview of the quiz content.</p>
+            <h3 class="mb-2">{{$quiz->title}}</h3>
+            <p class="mb-0">{{$quiz->description}}</p>
             <!-- Open Button -->
-            <button class="btn btn-open position-absolute" onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id]) }}'">Open</button>
+            <button class="btn btn-open position-absolute" onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
         </div>
     </div>
 
