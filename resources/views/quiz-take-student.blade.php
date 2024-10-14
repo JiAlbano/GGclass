@@ -59,6 +59,9 @@
     <div class="question-header">
         <span id="question-text"></span>
     </div>
+    <div style="text-align: center;" >
+        <img id="question-image" src="" alt="image" width="100" height="100">
+    </div><br>
 
     <div id="question-type-container">
         <input type="hidden" id="answer-holder">
@@ -170,6 +173,7 @@ let trueFalse = document.querySelector('.true-false-container');
 let identification = document.querySelector('.identification-container');
 
 questionText.innerText = questions[number - 1].question;
+document.getElementById('question-image').src = `/storage/${questions[number - 1].image}`
 
 multipleChoice.style.display = 'none';
 trueFalse.style.display = 'none';
