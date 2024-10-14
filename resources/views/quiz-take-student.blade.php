@@ -174,6 +174,11 @@ let identification = document.querySelector('.identification-container');
 
 questionText.innerText = questions[number - 1].question;
 document.getElementById('question-image').src = `/storage/${questions[number - 1].image}`
+if(questions[number - 1].image === null) {
+    document.getElementById('question-image').style.display = 'none';
+} else {
+    document.getElementById('question-image').style.display = 'center';
+}
 
 multipleChoice.style.display = 'none';
 trueFalse.style.display = 'none';

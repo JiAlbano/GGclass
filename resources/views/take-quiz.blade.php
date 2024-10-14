@@ -188,7 +188,11 @@
 
             document.getElementById('question-text').innerText = question[number - 1].question;
             document.getElementById('question-image').src = `/storage/${question[number - 1].image}`
-
+            if(question[number - 1].image === null) {
+                document.getElementById('question-image').style.display = 'none';
+            } else {
+                document.getElementById('question-image').style.display = 'center';
+            }
             let multipleChoice = document.querySelector('.options-container');
             let trueFalse = document.querySelector('.true-false-container');
             let identification = document.querySelector('.identification-container');
