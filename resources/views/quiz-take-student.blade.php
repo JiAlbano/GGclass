@@ -38,7 +38,7 @@
     <div class="top-right">
         <input type="text" id="token-used" placeholder="Insert Token">
         <img class="img-token" src="{{ asset('token.png') }}" alt="Image">
-        <span class="text-number">123</span>
+        <span class="text-number">{{Auth::user()->token_count}}</span>
     </div>
 
     <!-- Bootstrap container for responsiveness -->
@@ -91,6 +91,7 @@ let answer = [];
 let questions = <?php echo $questions; ?>;
 let runningScore = 0;
 let studentScore = [];
+let token_count = <?php echo Auth::user()->token_count; ?>;
 
 function selectOption(option) {
     let questionType = document.querySelector('#question-type-container').children[0].style.display;
@@ -222,10 +223,21 @@ if (currentQuestion === totalQuestions) {
 
 async function submitQuiz() {
     recordAnswer();
+    const mistakes = (parseFloat(runningScore) / parseFloat(questions.length)) * 100;
+    console.log(mistakes);
+    if(mistakes >= 90) {
+        token_count++;
+    }
+    const token_used =  $("#token-used").val();
+    if(token_used > token_count) {
+        alert("Invalid token count used.");
+        return;
+    }
+    token_count = token_count -token_used;
     await $.ajax({
             url: '/challenges/record-score',  // URL where you want to send the PUT request
             type: 'POST',           // Laravel uses POST to handle PUT requests
-            data: {answer: answer, studentScore: studentScore},
+            data: {answer: answer, studentScore: studentScore, token_count},
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'  // Add CSRF token in headers
             },

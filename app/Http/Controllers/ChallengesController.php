@@ -56,10 +56,13 @@ class ChallengesController extends Controller
         }, $answers);
         $studentScore[0]['student_id'] = Auth::id();
         $studentScore[0]['created_at'] = Date('Y-m-d H:i:s');
-
+        $token_count = $request->input('token_count');
         try {
             StudentQuestionAnswers::insert($modifiedAnswerData);
             StudentChallengeScore::insert($studentScore);
+            $user = User::find(Auth::id());
+            $user->token_count = $token_count;
+            $user->save();
             return 1;
         } catch(Exception $e) {
             return $e;
