@@ -83,8 +83,9 @@
 
     <div class="container-q">
         @foreach($quizzes as $quiz)
+            <?php $disable = in_array($quiz->id, $studentChallengesTaken->toArray()); ?>
             <div class="container quiz-container">
-                <button type="button" class="quiz-button" onclick="window.location.href='{{  route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+                <button type="button" class="{{ $disable > 0 ? 'disabled-btn' : 'quiz-button'}}" {{ $disable > 0 ? 'disabled' : '' }} onclick="window.location.href='{{  route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
                     {{ $quiz->title }}
                 </button>
             </div>

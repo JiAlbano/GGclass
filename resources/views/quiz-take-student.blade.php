@@ -224,7 +224,6 @@ if (currentQuestion === totalQuestions) {
 async function submitQuiz() {
     recordAnswer();
     const mistakes = (parseFloat(runningScore) / parseFloat(questions.length)) * 100;
-    console.log(mistakes);
     if(mistakes >= 90) {
         token_count++;
     }
@@ -245,6 +244,9 @@ async function submitQuiz() {
                 if(response == 1) {
                     alert("You have successfully submitted your answers.");
                 }
+                setTimeout(() => {
+                    location.href=`/studentchallenges/<?php echo $class->id; ?>/studentquiz`;
+                }, 1500)
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);
