@@ -108,6 +108,9 @@
         </div>
         <div id="question-type-container">
             <!-- Multiple choice question (default) -->
+            <div style="text-align: center;">
+                <img src="{{ asset('finalLogo.png') }}" alt="image" width="100" height="100" style="">
+            </div>
             <div class="options-container"
                 style="display: {{ $questions[0]->type === 'multipleChoice' ? 'block' : 'none' }};">
                 @if(is_array($questions[0]->options))
