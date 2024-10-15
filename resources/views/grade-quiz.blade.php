@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('grade-quiz.css') }}"> <!-- New CSS file for the container -->
@@ -128,20 +129,22 @@
 
 <div class="container-adviser my-4">
     <div class="container-sm d-flex flex-column justify-content-start align-items-center">
-        <div class="row justify-content-center">
-            <div class="student-container">
-                <div class="student-name">
-                    <h5>John Ignacious</h5>
-                </div>
-                <div class="student-score">
-                    <p id="current-score">19/20</p>
-                </div>
-                <div>
-                    <!-- Button to trigger modal -->
-                    <button class="quiz-button btn" data-bs-toggle="modal" data-bs-target="#editScoreModal">Edit</button>
+        @foreach($grades as $grade)
+            <div class="row justify-content-center">
+                <div class="student-container">
+                    <div class="student-name">
+                        <h5>{{$grade->first_name}} {{$grade->last_name}}</h5>
+                    </div>
+                    <div class="student-score">
+                        <p id="current-score">{{$grade->total_score}}/{{$grade->number_of_items}}</p>
+                    </div>
+                    <div>
+                        <!-- Button to trigger modal -->
+                        <button class="quiz-button btn" data-bs-toggle="modal" data-bs-target="#editScoreModal" data-name="{{$grade->first_name}} {{$grade->last_name}}" data-score="{{$grade->total_score}}" data-items="{{$grade->number_of_items}}" data-id="{{$grade->id}}">Edit</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </div>
 
@@ -165,7 +168,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="totalScore" class="form-label">Total Score</label>
-                        <input type="number" class="form-control" id="totalScore" value="20">
+                        <input type="number" disabled class="form-control" id="totalScore" value="20">
                     </div>
                 </form>
             </div>
@@ -176,7 +179,12 @@
         </div>
     </div>
 </div>
-
+<!-- Bootstrap JS and dependencies -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Bootstrap JS and Popper.js -->
 
 <script>
@@ -184,25 +192,46 @@
     document.getElementById('saveScore').addEventListener('click', function() {
         const newScore = document.getElementById('newScore').value;
         const totalScore = document.getElementById('totalScore').value;
-
+        const id = $(this).data('id')
         // Update the score in the student container
-        document.getElementById('current-score').innerText = `${newScore}/${totalScore}`;
-
+        $.ajax({
+                url: '/grade-quiz/edit-score',  // URL where you want to send the PUT request
+                type: 'POST',           // Laravel uses POST to handle PUT requests
+                data: {newScore: newScore, id: id},
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'  // Add CSRF token in headers
+                },
+                success: function(response) {
+                    if(response == 1) {
+                        document.getElementById('current-score').innerText = `${newScore}/${totalScore}`;
+                        alert("You have successfully updated the score.");
+                    }
+                    setTimeout(() => {
+                        location.reload()
+                    }, 1500)
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
         // Close the modal after saving the changes
-        const editScoreModal = new bootstrap.Modal(document.getElementById('editScoreModal'));
-        editScoreModal.hide();
+        // const editScoreModal = new bootstrap.Modal(document.getElementById('editScoreModal'));
+        // editScoreModal.hide();
+        // $('#editScoreModal').modal('show');
     });
+
+    $(".quiz-button").click(function() {
+        const name = $(this).data('name')
+        const items = $(this).data('items')
+        const score = $(this).data('score')
+        const id = $(this).data('id');
+
+        $("#saveScore").attr('data-id', id)
+        $("#studentName").val(name)
+        $("#newScore").val(score)
+        $("#totalScore").val(items)
+    })
 </script>
-
-
-
-<!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>

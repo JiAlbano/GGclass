@@ -83,7 +83,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/feedback/{classId}', [FeedbackController::class, 'show'])->name('feedback');
     Route::get('/gradebook/{classId}', [GradebookController::class, 'show'])->name('gradebook');
     Route::get('/grade/{classId}/grade-quiz-title', [GradequiztitleController::class, 'show'])->name('grade-quiz-title');
-    Route::get('/grade/{classId}/grade-quiz-title/grade-quiz', [GradequizController::class, 'show'])->name('grade-quiz');
+    Route::get('/grade/{classId}/grade-quiz-title/grade-quiz/{quizId}', [GradequizController::class, 'show'])->name('grade-quiz');
     Route::get('/gradebook/{classId}/grade-components', [GradecomponentsController::class, 'show'])->name('grade-components');
     Route::get('/gradebook/{classId}/data', [GradedataController::class, 'show'])->name(name: 'data');
     Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
@@ -164,6 +164,9 @@ Route::post('/quiz/edit-timer', [QuizController::class, 'editTimer']);
 Route::post('/challenges/record-score', [ChallengesController::class, 'recordScore']);
 
 });
+
+Route::post('/grade-quiz/edit-score', [QuizController::class, 'editScore']);
+
 
 // Static Page Routes
 

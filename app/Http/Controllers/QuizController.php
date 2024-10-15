@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes as Classroom;
 use App\Models\Quiz; // Assuming you have a Quiz model
+use App\Models\StudentChallengeScore;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -182,6 +183,18 @@ public function editTimer(Request $request) {
     $quiz = Quiz::findOrFail($quizId);
     $quiz->time_duration = $timer;
     return $quiz->save();
+}
+
+public function editScore(Request $request) {
+    $id = $request->input('id');
+    $newScore = $request->input('newScore');
+
+
+    $score = StudentChallengeScore::find($id);
+    $score->total_score = $newScore;
+    if($score->save())
+        return 1;
+    return 0;
 }
 
 }
