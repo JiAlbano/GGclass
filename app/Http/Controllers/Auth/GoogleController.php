@@ -49,6 +49,7 @@ class GoogleController extends Controller
 
         return redirect()->intended(route('classroom.index')); // redirect to the intended page after login
     }
+    
     public function logout()
     {
         $client = new GoogleClient();
@@ -72,8 +73,8 @@ class GoogleController extends Controller
         // Log the user out of your application
         Auth::logout();
 
-        // Redirect to a specific route after logging out
-        return redirect('https://accounts.google.com/Logout'); // Redirect to Google logout
+        // Redirect back to the home page
+        return redirect('http://127.0.0.1:8000/')->with('message', 'Successfully logged out.');
     }
 
 }

@@ -1,71 +1,114 @@
 .header {
-height: 80px;
-background-color: black;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-}
-
-.left-section  {
+  height: 80px;
+  background-color: black;
   display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  height: 60px;
-  margin-left: 15px;
-  margin-right: 8px;
-}
-
-.logo-font {
-font-family: 'Press Start 2P', cursive;
-font-size: 25px;
-color: white;
-margin-top: 10px;
-}
-
-.right-section {
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-.create-class {
-  height: 40px;
-  width: 40px;
-  margin-right: 30px;
-  cursor: pointer;
-}
-
-.profile-img {
-  height: 40px;
-  width: 40px;
-  border-radius: 50px;
-  object-fit: cover;
-  margin-right: 30px;
-}
-
-
-/* .dropdown-menu {
-  min-width: 150px;
-  text-align: center;
-} */
-
-.back-button {
-    background-color: #FFC62E;
-    color: #14171D;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-right: 15px;
+  flex-direction: row;
+  justify-content: space-between;
+  }
+  
+  .left-section  {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 60px;
+    margin-left: 15px;
+    margin-right: 8px;
+  }
+  
+  .logo-font {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px;
+  color: white;
+  margin-top: 10px;
+  }
+  
+  .right-section {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .create-class {
+    height: 40px;
+    width: 40px;
+    margin-right: 30px;
     cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #FFB700;
-}
-
+  }
+  
+  .profile-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+    margin-right: 30px;
+  }
+  
+  
+  /* .dropdown-menu {
+    min-width: 150px;
+    text-align: center;
+  } */
+  
+  .back-button {
+      background-color: #FFC62E;
+      color: #14171D;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin-right: 15px;
+      cursor: pointer;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 14px;
+      transition: background-color 0.3s;
+  }
+  
+  .back-button:hover {
+      background-color: #FFB700;
+  }
+  
+  
+  /* Styling for the class info container */
+  
+  
+  /* Styling for the labels */
+  .class-info-compact {
+  
+      padding: 15px;
+      border-radius: 2px;
+  
+      width: 280px; /* Compact width */
+      margin: 10px auto;
+      font-size: 16px; /* Smaller font for compact view */
+      line-height: 1.5;
+  }
+  
+  /* Styling for the class name */
+  .class-info-compact .class-name {
+      font-size: 16px; /* Slightly larger for class name */
+      font-weight: bold;
+      color: #fefefe;
+  /* Space between class name and details */
+      text-align: center; /* Center align class name */
+  }
+  
+  /* Styling for labels and values */
+  .class-info-compact .label {
+      font-weight: bold;
+      color: #ffffff;
+      margin-right: 5px;
+  }
+  
+  /* Styling for the individual info rows */
+  .class-info-compact p {
+      margin: 2px 0; /* Minimal spacing between rows */
+      display: flex;
+      justify-content: space-between; /* Align labels and values neatly */
+  }
+  
+  
+  
+  
+  
