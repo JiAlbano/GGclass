@@ -436,3 +436,20 @@ label.radio {
     background-color: #FFC62E; /* Color when checked */
 }
 
+
+.back-button {
+    background-color: #FFC62E;
+    color: #14171D;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left:1000px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #FFB700;
+}

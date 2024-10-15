@@ -31,20 +31,84 @@
 
 
 
-    <div class="right-section">
-        <button class="back-button" onclick="goBack()">Back</button>
-        <script>
-            function goBack() {
-                window.history.back();
+    <button class="back-button" onclick="goBack()">Back</button>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
+    <!-- User Profile -->
+    <div class="profile-container" style="position: relative;">
+        <img class="profile-img"
+             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+             alt="Profile"
+             id="logout-btn"
+             aria-expanded="false">
+
+        <!-- Logout Dropdown -->
+        <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
+            <ul class="logout-menu">
+                <li class="logout-item">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
+                </li>
+                <li class="logout-item">
+                    <button class="dropdown-item" onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Logout Dropdown -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const logoutButton = document.querySelector('#logout-btn');
+        const logoutDropdown = document.querySelector('.logout-container');
+
+        // Toggle the dropdown when the profile image is clicked
+        logoutButton.addEventListener('click', function (event) {
+            event.stopPropagation(); // Prevents the click from bubbling up
+            logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' : 'none'; // Toggle visibility of the dropdown
+        });
+
+        // Close the dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!logoutButton.contains(event.target) && !logoutDropdown.contains(event.target)) {
+                logoutDropdown.style.display = 'none'; // Hide the dropdown
             }
-        </script>
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
-        <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
+        });
+    });
+
+    function handleLogout(event) {
+        event.preventDefault();
+        document.getElementById('logout-form').submit(); // Submit the Laravel logout form
+    }
+</script>
+
+
+<div class="top-buttons containers" style=" margin-top: 84px;">
+    <div class="row justify-content-center"> <!-- Added justify-content-center class -->
+        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
+            <button class="btn challenge-btn active" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+        </div>
+        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
+        </div>
+        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+        </div>
+        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+        </div>
     </div>
 </div>
 
 
-</div>
 
 <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->

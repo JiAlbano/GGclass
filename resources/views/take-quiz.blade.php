@@ -27,16 +27,23 @@
 
 <body>
 
-    <div class="navbar">
-        <div class="left-section">
-            <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass</h1>
-            <h1 class="arrow" style="font-size: 20px">></h1>
-            <h2 class="section-font">Section</h2>
-        </div>
+<div class="navbar">
+    <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
+        <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
+        <h1 class="ggclass-font">GGclass ></h1>
+        <h2 class="section-font">{{ $class->section }}</h2>
+    </div>
+
+    <button class="back-button" onclick="goBack()">Back</button>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
         <div class="right-section">
-            <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
+            <img class="profile-img"  src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Create">
         </div>
     </div>
 
