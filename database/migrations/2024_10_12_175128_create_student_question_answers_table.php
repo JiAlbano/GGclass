@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('answer');
             $table->integer('student_id');
             $table->boolean('is_correct');
+            $table->string('challenge_type');
             $table->timestamps();
         });
     }

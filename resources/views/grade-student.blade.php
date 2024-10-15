@@ -18,6 +18,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('student-view/grade-student.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('challenges.css') }}">
 </head>
 <body>
 
@@ -78,11 +79,16 @@
         </div>
     </div>
 
-    <div class="container-q">
-        <div class="container quiz-container">
-            <button type="button" class="quiz-button" onclick="window.location.href='{{ route('grade-quiz-title-student', ['classId' => $class->id]) }}'">
-                Quiz
-            </button>
+    <div class="container1">
+        <div class="grid-container">
+            @foreach($challenges as $challenge)
+                @if(in_array($challenge->type, ['test_and_quizzes', 'exam', 'activity']))
+                <button class="box" onclick="window.location.href='{{ route($challenge->type.'_student.show', ['classId' => $class->id]) }}'">
+            
+                    {{ str_replace('_', ' ', ucfirst($challenge->type)) }}
+                </button>
+                @endif
+            @endforeach
         </div>
     </div>
 
