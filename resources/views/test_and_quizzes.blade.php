@@ -237,7 +237,7 @@
             mcOptionCount = 0; // Reset mcOptionCount for each question
             optionsContainer.innerHTML = `
                 <label for="mcAnswerKey-${questionNumber}">Answer Key:</label>
-                <select id="mcAnswerKey-${questionNumber}" name="questions[${questionNumber}][answer_key]">
+                <select id="mcAnswerKey-${questionNumber}" name="questions[${questionNumber}][correct_answer]">
                     <!-- Options will be dynamically populated -->
                 </select>
                 <div id="mcOptions-${questionNumber}" class="options-container">

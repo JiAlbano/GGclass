@@ -325,3 +325,13 @@ hr {
 .back-button:hover {
     background-color: #FFB700;
 }
+
+.disabled-btn {
+    color: white; /* White text */
+    background-color: gray;
+    margin-top: 60px;
+    font-size: 10px; /* Larger font size */
+    border-radius: 10px; /* Rounded corners */
+    width: 200px;
+    height: 180px;
+}

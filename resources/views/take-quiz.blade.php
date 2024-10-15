@@ -108,6 +108,9 @@
         </div>
         <div id="question-type-container">
             <!-- Multiple choice question (default) -->
+            <div style="text-align: center;" >
+                <img id="question-image" src="" alt="image" width="100" height="100">
+            </div><br>
             <div class="options-container"
                 style="display: {{ $questions[0]->type === 'multipleChoice' ? 'block' : 'none' }};">
                 @if(is_array($questions[0]->options))
@@ -184,7 +187,12 @@
             let question = @json($questions);
 
             document.getElementById('question-text').innerText = question[number - 1].question;
-
+            document.getElementById('question-image').src = `/storage/${question[number - 1].image}`
+            if(question[number - 1].image === null) {
+                document.getElementById('question-image').style.display = 'none';
+            } else {
+                document.getElementById('question-image').style.display = 'center';
+            }
             let multipleChoice = document.querySelector('.options-container');
             let trueFalse = document.querySelector('.true-false-container');
             let identification = document.querySelector('.identification-container');

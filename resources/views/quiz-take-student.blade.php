@@ -36,7 +36,7 @@
 </div>
 
     <div class="top-right">
-        <input type="text" id="token-used" placeholder="Insert Token">
+        <input type="text" {{$quiz->enable_token === 0 ? 'disabled' : ''}} id="token-used" placeholder="Insert Token">
         <img class="img-token" src="{{ asset('token.png') }}" alt="Image">
         <span class="text-number">{{Auth::user()->token_count}}</span>
     </div>
@@ -59,6 +59,9 @@
     <div class="question-header">
         <span id="question-text"></span>
     </div>
+    <div style="text-align: center;" >
+        <img id="question-image" src="" alt="image" width="100" height="100">
+    </div><br>
 
     <div id="question-type-container">
         <input type="hidden" id="answer-holder">
@@ -92,6 +95,7 @@ let questions = <?php echo $questions; ?>;
 let runningScore = 0;
 let studentScore = [];
 let token_count = <?php echo Auth::user()->token_count; ?>;
+const tokenIsEnabled = <?php echo ($quiz->enable_token === 1); ?>
 
 function selectOption(option) {
     let questionType = document.querySelector('#question-type-container').children[0].style.display;
@@ -169,6 +173,12 @@ let trueFalse = document.querySelector('.true-false-container');
 let identification = document.querySelector('.identification-container');
 
 questionText.innerText = questions[number - 1].question;
+document.getElementById('question-image').src = `/storage/${questions[number - 1].image}`
+if(questions[number - 1].image === null) {
+    document.getElementById('question-image').style.display = 'none';
+} else {
+    document.getElementById('question-image').style.display = 'center';
+}
 
 multipleChoice.style.display = 'none';
 trueFalse.style.display = 'none';
@@ -224,7 +234,6 @@ if (currentQuestion === totalQuestions) {
 async function submitQuiz() {
     recordAnswer();
     const mistakes = (parseFloat(runningScore) / parseFloat(questions.length)) * 100;
-    console.log(mistakes);
     if(mistakes >= 90) {
         token_count++;
     }
@@ -233,7 +242,9 @@ async function submitQuiz() {
         alert("Invalid token count used.");
         return;
     }
-    token_count = token_count -token_used;
+    if(tokenIsEnabled) {
+        token_count = token_count -token_used;
+    }
     await $.ajax({
             url: '/challenges/record-score',  // URL where you want to send the PUT request
             type: 'POST',           // Laravel uses POST to handle PUT requests
@@ -245,6 +256,9 @@ async function submitQuiz() {
                 if(response == 1) {
                     alert("You have successfully submitted your answers.");
                 }
+                setTimeout(() => {
+                    location.href=`/studentchallenges/<?php echo $class->id; ?>/studentquiz`;
+                }, 1500)
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);
