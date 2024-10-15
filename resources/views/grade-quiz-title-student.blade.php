@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
-    <title>Players</title>
+    <title>Challenges</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ asset('student-view/grade-quiz-title-student.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('student-view/quiz-student.css') }}"> <!-- New CSS file for the container -->
 </head>
 <body>
 
@@ -40,22 +40,24 @@
     </div>
 </div>
 
-<div class="top-buttons containers" style=" margin-top: 84px;">
+    <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('student-view/bulletins-student') }}'">Bulletins</button>
+            <button class="btn challenge-btn active" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('student-view/tutorials-student') }}'">Tutorials</button>
+            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('student-view/challenges-student') }}'">Challenges</button>
+            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('student-view/players-student') }}'">Players</button>
+            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
         </div>
     </div>
 </div>
+
+
 
 <div class="info-container ">
     <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
@@ -72,19 +74,30 @@
 
         <hr>
         <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('student-view/profile-student') }}'">PROFILE</button>
-            <button class="btn"onclick="window.location.href='{{ route('student-view/attendance-student') }}'">ATTENDANCE</button>
-            <button class="btn challenge-btn active"onclick="window.location.href='{{ route('student-view/grade-student') }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('student-view/feedback-student') }}'">FEEDBACK</button>
+            <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
+            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
     </div>
 
     <div class="container-q">
-        <div class="container quiz-container">
-            <button type="button" class="quiz-button" onclick="window.location.href='{{ route('student-view/grade-quiz-student') }}'">
-                Quiz 1
-            </button>
-        </div>
+        @foreach($quizzes as $quiz)
+            <?php 
+                $challenge_taken = 'Not yet taken';
+                foreach($studentChallengesTaken as $taken) {
+                    if($taken->challenge_id === $quiz->id) {
+                        $challenge_taken = $taken->total_score.' / '.$taken->number_of_items;
+                    }
+                }
+            ?>
+            <div class="container quiz-container">
+                <button type="button" class="quiz-button">
+                    {{ $quiz->title }}<br><br>
+                    {{ $challenge_taken }}
+                </button>
+            </div>
+        @endforeach
     </div>
 
     <!-- Bootstrap JS and dependencies -->

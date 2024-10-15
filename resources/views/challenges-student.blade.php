@@ -22,10 +22,10 @@
 <body>
 
     <div class="navbar">
-        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $challenges[0]->class_id]) }}'">
+            <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass ></h1>
-            <h2 class="section-font">{{ $challenges[0]->section }}</h2>
+            <h2 class="section-font">{{ $class->section }}</h2>
     </div>
 
 
@@ -45,16 +45,16 @@
     <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn " style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $challenges[0]->class_id]) }}'">Bulletins</button>
+            <button class="btn " style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $challenges[0]->class_id]) }}'">Tutorials</button>
+            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn challenge-btn active" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $challenges[0]->class_id]) }}'">Challenges</button>
+            <button class="btn challenge-btn active" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $challenges[0]->class_id]) }}'">Players</button>
+            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
         </div>
     </div>
 </div>
@@ -67,10 +67,10 @@
             <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
         </div>
     <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $challenges[0]->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $challenges[0]->subject }}</span></p>
-        <p class="section">Section: <span>{{ $challenges[0]->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $challenges[0]->class_code }}</span></p>
+        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
+        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
+        <p class="section">Section: <span>{{ $class->section }}</span></p>
+        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
     </div>
     <div class="container-info-email">
         <p>{{ $user->email }}</p>
@@ -79,18 +79,18 @@
 
         <hr>
         <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $challenges[0]->class_id]) }}'">PROFILE</button>
-            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $challenges[0]->class_id]) }}'">ATTENDANCE</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $challenges[0]->class_id]) }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $challenges[0]->class_id]) }}'">FEEDBACK</button>
+            <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
+            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
     </div>
 
     <div class="container-q">
         @foreach ($challenges as $challenge)
             <div class="container quiz-container">
-                <button type="button" class="quiz-button" onclick="window.location.href='{{ route('quiz-student', ['classId' => $challenge->class_id]) }}'">
-                    {{$challenge->title}}
+                <button type="button" class="quiz-button" onclick="window.location.href='{{ route('quiz-student', ['classId' => $challenge->id]) }}'">
+                {{ str_replace('_', ' ', ucfirst($challenge->type)) }}
                 </button>
             </div>
         @endforeach
