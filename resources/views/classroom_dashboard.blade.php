@@ -91,6 +91,11 @@
     });
 });
 
+function handleLogout(event) {
+    event.preventDefault();
+    document.getElementById('logout-form').submit(); // Submit the Laravel logout form
+
+}
         </script>
 
 </head>
@@ -258,7 +263,7 @@
                            @csrf
                        </form>
                        <a class="dropdown-item" href="#"
-                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
+                          onclick="handleLogout(event)">Log out</a>
                    </li>
                </ul>
            </div>
@@ -276,13 +281,24 @@
         <!--End ClassCard -->
 
 
-    <script>
-        function deleteClass(classId) {
-            if (confirm('Are you sure you want to delete this class?')) {
-                document.getElementById('delete-form-' + classId).submit();
-            }
+        <script>
+    let classIdToDelete;
+
+    function showDeleteConfirmation(classId) {
+        classIdToDelete = classId; // Store the class ID to be deleted
+        const modal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+        modal.show();
+    }
+
+    document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+        const form = document.getElementById('delete-form-' + classIdToDelete);
+        if (form) {
+            form.submit(); // Submit the form to delete the class
+        } else {
+            console.error('Form not found for class ID: ' + classIdToDelete);
         }
-    </script>
+    });
+</script>
     <!-- JavaScripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
 

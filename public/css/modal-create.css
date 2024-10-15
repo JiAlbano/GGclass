@@ -6,12 +6,14 @@
   border: 2px solid #00ff00; /* Neon green border */
   box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* Neon green shadow */
   font-family: 'Press Start 2P', cursive; /* Font for modal text */
+  overflow-y: hidden;
 }
 
 /* Modal Header */
 .modal-header {
   background-color: #1a1a1a; /* Slightly darker background */
   border-bottom: 1px solid #00ff00; /* Neon green border */
+  overflow: hidden;
 }
 
 .modal-title {
@@ -23,7 +25,8 @@
 /* Modal Body */
 .modal-body {
   padding: 30px; /* Increased padding for better spacing */
-  overflow: hidden; /* Prevent scrolling inside the modal body */
+  overflow-y: hidden; /* Prevent scrolling inside the modal body */
+  overflow-x: hidden; /* Prevent scrolling inside the modal body */
 }
 
 /* Form Sections */
@@ -37,10 +40,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px; /* Space between form fields */
+  overflow-y: hidden; /* Prevent scrolling inside the modal body */
+  overflow-x: hidden; /* Prevent scrolling inside the modal body */
 }
 
 .mb-3 {
   flex: 1;
+  overflow-y: hidden; /* Prevent scrolling inside the modal body */
+  overflow-x: hidden; /* Prevent scrolling inside the modal body */
 }
 
 /* Form Controls */
@@ -89,9 +96,7 @@
 }
 
 /* Disable scrolling on the body */
-body.modal-open {
-  overflow: hidden; /* Prevent scrolling on the body when modal is open */
-}
+
 
 /* Center the Modal */
 .modal-dialog {
@@ -105,5 +110,25 @@ body.modal-open {
 .modal-dialog .modal-content {
   max-height: 90vh; /* Limit the height of the modal content */
   overflow-y: auto; /* Enable scrolling if modal content is too tall */
+}
+
+.modal .modal-dialog {
+    max-width: 40%; /* Make sure it doesn't get too wide */
+}
+
+.modal {
+    overflow: hidden; /* Prevent scrolling inside the modal */
+}
+
+.modal-body {
+   /* Ensure the body content doesn't overflow the viewport height */
+    overflow-y: hidden; /* Prevent vertical scrolling in modal body */
+}
+
+/* Optional: To adjust the modal for smaller screens */
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 100vw; /* Make sure it adapts for small screens */
+    }
 }
 

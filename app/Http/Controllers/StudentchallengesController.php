@@ -18,6 +18,8 @@ class StudentchallengesController extends Controller
         ->join('classes', 'challenges.class_id', '=', 'classes.id')
         ->select('challenges.id as challenge_id', 'challenges.*', 'classes.*')
         ->get();
-        return view('challenges-student', compact('challenges', 'user')); // Pass both variables to the view
+
+        $class = Classroom::findOrFail($classId);
+        return view('challenges-student', compact('challenges', 'user', 'class')); // Pass both variables to the view
     }
 }

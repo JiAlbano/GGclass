@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('score');
             $table->integer('token_used');
             $table->integer('total_score');
+            $table->string('challenge_type');
+            $table->string('number_of_items');
             $table->timestamps();
         });
     }

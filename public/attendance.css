@@ -105,22 +105,22 @@ body {
     font-weight: bold;
 }
 
-    .back-button {
-        background-color: #FFC62E;
-        color: #14171D;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        margin-right: 15px;
-        cursor: pointer;
-        font-family: 'Press Start 2P', cursive;
-        font-size: 14px;
-        transition: background-color 0.3s;
-    }
+.back-button {
+    background-color: #FFC62E;
+    color: #14171D;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left:1000px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
 
-    .back-button:hover {
-        background-color: #FFB700;
-    }
+.back-button:hover {
+    background-color: #FFB700;
+}
 
 .info-container {
     border: 2px solid #FFC62E;
@@ -268,5 +268,43 @@ hr {
     padding: 5px;                /* Padding around the text */
     font-size: 10px;
 }
+
+.logout-container {
+    background-color: white; /* Background color of the dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.logout-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-item {
+    cursor: pointer;
+}
+
+.logout-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.profile-container {
+    position: relative; /* Ensures that the dropdown is positioned correctly */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #000; /* Default text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
+    color: red; /* Change text color to red on hover */
+}
+
 
 

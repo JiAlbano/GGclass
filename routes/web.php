@@ -107,7 +107,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/studentattendance/{classId}', [StudentattendanceController::class, 'show'])->name('attendance-student');
     //student grades
     Route::get('/studentgrade/{classId}', [StudentgradeController::class, 'show'])->name('grade-student');
-    Route::get('/studentgradequiz/{classId}', [StudentgradequiztitleController::class, 'show'])->name('grade-quiz-title-student');
+    Route::get('/studentgradequiz/{classId}', [StudentgradeController::class, 'showQuiz'])->name('test_and_quizzes_student.show');
     Route::get('/studentfeedback/{classId}', [StudentfeedbackController::class, 'show'])->name('feedback-student');
 
     // Challenges Routes
@@ -132,6 +132,9 @@ Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController:
 
 Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');
+
+Route::get('/student/exam/{classId}', [ExamController::class, 'show'])->name('exam_student.show');
+Route::get('/student/activity/{classId}', [ActivityController::class, 'show'])->name('activity_student.show');
 
 // Class Update and Delete Routes
 Route::put('/classes/{id}', [ClassController::class, 'update'])->name('classes.update');
