@@ -634,3 +634,12 @@ button.save:active {
 .back-button:hover {
     background-color: #FFB700;
 }
+
+.note-time {
+    margin-top: auto; /* Pushes it to the bottom of the flex container */
+    margin-bottom: 25px;
+    text-align: left; /* Optional: Adjust alignment if needed */
+    color: #FFC62E;
+    font-size: small;
+    margin-left: 10px;
+}

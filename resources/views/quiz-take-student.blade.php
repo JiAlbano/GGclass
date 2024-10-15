@@ -50,6 +50,47 @@
     </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the time from the HTML content (in the format 'minutes:seconds')
+    let timeDisplay = document.getElementById('time-display');
+    let time = timeDisplay.innerText.split(":");
+    
+    // Convert the time to total seconds
+    let minutes = parseInt(time[0]);
+    let seconds = parseInt(time[1]);
+    let totalSeconds = minutes * 60 + seconds;
+
+    // Function to update the timer display
+    function updateTimer() {
+        // Calculate minutes and seconds from totalSeconds
+        let mins = Math.floor(totalSeconds / 60);
+        let secs = totalSeconds % 60;
+
+        // Add leading zero if seconds are less than 10
+        if (secs < 10) {
+            secs = "0" + secs;
+        }
+
+        // Update the display
+        timeDisplay.innerText = `${mins}:${secs}`;
+
+        // Stop the timer at 0
+        if (totalSeconds > 0) {
+            totalSeconds--;
+        } else {
+            clearInterval(timer);
+            // You can add any action you want when the timer ends, e.g., form submission
+            alert("Time is up!");
+        }
+    }
+
+    // Update the timer every second
+    let timer = setInterval(updateTimer, 1000);
+});
+</script>
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
