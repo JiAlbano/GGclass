@@ -36,6 +36,7 @@
 </div>
 
     <div class="top-right">
+        <input type="hidden" id="user" value="{{Auth::user()->token_count}}">
         <input type="text" {{$quiz->enable_token === 0 ? 'disabled' : ''}} id="token-used" placeholder="Insert Token">
         <img class="img-token" src="{{ asset('token.png') }}" alt="Image">
         <span class="text-number">{{Auth::user()->token_count}}</span>
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let questions = <?php echo $questions; ?>;
     let runningScore = 0;
     let studentScore = [];
-    let token_count = <?php echo Auth::user()->token_count; ?>;
+    let token_count = $("#user").val();
     const tokenIsEnabled = <?php echo ($quiz->enable_token === 1); ?>
 
 $(document).ready(function() {
