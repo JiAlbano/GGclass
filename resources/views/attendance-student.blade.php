@@ -125,7 +125,7 @@
         <hr>
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
-            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn challenge-btn active"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
             <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
             <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>

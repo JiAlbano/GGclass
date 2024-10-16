@@ -210,7 +210,7 @@ hr {
     border: none;
     padding: 10px 20px;
     margin: 0px;
-  
+    cursor: pointer;
     border-radius: 20px;
     width: 100px;
     height: 25px;
@@ -221,6 +221,7 @@ hr {
     font-size: 7px;
     font-family: 'Press Start 2P', cursive;
 }
+
 
 .btn:hover {
     background-color: #FFC62E;

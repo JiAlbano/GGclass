@@ -208,7 +208,7 @@ hr {
     border: none;
     padding: 10px 20px;
     margin: 0px;
-    cursor: pointer;
+
     border-radius: 20px;
     width: 100px;
     height: 25px;
@@ -247,13 +247,10 @@ hr {
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
     width: 200px;
     height: 180px;
-    cursor: pointer; /* Pointer cursor on hover */
+
 }
 
-.quiz-button:hover{
-    background-color: #FFC62E; /* Darker background on hover */
-    color: #2A2E34;
-}
+
 
 .class-name {
     margin: 0;                   /* Remove default margins */

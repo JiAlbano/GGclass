@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ asset('student-view/quiz-student.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('student-view/grade-quiz-title-student.css') }}"> <!-- New CSS file for the container -->
 </head>
 <body>
 
@@ -94,7 +94,7 @@
             <button class="btn " style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn challenge-btn active" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
+            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
             <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
@@ -127,7 +127,7 @@
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
             <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn challenge-btn active"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
             <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
     </div>
