@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             clearInterval(timer);
             // You can add any action you want when the timer ends, e.g., form submission
-            alert("Time is up!");
+            submitQuiz()
         }
     }
 
@@ -162,36 +162,66 @@ function switchQuestion(number) {
     multipleChoice.style.display = 'none';
     trueFalse.style.display = 'none';
     identification.style.display = 'none';
-
+    const answerExist = answer.find(ans => ans.question_id === questions[number - 1].id && ans.answer !== "");
     if (questions[number - 1].type === 'multipleChoice') {
         multipleChoice.style.display = 'block';
         const options = questions[number - 1].options;
         let optionHtml = ``;
         options.map(item => {
-            optionHtml += `<button class="option-btn" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+            if(answerExist !== undefined || answerExist != null) {
+                if(answerExist.answer === item) {
+                    optionHtml += `<button class="option-btn active" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+                    $("#answer-holder").val(item)
+                } else {
+                    optionHtml += `<button class="option-btn" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+                }
+            } else {
+                optionHtml += `<button class="option-btn" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+            }
         })
         $(".options-container").html(optionHtml)
     } else if (questions[number - 1].type === 'trueFalse') {
         trueFalse.style.display = 'block';
-        $(".true-false-container").html(
-            `<button class="option-btn" id="option-btn-true" onclick="selectOption(true)">True</button>
-            <button class="option-btn" id="option-btn-false" onclick="selectOption(false)">False</button>`
-        )
-        let trueFalseButtons = trueFalse.querySelectorAll('.option-btn');
-        trueFalseButtons.forEach(btn => {
-            btn.classList.remove('active');
-        });
+        let trueFalseAnswer = ``;
+        if(answerExist !== undefined || answerExist != null) {
+            if(answerExist.answer === 'true') {
+                trueFalseAnswer += `<button class="option-btn active" id="option-btn-true" onclick="selectOption(true)">True</button>`;
+                $("#answer-holder").val(true)
+            } else {
+                trueFalseAnswer += `<button class="option-btn" id="option-btn-true" onclick="selectOption(true)">True</button>`;
+            }
+
+            if(answerExist.answer === 'false') {
+                trueFalseAnswer += `<button class="option-btn active" id="option-btn-false" onclick="selectOption(false)">False</button>`;
+                $("#answer-holder").val(false)
+            } else {
+                trueFalseAnswer += `<button class="option-btn" id="option-btn-false" onclick="selectOption(false)">False</button>`;
+            }
+            $("#answer-holder").val(answerExist.answer)
+        } else {
+            trueFalseAnswer = `<button class="option-btn" id="option-btn-true" onclick="selectOption(true)">True</button>
+            <button class="option-btn" id="option-btn-false" onclick="selectOption(false)">False</button>`;
+        }
+        $(".true-false-container").html(trueFalseAnswer)
     } else if (questions[number - 1].type === 'identification') {
         identification.style.display = 'block';
-        $(".identification-container").html(
-            `<div class="form-group">
-                <label for="identification-answer">Answer:</label>
-                <input type="text" class="form-control" id="identification-answer" placeholder="Enter answer">
-            </div>`
-        );
-        document.getElementById('identification-answer').value = '';
+        if(answerExist !== undefined || answerExist != null) {
+            $(".identification-container").html(
+                `<div class="form-group">
+                    <label for="identification-answer">Answer:</label>
+                    <input type="text" class="form-control" id="identification-answer" value="${answerExist.answer}" placeholder="Enter answer">
+                </div>`
+            );
+            $("#answer-holder").val(answerExist.answer)
+        } else {
+            $(".identification-container").html(
+                `<div class="form-group">
+                    <label for="identification-answer">Answer:</label>
+                    <input type="text" class="form-control" id="identification-answer" placeholder="Enter answer">
+                </div>`
+            );
+        }        
     }
-
     let questionNumbers = document.querySelectorAll('.question-number');
     questionNumbers.forEach((btn, idx) => {
         btn.classList.remove('active');
@@ -245,7 +275,7 @@ function switchQuestion(number) {
             });
     }
 
-function selectOption(option) {
+    function selectOption(option) {
         let questionType = document.querySelector('#question-type-container').children[0].style.display;
         let buttons;
         $(".option-btn").removeClass('active');
@@ -253,16 +283,16 @@ function selectOption(option) {
         $("#answer-holder").val(option);
     }
 
+    $(document).on('keyup', '#identification-answer', function(){
+        $("#answer-holder").val($(this).val());
+    })
+
     function nextQuestion() {
         if (currentQuestion < totalQuestions) {
-            if (questions[currentQuestion - 1].type === 'identification') {
-                $("#answer-holder").val($("#identification-answer").val());
-            }
             recordAnswer()
             currentQuestion++;
             switchQuestion(currentQuestion);
         }
-
         // Show the submit button on the last question
         if (currentQuestion === totalQuestions) {
             document.getElementById('next-btn').style.display = 'none';
@@ -304,6 +334,7 @@ function selectOption(option) {
 
     function previousQuestion() {
         if (currentQuestion > 1) {
+            recordAnswer()
             currentQuestion--;
             switchQuestion(currentQuestion);
 
