@@ -102,7 +102,7 @@
     <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn challenge-btn active" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+            <button class="btn " style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
             <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
@@ -111,16 +111,17 @@
             <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
+            <button class="btn challenge-btn active" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
         </div>
     </div>
 </div>
+
 <div class="info-container ">
     <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="rank-section">
-        <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
-    </div>
     <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
+    <div class="rank-section">
+            <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
+        </div>
     <div class="container-info-section">
         <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
         <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
@@ -131,7 +132,6 @@
         <p>{{ $user->email }}</p>
     </div>
 
-        <hr>
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
             <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>

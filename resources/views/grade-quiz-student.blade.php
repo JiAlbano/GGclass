@@ -29,17 +29,65 @@
             <h2 class="section-font">{{ $class->section }}</h2>
     </div>
 
-    <div class="right-section">
-        <button class="back-button" onclick="goBack()">Back</button>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
-        <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
+    <button class="back-button" onclick="goBack()">Back</button>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
+    <!-- User Profile -->
+    <div class="profile-container" style="position: relative;">
+        <img class="profile-img"
+             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+             alt="Profile"
+             id="logout-btn"
+             aria-expanded="false">
+
+        <!-- Logout Dropdown -->
+        <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
+            <ul class="logout-menu">
+                <li class="logout-item">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
+                </li>
+                <li class="logout-item">
+                    <button class="dropdown-item" onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
+
+<!-- JavaScript for Logout Dropdown -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const logoutButton = document.querySelector('#logout-btn');
+        const logoutDropdown = document.querySelector('.logout-container');
+
+        // Toggle the dropdown when the profile image is clicked
+        logoutButton.addEventListener('click', function (event) {
+            event.stopPropagation(); // Prevents the click from bubbling up
+            logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' : 'none'; // Toggle visibility of the dropdown
+        });
+
+        // Close the dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!logoutButton.contains(event.target) && !logoutDropdown.contains(event.target)) {
+                logoutDropdown.style.display = 'none'; // Hide the dropdown
+            }
+        });
+    });
+
+    function handleLogout(event) {
+        event.preventDefault();
+        document.getElementById('logout-form').submit(); // Submit the Laravel logout form
+    }
+</script>
+
 
     <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->

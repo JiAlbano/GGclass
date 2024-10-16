@@ -100,7 +100,7 @@ body {
     border-radius: 5px;
     background-color: #f0f0f0;
     color: #676767;
-    cursor: pointer;
+
     width: 100%; /* Make buttons take the full width of their column */
 }
 
@@ -210,7 +210,7 @@ hr {
     border: none;
     padding: 10px 20px;
     margin: 0px;
-    cursor: pointer;
+  
     border-radius: 20px;
     width: 100px;
     height: 25px;
@@ -249,13 +249,10 @@ hr {
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
     width: 200px;
     height: 180px;
-    cursor: pointer; /* Pointer cursor on hover */
+
 }
 
-.quiz-button:hover{
-    background-color: #FFC62E; /* Darker background on hover */
-    color: #2A2E34;
-}
+
 
 .btn-back {
     background-color: #E4E4E4;
@@ -283,7 +280,7 @@ hr {
     background-color: rgba(76, 175, 80, 0.1); /* Light green background */
     border-radius: 4px;          /* Rounded corners */
     padding: 5px;                /* Padding around the text */
-    font-size: 8px;
+    font-size: 10px;
 }
 
 .subject {
@@ -295,7 +292,7 @@ hr {
     background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
     border-radius: 4px;          /* Rounded corners */
     padding: 5px;                /* Padding around the text */
-    font-size: 8px;
+    font-size: 10px;
 }
 
 .section {
@@ -303,12 +300,13 @@ hr {
     padding: 2px 0;              /* Small vertical padding for spacing */
     line-height: 1.3;            /* Line height for readability */
     font-weight: bold;           /* Bold font for emphasis */
-    color: #aeff00d3;              /* Orange color for section */
-    background-color: rgba(21, 255, 0, 0.1); /* Light orange background */
+    color: #FF9800;              /* Orange color for section */
+    background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
     border-radius: 4px;          /* Rounded corners */
     padding: 5px;                /* Padding around the text */
-    font-size: 8px;
+    font-size: 10px;
 }
+
 
 .disabled-btn {
     color: white; /* White text */
