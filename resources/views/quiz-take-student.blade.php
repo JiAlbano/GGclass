@@ -31,7 +31,7 @@
     </div>
     <div class="right-section">
         <!-- Back Button -->
-        <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
+        <img class="profile-img"  src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>
 

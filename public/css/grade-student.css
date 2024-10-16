@@ -1,16 +1,17 @@
 /* General reset and box-sizing */
 * {
     margin: 0;
+
     padding: 0;
     box-sizing: border-box;
-    
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     background-color: #f0f0f0;
-    overflow-x: auto; /* Enable horizontal scrollbar */
-
 }
 
 .navbar {
@@ -73,10 +74,11 @@ body {
 .challenge-btn.active {
     color: #2A2E34; /* White text color for the active button */
     font-weight: bold;
-    background-color: #FFC62E;
+    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
+                0 0 10px rgba(255, 198, 46, 0.8),
+                0 0 15px rgba(255, 198, 46, 0.8);
     transition: all 0.3s ease;
 }
-
 .row {
     width: 100%; /* Make the container full-width */
     display: flex; /* Use flexbox for alignment */
@@ -107,6 +109,22 @@ body {
     font-weight: bold;
 }
 
+.back-button {
+    background-color: #FFC62E;
+    color: #14171D;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left:1000px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #FFB700;
+}
 .info-container {
     border: 2px solid #FFC62E;
     padding: 20px;
@@ -144,39 +162,33 @@ body {
     margin: 10px 0;
     color: #f0f0f0;
     font-family: 'Press Start 2P', cursive;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
+    margin-top: 50px;
+    margin-bottom: 35px;
 
-.rank-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
 }
 
 hr {
     border: 0;
     border-top: 1px solid #E4E4E4;
     margin: 10px 0;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 35px;
+    margin-top: 35px;
 }
 
-.container-info-section {
+/* .container-info-section {
     margin: 10px 0;
     font-size: 12px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 30px;
-}
-.container-info-name {
+} */
+/* .container-info-name {
     margin: 0;
     font-size: 9px;
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-}
+}*/
 
 
 .container-info-email {
@@ -185,7 +197,7 @@ hr {
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 7px;
+    font-size: 8px;
 }
 
 /* .container-info p {
@@ -224,33 +236,226 @@ hr {
     background-color: #FFC62E;
 }
 
-.container-q{
-    display: flex;
-    justify-content: center;
-    position: inherit;
-    width: 50%;
-}
-.quiz-container {
-    display: flex;
-    justify-content: center;
-    position: inherit;
-    width: 50%;
-    align-items: flex-end;
+.class-name {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #4CAF50;              /* Green color for class name */
+    background-color: rgba(76, 175, 80, 0.1); /* Light green background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
 }
 
-.quiz-button {
+.subject {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #2196F3;              /* Blue color for subject */
+    background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+}
+
+.section {
+    margin: 0;                   /* Remove default margins */
+    padding: 2px 0;              /* Small vertical padding for spacing */
+    line-height: 1.3;            /* Line height for readability */
+    font-weight: bold;           /* Bold font for emphasis */
+    color: #FF9800;              /* Orange color for section */
+    background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
+    border-radius: 4px;          /* Rounded corners */
+    padding: 5px;                /* Padding around the text */
+    font-size: 10px;
+}
+
+.btn-add2{
+    margin-right: 45px;
     background-color: #2A2E34;
-    color: white; /* White text */
-    margin-top: 60px;
-    font-size: 10px; /* Larger font size */
-    border-radius: 10px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    width: 200px;
-    height: 180px;
-    cursor: pointer; /* Pointer cursor on hover */
+    border: 2px solid #FFC62E;
+    border-radius: 15px;
+    color: #f0f0f0;
+    width: 75px;
+    height: 25px;
+    font-size: x-small;
+    margin-top: 25px;
 }
 
-.quiz-button:hover{
+.btn-add2:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
+}
+
+#challengeType {
+    color: black;
+}
+
+
+
+
+.box {
+    background-color: #2A2E34; /* Green background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Padding for the button */
+    font-size: 10px; /* Larger font size */
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    width: 200px; /* Fixed width of boxes */
+    height: 180px; /* Fixed height of boxes */
+    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+
+.box:hover {
     background-color: #FFC62E; /* Darker background on hover */
     color: #2A2E34;
+}
+    /* Modal hidden by default */
+/* Modal background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(33, 33, 33, 0.8), rgba(55, 55, 61, 0.8)); /* Deep dark blue with gradient */
+}
+
+/* Modal content styling - gamified */
+.modal-content {
+    background: #2A2E34;
+    border: 2px solid #FFC62E; /* Neon green border */
+    border-radius: 15px;
+    width: 350px;
+    margin: 10% auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Gamified title */
+.gamified-title {
+    font-family: 'Press Start 2P', cursive; /* Retro-style font */
+    color: #FFC62E; /* Neon green */
+    text-shadow: 0px 0px 10px #FFC62E;
+    margin-bottom: 20px;
+}
+
+/* Gamified label */
+.gamified-label {
+    font-family: 'Press Start 2P', cursive;
+    color: #FFC62E;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Gamified input */
+.gamified-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #E4E4E4;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+/* Gamified button */
+.gamified-button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #E4E4E4;
+    border: none;
+    color: #2A2E34;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-color: #FFC62E;
+    transition: 0.3s;
+    margin-left: 34%;
+}
+
+.gamified-button:hover {
+    background-color: #FFC62E;
+
+}
+
+/* Close button */
+.close {
+    color: #fff; /* White color */
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0px 0px 10px #FFC62E;
+    margin-top: 151.5px;
+    margin-right: 580px;
+}
+
+.close:hover {
+    color: #FFC62E; /* Neon red on hover */
+    text-shadow: 0px 0px 20px #E4E4E4; /* Stronger glow */
+
+}
+
+.quiz {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    margin-bottom: 1%; /* Add space below the buttons */
+    font-size: 13.5px;
+    margin-top: 9.5%;
+    margin-left: 27.8%;
+    color:#2A2E34
+}
+
+
+.logout-container {
+    background-color: white; /* Background color of the dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.logout-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-item {
+    cursor: pointer;
+}
+
+.logout-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.profile-container {
+    position: relative; /* Ensures that the dropdown is positioned correctly */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #000; /* Default text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
+    color: red; /* Change text color to red on hover */
 }

@@ -397,20 +397,19 @@ hr {
     color: #fff; /* White color */
     font-size: 28px;
     font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+
+    position: absolute; /* Changed from relative to absolute */
+    top: 10px; /* Position 10px from the top */
+    right: 10px; /* Position 10px from the right (for top-right placement) */
+    
     cursor: pointer;
     transition: 0.3s;
     text-shadow: 0px 0px 10px #FFC62E;
-    margin-top: 151.5px;
-    margin-right: 580px;
 }
 
 .close:hover {
     color: #FFC62E; /* Neon red on hover */
     text-shadow: 0px 0px 20px #E4E4E4; /* Stronger glow */
-
 }
 
 .quiz {

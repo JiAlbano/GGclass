@@ -70,14 +70,7 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
-.challenge-btn.active {
-    color: #2A2E34; /* White text color for the active button */
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
-                0 0 10px rgba(255, 198, 46, 0.8),
-                0 0 15px rgba(255, 198, 46, 0.8);
-    transition: all 0.3s ease;
-}
+
 .row {
     width: 100%; /* Make the container full-width */
     display: flex; /* Use flexbox for alignment */
@@ -108,22 +101,7 @@ body {
     font-weight: bold;
 }
 
-    .back-button {
-        background-color: #FFC62E;
-        color: #14171D;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        margin-left:1000px;
-        cursor: pointer;
-        font-family: 'Press Start 2P', cursive;
-        font-size: 14px;
-        transition: background-color 0.3s;
-    }
 
-    .back-button:hover {
-        background-color: #FFB700;
-    }
 
 .info-container {
     border: 2px solid #FFC62E;
@@ -306,4 +284,62 @@ hr {
 .dropdown-item:hover {
     background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
     color: red; /* Change text color to red on hover */
+}
+
+    .back-button {
+        background-color: #FFC62E;
+        color: #14171D;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-left:1000px;
+        cursor: pointer;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #FFB700;
+    }
+
+
+    .container-buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 0; /* Remove padding to prevent extra space */
+    }
+    
+/* General button styles */
+.first-button, .second-button, .third-button, .fourth-button {
+    height: 35px; /* Same height for all buttons */
+    width: 150px; /* Same width for all buttons */
+    background-color: #D9D9D9; /* Default color for the buttons */
+    border-radius: 50px; /* Rounded edges */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #2A2E34; /* Default text color */
+    cursor: pointer;
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+/* Hover effect for all buttons */
+.first-button:hover, .second-button:hover, .third-button:hover, .fourth-button:hover {
+    transform: scale(1.03); /* Slight enlargement on hover */
+    background-color: #FFC62E; /* Color change on hover */
+}
+
+.challenge-btn.active {
+    background-color: #FFC62E; /* Active button color */
+    color: #2A2E34; /* Text color for active button */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
+                 0 0 10px rgba(255, 198, 46, 0.8),
+                 0 0 15px rgba(255, 198, 46, 0.8);
+    transition: all 0.3s ease;
 }
