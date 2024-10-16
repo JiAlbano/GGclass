@@ -156,10 +156,13 @@
         </div>
 
                     <!-- Modal Structure -->
+                 
     <div id="challengeModal" class="modal">
-        <div class="modal-content">
-            <span class="close"></span>
-            <h2 class="gamified-title">Add Challenge</h2>
+   
+        <div class="modal-content">      
+        <span class="close" onclick="closeModal()">&times;</span>
+            <h2 class="gamified-title">Add Challenge         </h2>
+           
             <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
                 @csrf
                 <label for="challengeType" class="gamified-label">Challenge Type:</label>

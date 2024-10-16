@@ -19,8 +19,9 @@
 
             <!-- Class Info -->
             <div class="class-info-compact">
+            <span class="label">Class Name</span> 
                 <p class="class-name"> {{ $class->name }}</p>
-
+                        
                 <p><span class="label">Subject:</span> {{ $class->subject }}</p>
                 <p><span class="label">Section:</span> {{ $class->section }}</p>
                 <p><span class="label">Schedule:</span> {{ $class->schedule }}</p>
