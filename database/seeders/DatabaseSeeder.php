@@ -17,28 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StudentSeeder::class,
             AssessmentSeeder::class,
-            AssessmentTypeSeeder::class
+            AssessmentTypeSeeder::class,
+            ScoreSeeder::class,
         ]);
         // Call the CourseSeeder first
         $this->call(CourseSeeder::class);
 
-        // Create a male user
-        User::factory()->create([
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'john.doe@example.com',
-            'id_number' => '123456',
-            'user_type' => 'student',
-        ]);
-
-        // Create a female user
-        User::factory()->create([
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane.smith@example.com',
-            'id_number' => '654321',
-            'user_type' => 'student',
-        ]);
     }
 }
 

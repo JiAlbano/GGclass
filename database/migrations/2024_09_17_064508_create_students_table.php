@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             // Define the columns of the table
-            $table->string('school_id')->primary();   
+            $table->unsignedBigInteger('school_id')->primary();   
             $table->string('full_name');            
             $table->string('in_game_name');          
             $table->string('email')->unique();      

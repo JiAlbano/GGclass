@@ -4,7 +4,7 @@
 }
 
 .navbar-brand.logo-text{
-  color: white;
+  color: white; 
   display:flex;
   align-items: center;
   font-family: 'Press Start 2P', cursive;
@@ -16,8 +16,8 @@
 }
 
 .logo-img {
-  height: 60px;
-  margin-right: 10px;
+  height: 60px; 
+  margin-right: 10px; 
 
 }
 
@@ -25,7 +25,7 @@
   font-family: 'Press Start 2P', cursive;
   color: black;
   font-size: 15px;
-  margin-right: 160px;
+  margin-right: 160px; 
   text-decoration: none;
   position:relative;
   left: 130px;
@@ -41,8 +41,8 @@
 }
 
 .custom-line {
-  height: 2px;
-  background-color: black;
+  height: 2px; 
+  background-color: black; 
   position: relative;
   left: 330px;
   top:20px;
@@ -72,19 +72,29 @@
   position:relative;
   left: 1px;
 
-
+  
 }
 .export:hover {
   color: #ffcc00;
 }
 
 .custom-line-2 {
-  height: 2px;
-  background-color: black;
+  height: 2px; 
+  background-color: black; 
   position: relative;
   left: 330px;
   top:30px;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+.main-body {
+  background-color: #E4E4E4;
+  padding-bottom: 30px;
+}
+
 
 .back-button {
     background-color: #FFC62E;
@@ -103,7 +113,3 @@
     background-color: #FFB700;
 }
 
-.body
-{
-   
-}

@@ -14,7 +14,7 @@
   font-style: normal;
   border-radius: 20px;
   left: 60px;
-
+ 
 }
 
 .profile-img {
@@ -24,16 +24,16 @@
   object-fit: cover;
   border: 3px solid #2A2E34;
   position: absolute;
-  top: -50px;
+  top: -50px; 
   left: 100px;
-
+  
 }
 .custome-line-3 {
-  width: 220px;
-  margin: 0 auto;
-  border: none;
-  height: 1px;
-  background-color: white;
+  width: 220px;        
+  margin: 0 auto;     
+  border: none;      
+  height: 1px;       
+  background-color: white; 
   height: 2px;
 }
 
@@ -97,7 +97,7 @@
 
 .school-id {
   margin-top: 10px;
-
+  
 }
 
 body {

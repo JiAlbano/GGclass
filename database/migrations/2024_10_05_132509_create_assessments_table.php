@@ -14,7 +14,7 @@ class CreateAssessmentsTable extends Migration
     public function up()
     {
         Schema::create('assessments', function (Blueprint $table) {
-            $table->string('assessment_id')->primary(); 
+            $table->unsignedBigInteger('assessment_id')->primary(); 
             $table->string('assessment_name'); 
             $table->integer('grading_system'); 
             $table->timestamps(); // 

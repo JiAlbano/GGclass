@@ -25,7 +25,9 @@
                 <h1 class="text">Student List</h1>
             </div>
             <div class="col-md-4 mt-4">
+               <a href="{{ route('student-list.export') }}">
                 <button type="button" class="export">Export</button>
+               </a> 
             </div>
         </div>
     </div>
@@ -38,13 +40,13 @@
         <div class="left-container">
             <div class="mt-2">
                 <img class="profile-img " src="{{ asset('img/ainz.jpg') }}" alt="Profile">
-                <h3 class="mt-5">Ainz</h3>
-                <p class="fw-bold">N1am</p>
+                <h3 class="mt-5">Teacher Ign</h3>
+                <p class="fw-bold">Teacher Section</p>
 
                 <div class="custome-line-3"></div>
 
-                <p class="fw-bold mt-3">Jan Raphael Peoro</p>
-                <p>japeoro@gbox.adnu.edu.ph</p>
+                <p class="fw-bold mt-3">Teacher Name</p>
+                <p>Teacher Email</p>
                 <div class="custome-line-3"></div>
 
                 <div class="first-button">
@@ -83,5 +85,6 @@
       
     </div>
 </main>
+
 
 @endsection

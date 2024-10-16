@@ -144,7 +144,7 @@ Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('class
 //gradebook functionality
 
 // students-list.blade.php
-Route::get('/students-list/{classId}', [StudentController::class, 'display'])->name('student-list');
+Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
 
 // student-data.blade.php
 // Route::view('/students-data', 'grade-book.student-data.student-data')->name('student-data');
@@ -152,6 +152,13 @@ Route::get('/student/{school_id}', [StudentController::class, 'show'])->name('st
 
 // student-assessment.blade.php
 Route::get('/student-assessment/{school_id}/{assessment_id}', [StudentController::class, 'assessment'])->name('student-assessment');
+
+// Route for exporting the Excel file
+Route::get('/students-list/export', [StudentController::class, 'export'])->name('student-list.export');
+
+
+
+
 
 // log out
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

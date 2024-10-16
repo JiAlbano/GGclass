@@ -67,24 +67,32 @@
           </div>
       </div>
       
-      <div class="container right-container">    
+      <div class="container right-container">
         <div class="container">
-
             <div class="row justify-content-center">
-                <div class="col-6 assessment">
-                    <p class="h2 title">Quiz 1</p>
-                    <p class="h5 score">Score: 50</p>
-                </div>
-               
+                @foreach ($assessment_types as $type)
+                    <div class="col-6 assessment">
+                        <!-- Display the assessment type name, e.g., Quiz 1, Quiz 2 -->
+                        <p class="h3 title">{{ $type->assessment_type_name }}</p>
+                        
+                        <!-- Display the student's score for this assessment type -->
+                        <p class="h5 score">
+                            Score: 
+                            @if(isset($scores[$type->assessment_type_id]))
+                                {{ $scores[$type->assessment_type_id]->score }}
+                            @else
+                                No Grade
+                            @endif
+                        </p>
+                    </div>
+                @endforeach
             </div>
-        </div>    
-       
-        
-      </div>
+        </div>
+    </div>
+    
 
   </div>
 </main>
-
 
 
 @endsection
