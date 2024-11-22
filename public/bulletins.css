@@ -182,9 +182,6 @@ body {
     font-weight: bold;
 }
 
-/* .btn:hover {
-    background-color: #FFC62E;
-} */
 
 .class-name {
     margin: 0;                   /* Remove default margins */
@@ -258,23 +255,6 @@ body {
     background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
     color: red; /* Change text color to red on hover */
 }
-
-    .back-button {
-        background-color: #FFC62E;
-        color: #14171D;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        margin-left:1000px;
-        cursor: pointer;
-        font-family: 'Press Start 2P', cursive;
-        font-size: 14px;
-        transition: background-color 0.3s;
-    }
-
-    .back-button:hover {
-        background-color: #FFB700;
-    }
 
 
     .container-buttons {

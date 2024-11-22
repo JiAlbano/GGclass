@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
-    <title>Players</title>
+    <title>Grade</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
@@ -28,22 +28,14 @@
             <h1 class="ggclass-font">GGclass ></h1>
             <h2 class="section-font">{{ $class->section }}</h2>
     </div>
-
-    <button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
     
     <!-- User Profile -->
     <div class="profile-container" style="position: relative;">
-        <img class="profile-img"
-             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
-             alt="Profile"
-             id="logout-btn"
-             aria-expanded="false">
+    <img class="profile-img"
+            src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+            alt="Profile"
+            id="logout-btn"
+            aria-expanded="false">
 
         <!-- Logout Dropdown -->
         <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
@@ -95,7 +87,7 @@
             <button class="btn " style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn challenge-btn active" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
+            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
             <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
@@ -119,18 +111,16 @@
         <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
         <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
         <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
     </div>
     <div class="container-info-email">
         <p>{{ $user->email }}</p>
     </div>
     
-        <hr>
         <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
-            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn challenge-btn active"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
+            <button class="btn1"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn1 challenge-btn active"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
     </div>
 
