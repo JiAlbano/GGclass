@@ -33,6 +33,14 @@
                 GGclass
                 </a>
             </div>
+            <button class="back-button" onclick="goBack()">Back</button>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+  
         </nav>
     </header>
 

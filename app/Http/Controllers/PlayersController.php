@@ -6,6 +6,7 @@ use App\Models\Classes as Classroom;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class PlayersController extends Controller
 {
     public function show($classId)

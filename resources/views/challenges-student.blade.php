@@ -122,8 +122,6 @@
         <p>{{ $user->email }}</p>
     </div>
 
-
-        <hr>
         <div class="container-buttons">
             <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
             <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>

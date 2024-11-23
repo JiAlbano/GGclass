@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes as Classroom;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
 use App\Models\Assessment;
 use App\Models\AssessmentType;
@@ -14,8 +17,10 @@ class StudentController extends Controller
 {
 // Method to get all students and pass them to the view
 public function index () {
+
   // Retrieve all students from the database
   $student_list = Student::orderBy('full_name')->get(); 
+
 
   // Pass the students data to the 'student-list' view
   return view('grade-book.student-list.student-list', compact('student_list'));
