@@ -41,22 +41,15 @@
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div> -->
-<button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
     
 
-  <!-- User Profile -->
-  <div class="profile-container" style="position: relative;">
+<!-- User Profile -->
+    <div class="profile-container" style="position: relative;">
         <img class="profile-img"
-             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
-             alt="Profile"
-             id="logout-btn"
-             aria-expanded="false">
+            src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+            alt="Profile"
+            id="logout-btn"
+            aria-expanded="false">
 
         <!-- Logout Dropdown -->
         <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
@@ -135,11 +128,11 @@
         <p>{{ $user->email }}</p>
     </div>
     <hr>
-   <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-            <button class="btn"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
+        <div class="container-buttons">
+            <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
+            <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
         </div>
 </div>
 
@@ -152,38 +145,6 @@
         <div class="profile-role">Adviser</div>
     </div>
 </div>
-
-<!-- Add Button -->
-<div class="d-flex justify-content-end">
-    <button type="button" class="btn-add2" data-bs-toggle="modal" data-bs-target="#addMemberModal">Add</button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="addMemberModalLabel">Add Member</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="gboxAccount" placeholder="Enter Gbox account">
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn">Add</button>
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- Bootstrap JS (include in your project) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 
 
 <div class="container-adviser my-4">
@@ -207,7 +168,7 @@
     </div>
 
     <!-- Second Member Container -->
-    <div class="container2 d-flex justify-content-between align-items-center w-100">
+    <div class="container2 d-flex justify-content-between align-items-center w-100">    
         <div class="d-flex align-items-center">
             <img src="{{ asset('ainz.jpg') }}" alt="Profile Picture" class="profile-pic">
             <div class="profile-name">John Ignacious Albano</div>
@@ -216,6 +177,7 @@
             <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
         </div>
     </div>
+
 </div>
 </div>
 

@@ -34,18 +34,10 @@
         <h2 class="section-font">{{ $class->section }}</h2>
     </div>
 
-    <button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
-        <div class="right-section">
-            <img class="profile-img"  src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Create">
-        </div>
+    <div class="right-section">
+        <img class="profile-img"  src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Create">
     </div>
+</div>
 
     <!-- Bootstrap container for responsiveness -->
 <div class="container d-flex justify-content-center align-items-center">

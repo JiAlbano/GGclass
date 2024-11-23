@@ -26,28 +26,7 @@
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass ></h1>
             <h2 class="section-font">{{ $class->section }}</h2>
-    </div>
-
-    <!-- <div class="right-section">
-        <button class="back-button" onclick="goBack()">Back</button>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
-        <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
-    </div>
-</div> -->
-
-<button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-    
+        </div>
     <!-- User Profile -->
     <div class="profile-container" style="position: relative;">
         <img class="profile-img"
@@ -99,8 +78,6 @@
     }
 </script>
 
-
-
     <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
@@ -130,17 +107,16 @@
         <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
         <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
         <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
     </div>
     <div class="container-info-email">
         <p>{{ $user->email }}</p>
     </div>
 
         <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
-            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
+            <button class="btn1"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
     </div>
 

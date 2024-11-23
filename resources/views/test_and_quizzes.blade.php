@@ -54,13 +54,6 @@
     </div>
 </div> --}} -->
 
-<button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
     
     <!-- User Profile -->
     <div class="profile-container" style="position: relative;">
@@ -122,7 +115,7 @@
                 <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn  challenge-btn active" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+                <button class="btn challenge-btn active" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
                 <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
@@ -131,7 +124,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <button type="button" class="btn-add2" data-bs-toggle="modal" id="createQuizButton" data-bs-target="#addMemberModal">Add Quiz</button>
+        <button type="button" class="btn-add2" data-bs-toggle="modal" id="createQuizButton" data-bs-target="#addMemberModal">Create</button>
     </div>
 
 
@@ -152,12 +145,11 @@
                 <p>{{ $user->email }}</p>
             </div>
 
-                    <hr>
                     <div class="container-buttons">
-                        <button class="btn"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-                        <button class="btn"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-                        <button class="btn"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-                        <button class="btn"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
+                        <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+                        <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
+                        <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
+                        <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
                     </div>
             </div>
 

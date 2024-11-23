@@ -29,13 +29,6 @@
             <h2 class="section-font">{{ $class->section }}</h2>
     </div>
 
-    <button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
     
     <!-- User Profile -->
     <div class="profile-container" style="position: relative;">

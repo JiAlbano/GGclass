@@ -28,33 +28,14 @@
             <h2 class="section-font">{{ $class->section }}</h2>
     </div>
 
-    <!-- <div class="right-section">
-        <button class="back-button" onclick="goBack()">Back</button>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
-        <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
-    </div>
-</div> -->
-
-<button class="back-button" onclick="goBack()">Back</button>
-    
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
     
     <!-- User Profile -->
     <div class="profile-container" style="position: relative;">
         <img class="profile-img"
-             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
-             alt="Profile"
-             id="logout-btn"
-             aria-expanded="false">
+                src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+                alt="Profile"
+                id="logout-btn"
+                aria-expanded="false">
 
         <!-- Logout Dropdown -->
         <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
@@ -126,17 +107,16 @@
         <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
         <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
         <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
     </div>
     <div class="container-info-email">
         <p>{{ $user->email }}</p>
     </div>
 
         <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
-            <button class="btn"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
+            <button class="btn1"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
+            <button class="btn1"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
     </div>
 
@@ -168,7 +148,7 @@
                 <div class="profile-name">John Irvin Panganiban</div>
             </div>
             <div class="rank-section">
-                <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
+                <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-picture">
             </div>
         </div>
 
