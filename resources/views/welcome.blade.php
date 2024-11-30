@@ -39,37 +39,35 @@
         </script>
 
     <div class="container">
-        <div class="logo-container">
-            <!-- Display the logo image -->
-            <img src="{{ asset('finalLogo.png') }}" alt="Logo" class="logo">
-            <!-- Text next to the logo -->
-            <p>GGclass</p>
+    <div class="position-relative">
+        <!-- Existing logo and university name at the top-left -->
+        <div class="position-absolute top-0 start-0">
+            <img src="{{asset('img/Ateneo_de_Naga_University_logo.png')}}" alt="Adnu logo" class="adnu-logo">
+            <span class="university-name">Ateneo de Naga University</span>
+        </div>
+    </div>
+
+    <!-- Centered greeting, logo, and login button -->
+    <div class="center-content">
+        <span class="greeting">Hello, Ateneans</span>
+        <img src="{{asset('FinalLogo.png')}}" alt="Final Logo" class="final-logo">
+
+        <div class="login-label">
+            <span>Log-in your account</span>
         </div>
 
+        <!-- Login button below the logo -->
         <div class="content-container">
-            <div class="login-container" style="align-items: center;">
-                <!-- Button to log in with Google account -->
+            <div class="login-container">
                 <a href="{{ route('googleRedirect') }}" class="login-button">
-                    <!-- Google logo for the login button -->
                     <img src="{{ asset('googlelogo.png') }}" alt="Google Logo" class="google-icon">
                     Login with Gbox account
                 </a>
             </div>
-                <br>
-                <div>
-                    <center><a class="sign-up-text">Sign-up as:</a></center>
-                </div>
-                    <center>
-                        <div class="signup-container">
-                            <!-- Button for teacher signup -->
-                            <a href="{{ route('signup.teacher') }}" class="signup-teacher-button">Teacher</a> 
-                            <br>
-                            <!-- Button for student signup -->
-                            <a href="{{ route('signup.student') }}" class="signup-student-button">Student</a>
-                        </div>
-                    </center>
         </div>
     </div>
+</div>
+
 
 </body>
 </html>

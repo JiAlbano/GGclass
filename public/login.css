@@ -1,86 +1,162 @@
 body {
-    background-color: #1C1F26;
-    margin: 0;
+    position: relative; /* Needed to position the pseudo-element */
+    background-image: url('Adnu-building.jpg');
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    height: 100vh; /* Ensure it covers the full height of the viewport */
+    margin: 0; /* Remove default body margin */
     padding: 0;
-    height: 100vh;
     display: flex;
-    overflow-x: hidden;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif; /* Use a modern font for a gamified look */
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
+
+body::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit; /* Use the same background image */
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    filter: blur(3px); /* Apply blur to the background image */
+    z-index: -1; /* Place it behind all content */
+}
+
 
 /* Main container */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(145deg, #14171D, #2A2E34); /* Gamified gradient */
+    background-color: #283891;
     padding: 40px;
     border-radius: 25px; /* Rounder corners for a gamified look */
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7); /* Deep shadow for depth */
-    width: 50%; /* Adjust the width of the container */
+    width: 40%;
+    height: 450px;
     max-width: 1000px; /* Max width for large screens */
-    color: #FFC62E; /* Text color */
-    border: 2px solid #FFC62E; /* Adding a slight border for a game-like feel */
+    border: 2px solid #F7D37C; /* Adding a slight border for a game-like feel */
+    position: relative; /* Make this the reference point for absolutely positioned children */
 }
 
-/* Logo container */
-.logo-container {
-    text-align: center;
-    margin-bottom: auto; /* Add some space below the logo */
+/* Positioning for ADNU logo and university name */
+.position-absolute {
+    display: flex; /* Enable horizontal alignment for logo and text */
+    align-items: center; /* Align logo and text vertically */
+    position: absolute; /* Keep it at the top-left */
+    top: 20px; /* Adjust distance from the top */
+    left: 20px; /* Adjust distance from the left */
+    gap: 10px; /* Space between the logo and the text */
 }
 
-.logo {
-    max-width: 320px; /* Slightly smaller for a gamified feel */
-    margin-bottom: auto;
-    margin-top: auto;
-    margin-left: 0;
-    border-radius: 50%; /* Circular logo for a modern look */
-    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.4); /* Soft glowing shadow */
+.adnu-logo {
+    max-width: 60px; /* Default max width for larger screens */
+    max-height: 60px; /* Default max height for larger screens */
 }
 
-.logo-container p {
-    font-size: 28px;
-    font-weight: bold;
-    color: #FFC62E; /* Text color for GGclass */
-    margin-top: 5px;
-    text-shadow: 2px 2px 10px rgba(255, 198, 46, 0.5); /* Glowing effect */
+@media (max-width: 768px) {
+    .adnu-logo {
+        max-width: 40px; /* Reduce size for tablets and small devices */
+        max-height: 40px;
+    }
 }
 
-/* Content container */
-.content-container {
+@media (max-width: 480px) {
+    .adnu-logo {
+        max-width: 30px; /* Further reduce size for very small screens */
+        max-height: 30px;
+    }
+}
+
+
+.university-name {
+    font-size: 16px; /* Adjust font size */
+    font-family: 'Poppins', sans-serif; /* Optional: Use retro-style font for gamified design */
+    color: #FFFFFF; /* Matching border color for consistency */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add depth to the text */
+    line-height: 1; /* Ensure text aligns well with the logo */
+}
+
+/* Centered content (greeting and logos) */
+.center-content {
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px; /* Spacing between elements */
-    margin-left: 70px; /* Adds 20px space between logo and content */
+    align-items: center; /* Center the content horizontally */
+    position: absolute;
+    top: 50%; /* Vertically center the content */
+    left: 50%; /* Horizontally center the content */
+    transform: translate(-50%, -50%); /* Ensure exact centering */
 }
 
-/* Button styles */
-.login-button, .signup-teacher-button, .signup-student-button {
+/* Greeting text */
+.greeting {
+    font-size: 24px; /* Adjust font size */
+    font-family: 'poppins', sans-serif; /* Optional: Retro-style font */
+    color: #FFFFFFFF; /* Color to match the border */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add depth to the text */
+    margin-bottom: 20px; /* Space between greeting and logo */
+    margin-top: 30px;
+}
+
+.final-logo {
+    width: 100%; /* Allow the image to scale with its container */
+    max-width: 250px; /* Ensure it doesn't exceed its original size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space between the logo and the login button */
+}
+
+/* Optional: Add media queries for finer control on small screens */
+@media (max-width: 768px) {
+    .final-logo {
+        max-width: 150px; /* Reduce max size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .final-logo {
+        max-width: 100px; /* Further reduce size for very small screens */
+    }
+}
+
+
+.login-label {
+    font-size: 16px; /* Label font size */
+    font-family: 'Poppins', sans-serif; /* Font style for the label */
+    color: #FFFFFFFF; /* Text color */
+    margin-bottom: 15px; /* Space between the label and the login button */
+}
+
+/* Content container for login button */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Login button styles */
+.login-button {
     display: flex;
     align-items: center;
-    padding: 15px 25px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #FFC62E;
-    background: linear-gradient(145deg, #2A2E34, #1E2127); /* Dark gradient */
+    padding: 10px 25px;
+    font-size: 15px;
+    background: #FFFFFF; /* Button color */
+    color: #000000;
     border-radius: 12px;
     text-decoration: none;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
-    margin: 0 auto;
-    justify-content: center;
-    width: 250px;
+    align-items: center;
+    width: 200px;
+    border: 2px solid #F7D37C;
 }
 
-.login-button:hover, .signup-teacher-button:hover, .signup-student-button:hover {
-    background-color: #3A4049;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.8), 0px 0px 15px rgba(255, 198, 46, 0.5);
-    transform: translateY(-5px); /* Elevates the button on hover */
-}
 
 .google-icon {
     width: 24px;
@@ -88,22 +164,6 @@ body {
     margin-right: 10px;
 }
 
-.signup-teacher-button, .signup-student-button {
-    width: 200px;
-}
-
-/* Sign-up text */
-.sign-up-text {
-    font-size: 20px;
-    color: #FFC62E;
-    font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(255, 198, 46, 0.4);
-}
-
-/* Gamified neon hover effect for buttons */
-.signup-teacher-button:hover, .signup-student-button:hover {
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.8), 0px 0px 20px rgba(46, 198, 255, 0.8);
-}
 
 .back-button {
     position: fixed; /* Fixed position */
