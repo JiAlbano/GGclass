@@ -1,0 +1,4 @@
+vendor/
+dockerthings/
+.env
+.env*
