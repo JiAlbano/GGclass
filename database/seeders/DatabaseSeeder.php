@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             AssessmentSeeder::class,
             AssessmentTypeSeeder::class,
             ScoreSeeder::class,
+            UserSeeder::class,
+            // Add more seeders as needed...
         ]);
         // Call the CourseSeeder first
         $this->call(CourseSeeder::class);
