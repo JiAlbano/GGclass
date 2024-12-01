@@ -5,7 +5,7 @@ services:
     env_file:
       - .env
     ports:
-      - 80:8000
+      - 8000:8000
     volumes:
       - .:/var/www/html
     stdin_open: true
@@ -21,7 +21,5 @@ services:
       MYSQL_ROOT_USERNAME: root
       MYSQL_ROOT_PASSWORD: test
       MYSQL_DATABASE: test
-      MYSQL_USERNAME: root
-      MYSQL_PASSWORD: test
-    volumes:
-    - ./dockerthings/db:/var/lib/mysql
+      MYSQL_USERNAME: test # should not be root
+      MYSQL_PASSWORD: test #
