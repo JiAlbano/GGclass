@@ -1,0 +1,27 @@
+services:
+  web:
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - 80:8000
+    volumes:
+      - .:/var/www/html
+    stdin_open: true
+    tty: true
+    command: /bin/sh -c "php artisan serve --host=0.0.0.0 --port=8000"
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_USERNAME: root
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: test
+    volumes:
+    - ./dockerthings/db:/var/lib/mysql
