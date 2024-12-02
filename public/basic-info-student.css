@@ -1,0 +1,159 @@
+body {
+    position: relative; /* Needed to position the pseudo-element */
+    background-image: url('Adnu-building.jpg');
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    height: 100vh; /* Ensure it covers the full height of the viewport */
+    margin: 0; /* Remove default body margin */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif; /* Use a modern font for a gamified look */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+body::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit; /* Use the same background image */
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    filter: blur(3px); /* Apply blur to the background image */
+    z-index: -1; /* Place it behind all content */
+}
+
+/* Outer container styling */
+.container {
+    width: 100%;
+    max-width: 1000px; /* Limits width on larger screens */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main container styling */
+.main-container {
+    width: 60%; /* Controls the width of the container */
+    height: 390px;
+    background-color: #FFFFFF; /* White background for contrast */
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid #F7D37C;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Header label styling */
+.header-label {
+    position: absolute;
+    top: 0;
+    left: 0; /* Align to the left edge of the main container */
+    width: 100%; /* Match the width of the main container */
+    background-color: #283891; /* Blue background */
+    color: white;
+    padding: 15px 0; /* Adjust vertical padding */
+    font-size: 18px;
+    border-top-left-radius: 20px; /* Match the container's top-left radius */
+    border-top-right-radius: 20px; /* Match the container's top-right radius */
+    font-family: 'Poppins', sans-serif; /* Adjust font style */
+    text-align: center; /* Center the text horizontally */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #F7D37C;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .main-container {
+        width: 80%; /* Adjust width for smaller screens */
+        padding: 15px;
+    }
+    .header-label {
+        font-size: 1em;
+        padding: 12px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-container {
+        width: 90%; /* Further adjust width for very small screens */
+        padding: 10px;
+    }
+    .header-label {
+        font-size: 0.9em;
+        padding: 10px 0;
+    }
+}
+
+/* Form description */
+.form-description {
+    display: block;
+    margin-top:50px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    font-size: 12px;
+    border: 1px solid #283891;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Button group styling */
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-btn,
+.save-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #FFFFFF;
+    color: #000;
+    border: 2px solid #F7D37C;
+    font-size: 12px;
+
+}
+
+.save-btn {
+    background-color: #283891;
+    color: #FFFFFF;
+    border: 2px solid #F7D37C;
+    font-size: 12px;
+}

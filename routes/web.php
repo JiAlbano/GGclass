@@ -53,6 +53,14 @@ Route::get('/auth.view', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/basic-info-teacher.view', function () {
+    return view('basic-info-teacher');
+})->name('basic.info.teacher');
+
+Route::get('/basic-info-student.view', function () {
+    return view('basic-info-student');
+})->name('basic.info.student');
+
 Route::get('/signup-teacher', function () {
     return view('signup_teacher');
 })->name('signup.teacher');

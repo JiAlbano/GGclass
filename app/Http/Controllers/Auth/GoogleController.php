@@ -29,25 +29,34 @@ class GoogleController extends Controller
             }
 
    // Find the user by email
-   $user = User::where('email', $googleUser->getEmail())->first();
+        $user = User::where('email', $googleUser->getEmail())->first();
 
-   // If user doesn't exist, redirect to signup
-   if (!$user) {
-       return redirect('/auth.view')->withErrors('Please sign up your account first.');
-   }
+        // If user doesn't exist, sign up user as student
+        if (!$user) {
+            $user= User::create([
+                'first_name' => $googleUser->getName(),
+                'middle_name' => "",
+                'last_name' => "",
+                'email' => $googleUser->getEmail(),
+                'id_number' => "",
+                'course_id' =>0,
+                'user_type' => 'student',
+            ]);
+        }
 
-   // Update Google-related fields
-   $user->google_id = $googleUser->getId();
-   $user->google_access_token = $googleUser->token;
-   $user->google_profile_image = $googleUser->getAvatar(); // Optional if you want to store profile image
-   $user->save();
+        // Update Google-related fields
+        $user->google_id = $googleUser->getId();
+        $user->google_access_token = $googleUser->token;
+        $user->google_profile_image = $googleUser->getAvatar(); // Optional if you want to store profile image
+        $user->save();
 
 
     // Log in the user
     Auth::login($user); // This should now be a User model instance
 
 
-        return redirect()->intended(route('classroom.index')); // redirect to the intended page after login
+        return redirect()->intended(route('classroom.index'));
+
     }
     
     public function logout()

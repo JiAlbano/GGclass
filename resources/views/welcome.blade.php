@@ -39,34 +39,34 @@
         </script>
 
     <div class="container">
-    <div class="position-relative">
-        <!-- Existing logo and university name at the top-left -->
-        <div class="position-absolute top-0 start-0">
-            <img src="{{asset('img/Ateneo_de_Naga_University_logo.png')}}" alt="Adnu logo" class="adnu-logo">
-            <span class="university-name">Ateneo de Naga University</span>
-        </div>
-    </div>
-
-    <!-- Centered greeting, logo, and login button -->
-    <div class="center-content">
-        <span class="greeting">Hello, Ateneans</span>
-        <img src="{{asset('FinalLogo.png')}}" alt="Final Logo" class="final-logo">
-
-        <div class="login-label">
-            <span>Log-in your account</span>
+        <div class="position-relative">
+            <!-- Existing logo and university name at the top-left -->
+            <div class="position-absolute top-0 start-0">
+                <img src="{{asset('img/Ateneo_de_Naga_University_logo.png')}}" alt="Adnu logo" class="adnu-logo">
+                <span class="university-name">Ateneo de Naga University</span>
+            </div>
         </div>
 
-        <!-- Login button below the logo -->
-        <div class="content-container">
-            <div class="login-container">
-                <a href="{{ route('googleRedirect') }}" class="login-button">
-                    <img src="{{ asset('googlelogo.png') }}" alt="Google Logo" class="google-icon">
-                    Login with Gbox account
-                </a>
+        <!-- Centered greeting, logo, and login button -->
+        <div class="center-content">
+            <span class="greeting">Hello, Ateneans</span>
+            <img src="{{asset('FinalLogo.png')}}" alt="Final Logo" class="final-logo">
+
+            <div class="login-label">
+                <span>Log-in your account</span>
+            </div>
+
+            <!-- Login button below the logo -->
+            <div class="content-container">
+                <div class="login-container">
+                    <a href="{{ route('googleRedirect') }}" class="login-button">
+                        <img src="{{ asset('googlelogo.png') }}" alt="Google Logo" class="google-icon">
+                        Login with Gbox account
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>

@@ -16,10 +16,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('id_number')->unique();
+            $table->string('id_number')->unique()->nullable();
             $table->unsignedBigInteger('course_id')->nullable();
             $table->string('user_type');
+            $table->string('google_id')->nullable();
             $table->string('google_profile_image')->nullable(); // For Google profile image
+            $table->string('google_access_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(); 
             $table->rememberToken();
