@@ -248,12 +248,11 @@ function handleLogout(event) {
 
                 <!-- User Profile-->
 
-                <img class="profile-img"
-                src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
-                alt="Profile"
-                id="logout-btn"
-
-                aria-expanded="false">
+                <img class="profile-img" src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile" id="logout-btn" aria-expanded="false">
+                <p class="UsernameTop">
+                    <span><strong>Username</strong></span>
+                    <span>Faculty</span>
+                </p>
 
            <!-- Logout Dropdown -->
            <div class="logout-container">
@@ -267,11 +266,19 @@ function handleLogout(event) {
                    </li>
                </ul>
            </div>
+
+
+     
             </header>
         <!---End Header-->
 
         <!--ClassCard -->
 <div class="container mt-5">
+<div>
+     <img class="adnu-img-center" src="{{ asset('img/Ateneo_de_Naga_University_logo_transparent.png') }}" alt="GGclass Logo">
+     <p class="Intro-text"> Add a class to get started </p>
+</div>
+
     <div class="row">
     @foreach($classes as $class)
             @component('components.class_card', ['class' => $class]) @endcomponent
