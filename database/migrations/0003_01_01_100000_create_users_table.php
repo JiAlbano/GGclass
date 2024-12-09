@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('first_name');
+            $table->string('middle_initial')->nullable();
             $table->string('last_name');
-            $table->string('id_number')->unique()->nullable();
-            $table->unsignedBigInteger('course_id')->nullable();
+            $table->string('id_number')->unique()->nullable()->default('');
+            $table->unsignedBigInteger('course_id')->default(0);
+            $table->string('ign')->nullable();
             $table->string('user_type');
-            $table->string('google_id')->nullable();
+            $table->string('department')->nullable();
             $table->string('google_profile_image')->nullable(); // For Google profile image
-            $table->string('google_access_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(); 
             $table->rememberToken();

@@ -80,9 +80,12 @@ Route::post('signup-student', [SignupStudentController::class, 'handleSignup']);
 Route::middleware('auth')->group(function () {
     // Classroom Routes
     Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.index');
+    Route::get('basic-info-teacher', [GoogleController::class, 'basicInfoTeacher'])->name('basic-info-teacher');
+    Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])->name('basic-info-student');
+    Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
+    Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
     Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
     Route::post('/join-class', [ClassController::class, 'joinClass'])->name('join.class');
-
     Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
     Route::get('/tutorials/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
     Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');

@@ -13,19 +13,13 @@ class TeacherSeeder extends Seeder
     {
         DB::table('users')->insert([
 
-
             [
                 'email' => 'mipanganiban@gbox.adnu.edu.ph',
-                'first_name' => 'Mia E. Panganiban',
-                'last_name' => "",
+                'first_name' => 'Mia',
+                'middle_initial' => 'E.',
+                'last_name' => 'Panganiban',
                 'user_type' => 'teacher',
-                'id_number' => NULL,
-            ],
-            [
-                'email' => 'jipanganiban@gbox.adnu.edu.ph',
-                'first_name' => 'John Irvin E. Panganiban',
-                'last_name' => "",
-                'user_type' => 'teacher',
+                'department' => NULL,
                 'id_number' => NULL,
             ],
 

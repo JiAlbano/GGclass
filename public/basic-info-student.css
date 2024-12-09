@@ -29,6 +29,49 @@ body::after {
     z-index: -1; /* Place it behind all content */
 }
 
+        /* Logout Button Styles */
+        .logout-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #283891; /* Red color */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1000; /* Ensure it stays above other elements */
+            margin: 15px 20px;
+        }
+
+        .logout-btn:hover {
+            background-color: #F7D37C;
+            color: #000;
+            border: 2px solid #283891;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .logout-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+                top: 5px;
+                right: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logout-btn {
+                padding: 6px 12px;
+                font-size: 10px;
+                top: 5px;
+                right: 5px;
+            }
+        }
+
 /* Outer container styling */
 .container {
     width: 100%;
@@ -42,8 +85,8 @@ body::after {
 
 /* Main container styling */
 .main-container {
-    width: 60%; /* Controls the width of the container */
-    height: 390px;
+    width: 45%; /* Controls the width of the container */
+    height: 550 px;
     background-color: #FFFFFF; /* White background for contrast */
     border-radius: 20px; /* Rounded corners */
     border: 2px solid #F7D37C;
@@ -74,7 +117,7 @@ body::after {
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .main-container {
-        width: 80%; /* Adjust width for smaller screens */
+        width: 60%; /* Adjust width for smaller screens */
         padding: 15px;
     }
     .header-label {
@@ -85,7 +128,7 @@ body::after {
 
 @media screen and (max-width: 480px) {
     .main-container {
-        width: 90%; /* Further adjust width for very small screens */
+        width: 70%; /* Further adjust width for very small screens */
         padding: 10px;
     }
     .header-label {
@@ -94,19 +137,12 @@ body::after {
     }
 }
 
-/* Form description */
-.form-description {
-    display: block;
-    margin-top:50px;
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    color: #333;
-    font-weight: bold;
+.first-name {
+    margin-top: 50px;
 }
-
 /* Form group styling */
 .form-group {
-    margin-bottom: 10px;
+    margin: 10px 10px;
 }
 
 .form-group label {
@@ -119,7 +155,7 @@ body::after {
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 7px;
+    padding: 10px;
     font-size: 12px;
     border: 1px solid #283891;
     border-radius: 5px;
@@ -141,6 +177,7 @@ body::after {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .cancel-btn {

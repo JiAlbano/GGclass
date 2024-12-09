@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins', sans-serif; /* Use a modern font for a gamified look */
+    font-family: 'Georgia', sans-serif; /* Use a modern font for a gamified look */
     overflow-x: hidden; /* Hide horizontal overflow */
 }
 
@@ -77,7 +77,7 @@ body::after {
 
 .university-name {
     font-size: 16px; /* Adjust font size */
-    font-family: 'Poppins', sans-serif; /* Optional: Use retro-style font for gamified design */
+    font-family: 'Georgia', sans-serif; /* Optional: Use retro-style font for gamified design */
     color: #FFFFFF; /* Matching border color for consistency */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add depth to the text */
     line-height: 1; /* Ensure text aligns well with the logo */
@@ -99,7 +99,7 @@ body::after {
 /* Greeting text */
 .greeting {
     font-size: 24px; /* Adjust font size */
-    font-family: 'poppins', sans-serif; /* Optional: Retro-style font */
+    font-family: 'georgia', sans-serif; /* Optional: Retro-style font */
     color: #FFFFFFFF; /* Color to match the border */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add depth to the text */
     margin-bottom: 20px; /* Space between greeting and logo */
@@ -129,7 +129,7 @@ body::after {
 
 .login-label {
     font-size: 16px; /* Label font size */
-    font-family: 'Poppins', sans-serif; /* Font style for the label */
+    font-family: 'Georgia', sans-serif; /* Font style for the label */
     color: #FFFFFFFF; /* Text color */
     margin-bottom: 15px; /* Space between the label and the login button */
 }
@@ -157,6 +157,11 @@ body::after {
     border: 2px solid #F7D37C;
 }
 
+.login-button:hover{
+    background-color: #F7D37C;
+    border: 2px solid #FFFFFFFF;
+}
+
 
 .google-icon {
     width: 24px;
@@ -169,19 +174,20 @@ body::after {
     position: fixed; /* Fixed position */
     top: 20px; /* Distance from the top */
     right: 30px; /* Distance from the left */
-    background-color: #2A2E34;
+    background-color: #283891;
     color: white; /* White text */
     padding: 10px 20px; /* Some padding */
     text-align: center; /* Centered text */
     text-decoration: none; /* Remove underline */
     display: inline-block; /* Make the button inline-block */
-    font-size: 16px; /* Increase font size */
-    margin: 0; /* Remove margins */
+    font-size: 15px; /* Increase font size */
     cursor: pointer; /* Pointer/hand icon on hover */
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 50%; /* Rounded corners */
+    font-family: Georgia;
+
 }
 
 .back-button:hover {
-    background-color: #FFC62E; 
-    color: #2A2E34;
+    background-color: #F7D37C; 
+    color: #000;
 }

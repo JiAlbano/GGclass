@@ -29,6 +29,50 @@ body::after {
     z-index: -1; /* Place it behind all content */
 }
 
+ /* Logout Button Styles */
+.logout-btn {
+    position: fixed; /* Fixed position */
+    top: 20px; /* Distance from the top */
+    right: 30px; /* Distance from the left */
+    background-color: #283891;
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the button inline-block */
+    font-size: 15px; /* Increase font size */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 50%; /* Rounded corners */
+    font-family: Georgia;
+    border: 2px solid #F7D37C;
+}
+
+.logout-btn:hover {
+    background-color: #4A90E2; 
+    border: 2px solid #F7D37C;
+    color: #FFFFFF;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .logout-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logout-btn {
+        padding: 6px 12px;
+        font-size: 10px;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+
 /* Outer container styling */
 .container {
     width: 100%;
@@ -42,8 +86,8 @@ body::after {
 
 /* Main container styling */
 .main-container {
-    width: 60%; /* Controls the width of the container */
-    height: 450px;
+    width: 45%; /* Controls the width of the container */
+    height: 505px;
     background-color: #FFFFFF; /* White background for contrast */
     border-radius: 20px; /* Rounded corners */
     border: 2px solid #F7D37C;
@@ -74,7 +118,7 @@ body::after {
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .main-container {
-        width: 80%; /* Adjust width for smaller screens */
+        width: 60%; /* Adjust width for smaller screens */
         padding: 15px;
     }
     .header-label {
@@ -85,7 +129,7 @@ body::after {
 
 @media screen and (max-width: 480px) {
     .main-container {
-        width: 90%; /* Further adjust width for very small screens */
+        width: 70%; /* Further adjust width for very small screens */
         padding: 10px;
     }
     .header-label {
@@ -94,19 +138,12 @@ body::after {
     }
 }
 
-/* Form description */
-.form-description {
-    display: block;
-    margin-top:50px;
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    color: #333;
-    font-weight: bold;
+.first-name {
+    margin-top: 50px;
 }
-
 /* Form group styling */
 .form-group {
-    margin-bottom: 10px;
+    margin: 10px 10px;
 }
 
 .form-group label {
@@ -119,7 +156,7 @@ body::after {
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 7px;
+    padding: 10px;
     font-size: 12px;
     border: 1px solid #283891;
     border-radius: 5px;
@@ -137,23 +174,23 @@ body::after {
 .cancel-btn,
 .save-btn {
     padding: 10px 20px;
+    margin-right: 10px;
     font-size: 1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.cancel-btn {
-    background-color: #FFFFFF;
-    color: #000;
-    border: 2px solid #F7D37C;
-    font-size: 12px;
-
-}
-
 .save-btn {
     background-color: #283891;
     color: #FFFFFF;
     border: 2px solid #F7D37C;
-    font-size: 12px;
+    font-size: 13px;
+    font-family: Georgia;
+}
+
+.save-btn:hover{
+    background-color: #4A90E2;
+    border: 2px solid #F7D37C;
+    color: #FFFFFF;
 }
