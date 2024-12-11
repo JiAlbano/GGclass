@@ -22,6 +22,17 @@ class TeacherSeeder extends Seeder
                 'department' => NULL,
                 'id_number' => NULL,
             ],
+            
+            [
+                'email' => 'jialbano@gbox.adnu.edu.ph',
+                'first_name' => 'John Ignacious',
+                'middle_initial' => 'G.',
+                'last_name' => 'Albano',
+                'user_type' => 'teacher',
+                'department' => NULL,
+                'id_number' => NULL,
+            ],
+
 
         ]);
     }
