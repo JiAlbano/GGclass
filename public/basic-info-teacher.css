@@ -50,7 +50,7 @@ body::after {
 .logout-btn:hover {
     background-color: #4A90E2; 
     border: 2px solid #F7D37C;
-    color: #FFFFFF;
+    color: #000;
 }
 
 /* Responsive Styles */
@@ -163,6 +163,10 @@ body::after {
     box-sizing: border-box;
 }
 
+.form-group input:disabled{
+    background-color: #dfdfdf;
+}
+
 /* Button group styling */
 .button-group {
     display: flex;
@@ -192,5 +196,5 @@ body::after {
 .save-btn:hover{
     background-color: #4A90E2;
     border: 2px solid #F7D37C;
-    color: #FFFFFF;
+    color: #000;
 }

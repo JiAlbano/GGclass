@@ -158,8 +158,8 @@ body::after {
 }
 
 .login-button:hover{
-    background-color: #F7D37C;
-    border: 2px solid #FFFFFFFF;
+    background-color: #4A90E2;
+    border: 2px solid #F7D37C;
 }
 
 
@@ -188,6 +188,6 @@ body::after {
 }
 
 .back-button:hover {
-    background-color: #F7D37C; 
+    background-color: #4A90E2; 
     color: #000;
 }

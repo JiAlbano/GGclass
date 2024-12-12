@@ -49,15 +49,15 @@
                     </div>
                     <div class="form-group">
                         <label for="ign">In-game name:</label>
-                        <input type="text" id="ign" name="ign" placeholder="Enter your IGN">
+                        <input type="text" id="ign" name="ign" placeholder="Enter your IGN" required>
                     </div>
                     <div class="form-group">
                         <label for="Id-number">ID Number:</label>
-                        <input type="text" id="id-number" name="id-number" placeholder="Enter your ID Number">
+                        <input type="text" id="id-number" name="id-number" placeholder="Enter your ID Number" required>
                     </div>
                     <div class="form-group">
                         <label for="course">Course:</label>
-                        <select id="course" name="course">
+                        <select id="course" name="course" required>
                             <option value="" disabled selected>Select your Course</option>
                             @foreach($courses as $course)
                             <option value="{{ $course->id }}">{{ $course->course_name }}</option>

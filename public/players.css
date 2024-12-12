@@ -19,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #050834, #050834); /* Dark gradient for a modern feel */
+    background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
     font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
     position: fixed;
@@ -28,6 +28,7 @@ body {
     z-index: 999;
     border-bottom: 2px solid #FFC62E;
 }
+
 
 .left-section {
     display: flex;
@@ -82,13 +83,13 @@ body {
     padding: 10px 15px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
-    color: #050834;
+    color: #283891;
     cursor: pointer;
     width: 100%; /* Make buttons take the full width of their column */
 }
 
 .challenge-btn.active {
-    background-color: #050834; /* Active button color */
+    background-color: #283891; /* Active button color */
     color: white; /* Text color for active button */
     transition: all 0.3s ease;
 }

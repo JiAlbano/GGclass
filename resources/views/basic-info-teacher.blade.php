@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ign">In-game name:</label>
-                        <input type="text" id="ign" name="ign" placeholder="Enter your IGN">
+                        <input type="text" id="ign" name="ign" placeholder="Enter your IGN" required>
                     </div>
                     <div class="form-group">
                         <label for="department">Department:</label>
