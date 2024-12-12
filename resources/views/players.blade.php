@@ -184,7 +184,7 @@
     </div>
     <!-- First Member Container -->
     <div class="container2 d-flex justify-content-between align-items-center w-100">
-        <div class="align-items-center">
+        <div class="d-flex align-items-center">
             <img src="{{ asset('ainz.jpg') }}" alt="Profile Picture" class="profile-pic">
             <div class="profile-name">John Irvin Panganiban</div>
         </div>
