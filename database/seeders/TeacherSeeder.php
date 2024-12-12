@@ -21,6 +21,7 @@ class TeacherSeeder extends Seeder
                 'user_type' => 'teacher',
                 'department' => NULL,
                 'id_number' => NULL,
+  
             ],
             
             [
@@ -32,6 +33,16 @@ class TeacherSeeder extends Seeder
                 'department' => NULL,
                 'id_number' => NULL,
             ],
+            [
+                'email' => 'japeoro@gbox.adnu.edu.ph',
+                'first_name' => 'Jan rapheal',
+                'middle_initial' => 'D.',
+                'last_name' => 'Peoro',
+                'user_type' => 'teacher',
+                'department' => NULL,
+                'id_number' => NULL,
+            ],
+
 
 
         ]);
