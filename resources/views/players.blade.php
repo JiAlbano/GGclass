@@ -115,7 +115,7 @@
 
 <!-- Display profile picture -->
 
-<div class="info-container ">
+<!-- <div class="info-container ">
     <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
     <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
     <div class="container-info-section">
@@ -134,9 +134,36 @@
             <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
             <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
         </div>
-</div>
+</div> -->
 
-<div class="container-adviser my-4">
+<div class="dashboard-container">
+    <!-- Back Button -->
+    <div class="back-button">
+        <button onclick="window.history.back()">&#8592; Back</button>
+    </div>
+
+    <div class="content-container">
+        <!-- Class Card -->
+        <div class="class-card">
+            <div class="class-header">
+                <p>School Year: 2024 - 2025</p>
+                <p>Semester: 1st</p>
+                <p>Section: {{ $class->section }}</p>
+            </div>
+            <div class="class-details">
+                <h2>CSDC101</h2>
+                <p>TTH 09:00AM - 10:30AM</p>
+                <p>AL411B</p>
+            </div>
+            <div class="class-buttons">
+                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                <button onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">Gradebook</button>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+
     <div class="container d-flex justify-content-between align-items-center custom adviser">
         <div class="d-flex align-items-center">
             <img src="{{ asset('ainz.jpg') }}" alt="Profile Picture" class="profile-pic">
@@ -144,11 +171,10 @@
         </div>
         <div class="profile-role">Adviser</div>
     </div>
-</div>
 
 
-<div class="container-adviser my-4">
-<div class="container-sm d-flex flex-column justify-content-start align-items-center">
+
+<div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
     <!-- First container2 -->
     <div class="d-flex justify-content-between align-items-start w-100">
         <!-- Profile Member on the left -->
@@ -158,7 +184,7 @@
     </div>
     <!-- First Member Container -->
     <div class="container2 d-flex justify-content-between align-items-center w-100">
-        <div class="d-flex align-items-center">
+        <div class="align-items-center">
             <img src="{{ asset('ainz.jpg') }}" alt="Profile Picture" class="profile-pic">
             <div class="profile-name">John Irvin Panganiban</div>
         </div>
@@ -177,10 +203,12 @@
             <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
         </div>
     </div>
+    </div>
 
-</div>
+    </div>
 </div>
 
+    
 
 </body>
 </html>

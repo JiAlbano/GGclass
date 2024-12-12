@@ -109,7 +109,7 @@
 </div>
 
 
-<div class="info-container ">
+<!-- <div class="info-container ">
     <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
     <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
     <div class="rank-section">
@@ -122,7 +122,27 @@
     </div>
     <div class="container-info-email">
         <p>{{ $user->email }}</p>
-    </div>
+    </div> -->
+
+    <div class="content-container">
+        <!-- Class Card -->
+        <div class="class-card">
+            <div class="class-header">
+                <p>School Year: 2024 - 2025</p>
+                <p>Semester: 1st</p>
+                <p>Section: {{ $class->section }}</p>
+            </div>
+            <div class="class-details">
+                <h2>CSDC101</h2>
+                <p>TTH 09:00AM - 10:30AM</p>
+                <p>AL411B</p>
+            </div>
+            <div class="class-buttons">
+                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                <button onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">Gradebook</button>
+            </div>
+        </div>
 
         <div class="container-buttons">
             <button class="btn1 challenge-btn active"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>

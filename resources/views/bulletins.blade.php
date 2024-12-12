@@ -180,7 +180,7 @@
         </div>
         </div>
     </div>
-</div>
+
 
 {{-- <div class="info-container">
         <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
