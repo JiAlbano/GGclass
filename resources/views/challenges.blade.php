@@ -146,29 +146,48 @@
   <div class="add-challenge-container">
         <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
             <div class="icon">
-                <img src="path_to_your_icon.png" alt="Add Challenge Icon" class="icon-img">
+            <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
             </div>
             <div class="text">Create a new challenge to your class</div>
             <div class="plus-icon">+</div>
         </button>
     </div>
             <!-- Modal Structure -->
-<div id="challengeModal" class="modal">
+            <div id="challengeModal" class="modal">
     <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
         <h2 class="modal-title">Create Challenge</h2>
         <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
             @csrf
-            <label for="challengeType" class="form-label">Challenge Type</label>
-            <input type="text" id="challengeType" name="challengeType" class="form-input" placeholder="Enter your challenge type (e.g., Quiz, Test)"  required />
+            <!-- <div class="form-group">
+                <label for="challengeTitle" class="form-label">Challenge Title</label>
+                <input 
+                    type="text" 
+                    id="challengeTitle" 
+                    name="challengeTitle" 
+                    class="form-input" 
+                    placeholder=" " 
+                    required 
+                />
+            </div> -->
+            <div class="form-group">
+    <label for="challengeType" class="form-label">Challenge Type</label>
+    <select id="challengeType" name="challengeType" class="form-input" required>
+        <option value="" disabled selected>Select a challenge type</option>
+        <option value="exam">Exam</option>
+        <option value="test_and_quizzes">Test and Quizzes</option>
+        <option value="activity">Activity</option>
+        <option value="term paper">Term Paper</option>
+        <option value="project">Project</option>
+    </select>
+</div>
             <button type="submit" id="createBtn" class="form-button">Create</button>
         </form>
     </div>
 </div>
-
         <!-- Display Challenges -->
 
-        <div class="container1">
+        <!-- <div class="container1">
         <div class="grid-container">
             @foreach($challenges as $challenge)
                 @if(in_array($challenge->type, ['test_and_quizzes', 'exam', 'activity']))
@@ -178,7 +197,29 @@
                 @endif
             @endforeach
         </div>
-    </div>
+    </div> -->
+           <!-- Display Challenges -->
+
+           <div class="challenge-list">
+    @foreach($challenges as $challenge)
+        @if(in_array($challenge->type, ['test_and_quizzes', 'exam', 'activity']))
+        <button class="challenge-item" onclick="window.location.href='{{ route($challenge->type .'.show', ['classId' => $class->id]) }}'">
+            <div class="challenge-icon">
+            <img src="{{ asset('megaphone.png') }}"/>
+            </div>
+            <div class="challenge-content">
+                <p class="challenge-title">
+                    Challenge type: {{ ucfirst(str_replace('_', ' ', $challenge->type)) }}
+                </p>
+                <p class="challenge-date">{{ $challenge->created_at->format('M d, Y') }}</p>
+            </div>
+            <div class="challenge-options">
+                <span class="options-btn">•••</span>
+            </div>
+        </button>
+        @endif
+    @endforeach
+</div>
 
     <script>
         const modal = document.getElementById("challengeModal");
@@ -200,20 +241,20 @@
         };
     </script>
 
-    <!-- Bulletin List -->
-    <div class="bulletin-list">
-        <div class="bulletin-item">
-            <div class="bulletin-icon">
+    <!-- challenge List -->
+    <!-- <div class="challenge-list">
+        <div class="challenge-item">
+            <div class="challenge-icon">
                 <img src="megaphone-icon.png" alt="Icon">
             </div>
-            <div class="bulletin-content">
-                <p class="bulletin-title">You posted a new type of challenge: Quiz</p>
-                <p class="bulletin-date">Dec 21, 2024</p>
+            <div class="challenge-content">
+                <p class="challenge-title">You posted a new type of challenge: Quiz</p>
+                <p class="challenge-date">Dec 21, 2024</p>
             </div>
-            <div class="bulletin-options">
+            <div class="challenge-options">
                 <button class="options-btn">•••</button>
             </div>
-        </div>
+        </div> -->
 
     </div>
     </div>
