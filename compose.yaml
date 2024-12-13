@@ -39,7 +39,7 @@ services:
       - .:/var/www/html
     stdin_open: true
     tty: true
-    command: /bin/sh -c "php artisan serve --host=0.0.0.0 --port=8000"
+    command: /bin/sh -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
   db:
     container_name: mysql
     
