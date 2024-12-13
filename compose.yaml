@@ -28,21 +28,15 @@ services:
       GOOGLE_CLIENT_ID: 448222481476-nuehi9olmkgjrog35em9rqu1c7mk40eg.apps.googleusercontent.com
       GOOGLE_CLIENT_SECRET: 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
       GOOGLE_REDIRECT_URI: http://127.0.0.1:8000/auth/callback/google
-
-
-
     build:
       context: .
     ports:
       - 8000:8000
-    volumes:
-      - .:/var/www/html
     stdin_open: true
     tty: true
     command: /bin/sh -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
   db:
     container_name: mysql
-    
     image: mysql:8.0
     ports:
       - 3306:3306
