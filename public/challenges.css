@@ -80,6 +80,7 @@ body {
 }
 
 .row .btn {
+    font-family: 'Press Start 2P', cursive;
     padding: 10px 15px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
