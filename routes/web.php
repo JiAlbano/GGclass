@@ -38,6 +38,18 @@ use App\Http\Controllers\StudentquiztakeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthenticatedSessionController;
 
+// autorun
+
+Route::get('/migrate', function () {
+    Artisan::call('migrate --force');
+    return 'Migrations completed!';
+});
+
+Route::get('/seed', function () {
+    Artisan::call('db:seed --force');
+    return 'Seeders executed!';
+});
+
 // Public Routes
 Route::get('/', function () {
     return view('home');
