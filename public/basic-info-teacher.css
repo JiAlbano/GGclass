@@ -87,7 +87,7 @@ body::after {
 /* Main container styling */
 .main-container {
     width: 45%; /* Controls the width of the container */
-    height: 505px;
+    height: 440px;
     background-color: #FFFFFF; /* White background for contrast */
     border-radius: 20px; /* Rounded corners */
     border: 2px solid #F7D37C;

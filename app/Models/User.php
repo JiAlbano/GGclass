@@ -36,6 +36,7 @@ class User extends Authenticatable
         'id_number',
         'birthday',
         'course_id',
+        'token_count',
 
     ];
 

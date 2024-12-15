@@ -136,9 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the timer every second
     let timer = setInterval(updateTimer, 1000);
 });
+
 </script>
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -214,16 +213,16 @@ function switchQuestion(number) {
         multipleChoice.style.display = 'block';
         const options = questions[number - 1].options;
         let optionHtml = ``;
-        options.map(item => {
+        options.map((item,index) => {
             if(answerExist !== undefined || answerExist != null) {
                 if(answerExist.answer === item) {
-                    optionHtml += `<button class="option-btn active" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+                    optionHtml += `<button class="option-btn active" id="option-btn-${parseInt(index)+1}" onclick="selectOption('${parseInt(index)+1}')">${item}</button>`;
                     $("#answer-holder").val(item)
                 } else {
-                    optionHtml += `<button class="option-btn" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+                    optionHtml += `<button class="option-btn" id="option-btn-${parseInt(index)+1}" onclick="selectOption('${parseInt(index)+1}')">${item}</button>`;
                 }
             } else {
-                optionHtml += `<button class="option-btn" id="option-btn-${item}" onclick="selectOption('${item}')">${item}</button>`;
+                optionHtml += `<button class="option-btn" id="option-btn-${parseInt(index)+1}" onclick="selectOption('${parseInt(index)+1}')">${item}</button>`;
             }
         })
         $(".options-container").html(optionHtml)
@@ -256,7 +255,7 @@ function switchQuestion(number) {
             $(".identification-container").html(
                 `<div class="form-group">
                     <label for="identification-answer">Answer:</label>
-                    <input type="text" class="form-control" id="identification-answer" value="${answerExist.answer}" placeholder="Enter answer">
+                    <input type="text" class="form-control" id="identification-answer" value="${answerExist.answer}" placeholder="Enter your answer">
                 </div>`
             );
             $("#answer-holder").val(answerExist.answer)
@@ -264,7 +263,7 @@ function switchQuestion(number) {
             $(".identification-container").html(
                 `<div class="form-group">
                     <label for="identification-answer">Answer:</label>
-                    <input type="text" class="form-control" id="identification-answer" placeholder="Enter answer">
+                    <input type="text" class="form-control" id="identification-answer" placeholder="Enter your answer">
                 </div>`
             );
         }        
@@ -301,6 +300,9 @@ function switchQuestion(number) {
         if(tokenIsEnabled) {
             token_count = token_count -token_used;
         }
+
+        console.log(answer, studentScore)
+
         await $.ajax({
                 url: '/challenges/record-score',  // URL where you want to send the PUT request
                 type: 'POST',           // Laravel uses POST to handle PUT requests
@@ -309,12 +311,15 @@ function switchQuestion(number) {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'  // Add CSRF token in headers
                 },
                 success: function(response) {
+                    console.log(response)
                     if(response == 1) {
-                        alert("You have successfully submitted your answers.");
+                            $('#scoreText').html('Your score: '+ studentScore[0].total_score)
+                            console.log(studentScore)
+                            $('#scoreModal').modal('show')
+                            $('#okayBtn').click(function(){
+                                location.href=`/studentchallenges/<?php echo $class->id; ?>/studentquiz`;
+                            }) 
                     }
-                    setTimeout(() => {
-                        location.href=`/studentchallenges/<?php echo $class->id; ?>/studentquiz`;
-                    }, 1500)
                 },
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
@@ -354,9 +359,11 @@ function switchQuestion(number) {
             const prevAnswer =studentAnswer.answer;
             studentAnswer.answer = $("#answer-holder").val();
             studentAnswer.is_correct = is_correct;
-            if(studentAnswer.answer !== prevAnswer) {
-                is_correct ? runningScore++ :runningScore--;
-            }
+            if(is_correct)
+                runningScore++;
+            // if(studentAnswer.answer !== prevAnswer) {
+            //     is_correct ? runningScore++ :runningScore--;
+            // }
         } else {
             answer.push({
                 question_id: questions[currentQuestion-1].id,
@@ -377,6 +384,7 @@ function switchQuestion(number) {
             challenge_type: 'quiz',
             number_of_items: questions.length
         }]
+        console.log(studentScore)
     }
 
     function previousQuestion() {
@@ -396,6 +404,21 @@ function switchQuestion(number) {
 
 <!-- Bootstrap CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Modal -->
+<div class="modal" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="scoreModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p id="scoreText"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="okayBtn">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 </body>

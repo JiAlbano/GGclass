@@ -294,3 +294,119 @@ input {
     border-radius: 10px; /* Rounded corners */
 }
 
+
+/*MODAL*/
+
+/* Basic Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding-top: 50px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #283891; /* Modal background color */
+    color: #000;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust the width as needed */
+    font-family: Georgia, serif;
+    max-width: 600px; /* Max width to prevent it from becoming too wide */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+/* Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Button Style */
+button {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Optional: Center modal content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For small screens, like mobile devices */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Adjust width to fit smaller screens */
+        padding: 15px;
+    }
+
+    button {
+        padding: 8px 16px; /* Adjust button padding for smaller screens */
+        font-size: 14px; /* Slightly smaller text */
+    }
+
+    .close {
+        font-size: 24px; /* Smaller close button */
+    }
+}
+
+/* For very small screens, like extra small mobile devices */
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 95%; /* Further adjust for very small screens */
+        padding: 10px;
+    }
+
+    button {
+        padding: 6px 12px; /* Smaller button */
+        font-size: 12px; /* Smaller font size */
+    }
+
+    .close {
+        font-size: 20px; /* Even smaller close button */
+    }
+}
+
+/* For larger screens like tablets and desktops */
+@media screen and (min-width: 1024px) {
+    .modal-content {
+        width: 50%; /* Make modal content wider for larger screens */
+    }
+
+    button {
+        padding: 12px 24px; /* Increase button padding for larger screens */
+    }
+}

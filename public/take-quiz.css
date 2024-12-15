@@ -7,10 +7,10 @@
 
 body {
     font-family: Georgia;
-/*    background-color: #f0f0f0;*/
+    background-color: white;
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: url('Adnu-building.jpg');
+/*    background-image: url('Adnu-building.jpg');*/
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -102,7 +102,7 @@ color:#FFC62E;
 .timer-container {
     width: 250px;
     height: 100%;
-    max-height: 150px;
+    max-height: 160px;
     padding: 10px;
     background-color: #283891;
     color: #FFC62E;
@@ -419,7 +419,7 @@ label.radio {
     cursor: pointer;
     border: none;
     font-family: Georgia;
-    font-size: 16px;
+    font-size: 12px;
     align-items: center;
     justify-content: center;
 }
@@ -437,7 +437,7 @@ label.radio {
     cursor: pointer;
     border: none;
     font-family: Georgia;
-    font-size: 16px;
+    font-size: 12px;
     align-items: center;
     justify-content: center;
 }

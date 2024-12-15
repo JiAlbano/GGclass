@@ -33,10 +33,10 @@
                         <label for="first-name" class="first-name">First Name:</label>
                         <input type="text" id="first-name" name="first_name" value="{{ $user->first_name }}" disabled>
                     </div>
-                    <div class="form-group">
+<!--                     <div class="form-group">
                         <label for="middle-name">Middle Initial:</label>
                         <input type="text" id="middle-initial" name="middle_initial" value="{{ $user->middle_initial }}" disabled>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="last-name">Last Name:</label>
                         <input type="text" id="last-name" name="last_name" value="{{ $user->last_name }}" disabled>
