@@ -97,7 +97,7 @@ body {
 
 
 .btn:hover {
-    text-decoration: underline;
+    color: #FFC62E;
     font-weight: bold;
 }
 
@@ -487,7 +487,7 @@ body {
 
 .content-container {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     flex-wrap: wrap;
 }
 
@@ -498,7 +498,7 @@ body {
     gap: 2px; /* Spacing between items */
     width: 120%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 0px auto;
     margin-left: 10px;
 
 }
@@ -661,6 +661,9 @@ body {
 }
 
 /* Back Button */
+
+
+
 .back-button {
     margin: 20px;
 }
@@ -677,6 +680,3 @@ body {
     gap: 5px;
 }
 
-.back-button button:hover {
-    text-decoration: underline;
-}
