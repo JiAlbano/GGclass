@@ -15,6 +15,7 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
+            $table->integer('teacher_id');
             $table->string('class_name');
             $table->string('subject');
             $table->string('section');

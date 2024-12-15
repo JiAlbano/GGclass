@@ -55,6 +55,7 @@ class ClassController extends Controller
 
         // Create a new class
         Classroom::create([
+            'teacher_id' => Auth::id(),
             'class_name' => $request->input('class_name'),
             'section' => $request->input('section'),
             'subject' => $request->input('subject'),

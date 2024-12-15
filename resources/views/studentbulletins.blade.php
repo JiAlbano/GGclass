@@ -24,8 +24,7 @@
 <div class="navbar">
     <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
         <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-        <h1 class="ggclass-font">GGclass ></h1>
-        <h2 class="section-font">{{ $class->section }}</h2>
+        <h1 class="ggclass-font">GGclass</h1>
     </div>
 
         <!-- <div class="right-section">
@@ -97,16 +96,16 @@
 <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn challenge-btn active" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+            <button class="btn challenge-btn active" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
+            <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
+            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
+            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
         </div>
     </div>
 </div>
@@ -157,7 +156,7 @@
             <div class="class-buttons">
                 <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
                 <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-   
+                <button onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
             </div>
         </div>
 
