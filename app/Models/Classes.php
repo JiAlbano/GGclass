@@ -14,6 +14,6 @@ class Classes extends Model
     protected $table = 'classes';
 
     // Specify which attributes are mass assignable
-    protected $fillable = ['class_name', 'subject' , 'section' , 'schedule' , 'room' , 'class_code', 'image_path', ];
+    protected $fillable = ['teacher_id','class_name', 'subject' , 'section' , 'schedule' , 'room' , 'class_code', 'image_path', ];
 
 }
