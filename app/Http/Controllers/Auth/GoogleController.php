@@ -33,33 +33,45 @@ class GoogleController extends Controller
             }
 
    // Find the user by email
-        $user = User::where('email', $googleUser->getEmail())->first();
+   $user = User::where('email', $googleUser->getEmail())->first();
 
-        //Seperating full name to first, middle and last name
-        $middle_initial = substr(strrchr($googleUser->user['given_name'], ' '), 1);
-        $last_name = $googleUser->user['family_name'];
-        $lastSpacePos = strrpos($googleUser->user['given_name'], ' ');
-        $first_name = substr($googleUser->user['given_name'], 0, $lastSpacePos);
+   $full_name = $googleUser->user['name']; // e.g., "John Ignacious G. Albano"
+
+   // Split the name into parts
+   $name_parts = explode(' ', $full_name);
+
+   // Extract the last name (assume the last word is the last name)
+   $last_name = array_pop($name_parts);
+
+   // Filter out middle initials (e.g., single letters like "G." or "G")
+   $filtered_parts = array_filter($name_parts, function ($part) {
+       return !(strlen($part) === 1 || preg_match('/^[A-Z]\.$/', $part));
+   });
+
+   // Reassemble the first name (remaining parts)
+   $first_name = implode(' ', $filtered_parts);
+
 
         // If user doesn't exist, sign up user as student
         if (!$user) {
-            $user= User::create([
-                'first_name' => $first_name,
-                'middle_initial' => $middle_initial,
-                'last_name' => $last_name,
+            $user = User::create([
+                'first_name' => $first_name,   // First name
+                'middle_initial' => null,      // Middle initial removed
+                'last_name' => $last_name,     // Last name
                 'email' => $googleUser->getEmail(),
                 'id_number' => "",
-                'course_id' =>0,
-                'ign'=>"",
+                'course_id' => 0,
+                'ign' => "",
                 'user_type' => 'student',
             ]);
         }
-
+    
         // Update Google-related fields
         $user->google_id = $googleUser->getId();
         $user->google_access_token = $googleUser->token;
         $user->google_profile_image = $googleUser->getAvatar(); // Optional if you want to store profile image
         $user->save();
+    
 
 
         

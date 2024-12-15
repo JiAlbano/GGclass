@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('google_profile_image')->nullable(); // For Google profile image
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(); 
+            $table->string('google_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
