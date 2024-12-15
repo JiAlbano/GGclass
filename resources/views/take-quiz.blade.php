@@ -30,14 +30,18 @@
 <div class="navbar">
     <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
         <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-        <h1 class="ggclass-font">GGclass ></h1>
-        <h2 class="section-font">{{ $class->section }}</h2>
+        <h1 class="ggclass-font">GGclass</h1>
+        <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
     </div>
 
     <div class="right-section">
         <img class="profile-img"  src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>
+
+    <div class="back">
+        <button onclick="window.history.back()">&#8592; Back</button>
+    </div>
 
     <!-- Bootstrap container for responsiveness -->
 <div class="container d-flex justify-content-center align-items-center">
@@ -105,6 +109,7 @@
             <span id="question-text">{{ $questions[0]->question }}</span>
             <button id="edit-btn" class="edit-btn" onclick="openEditModal()">Edit</button>
         </div>
+
         <div id="question-type-container">
             <!-- Multiple choice question (default) -->
             <div style="text-align: center;" >
@@ -237,11 +242,11 @@
 
     <!-- Edit Question Modal -->
     <div id="edit-modal" class="modal" style="display:none;">
-        <div class="modal-content ">
+        <div class="modal-content " style="background-color: #283891">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h3>Edit Question</h3>
             <div class="question-text">
-                <label for="edit-question-text" class="question">Question:</label>
+                <label for="edit-question-text" class="question" style="color: white; padding: 10px;">Question:</label>
                 <input type="text" class="input-question" id="edit-question-text" />
             </div>
             <!-- Options for Multiple Choice -->
