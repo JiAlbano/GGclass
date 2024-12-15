@@ -119,7 +119,9 @@
        <div class="dashboard-container">
     <!-- Back Button -->
     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
+    <button onclick="window.history.back()" class="btn btn-secondary">
+        &#8592; Back
+    </button>
     </div>
 
     <div class="content-container">
@@ -149,7 +151,6 @@
             <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
             </div>
             <div class="text">Create a new challenge to your class</div>
-            <div class="plus-icon">+</div>
         </button>
     </div>
             <!-- Modal Structure -->

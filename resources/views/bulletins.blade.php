@@ -157,8 +157,8 @@
             <div class="icon">
                 <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
             </div>
-            <div class="text">Create a new challenge to your class</div>
-            <div class="plus-icon">+</div>
+            <div class="text">Create a new bulletin to your class</div>
+
         </button>
     </div>
 
