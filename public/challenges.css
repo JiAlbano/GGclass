@@ -80,6 +80,7 @@ body {
 }
 
 .row .btn {
+    font-family: 'Press Start 2P', cursive;
     padding: 10px 15px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
@@ -490,8 +491,8 @@ body {
     flex-wrap: wrap;
 }
 
-/* Bulletin List Container */
-.bulletin-list {
+/* challenge List Container */
+.challenge-list {
     display: flex;
     flex-direction: column;
     gap: 2px; /* Spacing between items */
@@ -502,67 +503,78 @@ body {
 
 }
 
-/* Individual Bulletin Item */
-.bulletin-item {
+/* Individual challenge Item */
+.challenge-list {
     display: flex;
-    align-items: center;
-    background-color: white;
-    border: 1px solid #151414e6;
-    border-radius: 5px;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Add spacing between items */
+}
+
+.challenge-item {
+    display: flex;
+    align-items: center; /* Align content vertically */
+    justify-content: flex-start; /* Align content to the left */
     width: 200%;
-    padding: 10px 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease;
+    padding: 15px;
+    border: 1px solid #080808;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left; /* Ensure text aligns to the left */
+    transition: background-color 0.3s ease;
 }
 
-.bulletin-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+.challenge-icon {
+    margin-right: 15px;
 }
 
-/* Icon Section */
-.bulletin-icon img {
+.challenge-icon img {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
+    filter: brightness(1.2); /* Slightly brighten icons */
 }
 
-/* Bulletin Content */
-.bulletin-content {
+.challenge-content {
     flex-grow: 1;
-    margin-left: 10px;
-    font-family: Arial, sans-serif;
 }
 
-.bulletin-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: #2b52b2;
+.challenge-item:hover {
+    transform: scale(1.02); /* Subtle scaling for hover effect */
+    background-color: #a8a4a4b8;
+  
+}
+
+.challenge-title {
     margin: 0;
+    color: #2E3667; /* White text for better contrast */
+    font-family: 'Arial', sans-serif;
+    font-size: 16px; /* Slightly larger for readability */
+    font-weight: bold;
 }
 
-.bulletin-date {
-    font-size: 12px;
-    color: #888;
-    margin: 5px 0 0 0;
+.challenge-date {
+    margin: 0;
+    color: #959595; /* Subtle gray for date text */
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
 }
 
-/* Options Button */
-.bulletin-options {
-    margin-left: auto;
+.challenge-options {
+    display: flex;
+    align-items: center;
 }
 
 .options-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #888;
+    font-size: 18px;
+    color: #484646; /* White for better contrast */
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
 }
 
 .options-btn:hover {
-    color: #2b52b2;
+    color: #ffcc00; /* Gold accent color for hover */
 }
 
 /* General container styling */

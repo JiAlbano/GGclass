@@ -1,13 +1,37 @@
 services:
   web:
+    environment:
+      APP_NAME: GGclass
+      APP_ENV: local
+      APP_KEY: base64:ClmmqmANgEkmkDCt1FODWTjR/ouXHP1Ex8cdM5rukHo= 
+      APP_DEBUG: true
+      APP_URL: http://localhost
+      LOG_CHANNEL: stack
+      LOG_DEPRECATIONS_CHANNEL: null
+      LOG_LEVE: debug
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: test  # database name
+      DB_USERNAME: root # root db
+      DB_PASSWORD: test # root password
+      BROADCAST_DRIVER: log
+      CACHE_DRIVER: file
+      FILESYSTEM_DRIVER: local
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: file
+      SESSION_LIFETIME: 120
+      MEMCACHED_HOST: 127.0.0.1
+      PUSHER_APP_CLUSTER: mt1
+      MIX_PUSHER_APP_KEY: "${PUSHER_APP_KEY}"
+      MIX_PUSHER_APP_CLUSTER: "${PUSHER_APP_CLUSTER}"
+      GOOGLE_CLIENT_ID: 448222481476-nuehi9olmkgjrog35em9rqu1c7mk40eg.apps.googleusercontent.com
+      GOOGLE_CLIENT_SECRET: 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
+      GOOGLE_REDIRECT_URI: http://127.0.0.1:8000/auth/callback/google
     build:
       context: .
-    env_file:
-      - .env
     ports:
-      - 8000:8000
-    volumes:
-      - .:/var/www/html
+      - "8000:8000"
     stdin_open: true
     tty: true
     command: /bin/sh -c "php artisan serve --host=0.0.0.0 --port=8000"

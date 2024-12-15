@@ -155,7 +155,7 @@
   <div class="add-challenge-container">
         <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
             <div class="icon">
-                <img src="path_to_your_icon.png" alt="Add Challenge Icon" class="icon-img">
+                <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
             </div>
             <div class="text">Create a new challenge to your class</div>
             <div class="plus-icon">+</div>
@@ -166,7 +166,7 @@
         <div class="bulletin-list">
             <div class="bulletin-item">
                 <div class="bulletin-icon">
-                    <img src="megaphone-icon.png" alt="Icon" />
+                    <img src="{{ asset('megaphone.png') }}"/>
                 </div>
                 <div class="bulletin-content">
                     <p class="bulletin-title">You posted a new type of challenge: Quiz</p>

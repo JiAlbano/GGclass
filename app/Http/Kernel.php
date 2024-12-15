@@ -5,7 +5,8 @@ namespace App\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 
-class kernel extends HttpKernel
+class Kernel extends HttpKernel
+
 {
     protected $routeMiddleware = [
 
