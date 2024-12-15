@@ -17,12 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ asset('quiz.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('createquiz.css') }}">
 </head>
 
 <body>
 
-    <div class="navbar">
+<div class="navbar">
         <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass ></h1>
@@ -123,187 +123,43 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-end">
-    <button type="button" class="btn-add2" 
-        onclick="window.location.href='{{ route('createquiz', ['classId' => $class->id]) }}'">
-        Create
-    </button>
-</div>
-
 
     <div class="dashboard-container">
-    <!-- Back Button -->
     <div class="back-button">
-    <button onclick="window.history.back()" class="btn btn-secondary">
-        &#8592; Back
-    </button>
+        <button onclick="window.history.back()" class="btn btn-secondary">
+            &#8592; Back
+        </button>
     </div>
 
     <div class="content-container">
-        <!-- Class Card -->
-        <div class="class-card">
-            <div class="class-header">
-                <p>School Year: 2024 - 2025</p>
-                <p>Semester: 1st</p>
-                <p>Section: {{ $class->section }}</p>
-            </div>
-            <div class="class-details">
-                <h2>CSDC101</h2>
-                <p>TTH 09:00AM - 10:30AM</p>
-                <p>AL411B</p>
-            </div>
-            <div class="class-buttons">
-                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-                <button onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">Gradebook</button>
-            </div>
-        </div>
-        <div class="dashboard-container">
-
-  <!-- Add Challenge Button -->
-  <div class="add-challenge-container">
-        <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
-            <div class="icon">
-            <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
-            </div>
-            <div class="text">Create a new challenge to your class</div>
-        </button>
-    </div>
-           
-
-           <!-- Display Challenges -->
-
-           <div class="challenge-list">
-
-       <button class="challenge-item" > 
-            <div class="challenge-icon">
-            <img src="{{ asset('megaphone.png') }}"/>
-            </div>
-            <div class="challenge-content">
-                <p class="challenge-title">
-                    Challenge type: 
-                </p>
-                <!-- <p class="challenge-date"> </p> -->
-            </div>
-            <div class="challenge-options">
-                <span class="options-btn">•••</span>
-            </div>
-        </button>
-
-</div>
-
-    <script>
-        const modal = document.getElementById("challengeModal");
-        const addBtn = document.getElementById("addBtn");
-        const closeBtn = document.getElementsByClassName("close")[0];
-
-        addBtn.onclick = function() {
-            modal.style.display = "block";
-        };
-
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        };
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-    </script>
-
-    </div>
-    </div>
-
-</div>
-
-  <!-- Display profile picture -->
-
-
-        <!-- <div class="info-container">
-            <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
-    
-            <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-            <div class="container-info-section">
-                <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-                <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-                <p class="section">Section: <span>{{ $class->section }}</span></p>
-                <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
-            </div>
-            <div class="container-info-email">
-                <p>{{ $user->email }}</p>
-            </div>
-
-                    <div class="container-buttons">
-                        <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-                        <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-                        <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-                        <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-                    </div>
-            </div> -->
-
-
-<!-- Display Quizzes -->
-<div class="container1">
-    <div class="grid-container">
-        @foreach($quizzes as $quiz)
-            <button class="box" onclick="window.location.href='{{ route('test_and_quizzes.showQuiz', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
-                {{ $quiz->title }}
-            </button>
-        @endforeach
-    </div>
-</div>
-
-<!-- Modal Structure -->
-<div id="quizModal" class="modal">
-    <div class="modal-content">
-        <!-- Close Button -->
-        <span class="close-button" onclick="closeModal()">&times;</span>
-
         <h2>Create Quiz</h2>
+        
+        <form method="POST" action="{{ route('test_and_quizzes.store') }}" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="class_id" value="{{ $class->id }}">
 
-        <!-- Scrollable Container -->
-        <div class="modal-body">
-            <!-- Quiz Title and Description -->
-            <form id="quizForm" method="POST" action="{{ route('test_and_quizzes.store') }}" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="class_id" value="{{ $class->id }}"> <!-- Hidden field for class_id -->
+            <div class="form-group">
+                <label for="quizTitle">Quiz Title</label>
+                <input type="text" id="quizTitle" name="title" class="form-control" placeholder="Untitled Quiz" required>
+            </div>
 
-                <label for="quizTitle">Quiz Title:</label>
-                <input type="text" id="quizTitle" name="title" placeholder="Enter Quiz Title" required>
+            <div class="form-group">
+                <label for="quizDescription">Quiz Description</label>
+                <textarea id="quizDescription" name="description" class="form-control" placeholder="Quiz Description"></textarea>
+            </div>
 
-                <label for="quizDescription">Quiz Description:</label>
-                <textarea id="quizDescription" name="description" placeholder="Enter Quiz Description"></textarea>
-
-                <!-- Questions Container -->
+            <div class="question-section">
+                <h3>Questions</h3>
                 <div id="questionsContainer">
-                    <!-- Initial Question Form will be dynamically added here -->
-                </div>
+                <button type="button" class="btn btn-primary add-question">Add Question</button>
+            </div>
 
-                <!-- Add Initial Question Button -->
-                <button type="button" id="addQuestionButton" onclick="addQuestion()">Add Question</button>
-
-                <!-- Modal Footer with Create Quiz Button -->
-                <div class="modal-footer">
-                    <button type="button" onclick="submitQuiz()">Create</button>
-                </div>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-success mt-3">Create</button>
+        </form>
     </div>
 </div>
 
-<!-- JavaScript for Modal and Dynamic Question Handling -->
 <script>
-    // Open the modal
-    document.getElementById('createQuizButton').onclick = function() {
-        document.getElementById('quizModal').style.display = 'flex';
-    };
-
-    // Close the modal
-    function closeModal() {
-        document.getElementById('quizModal').style.display = 'none';
-    }
-
     let questionCount = 0;
     let mcOptionCount = 0;
 
@@ -397,7 +253,6 @@
                     <!-- Options will be dynamically populated here -->
                 </div>
 
-
                 <!-- File Upload Button for Each Question -->
                 <label for="uploadFile-${questionCount}">Upload File:</label>
                 <input type="file" id="uploadFile-${questionCount}" name="questions[${questionCount}][uploadFile]">
@@ -409,9 +264,9 @@
     // Submit the quiz and gather the quiz and questions data
     function submitQuiz() {
         document.getElementById('quizForm').submit();
-        closeModal();
     }
+
+    // Event listener for adding a new question
+    document.querySelector('.add-question').addEventListener('click', addQuestion);
 </script>
 
-</body>
-</html>

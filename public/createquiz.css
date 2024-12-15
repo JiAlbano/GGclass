@@ -1,0 +1,560 @@
+/* General reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    overflow-x: hidden; /* Keep this to hide horizontal scroll */
+    overflow-y: auto;   /* Enables vertical scrolling */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #283891;  /* Dark gradient for a modern feel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
+    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    border-bottom: 2px solid #FFC62E;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+}
+
+.ggclass-font {
+    font-size: 16px;
+    color: #FFC62E;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.section-font {
+    font-size: 16px;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+.row {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align the buttons to the right */
+    font-size: 12px;
+    padding: 0 15px; /* Add padding to the left and right */
+    margin-left: 10px;
+    position: inherit;
+}
+
+.row .btn {
+    padding: 10px 15px; /* Add padding inside the buttons */
+    border: none;
+    border-radius: 5px;
+    color: #050834;
+    cursor: pointer;
+    width: 100%; /* Make buttons take the full width of their column */
+}
+
+.challenge-btn.active {
+    background-color: #050834; /* Active button color */
+    color: white; /* Text color for active button */
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    color: #FFC62E;
+    font-weight: bold;
+}
+
+.info-container {
+    border: 2px solid #FFC62E;
+    padding: 20px;
+    background-color: #050834;
+    width: 300px;
+    text-align: center;
+    float: left;
+    margin: 50px;
+    margin-top: 10px;
+    border-radius: 20px;
+    position: relative;
+    width: 265px;
+    height: 490px;
+    position: relative;
+}
+
+.container-picture {
+    width: 80px; /* Adjust the size of the image as needed */
+    height: 80px; /* Ensure the height is equal to the width for a perfect circle */
+    border-radius: 50%; /* This makes the image circular */
+    object-fit: cover; /* Ensures the image covers the entire circle without distortion */
+    display: block; /* Optional: Ensures the image is a block element */
+    margin: 0 auto; /* Optional: Center the image horizontally */
+    border: 3px solid #050834;
+    position: absolute; /* Position the image relative to the container */
+    top: -8%; /* Move the image up to flow outside the container */
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-50%); /* Center the image based on its own width */
+}
+
+.container-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+.container-info-email {
+    font-size: 10px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 19px;
+    font-size: 8px;
+}
+
+
+
+.container-buttons {
+    /* margin: 20px 0; */
+    margin-top: 20px; /* Adds space between the info and the buttons */
+    width: 100%; /* Ensures buttons take up full width */
+    display: flex;
+    flex-direction: column; /* Stacks buttons vertically */
+    align-items: center; /* Centers the buttons horizontally */
+    gap: 8px; /* Adds space between the buttons */
+}
+
+/* Top Buttons */
+.top-buttons .btn {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.top-buttons .challenge-btn {
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+}
+
+.top-buttons .btn:hover {
+    opacity: 0.8;
+}
+
+.top-buttons .active {
+    background-color: #007BFF;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    padding: 20px 30px;
+}
+
+.back-button .btn {
+    font-size: 14px;
+    padding: 10px 15px;
+    background-color: #FFC107;
+    border: none;
+    border-radius: 5px;
+}
+
+.content-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+input.form-control, textarea.form-control {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+}
+
+input.form-control:focus, textarea.form-control:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Buttons */
+button.btn {
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    width: 100%;
+}
+
+button.btn-success {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+}
+
+button.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+}
+
+/* Questions Section */
+.question-section {
+    margin-top: 30px;
+}
+
+.question-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-container .form-group input {
+    font-size: 14px;
+    padding: 10px;
+}
+
+.options-container .form-check {
+    margin-bottom: 10px;
+}
+
+.options-container .form-check label {
+    font-size: 14px;
+}
+
+/* Add Option Button */
+.add-option {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-question {
+    background-color: #FFC107;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-option:hover, .add-question:hover {
+    opacity: 0.8;
+}
+
+/* Time Limit Section */
+#timeLimit {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+#timeLimit:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .top-buttons .col-md-3 {
+        margin-bottom: 15px;
+    }
+
+    .navbar .ggclass-font {
+        font-size: 20px;
+    }
+
+    .content-container h2 {
+        font-size: 24px;
+    }
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+.back-button {
+    margin-bottom: 20px;
+}
+
+.content-container {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.btn {
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+}
+
+.btn-secondary:hover, .btn-primary:hover, .btn-success:hover {
+    opacity: 0.8;
+}
+
+.question-section {
+    margin-bottom: 30px;
+}
+
+/* Question Form Container */
+.question-form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.question-form:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+/* Input and Textarea Styling */
+.question-form input[type="text"],
+.question-form textarea,
+.question-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fafafa;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.question-form input[type="text"]:focus,
+.question-form textarea:focus,
+.question-form select:focus {
+    outline: none;
+    border-color: #4285f4;
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.2);
+}
+
+/* Question Section Title */
+.question-form h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Buttons */
+.question-form button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #4285f4;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.question-form button:hover {
+    background-color: #357ae8;
+    transform: translateY(-2px);
+}
+
+/* Option Containers */
+.options-container {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px dashed #d3d3d3;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.option-item input {
+    margin-right: 10px;
+    flex: 1;
+}
+
+.option-item button {
+    background-color: #ff5252;
+    color: #fff;
+    margin-left: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.option-item button:hover {
+    background-color: #e04141;
+}
+
+/* File Upload Styling */
+.file-upload {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.file-upload input {
+    padding: 8px;
+}
+
+
+
+.options-container {
+    margin-top: 15px;
+}
+
+.options-container .form-check {
+    margin-bottom: 10px;
+}
+
+.options-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.options-container button {
+    margin-top: 10px;
+    padding: 8px 15px;
+}
+
+.question-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.wider-input {
+    min-height: 100px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.text-primary {
+    color: #1a73e8 !important;
+}
+

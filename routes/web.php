@@ -37,7 +37,7 @@ use App\Http\Controllers\StudentquiztitleController;
 use App\Http\Controllers\StudentquiztakeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthenticatedSessionController;
-
+use App\Http\Controllers\CreateQuizController;
 // autorun
 
 Route::get('/migrate', function () {
@@ -138,9 +138,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/challenges/{classId}/create', [ChallengesController::class, 'create'])->name('challenges.create');
 
 // Routes for different types of challenges
+
 // Display quizzes for a class (GET request)
 Route::get('/quiz/{classId}', [QuizController::class, 'show'])->name('test_and_quizzes.show');
-
+// Create quizzes for a class
+Route::get('/class/{classId}/quiz/create', [CreateQuizController::class, 'create'])->name('createquiz');
 // Store a newly created quiz (POST request)
 Route::post('/quiz', [QuizController::class, 'store'])->name('test_and_quizzes.store');
 Route::get('/quiz/{classId}/quiz/{quizId}', [QuizController::class, 'displayQuiz'])->name('test_and_quizzes.showQuiz');
