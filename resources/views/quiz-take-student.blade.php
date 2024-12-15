@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
-    <title>Challenges</title>
+    <title>Challenge</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
@@ -17,17 +18,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ asset('student-view/quiz-take-student.css') }}"> <!-- New CSS file for the container -->
 </head>
-<body>
 
+<body>
     <div class="navbar">
         <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass ></h1>
-            <h2 class="section-font">{{ $class->section }}</h2>
+            <h1 class="ggclass-font">GGclass</h1>
+            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
         </div>
     <!-- User Profile -->
     <div class="profile-container" style="position: relative;">
@@ -157,22 +159,22 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="true-false-container" style="display:none;"></div>
             <!-- Identification question -->
         <div class="identification-container" style="display:none;"></div>
-</div>
-<div class="col-12 d-flex justify-content-between">
-<!-- Back button on the left -->
-<button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button>
-<!-- Next button on the right -->
-<button id="next-btn" class="btn-bn" onclick="nextQuestion()">Next</button>
-<!-- Submit button (initially hidden) -->
-<button id="submit-btn" class="btn-bn" style="display:none;" onclick="submitQuiz()">Submit</button>
-</div>
+    </div>
+    <div class="col-12 d-flex justify-content-between">
+        <!-- Back button on the left -->
+        <button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button>
+        <!-- Next button on the right -->
+        <button id="next-btn" class="btn-bn" onclick="nextQuestion()">Next</button>
+        <!-- Submit button (initially hidden) -->
+        <button id="submit-btn" class="btn-bn" style="display:none;" onclick="submitQuiz()">Submit</button>
+    </div>
 </div>
 
-<div class="question-numbers">
-@for($i = 1; $i <= count($questions); $i++)
-<button class="question-number" onclick="switchQuestion({{$i}})">{{$i}}</button>
-@endfor
-</div>
+    <div class="question-numbers">
+        @for($i = 1; $i <= count($questions); $i++)
+        <button class="question-number" onclick="switchQuestion({{$i}})">{{$i}}</button>
+        @endfor
+    </div>
 
 <script>
     let currentQuestion = 1;
