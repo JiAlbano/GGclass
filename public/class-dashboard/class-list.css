@@ -1,0 +1,86 @@
+.container {
+    padding: 20px;
+}
+
+.class-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.class-list {
+    flex: 0 0 calc(25% - 10px);
+    height: 250px;
+    width: 350px;
+    background-color: #ffffff;
+    border: 2px solid #757575;
+    border-radius: 12px;
+}
+
+.class-theme {
+    height: 125px;
+    background-color: #283891;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.school-year,
+.semester,
+.section {
+    font-family: "Roboto";
+    font-size: 15px;
+    color: white;
+}
+.school-year {
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    left: 15px;
+}
+.semester {
+    position: relative;
+    top: -5px;
+    left: 15px;
+}
+.section {
+    position: relative;
+    left: 15px;
+    top: 20px;
+}
+.subject,
+.schedule,
+.room {
+    font-family: "Roboto";
+    font-size: 15px;
+    color: #283891;
+}
+
+.subject {
+    font-weight: bold;
+    position: relative;
+    left: 15px;
+    top: 10px;
+}
+
+.schedule {
+    position: relative;
+    top: -5px;
+    left: 15px;
+}
+
+.room {
+    position: relative;
+    left: 15px;
+    top: 20px;
+}
+
+.user-picture {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    position: relative;
+    top: -20px;
+    left: 230px;
+}
