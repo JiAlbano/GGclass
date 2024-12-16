@@ -10,7 +10,7 @@
             <a 
                 href="{{ auth()->user()->user_type === 'teacher' ? route('bulletins', ['classId' => $class->id]) : route('studentbulletins', ['classId' => $class->id]) }}" 
                 class="class-list-link" 
-                style="text-decoration: none; color: inherit;"
+                style="flex:3; text-decoration: none; color: inherit;"
             >
                 <div class="class-list" style="cursor: pointer;">
                     <div class="class-theme">

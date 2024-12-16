@@ -44,8 +44,9 @@ class ClassController extends Controller
     // Class List Page
     public function index()
     {
+        $user = Auth::user();
         $classes = Classroom::all();
-        return view('class-dashboard.class-list', compact('classes'));
+        return view('class-dashboard.class-list', compact('user', 'classes'));
     }
 
     // Store a New Class

@@ -5,13 +5,14 @@
 .class-list-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 13px;
+    gap: 15px;
+
 }
 
 .class-list {
     flex: 0 0 calc(25% - 10px);
     height: 250px;
-    width: 350px;
+    width: 340px;
     background-color: #ffffff;
     border: 2px solid #757575;
     border-radius: 12px;
