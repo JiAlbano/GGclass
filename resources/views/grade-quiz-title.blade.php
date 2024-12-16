@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ asset('grade-quiz-title.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ secure_asset('grade-quiz-title.css') }}"> <!-- New CSS file for the container -->
 </head>
 <body>
 
