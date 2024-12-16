@@ -86,6 +86,33 @@ class ClassController extends Controller
         return redirect()->route('class-list')->with('success', 'Class created successfully!');
     }
 
+    public function joinClass(Request $request)
+    {
+       // Validate the class code
+       $request->validate([
+            'class_code' => 'required|string|exists:classes,class_code', // Ensure class_code exists
+         ]);
+
+              // Retrieve the specific class by the class_code
+
+         // Find the class by the provided class code
+         $class = Classroom::where('class_code', $request->class_code)->firstOrFail();
+
+         // Find the currently authenticated user
+         $user = User::find(Auth::id()); // Using User:: to find the authenticated user
+
+         // Check if the student is already enrolled in the class
+    // Check if the user is already enrolled
+    if ($user->classes()->where('class_id', $class->id)->exists()) {
+        return redirect()->route('class-list')->with('error', 'You are already enrolled in this class.');
+    }
+
+    // Enroll the user in the class
+    $user->classes()->attach($class->id);
+
+    // Redirect to the class list page with a success message
+    return redirect()->route('class-list')->with('success', 'Class joined successfully!');
+}
 
  // New index method to fetch class information for the logged-in user
 
@@ -128,32 +155,7 @@ class ClassController extends Controller
     //     return redirect()->back()->with('success', 'Class created successfully!');
     // }
 
-    // public function joinClass(Request $request)
-    // {
-    //     // Validate the class code
-    //     $request->validate([
-    //         'class_code' => 'required|string|exists:classes,class_code', // Ensure class_code exists
-    //     ]);
 
-    //          // Retrieve the specific class by the class_code
-
-    //     // Find the class by the provided class code
-    //     $class = Classroom::where('class_code', $request->class_code)->firstOrFail();
-
-    //     // Find the currently authenticated user
-    //     $user = User::find(Auth::id()); // Using User:: to find the authenticated user
-
-    //     // Check if the student is already enrolled in the class
-    //     if ($user->classes()->where('class_id', $class->id)->exists()) {
-    //         return redirect()->back()->with('error', 'You are already enrolled in this class.');
-    //     }
-
-    //     // Add the student to the class (many-to-many relationship)
-    //     $user->classes()->attach($class->id);
-
-    //     // return view('classroom_dashboard', ['class' => $class, 'class_code' => $request->class_code]);
-    //     return redirect()->back()->with('success', 'Class joined successfully!');
-    // }
     // public function update(Request $request, $id)
     // {
     //     $request->validate([

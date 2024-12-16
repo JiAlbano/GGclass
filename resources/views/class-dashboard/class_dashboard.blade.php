@@ -1,13 +1,27 @@
 @extends('components.layout')
 
 @section('landing')
+<link rel="stylesheet" href="{{ asset('css/class-dashboard/class-list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-dashboard.css') }}">
-    <div class="center-container">
-        <img src="{{ asset('img/adnu.png') }}" alt="adnu-logo" class="adnu-logo">
-        <h4>Create a class to get started</h4>
+    <link rel="stylesheet" href="{{ asset('css/components/main.css') }}">
 
-        <button type="button" class="btn btn-primary create-class-btn">
-    <span class="create-class-text">Create Class</span>
+<div class="center-container">
+    <img src="{{ asset('img/adnu.png') }}" alt="adnu-logo" class="adnu-logo">
+    <h4>{{ auth()->user()->user_type === 'teacher' ? 'Create a class to get started' : 'Join a class to get started' }}</h4>
+
+    @if (auth()->user()->user_type === 'teacher')
+        <!-- Teacher: Create Class Button -->
+        <button type="button" class="btn btn-primary create-class-btn" data-bs-toggle="modal" data-bs-target="#createClassModal">
+            <span class="create-class-text">Create Class</span>
+        </button>
+    @elseif (auth()->user()->user_type === 'student')
+        <!-- Student: Join Class Button -->
+        <button type="button" class="btn btn-success join-class-btn" data-bs-toggle="modal" data-bs-target="#joinClassModal">
+            <span class="join-class-text">Join Class</span>
+        </button>
+    @endif
+</div>
+
 </button>
         <!-- Modal -->
         <div class="modal" id="createClassModal">

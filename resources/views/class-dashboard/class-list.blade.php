@@ -3,6 +3,7 @@
 @section('landing')
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/main.css') }}">
     <main>
     <div class="container">
     <div class="class-list-wrapper">
@@ -122,19 +123,79 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </div>
 
-        <script>
-     // Modal Logic
+    <!-- Join Class Modal -->
+<div class="modal fade" id="joinClassModal" tabindex="-1" aria-labelledby="joinClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h2 class="modal-title">Join Class</h2>
+            <form method="POST" action="{{ route('join.class') }}">
+                @csrf
+                <div class="mb-3">
+                    <label for="classCode" class="form-label">Class Code</label>
+                    <input type="text" class="form-control" id="classCode" name="class_code" aria-required="true">
+                </div>
+                <button type="submit" class="btn btn-primary">Join</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+// Toggle Dropdown Visibility
+document.getElementById('logout-btn').addEventListener('click', () => {
+    const dropdown = document.getElementById('logout-dropdown');
+    dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'block' : 'none';
+});
+
+// Close Dropdown When Clicking Outside
+document.addEventListener('click', (event) => {
+    const dropdown = document.getElementById('logout-dropdown');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (!logoutBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+// Handle Logout Action
+function handleLogout(event) {
+    event.preventDefault();
+    document.getElementById('logout-form').submit();
+}
+
+// Create Class Modal Logic
 document.querySelectorAll('.create-class-btn').forEach(button => {
     button.addEventListener('click', () => {
-        document.getElementById('createClassModal').style.display = 'flex';
+        const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
+        createClassModal.show(); // Open the Create Class Modal when the button is clicked
     });
 });
 
-// Close modal
-document.querySelector('.close-btn').addEventListener('click', () => {
-    document.getElementById('createClassModal').style.display = 'none';
+document.addEventListener('DOMContentLoaded', function () {
+    const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
+
+    document.getElementById('join-class-option')?.addEventListener('click', function (event) {
+        event.preventDefault();
+        joinClassModal.show(); // Open the Join Class Modal when the button is clicked
+    });
+
+    // Close modal logic for Join Class Modal
+    document.querySelector('.btn-close')?.addEventListener('click', () => {
+        joinClassModal.hide(); // Close Join Class Modal using Bootstrap method
+    });
 });
+
+</script>
+          {{-- JS BOOTSTRAP --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-        
+<!-- Bootstrap CSS (if not already included) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle JS (includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     </main>
 @endsection

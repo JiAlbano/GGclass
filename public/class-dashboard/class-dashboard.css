@@ -13,21 +13,59 @@
     margin-bottom: 10px;
 }
 
-.create-class-btn {
+/* General Button Styles */
+.addbtn {
     width: 145px;
     height: 50px;
-    background-color: #283891;
-    border-color: #ffd700;
-}
-.create-class-text {
+    border-radius: 5px; /* Optional: rounded corners */
     font-family: "Roboto";
     font-weight: bold;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+/* Create Class Button */
+.create-class-btn {
+    background-color: #283891; /* Teacher's Create Class */
+    border-color: #ffd700;
 }
 
 .create-class-btn:hover {
-    background-color: #4a90e2;
+    background-color: #4a90e2; /* Hover effect for Create Class */
 }
+
+/* Join Class Button */
+.join-class-btn {
+    background-color: #28a745; /* Green color for Join Class */
+    border-color: #5c8e4f;
+}
+
+.join-class-btn:hover {
+    background-color: #4caf50; /* Hover effect for Join Class */
+}
+
+/* Button Text Styles */
+.create-class-text,
+.join-class-text {
+    color: white; /* Text color */
+}
+
+.create-class-btn img,
+.join-class-btn img {
+    width: 25px; /* Adjust the size of the icon */
+    height: 25px;
+}
+
+/* Adjusting the alignment of icons and text */
+.addbtn img {
+    margin-right: 10px; /* Space between icon and text */
+}
+
 
 /* Modal Styling */
 .modal {

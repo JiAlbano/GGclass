@@ -98,7 +98,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
     Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
     Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
-    Route::post('/join-class', [ClassController::class, 'joinClass'])->name('join.class');
+
     Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
     Route::get('/tutorials/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
     Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');
@@ -117,6 +117,7 @@ Route::middleware('auth')->group(function () {
 
 // Class Dashboard Routes
 Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
+Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
 Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
 Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
 Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
