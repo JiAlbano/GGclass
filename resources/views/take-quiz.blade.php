@@ -66,7 +66,6 @@
     </div>
 </div>
 
-
     <script>
         // Get references to the buttons and input field
         const editButton = document.getElementById('edit-button');
@@ -286,8 +285,8 @@
         </div>
     </div>
 
-    <script>
-        function openEditModal() {
+<script>
+    function openEditModal() {
         // Get the current question
         let question = @json($questions)[currentQuestion - 1];
 
