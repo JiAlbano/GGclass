@@ -18,6 +18,7 @@ body {
     font-family: 'Georgia', sans-serif; /* Use a modern font for a gamified look */
 }
 
+
 body::after {
     content: ''; /* Empty content for the pseudo-element */
     position: absolute;
