@@ -24,14 +24,14 @@
         <div class="container-fluid">
         <!-- Brand Logo -->
         <a class="navbar-brand me-auto" href="#">
-        <img class="ggclass-logo" src="finalLogo.png" alt="GGclass Logo"/>
+        <img class="ggclass-logo" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo"/>
         </a>
 
         <!-- Offcanvas Menu -->
         <div class="offcanvas offcanvas-end" style="background-color: #000; border-color: white;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
         <!-- Offcanvas Logo and Title -->
-            <img class="ggclass-logo" src="finalLogo.png" alt="GGclass Logo"/>
+            <img class="ggclass-logo" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo"/>
             <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-family: 'Press Start 2P', cursive; color: white;">GGclass</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>

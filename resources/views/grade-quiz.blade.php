@@ -19,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ asset('grade-quiz.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ secure_asset('grade-quiz.css') }}"> <!-- New CSS file for the container -->
 </head>
 <body>
 

@@ -37,6 +37,6 @@ class AuthenticatedSessionController extends Controller
         }
 
         // Redirect back to the home page
-        return redirect('/');
+        return redirect('https://novel-lotte-ggclass-d41e3f62.koyeb.app');
     }
 }
