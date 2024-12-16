@@ -6,7 +6,7 @@
     <!-- Link to favicon (small icon in browser tab) -->
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
     <!-- Link to external CSS stylesheet for styling the login page -->
-<link href="{{ asset('login.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('login.css') }}">
 </head>
 
 <body>
