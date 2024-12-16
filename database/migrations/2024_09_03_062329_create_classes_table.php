@@ -16,12 +16,14 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->integer('teacher_id');
-            $table->string('class_name');
+            $table->string('school_year');
+            $table->string('semester');
             $table->string('subject');
             $table->string('section');
-            $table->string('schedule');
+            $table->string('schedule_day');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->string('room');
-            $table->string('image_path')->nullable(); // For the class image
             $table->string('class_code')->unique(); // Add unique class code
             $table->timestamps();
         });

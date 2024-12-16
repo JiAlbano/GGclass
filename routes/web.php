@@ -92,6 +92,7 @@ Route::post('signup-student', [SignupStudentController::class, 'handleSignup']);
 Route::middleware('auth')->group(function () {
     // Classroom Routes
     Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.index');
+
     Route::get('basic-info-teacher', [GoogleController::class, 'basicInfoTeacher'])->name('basic-info-teacher');
     Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])->name('basic-info-student');
     Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
@@ -112,7 +113,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
 
 
+    //class-dashboard // 
+    Route::view('/class-dashboard', 'class-dashboard.class-dashboard')->name('create-class');
+    Route::view('/class-list', 'class-dashboard.class-list')->name('class-list');
 
+    Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
+
+    Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
 
     //Student routes
     Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');

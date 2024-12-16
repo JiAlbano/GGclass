@@ -82,14 +82,14 @@ class GoogleController extends Controller
         if ($user->user_type === 'student') {
             // Check if course_id is not 0 and id_number is not an empty string
             if ($user->course_id !== 0 && $user->id_number !== NULL) {
-                return redirect()->route('classroom.index');
+                return redirect()->route('create-class');
             } else {
                 return redirect()->route('basic-info-student');
             }
         } else {
             // Check if department is not an empty string
             if ($user->department !== NULL) {
-                return redirect()->route('classroom.index');
+                return redirect()->route('create-class');
             } else {
                 return redirect()->route('basic-info-teacher');
             }
@@ -130,8 +130,8 @@ class GoogleController extends Controller
         $user->ign = $request->input('ign');
         $user->save();
 
-        // Redirect to the classroom.index page
-        return redirect()->route('classroom.index')->with('success', 'Information updated successfully!');
+        // Redirect to the create-class page
+        return redirect()->route('create-class')->with('success', 'Information updated successfully!');
     }
 
     public function updateBasicInfoTeacher(Request $request)
@@ -150,8 +150,8 @@ class GoogleController extends Controller
         $user->ign = $request->input('ign');
         $user->save();
 
-        // Redirect to the classroom.index page
-        return redirect()->route('classroom.index')->with('success', 'Information updated successfully!');
+        // Redirect to the create-class page
+        return redirect()->route('create-class')->with('success', 'Information updated successfully!');
     }
 
     
