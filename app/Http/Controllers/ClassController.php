@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Classes as classroom;
 use App\Models\Classes;
 use App\Models\ClassModel;
 use App\Models\User;
@@ -12,10 +13,45 @@ use Illuminate\Support\Facades\Storage;
 
 class ClassController extends Controller
 {
+    // Fetch Classes Based on User Type
+    private function fetchClassesForUser($user)
+    {
+        if ($user->user_type === 'teacher') {
+            return Classroom::all(); // All classes for teachers
+        } else {
+            return $user->classes()->get(); // Only user's classes for students
+        }
+    }
 
+    // Create Class Page
+    public function create()
+    {
+        $user = Auth::user();
+        $classes = $this->fetchClassesForUser($user);
+
+        return view('class-dashboard.class_dashboard', compact('classes', 'user'));
+    }
+
+    // User Page
+    public function user()
+    {
+        $user = Auth::user();
+        $classes = $this->fetchClassesForUser($user);
+
+        return view('class-dashboard.class-list', compact('classes', 'user'));
+    }
+
+    // Class List Page
+    public function index()
+    {
+        $classes = Classroom::all();
+        return view('class-dashboard.class-list', compact('classes'));
+    }
+
+    // Store a New Class
     public function store(Request $request)
     {
-        // Validate the incoming request
+        // Validate incoming request
         $validated = $request->validate([
             'school_year' => 'required|string',
             'semester' => 'required|string',
@@ -27,44 +63,30 @@ class ClassController extends Controller
             'room' => 'required|string',
         ]);
 
+        // Generate unique class code
         do {
-            $classCode = strtoupper(Str::random(6)); // 6-character random string
-        } while (Classes::where('class_code', $classCode)->exists());
+            $classCode = strtoupper(Str::random(6)); // Generate random code
+        } while (Classroom::where('class_code', $classCode)->exists());
 
-        // Create a new class record
-        Classes::create([ 'teacher_id' => Auth::id(), 'school_year' => $validated['school_year'], 'semester' => $validated['semester'], 'subject' => $validated['subject'], 'section' => $validated['section'], 'schedule_day' => $validated['schedule_day'], 'start_time' => $validated['start_time'], 'end_time' => $validated['end_time'], 'room' => $validated['room'], 'class_code' => $classCode, ]);
+        // Save new class to the database
+        Classroom::create([
+            'teacher_id' => Auth::id(),
+            'school_year' => $validated['school_year'],
+            'semester' => $validated['semester'],
+            'subject' => $validated['subject'],
+            'section' => $validated['section'],
+            'schedule_day' => $validated['schedule_day'],
+            'start_time' => $validated['start_time'],
+            'end_time' => $validated['end_time'],
+            'room' => $validated['room'],
+            'class_code' => $classCode,
+        ]);
 
-     
-
-        // Redirect to the class list page
-        return redirect()->route('class-list');
+        return redirect()->route('class-list')->with('success', 'Class created successfully!');
     }
 
-    public function index()
-    {
-        // Retrieve all classes from the database
-        $classes = Classes::all();
 
-        // Pass the data to the view
-        return view('class-dashboard.class-list', compact('classes'));
-    }
-
-    // public function index()
-    // {
-    //     $classes = null;
-    //     $user = Auth::user();
-    //     $user = User::find(Auth::id());
-    //     if ($user->user_type === 'teacher') {
-    //         // Fetch all classes from the database
-    //         $classes = Classroom::all();
-    //     } else {
-    //         $classes = $user->classes()->get();
-    //     }
-
-    //     // Pass the classes to the welcome view
-    //     return view('classroom_dashboard', compact('classes', 'user'));
-    // }
-    // // New index method to fetch class information for the logged-in user
+ // New index method to fetch class information for the logged-in user
 
 
 

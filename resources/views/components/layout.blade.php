@@ -49,11 +49,30 @@
             <button type="button" class="addbtn create-class-btn">
     <img src="{{ asset('img/create.png') }}" alt="create-class" class="create-button">
 </button>
-                <img src="{{ asset('img/ainz.jpg') }}" alt="Logo" class="user-img d-inline-block align-text-top ">
+ <!-- User Image -->
+<div class="user-image-container" style="position: relative;">
+    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+         alt="User Image" 
+         class="user-img d-inline-block" 
+         align-text-top 
+         id="logout-btn" 
+         aria-expanded="false" />
 
+    <!-- Logout Dropdown -->
+    <div class="logout-container" id="logout-dropdown" style="display: none;">
+        <ul class="logout-menu">
+            <li class="logout-item">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
+            </li>
+        </ul>
+    </div>
+</div>
                 <div class="text-container">
-                    <p class="in-game-name">Ainz</p>
-                    <p class="user-type">Student</p>
+                    <p class="in-game-name">{{ $user-> ign }}  </p>
+                    <p class="user-type">{{ $user-> user_type }}</p>
                 </div>
 
             </div>
@@ -69,6 +88,54 @@
 
     </main>
 <style>
+
+/* Parent Container for Positioning */
+.user-image-container {
+    display: inline-block; /* Ensures the image and dropdown align as one unit */
+    position: relative; /* Enables dropdown to position relative to the image */
+}
+
+/* Dropdown Styling */
+.logout-container {
+    position: absolute;
+    top: 100%; /* Places dropdown directly below the image */
+    left: 50%; /* Center aligns the dropdown under the image */
+    transform: translateX(-50%); /* Corrects horizontal centering */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 150px; /* Optional: Set dropdown width */
+    text-align: center; /* Centers the menu items */
+    display: none; /* Hidden by default */
+}
+
+/* Menu and Items */
+.logout-menu {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.logout-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: black;
+}
+
+.logout-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Image Styling */
+.user-img {
+    cursor: pointer;
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%; /* Circular image */
+}
+
     .create-class-btn {
     width: 120px !important;
 }
@@ -82,6 +149,29 @@
 }
 </style>
     <script>
+
+// Toggle Dropdown Visibility
+document.getElementById('logout-btn').addEventListener('click', () => {
+    const dropdown = document.getElementById('logout-dropdown');
+    dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'block' : 'none';
+});
+
+// Close Dropdown When Clicking Outside
+document.addEventListener('click', (event) => {
+    const dropdown = document.getElementById('logout-dropdown');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (!logoutBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+// Handle Logout Action
+function handleLogout(event) {
+    event.preventDefault();
+    document.getElementById('logout-form').submit();
+}
+
      // Modal Logic
 document.querySelectorAll('.create-class-btn').forEach(button => {
     button.addEventListener('click', () => {

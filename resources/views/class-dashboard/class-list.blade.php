@@ -4,27 +4,49 @@
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-dashboard.css') }}">
     <main>
-        <div class="container">
-            <div class="class-list-wrapper">
-                @foreach ($classes as $class)
-                    <div class="class-list">
-                        <div class="class-theme">
-                            <p class="school-year">School Year: {{ $class->school_year }}</p>
-                            <p class="semester">Semester: {{ $class->semester }}</p>
-                            <p class="section">Section: {{ $class->section }}</p>
-                            <img src="{{ asset('img/ainz.jpg') }}" alt="Logo" class="user-picture">
-                        </div>
-                        <div class="class-info">
-                            <p class="subject">{{ $class->subject }}</p>
-                            <p class="schedule">{{ $class->schedule_day }}
-                                {{ date('h:i A', strtotime($class->start_time)) }} -
-                                {{ date('h:i A', strtotime($class->end_time)) }}</p>
-                            <p class="room">{{ $class->room }}</p>
-                        </div>
+    <div class="container">
+    <div class="class-list-wrapper">
+        @foreach ($classes as $class)
+            <a 
+                href="{{ auth()->user()->user_type === 'teacher' ? route('bulletins', ['classId' => $class->id]) : route('studentbulletins', ['classId' => $class->id]) }}" 
+                class="class-list-link" 
+                style="text-decoration: none; color: inherit;"
+            >
+                <div class="class-list" style="cursor: pointer;">
+                    <div class="class-theme">
+                        <p class="school-year">School Year: {{ $class->school_year }}</p>
+                        <p class="semester">Semester: {{ $class->semester }}</p>
+                        <p class="section">Section: {{ $class->section }}</p>
+                        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Logo" class="user-picture">
                     </div>
-                @endforeach
-            </div>
-        </div>
+                    <div class="class-info">
+                        <p class="subject">{{ $class->subject }}</p>
+                        <p class="schedule">{{ $class->schedule_day }}
+                            {{ date('h:i A', strtotime($class->start_time)) }} -
+                            {{ date('h:i A', strtotime($class->end_time)) }}</p>
+                        <p class="room">{{ $class->room }}</p>
+                    </div>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+                // Handle class card clicks for redirection
+                document.querySelectorAll('.class-card').forEach(function (card) {
+                    card.addEventListener('click', function (event) {
+                        const isDropdownOrModal = event.target.closest('.dropdown') || event.target.closest('.modal');
+
+                        if (!isDropdownOrModal && !document.querySelector('.dropdown-menu.show')) {
+                            window.location.href = this.getAttribute('data-href');
+                        }
+                    });
+                });
+            });
+</script>
 
         <!-- Modal -->
         <div class="modal" id="createClassModal">

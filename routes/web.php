@@ -115,14 +115,11 @@ Route::middleware('auth')->group(function () {
 
     //class-dashboard // 
 
-    Route::view('/create-class', 'class-dashboard.class_dashboard')->name('create-class');
-
-
-    Route::view('/class-list', 'class-dashboard.class-list')->name('class-list');
-
-    Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
-
-    Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
+// Class Dashboard Routes
+Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
+Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
+Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
+Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
 
     //Student routes
     Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');
