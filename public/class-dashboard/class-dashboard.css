@@ -40,14 +40,7 @@
 }
 
 /* Join Class Button */
-.join-class-btn {
-    background-color: #28a745; /* Green color for Join Class */
-    border-color: #5c8e4f;
-}
 
-.join-class-btn:hover {
-    background-color: #4caf50; /* Hover effect for Join Class */
-}
 
 /* Button Text Styles */
 .create-class-text,

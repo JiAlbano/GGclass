@@ -23,6 +23,11 @@
             <span class="join-class-text">Join Class</span>
         </button>
     @endif
+
+    <!-- Class List Button for Both Users -->
+    <a href="{{ route('class-list') }}" class="btn btn-info class-list-btn mt-3">
+        <span class="class-list-text">Class List</span>
+    </a>
 </div>
 
 </button>

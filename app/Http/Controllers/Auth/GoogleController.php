@@ -179,7 +179,7 @@ class GoogleController extends Controller
         Auth::logout();
 
         // Redirect back to the home page
-        return redirect('http://127.0.0.1:8000/')->with('message', 'Successfully logged out.');
+        return redirect('https://novel-lotte-ggclass-d41e3f62.koyeb.app')->with('message', 'Successfully logged out.');
     }
 
 }

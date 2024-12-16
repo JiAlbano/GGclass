@@ -61,20 +61,48 @@
         </button>
     @endif
 </div>
+<style>
+    /* Base style for transparent buttons */
+.addbtn {
+    background: transparent; /* Makes the button transparent */
+    border: none; /* Removes the button border */
+    padding: 0; /* Removes padding */
+    cursor: pointer; /* Adds a pointer cursor */
+    outline: none; /* Removes outline on focus */
+}
+.addbtn img {
+    width: 80px; /* Adjust to match your button image size */
+    height: auto;
+    transition: transform 0.2s ease-in-out; /* Add a smooth hover effect */
+}
+
+.addbtn img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+</style>
 
 <!-- Join Class Modal -->
 <div class="modal fade" id="joinClassModal" tabindex="-1" aria-labelledby="joinClassModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <h2 class="modal-title">Join Class</h2>
+    <div class="modal-dialog modal-dialog-centered"> <!-- Center the modal -->
+        <div class="modal-content p-4"> <!-- Add padding for proper spacing -->
+            <!-- Close button aligned to the top-right -->
+            <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+            <!-- Modal title -->
+            <div class="text-center mb-4">
+                <h2 class="modal-title" id="joinClassModalLabel">Join Class</h2>
+            </div>
+            
+            <!-- Form Content -->
             <form method="POST" action="{{ route('join.class') }}">
                 @csrf
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="classCode" class="form-label">Class Code</label>
-                    <input type="text" class="form-control" id="classCode" name="class_code" aria-required="true">
+                    <input type="text" class="form-control" id="classCode" name="class_code" placeholder="Enter class code" aria-required="true">
                 </div>
-                <button type="submit" class="btn btn-primary">Join</button>
+                <div class="text-end"> <!-- Align button to the right -->
+                    <button type="submit" class="btn btn-primary">Join</button>
+                </div>
             </form>
         </div>
     </div>
@@ -145,15 +173,6 @@
 }
 
 
-/* Join Class Button */
-.join-class-btn {
-    background-color:rgb(6, 22, 145); /* Green color for Join Class */
-    border-color:rgb(198, 247, 1);
-}
-
-.join-class-btn:hover {
-    background-color: #4caf50; /* Hover effect for Join Class */
-}
 
 /* Button Text Styles */
 .create-class-text,
@@ -257,38 +276,35 @@ function handleLogout(event) {
     document.getElementById('logout-form').submit();
 }
 
-     // create class Modal Logic
-document.querySelectorAll('.create-class-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        document.getElementById('createClassModal').style.display = 'flex';
-    });
-});
-
-// Close modal
-document.querySelector('.close-btn').addEventListener('click', () => {
-    document.getElementById('createClassModal').style.display = 'none';
-});
-
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize modals using Bootstrap's API
+    const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
     const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
 
-    document.getElementById('join-class-option')?.addEventListener('click', function (event) {
-        event.preventDefault();
-        joinClassModal.show(); // Open the Join Class Modal when the button is clicked
+    // Open Create Class Modal
+    document.querySelectorAll('.create-class-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            createClassModal.show(); // Use Bootstrap's .show()
+        });
     });
 
-    // Close modal logic for Join Class Modal
-    document.querySelector('.btn-close')?.addEventListener('click', () => {
-        joinClassModal.hide(); // Close Join Class Modal using Bootstrap method
+    // Open Join Class Modal
+    document.getElementById('join-class-option')?.addEventListener('click', (event) => {
+        event.preventDefault();
+        joinClassModal.show();
+    });
+
+    // Clean up modal-backdrop after any modal is closed
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('hidden.bs.modal', () => {
+            document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+        });
     });
 });
 
     </script>
 
-    {{-- JS BOOTSTRAP --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
 
 
 </body>

@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
         <!-- Modal -->
-        <div class="modal" id="createClassModal">
-            <div class="modal-content">
-                <button class="close-btn">&times;</button>
+        <div class="modal" id="createClassModal" >
+            <div class="modal-content" >
+            <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
                 <h2 class="modal-title">Create Class</h2>
                 <form method="POST" action="{{ route('classes.store') }}">
                     @csrf <!-- Include CSRF token for security -->
@@ -168,35 +168,35 @@ function handleLogout(event) {
     document.getElementById('logout-form').submit();
 }
 
-// Create Class Modal Logic
-document.querySelectorAll('.create-class-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
-        createClassModal.show(); // Open the Create Class Modal when the button is clicked
-    });
-});
-
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize modals using Bootstrap's API
+    const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
     const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
 
-    document.getElementById('join-class-option')?.addEventListener('click', function (event) {
-        event.preventDefault();
-        joinClassModal.show(); // Open the Join Class Modal when the button is clicked
+    // Open Create Class Modal
+    document.querySelectorAll('.create-class-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            createClassModal.show(); // Use Bootstrap's .show()
+        });
     });
 
-    // Close modal logic for Join Class Modal
-    document.querySelector('.btn-close')?.addEventListener('click', () => {
-        joinClassModal.hide(); // Close Join Class Modal using Bootstrap method
+    // Open Join Class Modal
+    document.getElementById('join-class-option')?.addEventListener('click', (event) => {
+        event.preventDefault();
+        joinClassModal.show();
+    });
+
+    // Clean up modal-backdrop after any modal is closed
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('hidden.bs.modal', () => {
+            document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+        });
     });
 });
-
 </script>
-          {{-- JS BOOTSTRAP --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
 <!-- Bootstrap CSS (if not already included) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
 <!-- Bootstrap Bundle JS (includes Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
