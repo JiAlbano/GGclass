@@ -44,10 +44,11 @@
                     GGclass
                 </a>
             </div>
-
+    
             <div class="navbar-brand user-text">
-                <img src="{{ asset('img/create.png') }}" alt="create-class" class="create-button">
-
+            <button type="button" class="addbtn create-class-btn">
+    <img src="{{ asset('img/create.png') }}" alt="create-class" class="create-button">
+</button>
                 <img src="{{ asset('img/ainz.jpg') }}" alt="Logo" class="user-img d-inline-block align-text-top ">
 
                 <div class="text-container">
@@ -67,7 +68,32 @@
         @yield('gradecomponents')
 
     </main>
+<style>
+    .create-class-btn {
+    width: 120px !important;
+}
 
+.addbtn.create-class-btn {
+    /* Styling for the image-based button */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+</style>
+    <script>
+     // Modal Logic
+document.querySelectorAll('.create-class-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        document.getElementById('createClassModal').style.display = 'flex';
+    });
+});
+
+// Close modal
+document.querySelector('.close-btn').addEventListener('click', () => {
+    document.getElementById('createClassModal').style.display = 'none';
+});
+    </script>
 
     {{-- JS BOOTSTRAP --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

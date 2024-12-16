@@ -7,9 +7,8 @@
         <h4>Create a class to get started</h4>
 
         <button type="button" class="btn btn-primary create-class-btn">
-            <span class="create-class-text">Create Class</span>
-        </button>
-
+    <span class="create-class-text">Create Class</span>
+</button>
         <!-- Modal -->
         <div class="modal" id="createClassModal">
             <div class="modal-content">
@@ -87,13 +86,16 @@
 
 
     <script>
-        // Modal Logic
-        document.querySelector('.create-class-btn').addEventListener('click', () => {
-            document.getElementById('createClassModal').style.display = 'flex';
-        });
+     // Modal Logic
+document.querySelectorAll('.create-class-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        document.getElementById('createClassModal').style.display = 'flex';
+    });
+});
 
-        document.querySelector('.close-btn').addEventListener('click', () => {
-            document.getElementById('createClassModal').style.display = 'none';
-        });
+// Close modal
+document.querySelector('.close-btn').addEventListener('click', () => {
+    document.getElementById('createClassModal').style.display = 'none';
+});
     </script>
 @endsection

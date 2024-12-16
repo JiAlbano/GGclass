@@ -178,8 +178,7 @@
 
            <div class="challenge-list">
     @foreach($quizzes as $quiz)
-        <button class="challenge-item" 
-                onclick="window.location.href='{{ route('test_and_quizzes.showQuiz', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+        <button class="challenge-item"  onclick="window.location.href='{{ route('test_and_quizzes.showQuiz', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
             <div class="challenge-icon">
                 <img src="{{ asset('megaphone.png') }}" />
             </div>
