@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="{{ secure_asset('css/class-dashboard/class-list.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/class-dashboard/class-dashboard.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/components/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-list.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/main.css') }}">
     <main>
     <div class="container">
     <div class="class-list-wrapper">
