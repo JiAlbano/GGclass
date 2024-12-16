@@ -114,7 +114,10 @@ Route::middleware('auth')->group(function () {
 
 
     //class-dashboard // 
-    Route::view('/class-dashboard', 'class-dashboard.class-dashboard')->name('create-class');
+
+    Route::view('/create-class', 'class-dashboard.class_dashboard')->name('create-class');
+
+
     Route::view('/class-list', 'class-dashboard.class-list')->name('class-list');
 
     Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
