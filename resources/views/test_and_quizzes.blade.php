@@ -123,12 +123,12 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-end">
+    <!-- <div class="d-flex justify-content-end">
     <button type="button" class="btn-add2" 
         onclick="window.location.href='{{ route('createquiz', ['classId' => $class->id]) }}'">
         Create
     </button>
-</div>
+</div> -->
 
 
     <div class="dashboard-container">
@@ -160,36 +160,40 @@
         </div>
         <div class="dashboard-container">
 
-  <!-- Add Challenge Button -->
-  <div class="add-challenge-container">
-        <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
-            <div class="icon">
-            <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
-            </div>
-            <div class="text">Create a new challenge to your class</div>
-        </button>
-    </div>
+
+
+<!-- Add Quiz Modal Button -->
+<div class="add-challenge-container">
+    <button type="button" class="add-challenge-btn" 
+            onclick="window.location.href='{{ route('createquiz', ['classId' => $class->id]) }}'">
+        <div class="icon">
+            <img src="{{ asset('challenge.png') }}" alt="Add Quiz Icon" class="icon-img">
+        </div>
+        <div class="text">Create a new quiz for your class</div>
+    </button>
+</div>
            
 
            <!-- Display Challenges -->
 
            <div class="challenge-list">
-
-       <button class="challenge-item" > 
+    @foreach($quizzes as $quiz)
+        <button class="challenge-item" 
+                onclick="window.location.href='{{ route('test_and_quizzes.showQuiz', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
             <div class="challenge-icon">
-            <img src="{{ asset('megaphone.png') }}"/>
+                <img src="{{ asset('megaphone.png') }}" />
             </div>
             <div class="challenge-content">
                 <p class="challenge-title">
-                    Challenge type: 
+                    Quiz Title: {{ $quiz->title }}
                 </p>
-                <!-- <p class="challenge-date"> </p> -->
+                <p class="challenge-date">{{ $quiz->created_at->format('M d, Y') }}</p>
             </div>
             <div class="challenge-options">
                 <span class="options-btn">•••</span>
             </div>
         </button>
-
+    @endforeach
 </div>
 
     <script>
@@ -243,18 +247,9 @@
             </div> -->
 
 
-<!-- Display Quizzes -->
-<div class="container1">
-    <div class="grid-container">
-        @foreach($quizzes as $quiz)
-            <button class="box" onclick="window.location.href='{{ route('test_and_quizzes.showQuiz', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
-                {{ $quiz->title }}
-            </button>
-        @endforeach
-    </div>
-</div>
 
-<!-- Modal Structure -->
+{{--
+<!-- Modal Structure 
 <div id="quizModal" class="modal">
     <div class="modal-content">
         <!-- Close Button -->
@@ -412,6 +407,6 @@
         closeModal();
     }
 </script>
-
+--}}
 </body>
 </html>

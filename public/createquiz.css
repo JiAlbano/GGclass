@@ -14,6 +14,7 @@ body {
 }
 
 .navbar {
+    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -188,8 +189,9 @@ body {
 .back-button .btn {
     font-size: 14px;
     padding: 10px 15px;
-    background-color: #FFC107;
+    background-color: #020956;
     border: none;
+    color: white
     border-radius: 5px;
 }
 
@@ -197,7 +199,7 @@ body {
     font-size: 28px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px;
+
 }
 
 /* Form Styles */
@@ -216,8 +218,8 @@ input.form-control, textarea.form-control {
 
 input.form-control:focus, textarea.form-control:focus {
     outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    border-color: #4385be8d;
+    box-shadow: 0 0 5px rgba(39, 104, 170, 0.5);
 }
 
 /* Buttons */
@@ -230,8 +232,8 @@ button.btn {
 }
 
 button.btn-primary {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #001069;
+    color: rgb(245, 244, 244);
     border: none;
     width: 100%;
 }
@@ -243,8 +245,8 @@ button.btn-success {
 }
 
 button.btn-secondary {
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: #313132;
+    color: #e9e8e8;
     border: none;
 }
 
@@ -346,7 +348,6 @@ button.btn-secondary {
 }
 
 h2 {
-    margin-bottom: 20px;
     font-size: 24px;
     color: #333;
 }
@@ -388,8 +389,8 @@ h2 {
 }
 
 .btn-success {
-    background-color: #28a745;
-    color: white;
+    background-color: #d5dcd7;
+    color: rgb(24, 22, 22);
     padding: 10px 20px;
 }
 

@@ -96,4 +96,8 @@
             document.getElementById('createClassModal').style.display = 'none';
         });
     </script>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> bf0150ba961850de49fbd9b39a6510b65b1bdc02
 @endsection
