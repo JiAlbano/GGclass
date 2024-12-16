@@ -45,7 +45,7 @@ class ClassController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $classes = Classroom::all();
+        $classes = $this->fetchClassesForUser($user);
         return view('class-dashboard.class-list', compact('user', 'classes'));
     }
 
