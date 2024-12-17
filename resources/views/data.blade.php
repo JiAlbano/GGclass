@@ -18,6 +18,8 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('data.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('data.css') }}"> <!-- New CSS file for the container -->
+
 </head>
 
 

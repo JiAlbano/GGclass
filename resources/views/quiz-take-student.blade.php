@@ -21,6 +21,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('student-view/quiz-take-student.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('student-view/quiz-take-student.css') }}"> <!-- New CSS file for the container -->
 </head>
 
 <body>

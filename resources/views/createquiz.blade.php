@@ -18,6 +18,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('createquiz.css') }}">
+    <link rel="stylesheet" href="{{ asset('createquiz.css') }}">
 </head>
 
 <body>

@@ -6,6 +6,7 @@
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
     <title>Sign-up as Teacher</title>
     <link rel="stylesheet" href="{{ asset('signup_teacher.css') }}"> <!-- Link to external CSS file -->
+    
 </head>
 <body>
 

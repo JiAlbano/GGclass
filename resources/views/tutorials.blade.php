@@ -18,6 +18,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('bulletins.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('bulletins.css') }}">
 </head>
 
 

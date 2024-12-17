@@ -21,7 +21,7 @@
     
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('take-quiz.css') }}"> <!-- New CSS file for the container -->
-
+    <link rel="stylesheet" href="{{ asset('take-quiz.css') }}">
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>

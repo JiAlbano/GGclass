@@ -52,79 +52,71 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 </script>
 
-        <!-- Modal -->
-        <div class="modal" id="createClassModal" >
-            <div class="modal-content" >
+<!-- Modal -->
+<div class="modal fade" id="createClassModal" tabindex="-1" aria-labelledby="createClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
             <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
-                <h2 class="modal-title">Create Class</h2>
-                <form method="POST" action="{{ route('classes.store') }}">
-                    @csrf <!-- Include CSRF token for security -->
-                    <div class="form-row">
-                        <!-- School Year -->
-                        <div class="form-group">
-                            <label for="school_year">School Year</label>
-                            <input type="text" id="school_year" name="school_year" placeholder="e.g 2024-2025"
-                                required />
-                        </div>
-                        <!-- Semester -->
-                        <div class="form-group">
-                            <label for="semester">Semester</label>
-                            <select id="semester" name="semester" required>
-                                <option value="1st">1st</option>
-                                <option value="2nd">2nd</option>
-                            </select>
-                        </div>
+            <h2 class="modal-title">Create Class</h2>
+            <form method="POST" action="{{ route('classes.store') }}">
+                @csrf <!-- Include CSRF token for security -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="school_year">School Year</label>
+                        <input type="text" id="school_year" name="school_year" placeholder="e.g 2024-2025" required />
                     </div>
-                    <div class="form-row">
-                        <!-- Subject -->
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="e.g CSDC105" required />
-                        </div>
-                        <!-- Section -->
-                        <div class="form-group">
-                            <label for="section">Section</label>
-                            <input type="text" id="section" name="section" placeholder="e.g N1Am" required />
-                        </div>
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <select id="semester" name="semester" required>
+                            <option value="1st">1st</option>
+                            <option value="2nd">2nd</option>
+                        </select>
                     </div>
-                    <div class="form-row">
-                        <!-- Schedule Day -->
-                        <div class="form-group">
-                            <label for="schedule_day">Schedule Day</label>
-                            <select id="schedule_day" name="schedule_day" required>
-                                <option value="M">M</option>
-                                <option value="T">T</option>
-                                <option value="W">W</option>
-                                <option value="TH">TH</option>
-                                <option value="F">F</option>
-                                <option value="S">S</option>
-                                <option value="MW">MW</option>
-                                <option value="TTH">TTH</option>
-                            </select>
-                        </div>
-                        <!-- Start Time -->
-                        <div class="form-group-start">
-                            <label for="start_time">Start Time</label>
-                            <input type="time" id="start_time" class="control-time" name="start_time" required />
-                        </div>
-                        <!-- End Time -->
-                        <div class="form-group-end">
-                            <label for="end_time">End Time</label>
-                            <input type="time" id="end_time" class="control-time" name="end_time" required />
-                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g CSDC105" required />
                     </div>
-                    <!-- Room -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="room">Room</label>
-                            <input type="text" id="room" name="room" placeholder="e.g AL211B/CSLAB2" required />
-                        </div>
+                    <div class="form-group">
+                        <label for="section">Section</label>
+                        <input type="text" id="section" name="section" placeholder="e.g N1Am" required />
                     </div>
-                    <button type="submit" class="btn-create">Create</button>
-                </form>
-            </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="schedule_day">Schedule Day</label>
+                        <select id="schedule_day" name="schedule_day" required>
+                            <option value="M">M</option>
+                            <option value="T">T</option>
+                            <option value="W">W</option>
+                            <option value="TH">TH</option>
+                            <option value="F">F</option>
+                            <option value="S">S</option>
+                            <option value="MW">MW</option>
+                            <option value="TTH">TTH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_time">Start Time</label>
+                        <input type="time" id="start_time" name="start_time" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="end_time">End Time</label>
+                        <input type="time" id="end_time" name="end_time" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="room">Room</label>
+                        <input type="text" id="room" name="room" placeholder="e.g AL211B/CSLAB2" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn-create">Create</button>
+            </form>
         </div>
     </div>
+</div>
 
     <!-- Join Class Modal -->
 <div class="modal fade" id="joinClassModal" tabindex="-1" aria-labelledby="joinClassModalLabel" aria-hidden="true">
@@ -167,6 +159,7 @@ function handleLogout(event) {
     event.preventDefault();
     document.getElementById('logout-form').submit();
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize modals using Bootstrap's API

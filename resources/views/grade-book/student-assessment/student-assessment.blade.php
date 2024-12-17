@@ -3,9 +3,10 @@
 
 @section('landing')
 {{-- Custom CSS --}}
+<link rel="stylesheet" href="{{secure_asset('gradebook-css/grade-book/student-data/left-corner.css')}}">
+<link rel="stylesheet" href="{{secure_asset('gradebook-css/grade-book/student-assessment/student-assessment.css')}}">
 <link rel="stylesheet" href="{{asset('gradebook-css/grade-book/student-data/left-corner.css')}}">
 <link rel="stylesheet" href="{{asset('gradebook-css/grade-book/student-assessment/student-assessment.css')}}">
-
 <header>
     <div class="header container-md text-center mt-2">
         <a href="#">Bulletin</a>

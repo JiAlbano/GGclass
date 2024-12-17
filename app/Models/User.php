@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Classes as Classroom;
 class User extends Authenticatable
@@ -13,6 +14,12 @@ class User extends Authenticatable
     public function classes()
     {
         return $this->belongsToMany(Classroom::class, 'class_user', 'user_id', 'class_id');
+    }
+
+    // Relationship: User (Teacher) has many classes they created
+    public function teacherClasses(): HasMany
+    {
+        return $this->hasMany(Classroom::class, 'teacher_id');
     }
 
     /**

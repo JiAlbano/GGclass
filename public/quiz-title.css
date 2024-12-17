@@ -437,4 +437,121 @@ button.save:active {
 }
 
 
-
+    /* General container styling */
+    .class-card {
+        width: 300px;
+        border: 2px solid #050834;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        margin: 20px auto;
+        position: relative;
+        margin: 50px;
+        margin-top: 20px;
+    }
+    
+    /* Header section */
+    .class-header {
+        background-color: #2b52b2;
+        color: white;
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    /* Details section */
+    .class-details {
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+    }
+    
+    .class-details h2 {
+        margin: 5px 0;
+        font-size: 18px;
+        color: #050834;
+        font-weight: bold;
+    }
+    
+    .class-details p {
+        margin: 5px 0;
+        color: #333333;
+        font-size: 14px;
+    }
+    
+    /* Buttons */
+    .class-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        align-items: center;
+    }
+    
+    .class-buttons button {
+        background-color: #2b52b2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        width: 80%;
+        padding: 10px 0;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+    }
+    
+    .class-buttons button:hover {
+        background-color: #1f3a8b;
+    }
+    
+    /* Optional: Add responsive behavior */
+    @media (max-width: 400px) {
+        .class-card {
+            width: 90%;
+        }
+    
+        .class-buttons button {
+            width: 100%;
+        }
+    }
+    
+    /* Back Button */
+    .back-button {
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .back-button button {
+        background-color: transparent;
+        color: #002171;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .back-button button:hover {
+        text-decoration: underline;
+    }
+    
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+        
+    
+    /* General Adjustments */
+    .dashboard-container {
+        display: flex;
+    /*    margin-bottom: auto;*/
+        flex-direction: column;
+    
+    }

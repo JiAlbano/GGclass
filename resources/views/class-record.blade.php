@@ -18,6 +18,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('class-record.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('class-record.css') }}"> 
 </head>
 
 

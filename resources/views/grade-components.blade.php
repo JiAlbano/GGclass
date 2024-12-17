@@ -18,6 +18,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('grade-components.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('grade-components.css') }}"> <!-- New CSS file for the container -->
 </head>
 
 

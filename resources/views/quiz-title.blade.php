@@ -18,6 +18,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('quiz-title.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('quiz-title.css') }}">
 </head>
 
 <body>
@@ -99,9 +100,9 @@
 
 
 <!-- Display profile picture -->
-    <div class="info-container">
+    <!-- <div class="info-container">
         <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
-    <!-- Display user info -->
+         Display user info
         <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
         <div class="container-info-section">
             <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
@@ -118,7 +119,33 @@
             <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
             <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
         </div>
+    </div> -->
+
+    <div class="dashboard-container">
+    <!-- Back Button -->
+    <div class="back-button">
+        <button onclick="window.history.back()">&#8592; Back</button>
     </div>
+
+    <div class="content-container">
+        <!-- Class Card -->
+        <div class="class-card">
+            <div class="class-header">
+                <p>School Year: 2024 - 2025</p>
+                <p>Semester: 1st</p>
+                <p>Section: {{ $class->section }}</p>
+            </div>
+            <div class="class-details">
+                <h2>CSDC101</h2>
+                <p>TTH 09:00AM - 10:30AM</p>
+                <p>AL411B</p>
+            </div>
+            <div class="class-buttons">
+                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback',  ['classId' => $class->id]) }}'">Feedback</button>
+                <button onclick="window.location.href='{{ route('gradebook',  ['classId' => $class->id]) }}'">Gradebook</button>
+            </div>
+        </div>
 
 
     <div class="container-adviser my-4">

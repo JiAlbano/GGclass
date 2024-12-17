@@ -104,6 +104,7 @@
   align-items: center; /* Vertically center the modal */
   justify-content: center; /* Horizontally center the modal */
   min-height: 100vh; /* Full viewport height */
+  gap: 10px;
 }
 
 /* Limit modal height and enable scrolling if needed */

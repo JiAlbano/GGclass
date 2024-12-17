@@ -20,6 +20,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('grade-quiz.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('grade-quiz.css') }}"> <!-- New CSS file for the container -->
 </head>
 <body>
 

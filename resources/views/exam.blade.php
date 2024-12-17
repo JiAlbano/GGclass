@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ secure_asset('quiz.css') }}"> <!-- CSS file for styling -->
+    <link rel="stylesheet" href="{{ asset('quiz.css') }}"> <!-- CSS file for styling -->
 </head>
 <body>
 

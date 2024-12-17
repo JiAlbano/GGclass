@@ -177,9 +177,6 @@
         <option value="" disabled selected>Select a challenge type</option>
         <option value="exam">Exam</option>
         <option value="test_and_quizzes">Test and Quizzes</option>
-        <option value="activity">Activity</option>
-        <option value="term paper">Term Paper</option>
-        <option value="project">Project</option>
     </select>
 </div>
             <button type="submit" id="createBtn" class="form-button">Create</button>

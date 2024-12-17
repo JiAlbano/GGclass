@@ -78,23 +78,28 @@ class GoogleController extends Controller
     // Log in the user
     Auth::login($user); // This should now be a User model instance
 
-        // Redirect logic based on user type and conditions
-        if ($user->user_type === 'student') {
-            // Check if course_id is not 0 and id_number is not an empty string
-            if ($user->course_id !== 0 && $user->id_number !== NULL) {
-                return redirect()->route('create-class');
-            } else {
-                return redirect()->route('basic-info-student');
-            }
+    // Check if the user already has a class created or joined
+    if ($user->classes()->exists()) {
+        return redirect()->route('class-list'); // Redirect to class-list if class exists
+    }
+    
+    // Redirect logic based on user type and conditions
+    if ($user->user_type === 'student') {
+        // Check if course_id is not 0 and id_number is not NULL
+        if ($user->course_id !== 0 && $user->id_number !== NULL) {
+            return redirect()->route('create-class');
         } else {
-            // Check if department is not an empty string
-            if ($user->department !== NULL) {
-                return redirect()->route('create-class');
-            } else {
-                return redirect()->route('basic-info-teacher');
-            }
+            return redirect()->route('basic-info-student');
+        }
+    } else {
+        // User is a teacher
+        if ($user->department !== NULL) {
+            return redirect()->route('create-class');
+        } else {
+            return redirect()->route('basic-info-teacher');
         }
     }
+}
 
     public function basicInfoTeacher()
     {
