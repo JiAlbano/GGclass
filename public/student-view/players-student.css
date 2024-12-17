@@ -211,6 +211,7 @@ color:#FFC62E;
     width: 1000px;
     height: 60px;
     margin-left: 35px;
+    margin-top: 25px;
 }
 
 .profile-pic {
@@ -568,6 +569,7 @@ color:#FFC62E;
     /* General container styling */
 .class-card {
     width: 300px;
+    height: 441px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -577,7 +579,7 @@ color:#FFC62E;
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 /* Header section */
@@ -650,7 +652,7 @@ color:#FFC62E;
 
 /* Back Button */
 .back-button {
-    margin-left: 15px;
+    margin-left: 20px;
     margin-bottom: 10px;
 }
 

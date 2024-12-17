@@ -139,9 +139,9 @@
 
 <div class="dashboard-container">
     <!-- Back Button -->
-    <div class="back-button">
+<!--     <div class="back-button">
         <button onclick="window.history.back()">&#8592; Back</button>
-    </div>
+    </div> -->
 
     <div class="content-container">
         <!-- Class Card -->

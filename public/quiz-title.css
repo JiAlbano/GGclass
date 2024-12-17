@@ -84,16 +84,16 @@ color:#FFC62E;
 }
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
-    color: #050834;
+    color: #283891;
     cursor: pointer;
     width: 100%; /* Make buttons take the full width of their column */
 }
 
 .challenge-btn.active {
-    background-color: #050834; /* Active button color */
+    background-color: #283891; /* Active button color */
     color: white; /* Text color for active button */
     transition: all 0.3s ease;
 }
@@ -224,16 +224,17 @@ color:#FFC62E;
 
 
 
+
 .container-sm{
     display: flex;
     align-items: center;
-    border: 2px solid #FFC62E;
     padding: 10px;
     border-radius: 10px;
-    background-color: #050834;
-    width: 1070px;
-    height: 488px;
-    margin-top: 50px;
+    background-color: #283891;
+    width: 1000px;
+    height: 475px;
+    margin-top: 0%;
+    margin-left: 40px;
 }
 /* Grid container for 2x2 layout */
 .grid-container {
@@ -242,6 +243,7 @@ color:#FFC62E;
     gap: 20px;
     width: 100%;
     margin-top: 20px;
+
 }
 
 /* Style for each grid item */
@@ -285,6 +287,7 @@ color:#FFC62E;
         grid-template-columns: 1fr; /* Stacks grid items on smaller screens */
     }
 }
+
 
 .container-adviser h3 {
     font-size: 1.5rem; /* Adjust title font size */
@@ -493,6 +496,7 @@ button.save:active {
     /* General container styling */
     .class-card {
         width: 300px;
+        height: 441px;
         border: 2px solid #050834;
         border-radius: 10px;
         overflow: hidden;
@@ -502,7 +506,8 @@ button.save:active {
         margin: 20px auto;
         position: relative;
         margin: 50px;
-        margin-top: 20px;
+        margin-left: 70px;
+        margin-top: 16px;
     }
     
     /* Header section */
@@ -575,7 +580,7 @@ button.save:active {
     
     /* Back Button */
     .back-button {
-        margin-left: 15px;
+        margin-left: 20px;
         margin-bottom: 10px;
     }
     

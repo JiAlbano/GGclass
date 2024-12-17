@@ -1,18 +1,18 @@
+/* General reset and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+ 
+
+
 }
 
-
-
 body {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
+    font-family: Georgia;
+    background-color: #f0f0f0;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: #f0f0f0;
 }
 
 .navbar {
@@ -20,9 +20,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #050834, #050834); /* Dark gradient for a modern feel */
+    background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
@@ -43,10 +43,14 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {
@@ -80,16 +84,16 @@ body {
 }
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
-    color: #050834;
+    color: #283891;
     cursor: pointer;
     width: 100%; /* Make buttons take the full width of their column */
 }
 
 .challenge-btn.active {
-    background-color: #050834; /* Active button color */
+    background-color: #283891; /* Active button color */
     color: white; /* Text color for active button */
     transition: all 0.3s ease;
 }
@@ -326,4 +330,117 @@ body {
 .dropdown-item:hover {
     background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
     color: red; /* Change text color to red on hover */
+}
+
+.content-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.class-card {
+    width: 300px;
+    height: 441px;
+    border: 2px solid #050834;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    position: relative;
+    margin: 50px;
+    margin-top: 26px;
+    margin-left: 70px;
+}
+
+/* Header section */
+.class-header {
+    background-color: #2b52b2;
+    color: white;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Details section */
+.class-details {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.class-details h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #050834;
+    font-weight: bold;
+}
+
+.class-details p {
+    margin: 5px 0;
+    color: #333333;
+    font-size: 14px;
+}
+
+/* Buttons */
+.class-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.class-buttons button {
+    background-color: #2b52b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.class-buttons button:hover {
+    background-color: #1f3a8b;
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 400px) {
+    .class-card {
+        width: 90%;
+    }
+
+    .class-buttons button {
+        width: 100%;
+    }
+}
+
+
+/* Back Button */
+.back-button {
+    margin-top: 0%;
+    margin-left: 20px;
+}
+
+.back-button button {
+    background-color: transparent;
+    color: #002171;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-button button:hover {
+    text-decoration: underline;
 }
