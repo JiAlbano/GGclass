@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
+    <link rel="stylesheet" href="{{ secure_asset('challenges.css') }}"> 
     <link rel="stylesheet" href="{{ asset('challenges.css') }}"> <!-- New CSS file for the container -->
 </head>
 
