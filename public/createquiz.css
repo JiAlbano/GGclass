@@ -3,25 +3,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
-    margin: 0;
-    padding: 0;
+    font-family: Georgia;
     background-color: #f0f0f0;
-    overflow-x: hidden; /* Keep this to hide horizontal scroll */
-    overflow-y: auto;   /* Enables vertical scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .navbar {
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
     background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
@@ -42,10 +41,14 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {
@@ -73,22 +76,22 @@ body {
     display: flex; /* Use flexbox for alignment */
     justify-content: flex-end; /* Align the buttons to the right */
     font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
+    padding: 0 15px;
     margin-left: 10px;
     position: inherit;
 }
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
-    color: #050834;
+    color: #283891;
     cursor: pointer;
     width: 100%; /* Make buttons take the full width of their column */
 }
 
 .challenge-btn.active {
-    background-color: #050834; /* Active button color */
+    background-color: #283891; /* Active button color */
     color: white; /* Text color for active button */
     transition: all 0.3s ease;
 }
@@ -97,6 +100,7 @@ body {
     color: #FFC62E;
     font-weight: bold;
 }
+
 
 .info-container {
     border: 2px solid #FFC62E;
@@ -158,43 +162,32 @@ body {
     gap: 8px; /* Adds space between the buttons */
 }
 
-/* Top Buttons */
-.top-buttons .btn {
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px 15px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.top-buttons .challenge-btn {
-    background-color: #4CAF50;
-    color: white;
-    width: 100%;
-}
-
-.top-buttons .btn:hover {
-    opacity: 0.8;
-}
-
-.top-buttons .active {
-    background-color: #007BFF;
-}
 
 /* Dashboard Container */
 .dashboard-container {
     padding: 20px 30px;
 }
 
-.back-button .btn {
-    font-size: 14px;
-    padding: 10px 15px;
-    background-color: #020956;
-    border: none;
-    color: white
-    border-radius: 5px;
+.back-button {
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
 
+.back-button button {
+    background-color: transparent;
+    color: #002171;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-button button:hover {
+    text-decoration: underline;
+}
 .content-container h2 {
     font-size: 28px;
     font-weight: bold;
@@ -228,7 +221,7 @@ button.btn {
     padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
+/*    font-weight: 600;*/
 }
 
 button.btn-primary {
@@ -334,10 +327,6 @@ button.btn-secondary {
 
 .dashboard-container {
     padding: 20px;
-}
-
-.back-button {
-    margin-bottom: 20px;
 }
 
 .content-container {

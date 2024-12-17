@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Course;
 use App\Models\Department;
 use Illuminate\Http\Request;
-
+use App\Models\Classes;
 
 class GoogleController extends Controller
 {
@@ -94,8 +94,16 @@ class GoogleController extends Controller
     } else {
         // User is a teacher
         if ($user->department !== NULL) {
-            return redirect()->route('create-class');
+            // Check if the class-list has any data with the teacher_id
+            if (Classes::where('teacher_id', $user->id)->exists()) {
+                // If there are classes with the teacher_id, redirect to class-list
+                return redirect()->route('class-list');
+            } else {
+                // If no classes are found for this teacher_id, redirect to create-class
+                return redirect()->route('create-class');
+            }
         } else {
+            // If no department, redirect to basic-info-teacher to complete profile setup
             return redirect()->route('basic-info-teacher');
         }
     }

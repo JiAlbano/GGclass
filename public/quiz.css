@@ -3,15 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
+    font-family: Georgia;
     background-color: #f0f0f0;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .navbar {
@@ -21,13 +20,14 @@ body {
     padding: 15px 20px;
     background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 999;
     border-bottom: 2px solid #FFC62E;
 }
+
 
 .left-section {
     display: flex;
@@ -42,10 +42,14 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {
@@ -79,16 +83,16 @@ body {
 }
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
-    color: #050834;
+    color: #283891;
     cursor: pointer;
     width: 100%; /* Make buttons take the full width of their column */
 }
 
 .challenge-btn.active {
-    background-color: #050834; /* Active button color */
+    background-color: #283891; /* Active button color */
     color: white; /* Text color for active button */
     transition: all 0.3s ease;
 }
@@ -97,6 +101,7 @@ body {
     color: #FFC62E;
     font-weight: bold;
 }
+
 
 .info-container {
     border: 2px solid #FFC62E;
@@ -514,7 +519,7 @@ body {
     gap: 2px; /* Spacing between items */
     width: 120%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 16px auto;
     margin-left: 10px;
 }
 
@@ -524,7 +529,7 @@ body {
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 230%;
+    width: 255.5%;
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
@@ -596,8 +601,8 @@ body {
     display: flex;
     align-items: center; /* Align content vertically */
     justify-content: flex-start; /* Align content to the left */
-    width: 230%;
-    padding: 15px;
+    width: 255.5%;
+    padding: 5px;
     border: 1px solid #080808;
     border-radius: 8px;
     background-color: #fff;
@@ -620,6 +625,7 @@ body {
 
 .challenge-content {
     flex-grow: 1;
+    font-family: Arial, sans-serif;
 }
 
 .challenge-item:hover {
@@ -629,11 +635,11 @@ body {
 }
 
 .challenge-title {
-    margin: 0;
-    color: #2E3667; /* White text for better contrast */
-    font-family: 'Arial', sans-serif;
-    font-size: 16px; /* Slightly larger for readability */
+    font-size: 14px;
     font-weight: bold;
+    color: #2b52b2;
+    margin: 0;
+    padding: 3px;
 }
 
 .challenge-date {
@@ -662,6 +668,7 @@ body {
 /* General container styling */
 .class-card {
     width: 300px;
+    height: 441px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -671,7 +678,7 @@ body {
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 /* Header section */
@@ -743,21 +750,22 @@ body {
 }
 
 /* Back Button */
-
-
-
 .back-button {
-    margin: 20px;
+    margin-bottom: 10px;
 }
 
 .back-button button {
     background-color: transparent;
     color: #002171;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.back-button button:hover {
+    text-decoration: underline;
 }

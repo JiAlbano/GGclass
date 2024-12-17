@@ -3,15 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    font-family: Georgia;
     background-color: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .navbar {
@@ -19,15 +18,16 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #050834, #050834); /* Dark gradient for a modern feel */
+    background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 999;
     border-bottom: 2px solid #FFC62E;
 }
+
 
 .left-section {
     display: flex;
@@ -42,10 +42,14 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {

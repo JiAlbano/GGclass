@@ -25,8 +25,8 @@
     <div class="navbar">
         <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass ></h1>
-            <h2 class="section-font">{{ $class->section }}</h2>
+            <h1 class="ggclass-font">GGclass</h1>
+            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
     </div>
 
     

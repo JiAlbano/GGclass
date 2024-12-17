@@ -26,16 +26,16 @@
     <div class="navbar">
         <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass ></h1>
-            <h2 class="section-font">{{ $class->section }}</h2>
+            <h1 class="ggclass-font">GGclass</h1>
+            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
     </div>
 
-{{-- <div class="navbar">
+<!-- {{-- <div class="navbar">
     <div class="left-section">
         <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
         <h1 class="ggclass-font">GGclass ></h1>
         <h2 class="section-font">{{ $class->section }}</h2>
-    </div> --}}
+    </div> --}} -->
 
 <!-- 
     <div class="right-section">
@@ -110,16 +110,16 @@
     <div class="top-buttons containers" style=" margin-top: 84px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-                <button class="btn" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+                <button class="btn" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
+                <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn challenge-btn active" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+                <button class="btn challenge-btn active" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+                <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
             </div>
         </div>
     </div>
@@ -134,11 +134,9 @@
 
     <div class="dashboard-container">
     <!-- Back Button -->
-    <div class="back-button">
-    <button onclick="window.history.back()" class="btn btn-secondary">
-        &#8592; Back
-    </button>
-    </div>
+        <div class="back-button">
+            <button onclick="window.history.back()">&#8592; Back</button>
+        </div>
 
     <div class="content-container">
         <!-- Class Card -->
