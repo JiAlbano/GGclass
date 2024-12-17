@@ -230,7 +230,56 @@ body {
     width: 1070px;
     height: 488px;
     margin-top: 50px;
+}
+/* Grid container for 2x2 layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
 
+/* Style for each grid item */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Title styling */
+.qtitle {
+    color: white;
+    font-weight: bold;
+}
+
+/* Description styling */
+.qdescription {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Styling for the open button */
+.btn-open {
+    background-color: #E4E4E4;
+    font-size: 13px;
+    padding: 15px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+/* Hover effect for the open button */
+.btn-open:hover {
+    background-color: #FFC62E;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Stacks grid items on smaller screens */
+    }
 }
 
 .container-adviser h3 {

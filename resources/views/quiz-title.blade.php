@@ -148,15 +148,109 @@
         </div>
 
 
-    <div class="container-adviser my-4">
-        <div class="container-sm d-flex flex-column justify-content-start align-items-start position-relative p-3 border">
-            <button id="edit-button" class="edit-button">Edit</button>
-            <h3 class="mb-2" id="quiz-title2">{{ $quiz->title }}</h3>
-            <p class="mb-0" id="quiz-description">{{ $quiz->description }}</p>
-            <!-- Open Button -->
-            <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+  <div class="container-adviser">
+    <div class="container-sm d-flex flex-column justify-content-start align-items-center position-relative p-3 border">
+        <button id="edit-button" class="edit-button">
+            <i class="fas fa-edit"></i> Edit
+        </button>
+
+        <div class="grid-container">
+            <!-- Label and Title -->
+            <div class="grid-item">
+                <div class="info-box">
+                    <label for="quiz-title2" class="qtitle font-weight-bold mb-1 color">Quiz Title:</label>
+                    <h3 class="mb-2 text-white" id="quiz-title2">{{ $quiz->title }}</h3>
+                </div>
+            </div>
+
+            <!-- Label and Description -->
+            <div class="grid-item">
+                <div class="info-box">
+                    <label for="quiz-description" class="font-weight-bold color white mb-1">Description:</label>
+                    <p class="qdescription mb-2 text-white" id="quiz-description">{{ $quiz->description }}</p>
+                </div>
+            </div>
+
+            <!-- Label and Creation Date -->
+            <div class="grid-item">
+                <div class="info-box">
+                    <label for="quiz-creation-date" class="qtitle font-weight-bold mb-1 color">Created on:</label>
+                    <p class="mb-2 text-white" id="quiz-creation-date">{{ $quiz->created_at->format('F j, Y') }}</p>
+                </div>
+            </div>
+
+            <!-- Number of Questions -->
+            <div class="grid-item">
+                <div class="info-box">
+                    <label for="quiz-questions-count" class="qtitle font-weight-bold mb-1 color">Number of Questions:</label>
+                    <p class="qnumber mb-2 text-white" id="quiz-questions-count">{{ $quiz->questions->count() }}</p>
+                </div>
+            </div>
         </div>
+
+
+        <!-- Open Button -->
+        <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+            <i class="fas fa-play-circle"></i> Open
+        </button>
     </div>
+</div>
+
+<style>
+    .text-white {
+    color: white !important;
+}
+
+/* If you prefer to target specific elements, adjust them directly */
+.qtitle, .qdescription {
+    color: white;
+}
+
+/* You can also specify styles for label elements if needed */
+label.color.white {
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 20px;
+    width: 100%;
+    margin: 100px;
+}
+
+/* Style for each grid item */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Info Box styling for each label and data pair */
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #3E434F; /* Darker background for the boxes */
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Title styling */
+.qtitle {
+    color: white;
+    font-weight: bold;
+}
+
+/* Description styling */
+.qdescription {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+</style>
 
 
     {{-- <div class="quiz-container">
