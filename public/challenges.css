@@ -7,7 +7,7 @@
 }
 
 body {
-
+    font-family: Georgia;
     overflow-x: hidden;
     overflow-y: hidden;
     margin: 0;
@@ -22,7 +22,7 @@ body {
     padding: 15px 20px;
     background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
@@ -43,11 +43,16 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
+
+.ggclass-font:hover {
+color:#FFC62E;
+}
+
 
 .section-font {
     font-size: 16px;
@@ -80,8 +85,7 @@ body {
 }
 
 .row .btn {
-    font-family: 'Press Start 2P', cursive;
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
     color: #283891;
@@ -95,11 +99,11 @@ body {
     transition: all 0.3s ease;
 }
 
-
 .btn:hover {
     color: #FFC62E;
     font-weight: bold;
 }
+
 
 .info-container {
     border: 2px solid #FFC62E;
@@ -443,7 +447,7 @@ body {
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 200%;
+    width: 230%;
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
@@ -489,6 +493,8 @@ body {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
+    margin-top: 30px;
+    margin-left: 20px;
 }
 
 /* challenge List Container */
@@ -500,7 +506,6 @@ body {
     max-width: 600px;
     margin: 0px auto;
     margin-left: 10px;
-
 }
 
 /* Individual challenge Item */
@@ -514,10 +519,10 @@ body {
     display: flex;
     align-items: center; /* Align content vertically */
     justify-content: flex-start; /* Align content to the left */
-    width: 200%;
-    padding: 15px;
-    border: 1px solid #080808;
-    border-radius: 8px;
+    width: 230%;
+    padding: 5px;
+    border: 1px solid #151414e6;
+    border-radius: 5px;
     background-color: #fff;
     cursor: pointer;
     text-align: left; /* Ensure text aligns to the left */
@@ -538,6 +543,7 @@ body {
 
 .challenge-content {
     flex-grow: 1;
+    font-family: Arial, sans-serif;
 }
 
 .challenge-item:hover {
@@ -547,18 +553,17 @@ body {
 }
 
 .challenge-title {
-    margin: 0;
-    color: #2E3667; /* White text for better contrast */
-    font-family: 'Arial', sans-serif;
-    font-size: 16px; /* Slightly larger for readability */
+    font-size: 14px;
     font-weight: bold;
+    color: #2b52b2;
+    margin: 0;
+    padding: 3px;
 }
 
 .challenge-date {
-    margin: 0;
-    color: #959595; /* Subtle gray for date text */
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
+    color: #888;
+    margin: 5px 0 0 0;
 }
 
 .challenge-options {
@@ -590,6 +595,7 @@ body {
     position: relative;
     margin: 50px;
     margin-top: 20px;
+    height: 440px;
 }
 
 /* Header section */

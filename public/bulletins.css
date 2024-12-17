@@ -1,27 +1,30 @@
 /* General reset and box-sizing */
+/* General reset and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+ 
+
+
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    font-family: Georgia;
     background-color: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
+
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: #283891; 
+    background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
@@ -34,17 +37,22 @@ body {
     align-items: center;
 }
 
-.logo-img {
-    height: 45px;
+.logo-img { 
+    height: 40px;
     margin-right: 20px;
     border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {
@@ -79,7 +87,7 @@ body {
 }
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
     color: #283891;
@@ -314,13 +322,15 @@ body {
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    margin: 0 20px;
+/*    margin-left: 20px;*/
+
 }
 
 .content-container {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 /* Bulletin List Container */
@@ -342,7 +352,7 @@ body {
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 200%;
+    width: 180%;
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
@@ -486,10 +496,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px; /* Spacing between items */
-    width: 120%;
+    width: 129.5%;
     max-width: 600px;
     margin: 20px auto;
     margin-left: 10px;
+
 }
 
 .add-challenge-btn {
@@ -498,7 +509,7 @@ body {
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 180%;
+    width: 200%;
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
@@ -551,9 +562,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px; /* Spacing between items */
-    width: 120%;
+    width: 129.5%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 5px;
     margin-left: 10px;
 
 }
@@ -565,8 +576,8 @@ body {
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 180%;
-    padding: 10px 15px;
+    width: 200%;
+    padding: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
 }
@@ -634,6 +645,7 @@ body {
     position: relative;
     margin: 50px;
     margin-top: 20px;
+    height: 440px;
 }
 
 /* Header section */

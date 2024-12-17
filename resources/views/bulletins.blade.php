@@ -27,8 +27,8 @@
 <div class="navbar">
     <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
         <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-        <h1 class="ggclass-font">GGclass ></h1>
-        <h2 class="section-font">{{ $class->section }}</h2>
+        <h1 class="ggclass-font">GGclass</h1>
+        <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
     </div>
     
     <!-- User Profile -->
@@ -86,16 +86,16 @@
 <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn challenge-btn active" style="font-size: 12px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+            <button class="btn challenge-btn active" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
+            <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 12px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
         </div>
     </div>
 </div>
@@ -128,9 +128,9 @@
 
 <div class="dashboard-container">
     <!-- Back Button -->
-    <div class="back-button">
+<!--     <div class="back-button">
         <button onclick="window.history.back()">&#8592; Back</button>
-    </div>
+    </div> -->
 
     <div class="content-container">
         <!-- Class Card -->
@@ -151,36 +151,37 @@
                 <button onclick="window.location.href='{{ route('gradebook', ['classId' => $class->id]) }}'">Gradebook</button>
             </div>
         </div>
+
         <div class="dashboard-container">
-          <!-- Add Challenge Button -->
-  <div class="add-challenge-container">
-        <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
-            <div class="icon">
-                <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+            <!-- Add Challenge Button -->
+            <div class="add-challenge-container">
+                <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
+                    <div class="icon">
+                        <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+                    </div>
+                    <div class="text">Create a new bulletin to your class</div>
+                </button>
             </div>
-            <div class="text">Create a new bulletin to your class</div>
 
-        </button>
-    </div>
-
-        <!-- Bulletin List -->
-        <div class="bulletin-list">
-            <div class="bulletin-item">
-                <div class="bulletin-icon">
-                    <img src="{{ asset('megaphone.png') }}"/>
+            <!-- Bulletin List -->
+            <div class="bulletin-list">
+                <div class="bulletin-item">
+                    <div class="bulletin-icon">
+                        <img src="{{ asset('megaphone.png') }}"/>
+                    </div>
+                    <div class="bulletin-content">
+                        <p class="bulletin-title">You posted new bulletin to your class.</p>
+                        <p class="bulletin-date">Dec 21, 2024</p>
+                    </div>
+                    <div class="bulletin-options">
+                        <button class="options-btn">•••</button>
+                    </div>
                 </div>
-                <div class="bulletin-content">
-                    <p class="bulletin-title">You posted a new type of challenge: Quiz</p>
-                    <p class="bulletin-date">Dec 21, 2024</p>
-                </div>
-                <div class="bulletin-options">
-                    <button class="options-btn">•••</button>
-                </div>
+                <!-- Repeat other bulletin items -->
             </div>
-            <!-- Repeat other bulletin items -->
-        </div>
         </div>
     </div>
+</div>
 
 
 {{-- <div class="info-container">
