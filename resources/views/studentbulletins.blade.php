@@ -27,49 +27,34 @@
         <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
         <h1 class="ggclass-font">GGclass</h1>
     </div>
-
-        <!-- <div class="right-section">
-            <button class="back-button" onclick="goBack()">Back</button>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
-            <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
-            <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
-        </div>
-    </div> -->
-
-
-    
     <!-- User Profile -->
     <div class="left-section">
-    <div class="profile-container" style="display: flex; position: relative;">
-        <img class="profile-img"
+        <div class="profile-container" style="display: flex; position: relative;">
+            <img class="profile-img"
             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
             alt="Profile"
             id="logout-btn"
             aria-expanded="false">
-        <div class="text-container">
-            <p class="in-game-name">{{ $user->ign }}</p>
-            <p class="user-type">{{ $user->user_type }}</p>
-        </div>
+            <div class="text-container">
+                <p class="in-game-name">{{ $user->ign }}</p>
+                <p class="user-type">{{ $user->user_type }}</p>
+            </div>
         <!-- Logout Dropdown -->
-        <div class="logout-container" style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
-            <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
-                <li class="logout-item" style="padding: 8px 12px;">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
-                </li>
-                <li class="logout-item" style="padding: 8px 12px;">
-                    <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'" style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
-                </li>
-            </ul>
+            <div class="logout-container" style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
+                <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
+                    <li class="logout-item" style="padding: 8px 12px;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
+                    </li>
+                    <li class="logout-item" style="padding: 8px 12px;">
+                        <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'" style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- JavaScript for Logout Dropdown -->
@@ -140,12 +125,7 @@
         </div>
     </div> -->
 
-    <div class="dashboard-container">
-    <!-- Back Button -->
-<!--     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
-    </div> -->
-
+<div class="dashboard-container">
     <div class="content-container">
         <!-- Class Card -->
         <div class="class-card">
@@ -160,9 +140,9 @@
                 <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
-                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-                <button href="#">Gradebook</button>
+                <button onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
+                <button onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
             </div>
         </div>
 

@@ -139,24 +139,19 @@
         </div>
     </div> -->
 
-    <div class="dashboard-container">
-    <!-- Back Button -->
-<!--     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
-    </div> -->
-
+<div class="dashboard-container">
     <div class="content-container">
         <!-- Class Card -->
         <div class="class-card">
             <div class="class-header">
-                <p>School Year: 2024 - 2025</p>
-                <p>Semester: 1st</p>
+                <p>School Year: {{ $class->school_year }}</p>
+                <p>Semester: {{ $class->semester }}</p>
                 <p>Section: {{ $class->section }}</p>
             </div>
             <div class="class-details">
-                <h2>CSDC101</h2>
-                <p>TTH 09:00AM - 10:30AM</p>
-                <p>AL411B</p>
+                <h2>{{ $class->subject }}</h2>
+                <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
                 <button onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">Attendance</button>

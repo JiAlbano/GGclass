@@ -150,19 +150,20 @@
         <!-- Class Card -->
         <div class="class-card">
             <div class="class-header">
-                <p>School Year: 2024 - 2025</p>
-                <p>Semester: 1st</p>
+                <p>School Year: {{ $class[0]->school_year }}</p>
+                <p>Semester: {{ $class[0]->semester }}</p>
                 <p>Section: {{ $class[0]->section }}</p>
+                <p>Class Code: {{ $class[0]->class_code }}   </p>
             </div>
             <div class="class-details">
-                <h2>CSDC101</h2>
-                <p>TTH 09:00AM - 10:30AM</p>
-                <p>AL411B</p>
+                <h2>{{ $class[0]->subject }}</h2>
+                <p>Schedule: {{ $class[0]->schedule_day }} - {{ $class[0]->start_time }} - {{ $class[0]->end_time }}</p>
+                <p>Room: {{ $class[0]->room }}</p>
             </div>
             <div class="class-buttons">
-                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class[0]->class_id]) }}'">Attendance</button>
+                <button class="btn challenge-btn active" onclick="window.location.href='{{ route('attendance', ['classId' => $class[0]->class_id]) }}'">Attendance</button>
                 <button onclick="window.location.href='{{ route('feedback', ['classId' => $class[0]->class_id]) }}'">Feedback</button>
-                <button onclick="window.location.href='{{ route('gradebook', ['classId' => $class[0]->class_id]) }}'">Gradebook</button>
+                <button href="#">Gradebook</button>
             </div>
         </div>
 

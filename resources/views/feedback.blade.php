@@ -155,7 +155,7 @@
                 <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
-                <button class="btn" onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
                 <button class="btn challenge-btn active" onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
                 <button href="#">Gradebook</button>
             </div>
