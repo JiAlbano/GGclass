@@ -113,13 +113,14 @@ public function showQuiz($classId, $quizId)
     $quiz = Quiz::findOrFail($quizId);
 
     $questions = Question::where('quiz_id', $quizId)->get(); // Fetch the questions related to the quiz
-
+  // Fetch all users
+  $user = Auth::user();
 
     // Fetch the class details
     $class = Classroom::findOrFail($classId);
 
     // Pass the quiz, class, and questions to the view
-    return view('take-quiz', compact('class', 'quiz', 'questions'));
+    return view('take-quiz', compact('class', 'quiz', 'questions', 'user'));
 }
 
 public function updateQuestion(Request $request, $classId, $quizId)
