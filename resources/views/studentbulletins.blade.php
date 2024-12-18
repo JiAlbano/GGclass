@@ -43,28 +43,33 @@
 
     
     <!-- User Profile -->
-    <div class="profile-container" style="position: relative;">
+    <div class="left-section">
+    <div class="profile-container" style="display: flex; position: relative;">
         <img class="profile-img"
             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
             alt="Profile"
             id="logout-btn"
             aria-expanded="false">
-
+        <div class="text-container">
+            <p class="in-game-name">{{ $user->ign }}</p>
+            <p class="user-type">{{ $user->user_type }}</p>
+        </div>
         <!-- Logout Dropdown -->
-        <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
-            <ul class="logout-menu">
-                <li class="logout-item">
+        <div class="logout-container" style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
+            <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
+                <li class="logout-item" style="padding: 8px 12px;">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                     <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
                 </li>
-                <li class="logout-item">
-                    <button class="dropdown-item" onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
+                <li class="logout-item" style="padding: 8px 12px;">
+                    <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'" style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
                 </li>
             </ul>
         </div>
     </div>
+</div>
 </div>
 
 <!-- JavaScript for Logout Dropdown -->
@@ -145,19 +150,19 @@
         <!-- Class Card -->
         <div class="class-card">
             <div class="class-header">
-                <p>School Year: 2024 - 2025</p>
-                <p>Semester: 1st</p>
+                <p>School Year: {{ $class->school_year }}</p>
+                <p>Semester: {{ $class->semester }}</p>
                 <p>Section: {{ $class->section }}</p>
             </div>
             <div class="class-details">
-                <h2>CSDC101</h2>
-                <p>TTH 09:00AM - 10:30AM</p>
-                <p>AL411B</p>
+                <h2>{{ $class->subject }}</h2>
+                <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
                 <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
                 <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-                <button onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
+                <button href="#">Gradebook</button>
             </div>
         </div>
 

@@ -443,7 +443,7 @@ color:#FFC62E;
 
 /* Button styling */
 .btn {
-    font-family: Georgia;
+/*    font-family: Georgia;*/
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -578,7 +578,7 @@ color:#FFC62E;
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 /* Header section */

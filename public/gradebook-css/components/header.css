@@ -119,6 +119,7 @@ body {
 
 .profile-container {
   position: relative; /* Ensures that the dropdown is positioned correctly */
+  
 }
 
 .dropdown-item {

@@ -114,7 +114,6 @@ public function showQuiz($classId, $quizId)
 
     $questions = Question::where('quiz_id', $quizId)->get(); // Fetch the questions related to the quiz
 
-
     // Fetch the class details
     $class = Classroom::findOrFail($classId);
 
