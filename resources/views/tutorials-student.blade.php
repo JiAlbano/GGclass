@@ -159,8 +159,8 @@
                 <p>AL411B</p>
             </div>
             <div class="class-buttons">
-                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                <button onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
                 <button onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
             </div>
         </div>

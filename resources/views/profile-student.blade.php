@@ -126,9 +126,9 @@
     </div> -->
 <div class="dashboard-container">
     <!-- Back Button -->
-    <div class="back-button">
+<!--     <div class="back-button">
         <button onclick="window.history.back()">&#8592; Back</button>
-    </div>
+    </div> -->
     <div class="content-container">
         <!-- Class Card -->
         <div class="class-card">
@@ -143,8 +143,8 @@
                 <p>AL411B</p>
             </div>
             <div class="class-buttons">
-                <button class="btn" onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                <button class="btn" onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                <button class="btn" onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">Attendance</button>
+                <button class="btn" onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
                 <button class="btn challenge-btn active" onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
             </div>
         </div>

@@ -3,31 +3,34 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+ 
+
+
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    font-family: Georgia;
     background-color: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
+
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #050834, #050834); /* Dark gradient for a modern feel */
+    background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 999;
     border-bottom: 2px solid #FFC62E;
 }
+
 
 .left-section {
     display: flex;
@@ -42,10 +45,14 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {
@@ -68,7 +75,6 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
-
 .row {
     width: 100%; /* Make the container full-width */
     display: flex; /* Use flexbox for alignment */
@@ -80,16 +86,16 @@ body {
 }
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px; /* Add padding inside the buttons */
     border: none;
     border-radius: 5px;
-    color: #050834;
+    color: #283891;
     cursor: pointer;
     width: 100%; /* Make buttons take the full width of their column */
 }
 
 .challenge-btn.active {
-    background-color: #050834; /* Active button color */
+    background-color: #283891; /* Active button color */
     color: white; /* Text color for active button */
     transition: all 0.3s ease;
 }
@@ -98,7 +104,6 @@ body {
     color: #FFC62E;
     font-weight: bold;
 }
-
 
 .info-container {
     border: 2px solid #FFC62E;
@@ -135,30 +140,25 @@ body {
     font-weight: bold;
     margin: 10px 0;
     color: white;
-    font-family: 'Press Start 2P', cursive;
+    font-family: Georgia;
     margin-top: 50px;
-    margin-bottom: 10px;
-}
-
-.rank-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
 .container-info-email {
     font-size: 10px;
     color: white;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 18.5px;
     font-size: 8px;
 }
 
+/* .container-info p {
+    margin: 5px 0;
+} */
 
 .container-buttons {
-    /* margin: 20px 0; */
+    margin: 20px 0;
     margin-top: 20px; /* Adds space between the info and the buttons */
     width: 100%; /* Ensures buttons take up full width */
     display: flex;
@@ -181,7 +181,7 @@ body {
     display: flex;
     justify-content: center;
     font-size: 7px;
-    font-family: 'Press Start 2P', cursive;
+    font-family:Georgia;
 }
 
 .btn1:hover {
@@ -190,13 +190,307 @@ body {
     font-weight: bold;
 }
 
-.btn1.active {
-    background-color: #FFC62E; /* Active button color */
-    color: #050834; /* Text color for active button */
-    transition: all 0.3s ease;
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.role {
+    text-align: right;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #283891;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 60px;
+    margin-left: 35px;
+}
+
+.profile-pic {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    margin-left: 15px;
+    border: 2px solid #F7D37C;
+}
+
+.profile-name {
+    font-size: 14px;
+    color: #000;
+    margin-left: 15px;
+}
+
+.profile-role {
+    font-size: 14px;
+    color: #000;
+    text-align:right;
+    margin-right: 40px;
     font-weight: bold;
 }
 
+/* Members */
+.container-sm {
+    display: flex;
+    align-items: center;
+    border: 2px solid #283891;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 405px;
+    overflow-x: auto; /* Enable horizontal scrollbar */
+    overflow-y: auto; /* Always show vertical scrollbar */
+    margin-left: 35px;
+}
+
+.profile-member, .profile-rank {
+    font-size: 14px; /* Adjust as needed */
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+
+.profile-member {
+    margin-left: 35px; /* Adjust spacing between elements */
+}
+
+.profile-rank {
+    margin-right: 45px;
+}
+
+.container2 {
+    display: flex;
+    align-items: center;
+    border: 2px solid #F7D37C;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 50px;
+    align-self: flex-start; /* Ensures it stays at the top */
+    margin-top: 10px;
+}
+
+.rank-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+    margin-right: 37px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (max-width 768px) */
+@media screen and (max-width: 768px) {
+    .container2 {
+        width: 100%; /* Take up full width */
+        margin-left: 10px; /* Adjust margin */
+        margin-right: 10px;
+    }
+
+    .container, .container-sm{
+        width: 100%;
+        margin-left:50px;
+    }
+
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .profile-name, .profile-role {
+        font-size: 10px;
+    }
+
+    .profile-member, .profile-rank {
+        font-size: 10px;
+    }
+
+    .container-sm {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+
+    .rank-pic {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+
+    .container2 {
+        width: 90%; /* Adjust width */
+        height: 45px; /* Adjust height */
+    }
+}
+
+/* For very small screens (max-width 480px) */
+@media screen and (max-width: 480px) {
+    .container, .container-sm, .container2 {
+        width: 100%;
+        margin-left: 5px; /* More compact margins */
+    }
+
+    .profile-pic {
+        width: 25px;
+        height: 25px;
+    }
+
+    .profile-name, .profile-role {
+        font-size: 9px; /* Smaller font for very small screens */
+    }
+
+    .profile-member, .profile-rank {
+        font-size: 9px;
+    }
+
+    .container-sm {
+        height: 250px; /* Further reduced height for small screens */
+    }
+
+    .rank-pic {
+        width: 25px;
+        height: 25px;
+    }
+
+    .container2 {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.btn-add2{
+    margin-right: 45px;
+    background-color: #2A2E34;
+    border: 2px solid #FFC62E;
+    border-radius: 15px;
+    color: #f0f0f0;
+    width: 75px;
+    height: 25px;
+    font-size: x-small;
+}
+
+.btn-add2:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
+}
+
+/* Modal */
+/* Modal general styles */
+.modal-content {
+    background-color: #2A2E34; /* Dark background */
+    border-radius: 10px;
+    border: 2px solid #FFC62E; /* Neon border */
+    color: #fff;
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+}
+
+/* Modal header styling */
+.modal-header {
+    border-bottom: 2px solid #FFC62E;
+}
+
+.modal-title {
+    color: #FFC62E; /* Vibrant title color */
+}
+
+/* Close button */
+.btn-close {
+    background: none;
+    border: none;
+}
+
+.btn-close:hover {
+    filter: brightness(1.5);
+}
+
+/* Modal body styling */
+.modal-body {
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Input field styling */
+#gboxAccount {
+    background-color: #2A2E34; /* Dark input background */
+    border: 2px solid #FFC62E; /* Neon border */
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+}
+
+#gboxAccount::placeholder {
+    color: #f0f0f0;
+}
+
+/* Modal footer */
+.modal-footer {
+    border-top: 2px solid #FFC62E;
+}
+
+/* Button styling */
+.btn {
+/*    font-family: Georgia;*/
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+/* Primary button */
+.btn-primary {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
+}
+
+.btn-primary:hover {
+    background-color: #FFC62E;
+}
+
+/* Secondary button */
+.btn-secondary {
+    background-color: #E4E4E4;
+    color: #2A2E34;
+}
+
+.btn-secondary:hover {
+    background-color: #FFC62E;
+    border: 2px solid #2A2E34;
+}
+
+
+
+
+.btn-add2{
+    margin-right: 45px;
+    background-color: #2A2E34;
+    border: 2px solid #FFC62E;
+    border-radius: 15px;
+    color: #f0f0f0;
+    width: 75px;
+    height: 25px;
+    font-size: x-small;
+}
+
+.btn-add2:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
+    border: 2px solid #2A2E34;
+}
 
 .class-name {
     margin: 0;                   /* Remove default margins */
@@ -234,70 +528,161 @@ body {
     font-weight: 100;
 }
 
-.logout-container {
-    background-color: white; /* Background color of the dropdown */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
-
-.logout-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.logout-item {
-    cursor: pointer;
-}
-
-.logout-item:hover {
-    background-color: #f0f0f0; /* Highlight on hover */
-}
-
-.profile-container {
-    position: relative; /* Ensures that the dropdown is positioned correctly */
-}
-
-.dropdown-item {
-    display: block;
-    padding: 10px 15px;
-    color: #000; /* Default text color */
-    text-decoration: none; /* Remove underline */
-}
-
-.dropdown-item:hover {
-    background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
-    color: red; /* Change text color to red on hover */
-}
-
-    .container-buttons {
-        display: flex;
-        flex-direction: column;
-        padding: 0; /* Remove padding to prevent extra space */
+    .logout-container {
+        background-color: white; /* Background color of the dropdown */
+        border: 1px solid #ccc; /* Border color */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     }
     
-/* General button styles */
-.first-button, .second-button, .third-button, .fourth-button {
-    height: 35px; /* Same height for all buttons */
-    width: 150px; /* Same width for all buttons */
-    background-color: #D9D9D9; /* Default color for the buttons */
-    border-radius: 50px; /* Rounded edges */
+    .logout-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .logout-item {
+        cursor: pointer;
+    }
+    
+    .logout-item:hover {
+        background-color: #f0f0f0; /* Highlight on hover */
+    }
+    
+    .profile-container {
+        position: relative; /* Ensures that the dropdown is positioned correctly */
+    }
+    
+    .dropdown-item {
+        display: block;
+        padding: 10px 15px;
+        color: #000; /* Default text color */
+        text-decoration: none; /* Remove underline */
+    }
+    
+    .dropdown-item:hover {
+        background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
+        color: red; /* Change text color to red on hover */
+    }
+
+    /* General container styling */
+.class-card {
+    width: 300px;
+    height: 440px;
+    border: 2px solid #050834;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    position: relative;
+    margin: 50px;
+    margin-top: 50px;
+}
+
+/* Header section */
+.class-header {
+    background-color: #2b52b2;
+    color: white;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Details section */
+.class-details {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.class-details h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #050834;
+    font-weight: bold;
+}
+
+.class-details p {
+    margin: 5px 0;
+    color: #333333;
+    font-size: 14px;
+}
+
+/* Buttons */
+.class-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.class-buttons button {
+    background-color: #2b52b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.class-buttons button:hover {
+    background-color: #1f3a8b;
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 400px) {
+    .class-card {
+        width: 90%;
+    }
+
+    .class-buttons button {
+        width: 100%;
+    }
+}
+
+/* Back Button */
+.back-button {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.back-button button {
+    background-color: transparent;
+    color: #002171;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    color: #2A2E34; /* Default text color */
-    cursor: pointer;
-    margin-bottom: 10px; /* Space between buttons */
+    gap: 5px;
 }
 
-/* Hover effect for all buttons */
-.first-button:hover, .second-button:hover, .third-button:hover, .fourth-button:hover {
-    transform: scale(1.03); /* Slight enlargement on hover */
-    background-color: #FFC62E; /* Color change on hover */
+.back-button button:hover {
+    text-decoration: underline;
 }
 
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+/*    margin-top: 35.5px;*/
+    margin-left: 20px;
+}
+    
+
+/* General Adjustments */
+.dashboard-container {
+    display: flex;
+    margin-bottom: auto;
+    flex-direction: column;
+
+}
