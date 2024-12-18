@@ -15,7 +15,7 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->integer('teacher_id');
+            $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade'); // Reference to user who is a teacher
             $table->string('school_year');
             $table->string('semester');
             $table->string('subject');

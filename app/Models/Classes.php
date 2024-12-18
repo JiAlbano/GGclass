@@ -32,5 +32,14 @@ class Classes extends Model
         {
             return $this->belongsTo(User::class, 'teacher_id'); // 'teacher_id' is the foreign key
         }
+            // Relationship: Class has many players (through ClassUser pivot table)
+    public function players()
+    {
+        return $this->belongsToMany(User::class, 'class_user', 'class_id', 'user_id')
+            ->withPivot('user_id')
+            ->withTimestamps();
     }
+}
+
+    
 

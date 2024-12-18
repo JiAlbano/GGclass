@@ -173,43 +173,46 @@ function showQuestionForm(questionNumber) {
 
     if (selectedType === 'multipleChoice') {
         let mcOptionsHTML = `
-    <div id="mcOptions-${questionNumber}">
-        <div id="mcOption-${questionNumber}-1" class="option">
-            <label for="mcOption-${questionNumber}-1">Option 1:</label>
-            <input type="text" id="mcOption-${questionNumber}-1" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                oninput="updateAnswerKey(${questionNumber}, 1)">
-            <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 1)">Delete</button>
-        </div>
-        <div id="mcOption-${questionNumber}-2" class="option">
-            <label for="mcOption-${questionNumber}-2">Option 2:</label>
-            <input type="text" id="mcOption-${questionNumber}-2" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                oninput="updateAnswerKey(${questionNumber}, 2)">
-            <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 2)">Delete</button>
-        </div>
-        <div id="mcOption-${questionNumber}-3" class="option">
-            <label for="mcOption-${questionNumber}-3">Option 3:</label>
-            <input type="text" id="mcOption-${questionNumber}-3" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                oninput="updateAnswerKey(${questionNumber}, 3)">
-            <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 3)">Delete</button>
-        </div>
-        <div id="mcOption-${questionNumber}-4" class="option">
-            <label for="mcOption-${questionNumber}-4">Option 4:</label>
-            <input type="text" id="mcOption-${questionNumber}-4" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                oninput="updateAnswerKey(${questionNumber}, 4)">
-            <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 4)">Delete</button>
-        </div>
-    </div>
-    <button type="button" id="addOption-${questionNumber}" class="btn btn-secondary mt-2" onclick="addOption(${questionNumber})">Add Option</button>
-    <label for="mcAnswerKey-${questionNumber}" class="mt-2 d-flex">Answer Key:</label>
-    <select id="mcAnswerKey-${questionNumber}" name="questions[${questionNumber}][correct_answer]">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-    </select>
-`;
+            <div id="mcOptions-${questionNumber}">
+                <div id="mcOption-${questionNumber}-1" class="option">
+                    <label for="mcOption-${questionNumber}-1">Option 1:</label>
+                    <input type="text" id="mcOption-${questionNumber}-1" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
+                        oninput="updateAnswerKeyDropdown(${questionNumber})">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 1)">Delete</button>
+                </div>
+                <div id="mcOption-${questionNumber}-2" class="option">
+                    <label for="mcOption-${questionNumber}-2">Option 2:</label>
+                    <input type="text" id="mcOption-${questionNumber}-2" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
+                        oninput="updateAnswerKeyDropdown(${questionNumber})">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 2)">Delete</button>
+                </div>
+                <div id="mcOption-${questionNumber}-3" class="option">
+                    <label for="mcOption-${questionNumber}-3">Option 3:</label>
+                    <input type="text" id="mcOption-${questionNumber}-3" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
+                        oninput="updateAnswerKeyDropdown(${questionNumber})">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 3)">Delete</button>
+                </div>
+                <div id="mcOption-${questionNumber}-4" class="option">
+                    <label for="mcOption-${questionNumber}-4">Option 4:</label>
+                    <input type="text" id="mcOption-${questionNumber}-4" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
+                        oninput="updateAnswerKeyDropdown(${questionNumber})">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 4)">Delete</button>
+                </div>
+            </div>
+            <button type="button" id="addOption-${questionNumber}" class="btn btn-secondary mt-2" onclick="addOption(${questionNumber})">Add Option</button>
+            <label for="mcAnswerKey-${questionNumber}" class="mt-2 d-flex">Answer Key:</label>
+            <select id="mcAnswerKey-${questionNumber}" name="questions[${questionNumber}][correct_answer]">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+            </select>
+        `;
 
         optionsContainer.innerHTML = mcOptionsHTML;
+
+        // Ensure the dropdown is updated with any changes
+        updateAnswerKeyDropdown(questionNumber);
     } else if (selectedType === 'trueFalse') {
         optionsContainer.innerHTML = `
             <label for="tfAnswer-${questionNumber}">Answer:</label>
@@ -228,7 +231,7 @@ function showQuestionForm(questionNumber) {
 
 function addOption(questionNumber) {
     const optionsContainer = document.getElementById(`mcOptions-${questionNumber}`);
-    const currentOptions = optionsContainer.children;
+    const currentOptions = optionsContainer.getElementsByClassName('option');
     const optionCount = currentOptions.length;
 
     if (optionCount < 4) {
@@ -243,15 +246,18 @@ function addOption(questionNumber) {
         `;
         optionsContainer.insertAdjacentHTML('beforeend', newOptionHTML);
 
+        // Update dropdown after adding a new option
         updateAnswerKeyDropdown(questionNumber);
 
-        // Hide the "Add Option" button if 4 options are reached
-        if (optionCount + 1 === 4) {
+        // Hide "Add Option" button if max options are reached
+        if (newOptionNumber === 4) {
             const addOptionButton = document.getElementById(`addOption-${questionNumber}`);
             addOptionButton.style.display = 'none';
         }
     }
 }
+
+
 
 function deleteOption(questionNumber, optionNumber) {
     const optionDiv = document.getElementById(`mcOption-${questionNumber}-${optionNumber}`);
@@ -259,14 +265,13 @@ function deleteOption(questionNumber, optionNumber) {
         optionDiv.remove();
 
         const optionsContainer = document.getElementById(`mcOptions-${questionNumber}`);
-        const remainingOptions = optionsContainer.children;
+        const remainingOptions = optionsContainer.getElementsByClassName('option');
 
-        // Re-order the options
+        // Re-order options and update IDs, names, and event handlers
         for (let i = 0; i < remainingOptions.length; i++) {
             const optionDiv = remainingOptions[i];
             const newOptionNumber = i + 1;
 
-            // Update IDs and names
             optionDiv.id = `mcOption-${questionNumber}-${newOptionNumber}`;
             const label = optionDiv.querySelector('label');
             const input = optionDiv.querySelector('input');
@@ -279,6 +284,7 @@ function deleteOption(questionNumber, optionNumber) {
             button.setAttribute('onclick', `deleteOption(${questionNumber}, ${newOptionNumber})`);
         }
 
+        // Update dropdown after deletion
         updateAnswerKeyDropdown(questionNumber);
 
         // Show the "Add Option" button if less than 4 options remain
@@ -289,6 +295,9 @@ function deleteOption(questionNumber, optionNumber) {
     }
 }
 
+
+
+
 function updateAnswerKeyDropdown(questionNumber) {
     const optionsContainer = document.getElementById(`mcOptions-${questionNumber}`);
     const inputs = optionsContainer.getElementsByTagName('input');
@@ -297,7 +306,7 @@ function updateAnswerKeyDropdown(questionNumber) {
     // Clear existing dropdown options
     answerKeySelect.innerHTML = '';
 
-    // Populate dropdown with updated options
+    // Populate dropdown with updated option values
     for (let i = 0; i < inputs.length; i++) {
         const optionValue = inputs[i].value.trim();
         const option = document.createElement('option');
