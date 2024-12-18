@@ -148,8 +148,14 @@
         </div>
 
 
-  <div class="container-adviser">
-    <div class="container-sm d-flex flex-column justify-content-start align-items-center position-relative p-3 border">
+        <div class="container-adviser">
+    <div class="container-sm d-flex flex-column align-items-center position-relative p-3">
+        <!-- Open Button -->
+        <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+            <i class="fas fa-play-circle"></i> Open
+        </button>
+
+        <!-- Edit Button -->
         <button id="edit-button" class="edit-button">
             <i class="fas fa-edit"></i> Edit
         </button>
@@ -187,14 +193,9 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- Open Button -->
-        <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
-            <i class="fas fa-play-circle"></i> Open
-        </button>
     </div>
 </div>
+
 
 <style>
     .text-white {
@@ -216,7 +217,6 @@ label.color.white {
     grid-template-columns: repeat(2, 1fr); /* Creates two columns */
     gap: 20px;
     width: 100%;
-    margin: 100px;
 }
 
 /* Style for each grid item */
@@ -231,7 +231,7 @@ label.color.white {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #3E434F; /* Darker background for the boxes */
+    background-color: #283891; /* Darker background for the boxes */
     padding: 10px;
     border-radius: 8px;
     width: 100%;

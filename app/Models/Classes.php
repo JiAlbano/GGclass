@@ -27,5 +27,10 @@ class Classes extends Model
         'teacher_id',
         'class_code',
     ];
+        // Relationship: Class belongs to a teacher (User)
+        public function teacher()
+        {
+            return $this->belongsTo(User::class, 'teacher_id'); // 'teacher_id' is the foreign key
+        }
+    }
 
-}
