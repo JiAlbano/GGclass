@@ -115,12 +115,12 @@ Route::middleware('auth')->group(function () {
 
     //class-dashboard // 
 
-// Class Dashboard Routes
-Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
-Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
-Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
-Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
-Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
+    // Class Dashboard Routes
+    Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
+    Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
+    Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
+    Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
+    Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
 
     //Student routes
     Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');

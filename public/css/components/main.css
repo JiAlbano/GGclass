@@ -1,23 +1,72 @@
+.main-body {
+    background-color: #f5f5f5;
+    padding-bottom: 30px;
+}
+
 .nav-design {
     height: 65px;
     background: #283891;
 }
 
-.navbar-brand.logo-text {
+.logo-img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.logo-text {
     color: white;
     display: flex;
     align-items: center;
     font-family: "Georgia";
     font-weight: bold;
     font-size: 30px;
+    text-decoration: none;
 }
 
-.navbar-brand.user-text {
-    color: white;
+.logo-text:hover {
+    color: #ffd700;
+}
+
+.user-text {
+    margin-left: auto;
+    position: relative;
+    left: 30px;
+}
+
+.logo-user-text {
     display: flex;
-    align-items: center;
     position: relative;
     right: 20px;
+}
+
+.addbtn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.addbtn img {
+    width: 25px;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.addbtn.create-class-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    margin-top: 15px;
 }
 
 .in-game-name {
@@ -25,11 +74,8 @@
     top: 20px;
     font-family: "Georgia";
     font-weight: bold;
-    font-size: 18px;
-}
-.navbar-brand.user-text:hover {
-    color: white;
-    cursor: default;
+    font-size: 16px;
+    color: #f5f5f5;
 }
 
 .user-type {
@@ -38,33 +84,65 @@
     font-family: "Georgia";
     font-weight: normal;
     font-size: 15px;
+    color: white;
 }
 
-.navbar-brand.logo-text:hover {
-    color: #ffd700;
+.user-settings {
+    position: absolute;
+    top: 100%; /* Places dropdown directly below the image */
+    left: -15px; /* Center aligns the dropdown under the image */
+    transform: translateX(-50%); /* Corrects horizontal centering */
+    background-color: white;
+    border: 1px solid #757575;
+    border-radius: 10px;
+    height: 150px;
+
+    width: 180px; /* Optional: Set dropdown width */
+    text-align: left; /* Centers the menu items */
+    display: none; /* Hidden by default */
 }
 
-.logo-img {
-    height: 60px;
-    margin-right: 10px;
+.user-icon {
+    height: 15px;
+    width: 15px;
+    margin-right: 15px;
 }
 
-.user-img {
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
+.dropdown-item {
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 15px;
+    color: #2e3667;
 }
 
-.create-button {
-    height: 30px;
-    width: 30px;
-    object-fit: cover;
-    margin-right: 12px;
+/* Button Text Styles */
+.create-class-text,
+.join-class-text {
+    color: white; /* Text color */
 }
 
-.header a {
+/* Adjusting the alignment of icons and text */
+
+/* Dropdown Styling */
+
+/* Menu and Items */
+.user-menu {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.user-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: black;
+}
+
+.user-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* .header a {
     font-family: "Georgia";
     color: #2e3667;
     font-size: 25px;
@@ -130,7 +208,7 @@
     transition: transform 0.2s ease;
     background-color: #4a90e2;
     cursor: pointer;
-}
+} */
 
 .custom-line-2 {
     height: 2px;
@@ -144,7 +222,4 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.main-body {
-    background-color: #f5f5f5;
-    padding-bottom: 30px;
-}
+/* /// */

@@ -39,105 +39,102 @@
 <body class="main-body">
     <header>
         <nav class="navbar navbar-expand-lg nav-design">
-            <div class="container-fluid">
-                <a class="navbar-brand logo-text" href="#">
-                    <img src="{{ asset('img/logo.png') }}" alt="Logo"
-                        class=" logo-img d-inline-block align-text-top ">
-                    GGclass
-                </a>
-            </div>
-    
-            <div class="navbar-brand user-text">
-    @if (auth()->user()->user_type === 'teacher')
-        <!-- Button for creating a class -->
-        <button type="button" id="create-class-option" class="addbtn create-class-btn">
-            <img src="{{ asset('img/create.png') }}" alt="create-class" class="create-button">
-        </button>
-        @endif
-    @if (auth()->user()->user_type === 'student')
-<!-- Button for joining a class -->
-<button type="button" id="join-class-option" class="addbtn join-class-btn">
-            <img src="{{ asset('img/join.png') }}" alt="join-class" class="join-button">
-        </button>
-    @endif
-</div>
-<style>
-    /* Base style for transparent buttons */
-.addbtn {
-    background: transparent; /* Makes the button transparent */
-    border: none; /* Removes the button border */
-    padding: 0; /* Removes padding */
-    cursor: pointer; /* Adds a pointer cursor */
-    outline: none; /* Removes outline on focus */
-}
-.addbtn img {
-    width: 80px; /* Adjust to match your button image size */
-    height: auto;
-    transition: transform 0.2s ease-in-out; /* Add a smooth hover effect */
-}
+            <div class="container-fluid nav-body">
 
-.addbtn img:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-}
-</style>
-
-<!-- Join Class Modal -->
-<div class="modal fade" id="joinClassModal" tabindex="-1" aria-labelledby="joinClassModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"> <!-- Center the modal -->
-        <div class="modal-content p-4"> <!-- Add padding for proper spacing -->
-            <!-- Close button aligned to the top-right -->
-            <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;" data-bs-dismiss="modal" aria-label="Close"></button>
-            
-            <!-- Modal title -->
-            <div class="text-center mb-4">
-                <h2 class="modal-title" id="joinClassModalLabel">Join Class</h2>
-            </div>
-            
-            <!-- Form Content -->
-            <form method="POST" action="{{ route('join.class') }}">
-                @csrf
-                <div class="mb-4">
-                    <label for="classCode" class="form-label">Class Code</label>
-                    <input type="text" class="form-control" id="classCode" name="class_code" placeholder="Enter class code" aria-required="true">
-                </div>
-                <div class="text-end"> <!-- Align button to the right -->
-                    <button type="submit" class="btn btn-primary">Join</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
- <!-- User Image -->
-<div class="user-image-container" style="position: relative;">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
-         alt="User Image" 
-         class="user-img d-inline-block" 
-         align-text-top 
-         id="logout-btn" 
-         aria-expanded="false" />
-
-    <!-- Logout Dropdown -->
-    <div class="logout-container" id="logout-dropdown" style="display: none;">
-        <ul class="logout-menu">
-            <li class="logout-item">
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
-            </li>
-        </ul>
-    </div>
-</div>
-                <div class="text-container">
-                    <p class="in-game-name">{{ $user-> ign }}  </p>
-                    <p class="user-type">{{ $user-> user_type }}</p>
+                <div class="logo-text">
+                    <a class="logo-text" href="#">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-img">
+                        GGclass
+                    </a>
                 </div>
 
-            </div>
+                <div class="user-text">
 
+                    <!-- Button for creating a class -->
+                    @if (auth()->user()->user_type === 'teacher')
+                        <button type="button" id="create-class-option" class="addbtn create-class-btn">
+                            <img src="{{ asset('img/create.png') }}" alt="create-class" class="create-button">
+                        </button>
+                    @endif
+
+                    <!-- Button for joining a class -->
+                    @if (auth()->user()->user_type === 'student')
+                        <button type="button" id="join-class-option" class="addbtn join-class-btn">
+                            <img src="{{ asset('img/join.png') }}" alt="join-class" class="join-button">
+                        </button>
+                    @endif
+
+                </div>
+
+                <div class="logo-user-text">
+
+                    <!-- User Image -->
+                    <div class="user-image">
+                        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="User Image"
+                            class="user-img d-inline-block" align-text-top id="logout-btn" aria-expanded="false" />
+
+                        <!-- Logout Dropdown -->
+                        <div class="user-settings" id="logout-dropdown">
+                            <ul class="user-menu">
+                                <li class="user-item"> <a class="dropdown-item" href="#"
+                                        onclick="handleArchiveClass(event)"> <img src="{{ asset('img/archieve.png') }}"
+                                            alt="archieve-icon" class="user-icon"> Archive Class</a> </li>
+                                <li class="user-item"> <a class="dropdown-item" href="#"
+                                        onclick="handleProfileSettings(event)">
+                                        <img src="{{ asset('img/settings.png') }}" alt="settings-icon"
+                                            class="user-icon">
+                                        Profile Settings</a> </li>
+                                <li class="user-item">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf </form>
+                                    <a class="dropdown-item" href="#" onclick="handleLogout(event)">
+                                        <img src="{{ asset('img/logout.png') }}" alt="logout-icon" class="user-icon">
+                                        Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-container">
+                        <p class="in-game-name">{{ $user->ign }} </p>
+                        <p class="user-type">{{ $user->user_type }}</p>
+                    </div>
+
+                </div>
+
+
+            </div>
         </nav>
+
+        <!-- Join Class Modal -->
+        <div class="modal fade" id="joinClassModal" tabindex="-1" aria-labelledby="joinClassModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"> <!-- Center the modal -->
+                <div class="modal-content p-4"> <!-- Add padding for proper spacing -->
+                    <!-- Close button aligned to the top-right -->
+                    <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <!-- Modal title -->
+                    <div class="text-center mb-4">
+                        <h2 class="modal-title" id="joinClassModalLabel">Join Class</h2>
+                    </div>
+
+                    <!-- Form Content -->
+                    <form method="POST" action="{{ route('join.class') }}">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="classCode" class="form-label">Class Code</label>
+                            <input type="text" class="form-control" id="classCode" name="class_code"
+                                placeholder="Enter class code" aria-required="true">
+                        </div>
+                        <div class="text-end"> <!-- Align button to the right -->
+                            <button type="submit" class="btn btn-primary">Join</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -147,165 +144,58 @@
         @yield('gradecomponents')
 
     </main>
-<style>
 
-.in-game-name {
-    color: #f5f5f5;
-    position: relative;
-    top: 20px;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 18px;
-    margin-right: 50px !important;
-}
-.navbar-brand.user-text:hover {
-    color: white;
-    cursor: default;
-}
-
-.user-type {
-    color: #f5f5f5;
-    position: relative;
-    top: 2px;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 15px;
-}
-
-
-
-/* Button Text Styles */
-.create-class-text,
-.join-class-text {
-    color: white; /* Text color */
-}
-
-.create-class-btn img,
-.join-class-btn img {
-    width: 25px; /* Adjust the size of the icon */
-    height: 25px;
-}
-
-/* Adjusting the alignment of icons and text */
-.addbtn img {
-    margin-right: 10px; /* Space between icon and text */
-}
-
-
-
-/* Parent Container for Positioning */
-.user-image-container {
-    display: inline-block; /* Ensures the image and dropdown align as one unit */
-    position: relative; /* Enables dropdown to position relative to the image */
-}
-
-/* Dropdown Styling */
-.logout-container {
-    position: absolute;
-    top: 100%; /* Places dropdown directly below the image */
-    left: 50%; /* Center aligns the dropdown under the image */
-    transform: translateX(-50%); /* Corrects horizontal centering */
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    width: 150px; /* Optional: Set dropdown width */
-    text-align: center; /* Centers the menu items */
-    display: none; /* Hidden by default */
-}
-
-/* Menu and Items */
-.logout-menu {
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-}
-
-.logout-item {
-    padding: 10px 15px;
-    cursor: pointer;
-    color: black;
-}
-
-.logout-item:hover {
-    background-color: #f0f0f0;
-}
-
-/* Image Styling */
-.user-img {
-    cursor: pointer;
-    width: 50px; /* Adjust size as needed */
-    height: 50px;
-    border-radius: 50%; /* Circular image */
-}
-
-    .create-class-btn {
-    width: 120px !important;
-}
-
-.addbtn.create-class-btn {
-    /* Styling for the image-based button */
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-</style>
     <script>
-
-// Toggle Dropdown Visibility
-document.getElementById('logout-btn').addEventListener('click', () => {
-    const dropdown = document.getElementById('logout-dropdown');
-    dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'block' : 'none';
-});
-
-// Close Dropdown When Clicking Outside
-document.addEventListener('click', (event) => {
-    const dropdown = document.getElementById('logout-dropdown');
-    const logoutBtn = document.getElementById('logout-btn');
-
-    if (!logoutBtn.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.style.display = 'none';
-    }
-});
-
-// Handle Logout Action
-function handleLogout(event) {
-    event.preventDefault();
-    document.getElementById('logout-form').submit();
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize modals using Bootstrap's API
-    const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
-    const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
-
-    // Open Create Class Modal
-    document.querySelectorAll('.create-class-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            createClassModal.show(); // Use Bootstrap's .show()
+        // Toggle Dropdown Visibility
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            const dropdown = document.getElementById('logout-dropdown');
+            dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'block' :
+                'none';
         });
-    });
 
-    // Open Join Class Modal
-    document.getElementById('join-class-option')?.addEventListener('click', (event) => {
-        event.preventDefault();
-        joinClassModal.show();
-    });
+        // Close Dropdown When Clicking Outside
+        document.addEventListener('click', (event) => {
+            const dropdown = document.getElementById('logout-dropdown');
+            const logoutBtn = document.getElementById('logout-btn');
 
-    // Clean up modal-backdrop after any modal is closed
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('hidden.bs.modal', () => {
-            document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+            if (!logoutBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
         });
-    });
-});
 
+        // Handle Logout Action
+        function handleLogout(event) {
+            event.preventDefault();
+            document.getElementById('logout-form').submit();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize modals using Bootstrap's API
+            const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
+            const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
+
+            // Open Create Class Modal
+            document.querySelectorAll('.create-class-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    createClassModal.show(); // Use Bootstrap's .show()
+                });
+            });
+
+            // Open Join Class Modal
+            document.getElementById('join-class-option')?.addEventListener('click', (event) => {
+                event.preventDefault();
+                joinClassModal.show();
+            });
+
+            // Clean up modal-backdrop after any modal is closed
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('hidden.bs.modal', () => {
+                    document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop
+                        .remove());
+                });
+            });
+        });
     </script>
-
-
-
 
 </body>
 
