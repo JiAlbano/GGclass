@@ -32,13 +32,17 @@
     </div>
     
     <!-- User Profile -->
-    <div class="profile-container" style="position: relative;">
+    <div class="profile-container" style="display:flex">
         <img class="profile-img"
             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
             alt="Profile"
             id="logout-btn"
             aria-expanded="false">
-
+            <div class="text-container ">
+                    <p class="in-game-name">{{ $user-> ign }}  </p>
+                    <p class="user-type">{{ $user-> user_type }}</p>
+                </div>
+                </div>
         <!-- Logout Dropdown -->
         <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
             <ul class="logout-menu">
