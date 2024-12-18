@@ -413,7 +413,7 @@ function switchQuestion(number) {
                 <p id="scoreText"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="okayBtn">Okay</button>
+                <button type="button" class="btn1" id="okayBtn">Okay</button>
             </div>
         </div>
     </div>
