@@ -162,20 +162,20 @@
 
         <!-- Bulletin List -->
         <div class="bulletin-list">
-            <div class="bulletin-item">
-                <div class="bulletin-icon">
-                    <img src="megaphone-icon.png" alt="Icon" />
+                <div class="bulletin-item">
+                    <div class="bulletin-icon">
+                        <img src="{{ asset('megaphone.png') }}"/>
+                    </div>
+                    <div class="bulletin-content">
+                        <p class="bulletin-title"> Tutorial (#): Title </p>
+                        <p class="bulletin-date">Dec 21, 2024</p>
+                    </div>
+                    <div class="bulletin-options">
+                        <button class="options-btn">•••</button>
+                    </div>
                 </div>
-                <div class="bulletin-content">
-                    <p class="bulletin-title">You posted a new type of challenge: Quiz</p>
-                    <p class="bulletin-date">Dec 21, 2024</p>
-                </div>
-                <div class="bulletin-options">
-                    <button class="options-btn">•••</button>
-                </div>
+                <!-- Repeat other bulletin items -->
             </div>
-            <!-- Repeat other bulletin items -->
-        </div>
     </div>
 </div>
 
