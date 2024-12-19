@@ -59,7 +59,6 @@ class GoogleController extends Controller
                 'middle_initial' => null,      // Middle initial removed
                 'last_name' => $last_name,     // Last name
                 'email' => $googleUser->getEmail(),
-                'id_number' => "",
                 'course_id' => 0,
                 'ign' => "",
                 'user_type' => 'student',

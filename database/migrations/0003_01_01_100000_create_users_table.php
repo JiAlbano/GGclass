@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_initial')->nullable();
             $table->string('last_name');
-            $table->string('id_number')->unique()->nullable()->default('');
+            $table->string('id_number')->unique()->nullable();
             $table->unsignedBigInteger('course_id')->default(0);
             $table->string('ign')->nullable();
             $table->string('user_type');
