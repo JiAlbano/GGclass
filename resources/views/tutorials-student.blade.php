@@ -106,19 +106,19 @@
     <div class="top-buttons containers" style=" margin-top: 84px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-                <button class="btn" style="font-size: 16px; border:none; width: 100%;"
+                <button class="btn" style=" border:none; width: 100%;"
                     onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn challenge-btn active" style="font-size: 16px; width: 100%; "
+                <button class="btn challenge-btn active" style=" width: 100%; "
                     onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%;"
+                <button class="btn" style=" width: 100%;"
                     onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%;"
+                <button class="btn" style=" width: 100%;"
                     onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
             </div>
         </div>

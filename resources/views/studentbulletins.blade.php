@@ -97,15 +97,15 @@
                     onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">Bulletins</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%; "
+                <button class="btn" style=" width: 100%; "
                     onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->id]) }}'">Tutorials</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%;"
+                <button class="btn" style="width: 100%;"
                     onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->id]) }}'">Challenges</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%;"
+                <button class="btn" style=" width: 100%;"
                     onclick="window.location.href='{{ route('players-student', ['classId' => $class->id]) }}'">Players</button>
             </div>
         </div>
@@ -173,10 +173,10 @@
                         <button class="options-btn">•••</button>
                     </div>
                 </div>
-                <!-- Repeat other bulletin items -->
-            </div>
+                <!-- Repeat other bulletin items
+            </div> -->
         </div>
-
+    </div>
 
 </body>
 

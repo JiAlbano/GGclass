@@ -99,16 +99,16 @@
 <div class="top-buttons containers" style=" margin-top: 84px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->class_id]) }}'">Bulletins</button>
+            <button class="btn" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->class_id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->class_id])}}'">Tutorials</button>
+            <button class="btn"  onclick="window.location.href='{{ route('tutorials-student', ['classId' => $class->class_id])}}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->class_id]) }}'">Challenges</button>
+            <button class="btn" onclick="window.location.href='{{ route('challenges-student', ['classId' => $class->class_id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn challenge-btn active" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players-student', ['classId' => $class->class_id]) }}'">Players</button>
+            <button class="btn challenge-btn active" onclick="window.location.href='{{ route('players-student', ['classId' => $class->class_id]) }}'">Players</button>
         </div>
     </div>
 </div>
@@ -150,7 +150,6 @@
                 <p>School Year: {{ $class->school_year }}</p>
                 <p>Semester: {{ $class->semester }}</p>
                 <p>Section: {{ $class->section }}</p>
-                <p>Class Code: {{ $class->class_code }}   </p>
             </div>
             <div class="class-details">
                 <h2>{{ $class->subject }}</h2>
@@ -160,7 +159,7 @@
             <div class="class-buttons">
                 <button onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->class_id]) }}'">Attendance</button>
                 <button onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->class_id]) }}'">Feedback</button>
-                <button href="#">Gradebook</button>
+                <button onclick="window.location.href='{{ route('profile-student', ['classId' => $class->class_id]) }}'">Badge</button>
             </div>
         </div>
 
@@ -193,7 +192,8 @@
                     <div class="profile-name">{{ucfirst($player->ign)}}</div>
                 </div>
                 <div class="rank-section">
-                    <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
+                    <!-- <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic"> -->
+                    <label style="margin-right: 15px; font-family:georgia; font-size: 11px;">Not Available</label>
                 </div>
             </div>
             @endforeach
