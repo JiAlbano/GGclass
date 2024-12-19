@@ -25,7 +25,7 @@
 <body>
 
     <div class="navbar">
-        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->class_id]) }}'">
+        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('studentbulletin', ['classId' => $class->class_id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass</h1>
             {{-- <h2 class="section-font">{{ $class->section }}</h2> --}}
@@ -62,7 +62,7 @@
                     <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
                 </li>
                 <li class="logout-item">
-                    <button class="dropdown-item" onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
+                    <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'">Class-List</button>
                 </li>
             </ul>
         </div>
@@ -158,8 +158,8 @@
                 <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
-                <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->class_id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->class_id]) }}'">Feedback</button>
+                <button onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->class_id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->class_id]) }}'">Feedback</button>
                 <button href="#">Gradebook</button>
             </div>
         </div>
