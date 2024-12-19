@@ -179,16 +179,9 @@
         </div>
     </div>
 
-<<<<<<< HEAD
 <!--     <div class="question-numbers">
         @for($i = 1; $i <= count($questions); $i++)
         <button class="question-number" onclick="switchQuestion({{$i}})">{{$i}}</button>
-=======
-    <div class="question-numbers">
-        @for ($i = 1; $i <= count($questions); $i++)
-            <button class="question-number"
-                onclick="switchQuestion({{ $i }})">{{ $i }}</button>
->>>>>>> dcce4bfea3e6c2fa0471747281f503a590e2fc3b
         @endfor
     </div> -->
 

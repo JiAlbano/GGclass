@@ -3,48 +3,46 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-.text-container {
-    display: flex;
-    flex-direction: column;  /* Align text vertically */
-    justify-content: center; /* Center text vertically in the container */
-    margin-left: 10px; /* Reduce space between the image and text */
-}
-
-.in-game-name {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 14px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
-.user-type {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 12px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #f0f0f0;
-    overflow-x: auto; /* Enable horizontal scrollbar */
-
+    font-family: Georgia;
+/*    background-color: #f0f0f0;*/
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-image: url('Adnu-building.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    font-family: 'Georgia', sans-serif; /* Use a modern font for a gamified look */
 }
+
+
+body::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit; /* Use the same background image */
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    filter: blur(3px); /* Apply blur to the background image */
+    z-index: -1; /* Place it behind all content */
+}
+
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #14171D, #2A2E34); /* Dark gradient for a modern feel */
+    background: #283891;  /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    color: #FFC62E;
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:Georgia;
     position: fixed;
     width: 100%;
     top: 0;
@@ -65,17 +63,20 @@ body {
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
-    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
+    font-size: 23px;
+    color: #FFFFFF;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
+    font-family: georgia;
+}
+
+.ggclass-font:hover {
+color:#FFC62E;
 }
 
 .section-font {
     font-size: 16px;
-    color: #FFC62E;
-    opacity: 0.8;
+    color: white;
     margin-left: 10px;
     margin-top: 10px;
 }
@@ -93,122 +94,166 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
+.disabled-btn {
+    color: white; /* White text */
+    background-color: gray;
+    margin-top: 60px;
+    font-size: 10px; /* Larger font size */
+    border-radius: 10px; /* Rounded corners */
+    width: 200px;
+    height: 180px;
+}
+
+
+.logout-container {
+    background-color: white; /* Background color of the dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.logout-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-item {
+    cursor: pointer;
+}
+
+.logout-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.profile-container {
+    position: relative; /* Ensures that the dropdown is positioned correctly */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #000; /* Default text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
+    color: red; /* Change text color to red on hover */
+}
+
 .timer-container {
     width: 250px;
-    height: 120px;
-    padding: 20px;
-    background-color: #282c34;
+    height: 100%;
+    max-height: 150px;
+    padding: 10px;
+    background-color: #283891;
     color: #FFC62E;
-    border-radius: 10px;
+    border-radius: 5px;
     justify-content: center;
-    font-family: 'Press Start 2P', cursive;
-    margin-top: 25px;
-    font-size: 8px;
+    font-family: Georgia;
+/*    margin-top: 10px;*/
+    font-size: 23px;
     border: 2px solid #FFC62E; /* Border width, style, and color */
 }
 
 .time-display {
-    font-size: 30px;
-    padding: 20px;
-    justify-content: center;
-    text-align: center;
-    display: flex;
+    font-size: 23px;
 }
 
 .question-container {
-    background-color: #2c2f33;
-    padding: 20px;
-    border-radius: 10px;
-    /* max-width: 800px; */
-    width: 50%  ;
+    background-color: #ffffff;
+/*    padding: 15px;*/
+    border-radius: 5px;
+    width: 80%;
+    max-width: 900px;
+    box-sizing: border-box;
     margin: 20px auto;
     color: #fff;
-    font-family: 'Press Start 2P', cursive;
-    border: 2px solid #FFC62E; /* Border width, style, and color */
+    font-family: Georgia;
+    font-size: 18px;
+    border: 2px solid #283891; /* Border width, style, and color */
+    height: 100%;
+    max-height: 800px;
 }
+
 
 .question-header {
+    font-size: 18px;
+    border-start-end-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    margin-left: 10px;
-}
-
-.edit-btn {
-    background-color: #E4E4E4;
-    color: #2A2E34;
-    padding: 8px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: xx-small;
-}
-
-.edit-btn:hover{
-    background-color: #FFC62E;
-    color: #2A2E34;
+    justify-content: center;
+    align-items: center;    
+    margin-bottom: 0%;
+/*    margin-left: 10px;*/
+    background-color: ;
+    background-color: #283891;
+    width: 100%;
 }
 
 .options-container,
 .true-false-container,
 .identification-container {
-    margin-bottom: 15px;
+    margin: auto;
+
 }
 
 .option-btn {
-    background-color: #E4E4E4;
-    color: #2A2E34;
-    margin: 5px 0;
-    padding: 10px;
+    background-color: #283891;
+    color: #ffffff;
+    align-items: center;
+    width:75%;
+    padding: 3px ;
     border-radius: 5px;
+    border: none;
     cursor: pointer;
     display: block;
-    margin-left: 20px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: x-small;
+    margin-left: 10px;
+    font-family: georgia;
+    font-size: 18px;
     margin-bottom: 15px;
 }
 
+
 .option-btn:hover{
     background-color: #FFC62E;
-    color: #2A2E34;
+    color: #050834;
 }
 
 .option-btn.active {
     background-color: #FFC62E;
-    color: #2A2E34;
+    color: #050834;
 }
 
-.nav-btn {
-    background-color: #E4E4E4;
-    color: #2A2E34;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
+
+.btn-bn {
+    background-color: #283891; /* White background */
+    color: #ffffff; /* Black text */
+    padding: 5px 10px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
     cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: x-small;
+    border: none; /* No border */
+    font-family: Georgia, serif; /* Font family */
+    font-size: 16px; /* Font size */
+    align-items: center; /* Center alignment for flex children */
+    justify-content: center; /* Center alignment for flex children */
+    margin-top: 15px; /* Space above the button */
+    margin-bottom: 15px;
 }
 
-.nav-btn:hover{
-    background-color: #FFC62E;
-    color: #2A2E34;
+.btn-bn:hover {
+    background-color: #FFC62E; /* Yellow background on hover */
+    color: #000; /* Black text on hover */
 }
 
-.btn-bn{
-    background-color: #E4E4E4;
-    color: #2A2E34;
-    padding: 10px 10px 10px;
-    border-radius: 10px;
-    font-size: smaller;
-    margin-top: 20px;
+/* Utility class to align the button to the right */
+.ml-auto {
+    margin-left: auto;
 }
 
-.btn-bn:hover{
-    background-color: #FFC62E;
-    color: #2A2E34;
-}
+
 
 .question-numbers {
     text-align: center;
@@ -216,9 +261,10 @@ body {
 }
 
 .question-numbers button {
-    background-color: #2A2E34;
+    background-color: #283891;
     color: #f0f0f0;
     padding: 10px;
+    border: none;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -226,13 +272,181 @@ body {
 
 .question-numbers button.active {
     background-color: #FFC62E;
-    color: #2A2E34;
+    color: #050834;
 }
 
 .question-numbers button:hover{
     background-color: #FFC62E;
-    color: #2A2E34;
+    color: #050834;
+}
+
+.top-right {
+    display: flex;
+    align-items: center; /* Center text vertically with the image */
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.img-token {
+    width: 120px;
+    height: 60px;
+    margin: 0;
+
+}
+
+.text-number {
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bolder;
+    margin: 0;
+    margin-right: 30px;
+}
+
+input {
+    padding: 10px; /* Padding inside the input */
+    font-size: 16px; /* Font size of the input text */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
 }
 
 
+/*MODAL*/
 
+/* Basic Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding-top: 50px;
+}
+
+/* Modal Content */
+/*.modal-content {
+    background-color: #283891; 
+    color: #000;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    font-family: Georgia, serif;
+    max-width: 600px;
+    border-radius: 10px;
+}*/
+
+/* Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Button Style */
+button {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.modal-dialog{
+    background-color: #283891;
+}
+
+/* Optional: Center modal content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #283891; 
+    color: #000;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%; 
+    font-family: Georgia, serif;
+    max-width: 600px;
+/*    border-radius: 30px;*/
+}
+
+/* Media Queries for Responsiveness */
+
+/* For small screens, like mobile devices */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Adjust width to fit smaller screens */
+        padding: 15px;
+    }
+
+    button {
+        padding: 8px 16px; /* Adjust button padding for smaller screens */
+        font-size: 14px; /* Slightly smaller text */
+    }
+
+    .close {
+        font-size: 24px; /* Smaller close button */
+    }
+}
+
+/* For very small screens, like extra small mobile devices */
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 95%; /* Further adjust for very small screens */
+        padding: 10px;
+    }
+
+    button {
+        padding: 6px 12px; /* Smaller button */
+        font-size: 12px; /* Smaller font size */
+    }
+
+    .close {
+        font-size: 20px; /* Even smaller close button */
+    }
+}
+
+/* For larger screens like tablets and desktops */
+@media screen and (min-width: 1024px) {
+    .modal-content {
+        width: 50%; /* Make modal content wider for larger screens */
+    }
+
+    button {
+        padding: 12px 24px; /* Increase button padding for larger screens */
+    }
+}
+
+.btn1{
+    background-color: #283891;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 8px;
+    font-size: 16;
+}
+
+.btn1:hover{
+    background-color: #FFC62E;
+    color: #000;
+}

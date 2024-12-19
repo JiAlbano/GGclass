@@ -18,9 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ secure_asset('student-view/challenges-student.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('student-view/tutorials-student.css') }}">
     <!-- New CSS file for the container -->
-    <link rel="stylesheet" href="{{ asset('student-view/challenges-student.css') }}">
+    <link rel="stylesheet" href="{{ asset('student-view/tutorials-student.css') }}">
 </head>
 
 <body>
@@ -140,24 +140,26 @@
                 </div>
             </div>
 
-            <div class="container-q">
-                @foreach ($challenges as $challenge)
-                    <div class="container quiz-container">
-                        <button type="button" class="quiz-button"
-                            onclick="window.location.href='{{ route('quiz-student', ['classId' => $challenge->id]) }}'">
-                            <img src="{{ asset('img/announce.png') }}" alt="challenge-icon" class="challenge-icon">
-                            <span class="challenge-text-type">
-                                Challenge Type:
-                                {{ str_replace('_', ' ', ucfirst($challenge->type)) }} </span> <img
-                                src="{{ asset('img/hamburger.png') }}" alt="hamburger-menu" class="hamburger-menu">
-                        </button>
-                    </div>
-                @endforeach
+               <!-- Bulletin List -->
+               <div class="bulletin-list">
+    @foreach($challenges as $challenge)
+        <div class="bulletin-item quiz-button" 
+             onclick="window.location.href='{{ route('quiz-student', ['classId' => $challenge->id]) }}'">
+            <div class="bulletin-icon">
+                <img src="{{ asset('megaphone.png') }}" />
             </div>
+            <div class="bulletin-content">
+                <p class="bulletin-title">Challenge type: {{ ucfirst(str_replace('_', ' ', $challenge->type)) }}</p>
+                <p class="bulletin-date">{{ $challenge->created_at->format('M d, Y') }}</p>
+            </div>
+            <div class="bulletin-options">
+                <div class="options-btn">•••</div>
+            </div>
+        </div>
+    @endforeach
+</div>
 
-            <!-- Bootstrap JS and dependencies -->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+        
 
 
 </body>
