@@ -5,22 +5,20 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: Georgia;
-/*    background-color: #f0f0f0;*/
+    /*    background-color: #f0f0f0;*/
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: url('Adnu-building.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    font-family: 'Georgia', sans-serif; /* Use a modern font for a gamified look */
+    background-image: url("Adnu-building.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: "Georgia", sans-serif; /* Use a modern font for a gamified look */
 }
 
-
 body::after {
-    content: ''; /* Empty content for the pseudo-element */
+    content: ""; /* Empty content for the pseudo-element */
     position: absolute;
     top: 0;
     left: 0;
@@ -34,20 +32,16 @@ body::after {
     z-index: -1; /* Place it behind all content */
 }
 
-
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: #283891;  /* Dark gradient for a modern feel */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family:Georgia;
+    background: #2e3667;
+    font-family: Georgia;
     position: fixed;
+    height: 65px;
     width: 100%;
     top: 0;
     z-index: 999;
-    border-bottom: 2px solid #FFC62E;
 }
 
 .left-section {
@@ -56,22 +50,28 @@ body::after {
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 20px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+    height: 60px;
+    margin-right: 10px;
+    position: relative;
+    top: -16px;
+    margin-left: 10px;
 }
 
 .ggclass-font {
-    font-size: 23px;
-    color: #FFFFFF;
-    margin-right: 10px;
-    margin-top: 5px;
-    font-family: georgia;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -1px;
+    top: -10px;
 }
 
 .ggclass-font:hover {
-color:#FFC62E;
+    color: #ffc62e;
 }
 
 .section-font {
@@ -82,16 +82,33 @@ color:#FFC62E;
 }
 
 .profile-img {
-    width: 40px;
-    height: 40px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
-    transition: transform 0.3s, box-shadow 0.3s;
+    object-fit: cover;
+    margin-right: 12px;
+    position: relative;
+    left: -35px;
 }
 
-.profile-img:hover {
-    transform: scale(1.1); /* Slight zoom-in effect on hover */
-    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+.in-game-name {
+    position: relative;
+    left: -33px;
+    top: 5px;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 16px;
+    color: #f5f5f5;
+}
+
+.user-type {
+    position: relative;
+    top: -15px;
+    left: -33px;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 15px;
+    color: white;
 }
 
 .disabled-btn {
@@ -103,7 +120,6 @@ color:#FFC62E;
     width: 200px;
     height: 180px;
 }
-
 
 .logout-container {
     background-color: white; /* Background color of the dropdown */
@@ -148,13 +164,13 @@ color:#FFC62E;
     max-height: 150px;
     padding: 10px;
     background-color: #283891;
-    color: #FFC62E;
+    color: #ffc62e;
     border-radius: 5px;
     justify-content: center;
     font-family: Georgia;
-/*    margin-top: 10px;*/
+    /*    margin-top: 10px;*/
     font-size: 23px;
-    border: 2px solid #FFC62E; /* Border width, style, and color */
+    border: 2px solid #ffc62e; /* Border width, style, and color */
 }
 
 .time-display {
@@ -165,23 +181,22 @@ color:#FFC62E;
     background-color: #283891;
     padding: 15px;
     border-radius: 5px;
-    width: 100%  ;
+    width: 100%;
     max-width: 900px;
     box-sizing: border-box;
     margin: 20px auto;
     color: #fff;
     font-family: Georgia;
     font-size: 18px;
-    border: 2px solid #FFC62E; /* Border width, style, and color */
+    border: 2px solid #ffc62e; /* Border width, style, and color */
     height: 100%;
     max-height: 800px;
 }
 
-
 .question-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
     margin-bottom: 0%;
     margin-left: 10px;
 }
@@ -194,12 +209,12 @@ color:#FFC62E;
 }
 
 .option-btn {
-    background-color: #fffffff;
+    background-color: #ffffff;
     color: #000;
     align-items: center;
-    width:100%;
+    width: 100%;
     /* margin: 5px 0; */
-    padding: 3px ;
+    padding: 3px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -210,20 +225,18 @@ color:#FFC62E;
     margin-bottom: 15px;
 }
 
-
-.option-btn:hover{
-    background-color: #FFC62E;
+.option-btn:hover {
+    background-color: #ffc62e;
     color: #050834;
 }
 
 .option-btn.active {
-    background-color: #FFC62E;
+    background-color: #ffc62e;
     color: #050834;
 }
 
-
-.btn-bn{
-    background-color: #fffffff;
+.btn-bn {
+    background-color: #ffffff;
     color: #000;
     padding: 5px 10px;
     border-radius: 5px;
@@ -234,14 +247,12 @@ color:#FFC62E;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-
 }
 
-.btn-bn:hover{
-    background-color: #FFC62E;
+.btn-bn:hover {
+    background-color: #ffc62e;
     color: #000;
 }
-
 
 .question-numbers {
     text-align: center;
@@ -259,12 +270,12 @@ color:#FFC62E;
 }
 
 .question-numbers button.active {
-    background-color: #FFC62E;
+    background-color: #ffc62e;
     color: #050834;
 }
 
-.question-numbers button:hover{
-    background-color: #FFC62E;
+.question-numbers button:hover {
+    background-color: #ffc62e;
     color: #050834;
 }
 
@@ -279,7 +290,6 @@ color:#FFC62E;
     width: 120px;
     height: 60px;
     margin: 0;
-
 }
 
 .text-number {
@@ -295,7 +305,6 @@ input {
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 10px; /* Rounded corners */
 }
-
 
 /*MODAL*/
 
@@ -358,7 +367,7 @@ button:hover {
     color: white;
 }
 
-.modal-dialog{
+.modal-dialog {
     background-color: #283891;
 }
 
@@ -368,14 +377,14 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #283891; 
+    background-color: #283891;
     color: #000;
     margin: 5% auto;
     padding: 20px;
-    width: 80%; 
+    width: 80%;
     font-family: Georgia, serif;
     max-width: 600px;
-/*    border-radius: 30px;*/
+    /*    border-radius: 30px;*/
 }
 
 /* Media Queries for Responsiveness */
@@ -425,7 +434,7 @@ button:hover {
     }
 }
 
-.btn1{
+.btn1 {
     background-color: #283891;
     color: #fff;
     border: none;
@@ -434,7 +443,7 @@ button:hover {
     font-size: 16;
 }
 
-.btn1:hover{
-    background-color: #FFC62E;
+.btn1:hover {
+    background-color: #ffc62e;
     color: #000;
 }

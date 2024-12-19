@@ -7,7 +7,7 @@
 
 .text-container {
     display: flex;
-    flex-direction: column;  /* Align text vertically */
+    flex-direction: column; /* Align text vertically */
     justify-content: center; /* Center text vertically in the container */
     margin-left: 10px; /* Reduce space between the image and text */
 }
@@ -29,7 +29,7 @@
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: "Press Start 2P", cursive;
     background-color: #f0f0f0;
     overflow-x: auto; /* Enable horizontal scrollbar */
     overflow-y: scroll; /* Always show vertical scrollbar */
@@ -40,15 +40,19 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #14171D, #2A2E34); /* Dark gradient for a modern feel */
+    background: linear-gradient(
+        145deg,
+        #14171d,
+        #2a2e34
+    ); /* Dark gradient for a modern feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    color: #FFC62E;
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    color: #ffc62e;
+    font-family: "Press Start 2P", cursive; /* Retro-futuristic font */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 999;
-    border-bottom: 2px solid #FFC62E;
+    border-bottom: 2px solid #ffc62e;
 }
 
 .left-section {
@@ -57,15 +61,13 @@ body {
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 20px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+    height: 60px;
+    margin-right: 10px;
 }
 
 .ggclass-font {
     font-size: 16px;
-    color: #FFC62E;
+    color: #ffc62e;
     text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
     margin-right: 10px;
     margin-top: 10px;
@@ -73,7 +75,7 @@ body {
 
 .section-font {
     font-size: 16px;
-    color: #FFC62E;
+    color: #ffc62e;
     opacity: 0.8;
     margin-left: 10px;
     margin-top: 10px;
@@ -93,11 +95,11 @@ body {
 }
 
 .challenge-btn.active {
-    color: #2A2E34; /* White text color for the active button */
+    color: #2a2e34; /* White text color for the active button */
     font-weight: bold;
-    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8), /* Glowing text effect */
-                0 0 10px rgba(255, 198, 46, 0.8),
-                0 0 15px rgba(255, 198, 46, 0.8);
+    text-shadow: 0 0 5px rgba(255, 198, 46, 0.8),
+        /* Glowing text effect */ 0 0 10px rgba(255, 198, 46, 0.8),
+        0 0 15px rgba(255, 198, 46, 0.8);
     transition: all 0.3s ease;
 }
 .row {
@@ -126,14 +128,14 @@ body {
 }
 
 .btn:hover {
-    color: #2A2E34;
+    color: #2a2e34;
     font-weight: bold;
 }
 
 .info-container {
-    border: 2px solid #FFC62E;
+    border: 2px solid #ffc62e;
     padding: 20px;
-    background-color: #2A2E34;
+    background-color: #2a2e34;
     width: 300px;
     text-align: center;
     margin: 20px auto;
@@ -147,7 +149,6 @@ body {
     position: relative;
 }
 
-
 .container-picture {
     width: 80px; /* Adjust the size of the image as needed */
     height: 80px; /* Ensure the height is equal to the width for a perfect circle */
@@ -155,7 +156,7 @@ body {
     object-fit: cover; /* Ensures the image covers the entire circle without distortion */
     display: block; /* Optional: Ensures the image is a block element */
     margin: 0 auto; /* Optional: Center the image horizontally */
-    border: 3px solid #2A2E34;
+    border: 3px solid #2a2e34;
     position: absolute; /* Position the image relative to the container */
     top: -8%; /* Move the image up to flow outside the container */
     left: 50%; /* Center the image horizontally */
@@ -167,7 +168,7 @@ body {
     font-weight: bold;
     margin: 10px 0;
     color: #f0f0f0;
-    font-family: 'Press Start 2P', cursive;
+    font-family: "Press Start 2P", cursive;
     margin-top: 40px;
     margin-bottom: 20px;
 }
@@ -181,7 +182,7 @@ body {
 
 hr {
     border: 0;
-    border-top: 1px solid #E4E4E4;
+    border-top: 1px solid #e4e4e4;
     margin: 10px 0;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -201,7 +202,6 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
 
 .container-info-email {
     margin: 10px 0;
@@ -227,8 +227,8 @@ hr {
 }
 
 .btn {
-    background-color: #E4E4E4;
-    color: #2A2E34;
+    background-color: #e4e4e4;
+    color: #2a2e34;
     border: none;
     padding: 10px 20px;
     margin: 0px;
@@ -241,10 +241,9 @@ hr {
     display: flex;
     justify-content: center;
     font-size: 7px;
-    font-family: 'Press Start 2P', cursive;
+    font-family: "Press Start 2P", cursive;
 }
 
 .btn:hover {
-    background-color: #FFC62E;
+    background-color: #ffc62e;
 }
-
