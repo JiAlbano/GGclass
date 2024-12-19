@@ -139,8 +139,7 @@
             </div>
 
             <div class="container-adviser ">
-                <div
-                    class="container-sm d-flex flex-column justify-content-start align-items-start position-relative p-3 border">
+                <div class="container-sm d-flex flex-column justify-content-start align-items-start position-relative p-3 border">
                     <h3 class="mb-2">{{ $quiz->title }}</h3>
                     <p class="mb-0">{{ $quiz->description }}</p>
                     <!-- Open Button -->

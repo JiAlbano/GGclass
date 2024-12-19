@@ -334,6 +334,32 @@ body {
     color: #ffffff;
 }
 
+@media (max-width: 992px) { /* For medium screens */
+    .container-adviser .btn-open {
+        left: 0; /* Reset the left positioning */
+        top: 0; /* Reset the top positioning */
+        float: none; /* Remove float to allow flexibility */
+        margin-top: 20px; /* Add spacing from other elements */
+        width: auto; /* Adjust to fit the content or container */
+    }
+}
+
+@media (max-width: 768px) { /* For smaller screens like tablets */
+    .container-adviser .btn-open {
+        width: 100%; /* Make the button span the container's width */
+        height: auto; /* Adjust the height to fit content */
+        text-align: center; /* Center-align text for a better look */
+    }
+}
+
+@media (max-width: 576px) { /* For very small screens like phones */
+    .container-adviser .btn-open {
+        font-size: 14px; /* Reduce font size for smaller screens */
+        padding: 8px 15px; /* Adjust padding for better fit */
+    }
+}
+
+
 .logout-container {
     background-color: white; /* Background color of the dropdown */
     border: 1px solid #ccc; /* Border color */
