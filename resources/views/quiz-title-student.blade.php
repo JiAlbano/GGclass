@@ -131,7 +131,7 @@
             <p class="mb-0">{{$quiz->description}}</p>
             <!-- Open Button -->
             <button class="btn btn-open position-absolute" onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
-            <label class="note-time">NOTE: Once you open this, the time for taking this challenge will start already. You only have <b>{{$quiz->time_duration}} {{$quiz->time_duration > 1 ? 'minutes' : 'minute'}}</b> to take this challenge.</label>
+            <label class="note-time">NOTE: Starting this challenge activates the timer. You have <b>{{$quiz->time_duration}} {{$quiz->time_duration > 1 ? 'minutes' : 'minute'}}</b> and can't return to previous questions after moving forward.</label>
         </div>
     </div>
 

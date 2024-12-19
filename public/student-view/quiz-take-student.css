@@ -222,25 +222,30 @@ color:#FFC62E;
 }
 
 
-.btn-bn{
-    background-color: #fffffff;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
+.btn-bn {
+    background-color: #ffffff; /* White background */
+    color: #000; /* Black text */
+    padding: 5px 10px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
     cursor: pointer;
-    border: none;
-    font-family: Georgia;
-    font-size: 16px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-
+    border: none; /* No border */
+    font-family: Georgia, serif; /* Font family */
+    font-size: 16px; /* Font size */
+    align-items: center; /* Center alignment for flex children */
+    justify-content: center; /* Center alignment for flex children */
+    margin-top: 20px; /* Space above the button */
 }
 
-.btn-bn:hover{
-    background-color: #FFC62E;
-    color: #000;
+.btn-bn:hover {
+    background-color: #FFC62E; /* Yellow background on hover */
+    color: #000; /* Black text on hover */
 }
+
+/* Utility class to align the button to the right */
+.ml-auto {
+    margin-left: auto;
+}
+
 
 
 .question-numbers {
