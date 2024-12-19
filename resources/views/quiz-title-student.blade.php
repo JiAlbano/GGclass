@@ -26,7 +26,8 @@
 <body>
 
     <div class="navbar">
-    <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->class_id]) }}'">
+        <div class="left-section" style="cursor: pointer;"
+            onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass</h1>
             <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
@@ -143,7 +144,8 @@
                     <h3 class="mb-2">{{ $quiz->title }}</h3>
                     <p class="mb-0">{{ $quiz->description }}</p>
                     <!-- Open Button -->
-                    <button class="btn btn-open position-relative" onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+                    <button class="btn btn-open position-absolute"
+                        onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
                     <label class="note-time">NOTE: Starting this challenge activates the timer. You have
                         <b>{{ $quiz->time_duration }} {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> and
                         can't return to previous questions after moving forward.</label>
