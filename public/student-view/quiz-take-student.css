@@ -162,43 +162,49 @@ color:#FFC62E;
 }
 
 .question-container {
-    background-color: #283891;
-    padding: 15px;
+    background-color: #ffffff;
+/*    padding: 15px;*/
     border-radius: 5px;
-    width: 100%  ;
+    width: 80%;
     max-width: 900px;
     box-sizing: border-box;
     margin: 20px auto;
     color: #fff;
     font-family: Georgia;
     font-size: 18px;
-    border: 2px solid #FFC62E; /* Border width, style, and color */
+    border: 2px solid #283891; /* Border width, style, and color */
     height: 100%;
     max-height: 800px;
 }
 
 
 .question-header {
+    font-size: 18px;
+    border-start-end-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;    
     margin-bottom: 0%;
-    margin-left: 10px;
+/*    margin-left: 10px;*/
+    background-color: ;
+    background-color: #283891;
+    width: 100%;
 }
 
 .options-container,
 .true-false-container,
 .identification-container {
-    margin-bottom: 5px;
-    margin-right: 15px;
+    margin: auto;
+
 }
 
 .option-btn {
-    background-color: #fffffff;
-    color: #000;
+    background-color: #283891;
+    color: #ffffff;
     align-items: center;
-    width:100%;
-    /* margin: 5px 0; */
+    width:75%;
     padding: 3px ;
     border-radius: 5px;
     border: none;
@@ -223,8 +229,8 @@ color:#FFC62E;
 
 
 .btn-bn {
-    background-color: #ffffff; /* White background */
-    color: #000; /* Black text */
+    background-color: #283891; /* White background */
+    color: #ffffff; /* Black text */
     padding: 5px 10px; /* Button padding */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer;
@@ -233,7 +239,8 @@ color:#FFC62E;
     font-size: 16px; /* Font size */
     align-items: center; /* Center alignment for flex children */
     justify-content: center; /* Center alignment for flex children */
-    margin-top: 20px; /* Space above the button */
+    margin-top: 15px; /* Space above the button */
+    margin-bottom: 15px;
 }
 
 .btn-bn:hover {

@@ -169,11 +169,11 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
-    <div class="question-numbers">
+<!--     <div class="question-numbers">
         @for($i = 1; $i <= count($questions); $i++)
         <button class="question-number" onclick="switchQuestion({{$i}})">{{$i}}</button>
         @endfor
-    </div>
+    </div> -->
 
 <script>
     let currentQuestion = 1;
