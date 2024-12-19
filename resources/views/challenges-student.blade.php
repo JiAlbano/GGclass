@@ -98,8 +98,6 @@
     </div>
 </div>
 
-
-<div class="dashboard-container">
     <!-- Back Button -->
 <!--     <div class="back-button">
         <button onclick="window.history.back()">&#8592; Back</button>
@@ -134,6 +132,9 @@
             </div>
         @endforeach
     </div>
+
+
+
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

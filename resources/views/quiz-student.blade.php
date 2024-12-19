@@ -24,7 +24,7 @@
 <body>
 
     <div class="navbar">
-        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
+        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass</h1>
             <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
@@ -133,6 +133,160 @@
             </div>
         @endforeach
     </div>
+
+    <div class="challenge-list">
+    @foreach($quizzes as $quiz)
+    <?php $disable = in_array($quiz->id, $studentChallengesTaken->toArray()); ?>
+    <button type="button" class="{{ $disable > 0 ? 'disabled-btn' : 'quiz-button'}}" {{ $disable > 0 ? 'disabled' : '' }} onclick="window.location.href='{{  route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+            <div class="challenge-icon">
+            <img src="{{ asset('megaphone.png') }}"/>
+            </div>
+            <div class="challenge-content">
+                <p class="challenge-title">
+                    Challenge type:{{ $quiz->title }}
+                </p>
+                <p class="challenge-date">{{ $challenge->created_at->format('M d, Y') }}</p>
+            </div>
+            <div class="challenge-options">
+                <span class="options-btn">•••</span>
+            </div>
+        </button>
+    @endforeach
+</div>
+    </div>
+    
+
+<style>
+    /* Individual challenge Item */
+.challenge-list {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Add spacing between items */
+}
+
+.challenge-item {
+    display: flex;
+    align-items: center; /* Align content vertically */
+    justify-content: flex-start; /* Align content to the left */
+    width: 230%;
+    padding: 5px;
+    border: 1px solid #151414e6;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left; /* Ensure text aligns to the left */
+    transition: background-color 0.3s ease;
+}
+
+
+.challenge-icon {
+    margin-right: 15px;
+}
+
+.challenge-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: brightness(1.2); /* Slightly brighten icons */
+}
+
+.challenge-content {
+    flex-grow: 1;
+    font-family: Arial, sans-serif;
+}
+
+.challenge-item:hover {
+    transform: scale(1.02); /* Subtle scaling for hover effect */
+    background-color: #a8a4a4b8;
+  
+}
+
+.challenge-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2b52b2;
+    margin: 0;
+    padding: 3px;
+}
+
+.challenge-date {
+    font-size: 12px;
+    color: #888;
+    margin: 5px 0 0 0;
+}
+
+.challenge-options {
+    display: flex;
+    align-items: center;
+}/* challenge List Container */
+.challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Spacing between items */
+    width: 120%;
+    max-width: 600px;
+    margin: 0px auto;
+    margin-left: 10px;
+}
+
+/* Individual challenge Item */
+.challenge-list {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Add spacing between items */
+}
+
+.challenge-item {
+    display: flex;
+    align-items: center; /* Align content vertically */
+    justify-content: flex-start; /* Align content to the left */
+    width: 230%;
+    padding: 5px;
+    border: 1px solid #151414e6;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left; /* Ensure text aligns to the left */
+    transition: background-color 0.3s ease;
+}
+
+
+.challenge-icon {
+    margin-right: 15px;
+}
+
+.challenge-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: brightness(1.2); /* Slightly brighten icons */
+}
+
+.challenge-content {
+    flex-grow: 1;
+    font-family: Arial, sans-serif;
+}
+
+.challenge-item:hover {
+    transform: scale(1.02); /* Subtle scaling for hover effect */
+    background-color: #a8a4a4b8;
+  
+}
+
+.challenge-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2b52b2;
+    margin: 0;
+    padding: 3px;
+}
+
+.challenge-date {
+    font-size: 12px;
+    color: #888;
+    margin: 5px 0 0 0;
+}
+</style>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
