@@ -74,7 +74,7 @@
             logoutButton.addEventListener('click', function(event) {
                 event.stopPropagation(); // Prevents the click from bubbling up
                 logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' :
-                'none'; // Toggle visibility of the dropdown
+                    'none'; // Toggle visibility of the dropdown
             });
 
             // Close the dropdown when clicking outside
@@ -168,13 +168,14 @@
             <!-- Identification question -->
             <div class="identification-container" style="display:none;"></div>
         </div>
-        <div class="col-12 d-flex justify-content-between">
+        <div class="col-12 d-flex">
             <!-- Back button on the left -->
-            <button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button>
+            <!-- <button id="back-btn" class="btn-bn" onclick="previousQuestion()">Back</button> -->
             <!-- Next button on the right -->
-            <button id="next-btn" class="btn-bn" onclick="nextQuestion()">Next</button>
+            <button id="next-btn" class="btn-bn ml-auto" onclick="nextQuestion()">Next</button>
             <!-- Submit button (initially hidden) -->
-            <button id="submit-btn" class="btn-bn" style="display:none;" onclick="submitQuiz()">Submit</button>
+            <button id="submit-btn" class="btn-bn ml-auto" style="display:none;"
+                onclick="submitQuiz()">Submit</button>
         </div>
     </div>
 

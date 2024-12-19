@@ -138,17 +138,17 @@
                 </div>
             </div>
 
-            <div class="container-adviser">
+            <div class="container-adviser ">
                 <div
                     class="container-sm d-flex flex-column justify-content-start align-items-start position-relative p-3 border">
                     <h3 class="mb-2">{{ $quiz->title }}</h3>
                     <p class="mb-0">{{ $quiz->description }}</p>
                     <!-- Open Button -->
-                    <button class="btn btn-open"
+                    <button class="btn btn-open position-absolute"
                         onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
-                    <label class="note-time">NOTE: Once you open this, the time for taking this challenge will start
-                        already. You only have <b>{{ $quiz->time_duration }}
-                            {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> to take this challenge.</label>
+                    <label class="note-time">NOTE: Starting this challenge activates the timer. You have
+                        <b>{{ $quiz->time_duration }} {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> and
+                        can't return to previous questions after moving forward.</label>
                 </div>
             </div>
 

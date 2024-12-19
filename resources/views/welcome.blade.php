@@ -51,7 +51,7 @@
         <!-- Centered greeting, logo, and login button -->
         <div class="center-content">
             <span class="greeting">Hello, Ateneans</span>
-            <img src="{{asset('FinalLogo.png')}}" alt="Final Logo" class="final-logo">
+            <img src="{{asset('finalLogo.png')}}" alt="Final Logo" class="final-logo">
 
             <div class="login-label">
                 <span>Log-in your account</span>
