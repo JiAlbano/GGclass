@@ -96,7 +96,6 @@
     border: 1px solid #757575;
     border-radius: 10px;
     height: 150px;
-
     width: 180px; /* Optional: Set dropdown width */
     text-align: left; /* Centers the menu items */
     display: none; /* Hidden by default */
@@ -115,10 +114,61 @@
     color: #2e3667;
 }
 
-/* Button Text Styles */
-.create-class-text,
+.join-class-btn {
+    width: 145px;
+    height: 50px;
+    background-color: #283891;
+    border-color: #ffd700;
+    border-radius: 5px;
+    position: relative;
+    top: 3px;
+}
+
+.join-class-btn:hover {
+    background-color: #4a90e2;
+}
+
 .join-class-text {
-    color: white; /* Text color */
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.addbtn.join-class-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-label {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    color: #283891;
+    font-weight: bold;
+}
+
+.form-control {
+    border: 2px solid #283891;
+}
+
+.join-button {
+    background-color: #283891;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    width: 145px;
+    height: 50px;
+}
+
+.modal-title-join {
+    font-weight: bold;
 }
 
 /* Adjusting the alignment of icons and text */

@@ -129,7 +129,7 @@
                                 placeholder="Enter class code" aria-required="true">
                         </div>
                         <div class="text-end"> <!-- Align button to the right -->
-                            <button type="submit" class="btn btn-primary">Join</button>
+                            <button type="submit" class="join-button">Join</button>
                         </div>
                     </form>
                 </div>
