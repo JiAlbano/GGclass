@@ -152,15 +152,16 @@ Route::middleware('auth')->group(function () {
 Route::get('/quiz/{classId}', [QuizController::class, 'show'])->name('test_and_quizzes.show');
 // Create quizzes for a class
 Route::get('/class/{classId}/quiz/create', [CreateQuizController::class, 'create'])->name('createquiz');
+
 // Store a newly created quiz (POST request)
 Route::post('/quiz', [QuizController::class, 'store'])->name('test_and_quizzes.store');
-Route::get('/quiz/{classId}/quiz/{quizId}', [QuizController::class, 'displayQuiz'])->name('test_and_quizzes.showQuiz');
+Route::get('/test_and_quizzes/{classId}/{quizId}', [QuizController::class, 'displayQuiz'])->name('test_and_quizzes.showQuiz');
 // Route for showing quiz titles for a specific class (GET request)
 Route::get('/quiz/{classId}/quiz-titles', [QuiztitleController::class, 'show'])->name('test_and_quizzes.titles');
 // Route for updating quiz
 Route::post('/quiz/{quizId}/update', [QuizController::class, 'update'])->name('test_and_quizzes.update');
 // Route to display the quiz-taking interface
-Route::get('/class/{classId}/quiz/{quizId}/take', [QuizController::class, 'showQuiz'])->name('test_and_quizzes.take');
+Route::get('/test_and_quizzes/{classId}/{quizId}/take', [QuizController::class, 'showQuiz'])->name('test_and_quizzes.take');
 // Route for saving changes to a question
 Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController::class, 'updateQuestion'])->name('test_and_quizzes.updateQuestion');
 
@@ -168,12 +169,13 @@ Route::get('/student/exam/{classId}', [ExamController::class, 'show'])->name('ex
 
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');
 
+
 Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
 
 
 Route::get('/class/{classId}/exam/create', [CreateExamController::class, 'create'])->name('createexam');
 
-Route::post('/quiz', [ExamController::class, 'store'])->name('exam.store');
+Route::post('/exam', [ExamController::class, 'store'])->name('exam.store');
 
 Route::get('/quiz/{classId}/quiz/{quizId}', [ExamController::class, 'displayQuiz'])->name('exam.showQuiz');
 // Route for showing quiz titles for a specific class (GET request)

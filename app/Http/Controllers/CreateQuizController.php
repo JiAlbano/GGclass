@@ -67,7 +67,7 @@ class CreateQuizController extends Controller
         }
 
         // Redirect to the show route (which is a GET request)
-        return redirect()->route('test_and_quizzes.show', [
+        return redirect()->route('test_and_quizzes.showQuiz', [
             'classId' => $validated['class_id'],
             'quizId' => $quiz->id
         ])->with('success', 'Quiz created successfully!');
