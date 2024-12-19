@@ -38,6 +38,7 @@ use App\Http\Controllers\StudentquiztakeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\CreateQuizController;
+use App\Http\Controllers\CreateExamController;
 // autorun
 
 Route::get('/migrate', function () {
@@ -163,10 +164,29 @@ Route::get('/class/{classId}/quiz/{quizId}/take', [QuizController::class, 'showQ
 // Route for saving changes to a question
 Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController::class, 'updateQuestion'])->name('test_and_quizzes.updateQuestion');
 
-Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
+Route::get('/student/exam/{classId}', [ExamController::class, 'show'])->name('exam_student.show');
+
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');
 
-Route::get('/student/exam/{classId}', [ExamController::class, 'show'])->name('exam_student.show');
+Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
+
+
+Route::get('/class/{classId}/exam/create', [CreateExamController::class, 'create'])->name('createexam');
+
+Route::post('/quiz', [ExamController::class, 'store'])->name('exam.store');
+
+Route::get('/quiz/{classId}/quiz/{quizId}', [ExamController::class, 'displayQuiz'])->name('exam.showQuiz');
+// Route for showing quiz titles for a specific class (GET request)
+Route::get('/quiz/{classId}/quiz-titles', [ExamController::class, 'show'])->name('exam.titles');
+// Route for updating quiz
+Route::post('/quiz/{quizId}/update', [ExamController::class, 'update'])->name('exam.update');
+// Route to display the quiz-taking interface
+Route::get('/class/{classId}/quiz/{quizId}/take', [ExamController::class, 'showQuiz'])->name('exam.take');
+// Route for saving changes to a question
+Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [ExamController::class, 'updateQuestion'])->name('exam.updateQuestion');
+
+
+
 Route::get('/student/activity/{classId}', [ActivityController::class, 'show'])->name('activity_student.show');
 
 // Class Update and Delete Routes

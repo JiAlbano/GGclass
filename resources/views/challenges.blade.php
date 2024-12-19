@@ -180,7 +180,7 @@
     <label for="challengeType" class="form-label">Challenge Type</label>
     <select id="challengeType" name="challengeType" class="form-input" required>
         <option value="" disabled selected>Select a challenge type</option>
-
+        <option value="exam">Exam</option>
         <option value="test_and_quizzes">Test and Quizzes</option>
     </select>
 </div>

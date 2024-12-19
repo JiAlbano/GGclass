@@ -10,11 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Question;
 
-class QuizController extends Controller
+class CreateExamController extends Controller
 {
-    
     // Display view for the quiz dashboard
-    public function show($classId)
+    public function create($classId)
     {
         // Fetch all users
         $user = Auth::user();
@@ -25,7 +24,7 @@ class QuizController extends Controller
         // Fetch quizzes related to the class
         $quizzes = Quiz::where('class_id', $classId)->get();
         // Pass class, users, and quizzes to the view
-        return view('test_and_quizzes', compact('class', 'user', 'quizzes'));
+        return view('createexam', compact('class', 'user', 'quizzes'));
     }
 
 
@@ -68,7 +67,7 @@ class QuizController extends Controller
         }
 
         // Redirect to the show route (which is a GET request)
-        return redirect()->route('test_and_quizzes.show', [
+        return redirect()->route('exam.show', [
             'classId' => $validated['class_id'],
             'quizId' => $quiz->id
         ])->with('success', 'Quiz created successfully!');
@@ -89,7 +88,7 @@ class QuizController extends Controller
         $class = Classroom::findOrFail($classId);
 
         // Pass the quiz, class, questions, and users to the view
-        return view('quiz-title', compact('class', 'quiz', 'questions', 'user'));
+        return view('exam-title', compact('class', 'quiz', 'questions', 'user'));
     }
 
     public function update(Request $request, $quizId)
@@ -114,14 +113,12 @@ public function showQuiz($classId, $quizId)
     $quiz = Quiz::findOrFail($quizId);
 
     $questions = Question::where('quiz_id', $quizId)->get(); // Fetch the questions related to the quiz
-  // Fetch all users
-  $user = Auth::user();
 
     // Fetch the class details
     $class = Classroom::findOrFail($classId);
 
     // Pass the quiz, class, and questions to the view
-    return view('take-quiz', compact('class', 'quiz', 'questions', 'user'));
+    return view('exam-take', compact('class', 'quiz', 'questions'));
 }
 
 public function updateQuestion(Request $request, $classId, $quizId)
@@ -198,6 +195,8 @@ public function editScore(Request $request) {
         return 1;
     return 0;
 }
+
+
 
 }
 
