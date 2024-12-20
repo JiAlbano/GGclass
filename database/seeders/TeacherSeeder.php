@@ -51,29 +51,11 @@ class TeacherSeeder extends Seeder
                 'ign' => 'kevzo8',
                 'user_type' => 'teacher',
                 'department' => NULL,
-                'google_profile_image' => 'https://lh3.googleusercontent.com/a/ACg8ocJvI4HPss-jFH8gie1sWwEP4PzKS0wX6M-JHtnIsd67xCezlMw=s96-c',
-                'google_id' => '103491175805889251811',
-                'google_access_token' => 'ya29.a0ARW5m75q2xtKfjFd9xdesTj6N7Z9OkWePVMCUIn4506GCBH67TqjeXX5wbanxtC1qSl6_hpgCukHoyh7bLEp3tmDEPwkyJq4APwEmrJuBJoX5PdAYez10lC6CKLVt72_7UUQHIaU_OkYWQh4SW8ZQGcyf2Y8aX7xaP8aCgYKASISARESFQHGX2Mif671Z68JHFjL67vb-065XQ0170',
-        
                 
 
 
 
-                // 'email' => 'kevega@gbox.adnu.edu.ph',
-                // 'first_name' => 'Kevin',
-                // 'middle_initial' => 'G.',
-                // 'last_name' => 'Vega',
-                // 'user_type' => 'teacher',
-                // 'department' => NULL,
-                // 'id_number' => NULL,
-                // 'gender' => NULL,
-                // 'google_id' => '103491175805889251811',
-                // 'google_access_token' => 'ya29.a0ARW5m75q2xtKfjFd9xdesTj6N7Z9OkWePVMCUIn4506GCBH67TqjeXX5wbanxtC1qSl6_hpgCukHoyh7bLEp3tmDEPwkyJq4APwEmrJuBJoX5PdAYez10lC6CKLVt72_7UUQHIaU_OkYWQh4SW8ZQGcyf2Y8aX7xaP8aCgYKASISARESFQHGX2Mif671Z68JHFjL67vb-065XQ0170',
-                // 'google_profile_image' => 'https://lh3.googleusercontent.com/a/ACg8ocJvI4HPss-jFH8gie1sWwEP4PzKS0wX6M-JHtnIsd67xCezlMw=s96-c',
-                // 'ign' => 'kevzo8',
-                // 'birthday' => NULL,
-                // 'course_id' => NULL,
-                // 'token_count' => 0,
+
             ],
             
         ]);
