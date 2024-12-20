@@ -148,10 +148,13 @@
             <div class="bulletin-icon">
                 <img src="{{ asset('megaphone.png') }}" />
             </div>
-            <div class="bulletin-content">
-                <p class="bulletin-title">Quiz: {{ $quiz->title }}</p>
-                <p class="bulletin-date">{{ $quiz->created_at->format('M d, Y') }}</p>
+            <div class="container-adviser" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <div class="bulletin-content">
+                    <p class="bulletin-title">Quiz: {{ $quiz->title }}</p>
+                    <p class="bulletin-date">{{ $quiz->created_at->format('M d, Y') }}</p>
+                </div>
             </div>
+
             <div class="bulletin-options">
                 <div class="options-btn">•••</div>
             </div>
