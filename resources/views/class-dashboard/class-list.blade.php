@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/class-dashboard/class-dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/main.css') }}">
+
+
     <main>
         <div class="container">
             <div class="class-list-wrapper">
                 @foreach ($classes as $class)
                     <a href="{{ auth()->user()->user_type === 'teacher' ? route('bulletins', ['classId' => $class->id]) : route('studentbulletins', ['classId' => $class->id]) }}"
-                        class="class-list-link" style="flex:3; text-decoration: none; color: inherit;">
-                        <div class="class-list" style="cursor: pointer;">
+                        class="class-list-link">
+                        <div class="class-list">
                             <div class="class-theme">
                                 <p class="school-year">School Year: {{ $class->school_year }}</p>
                                 <p class="semester">Semester: {{ $class->semester }}</p>
@@ -34,21 +36,6 @@
             </div>
         </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Handle class card clicks for redirection
-                document.querySelectorAll('.class-card').forEach(function(card) {
-                    card.addEventListener('click', function(event) {
-                        const isDropdownOrModal = event.target.closest('.dropdown') || event.target
-                            .closest('.modal');
-
-                        if (!isDropdownOrModal && !document.querySelector('.dropdown-menu.show')) {
-                            window.location.href = this.getAttribute('data-href');
-                        }
-                    });
-                });
-            });
-        </script>
 
         <!-- Modal -->
         <div class="modal fade" id="createClassModal" tabindex="-1" aria-labelledby="createClassModalLabel"
@@ -139,7 +126,7 @@
             </div>
         </div>
 
-
+        {{-- 
         <script>
             // Toggle Dropdown Visibility
             document.getElementById('logout-btn').addEventListener('click', () => {
@@ -191,7 +178,7 @@
                     });
                 });
             });
-        </script>
+        </script> --}}
 
         <!-- Bootstrap Bundle JS (includes Popper.js) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
