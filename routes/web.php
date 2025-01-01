@@ -177,15 +177,21 @@ Route::get('/class/{classId}/exam/create', [CreateExamController::class, 'create
 
 Route::post('/exam', [ExamController::class, 'store'])->name('exam.store');
 
-Route::get('/quiz/{classId}/quiz/{quizId}', [ExamController::class, 'displayQuiz'])->name('exam.showQuiz');
+Route::get('/exam/{classId}/exam/{examId}', [ExamController::class, 'displayExam'])->name('exam.showQuiz');
 // Route for showing quiz titles for a specific class (GET request)
-Route::get('/quiz/{classId}/quiz-titles', [ExamController::class, 'show'])->name('exam.titles');
+Route::get('/exam/{classId}/quiz-titles', [ExamController::class, 'show'])->name('exam.titles');
 // Route for updating quiz
-Route::post('/quiz/{quizId}/update', [ExamController::class, 'update'])->name('exam.update');
+Route::post('/exam/{examId}/update', [ExamController::class, 'update'])->name('exam.update');
 // Route to display the quiz-taking interface
-Route::get('/class/{classId}/quiz/{quizId}/take', [ExamController::class, 'showQuiz'])->name('exam.take');
+Route::get('/class/{classId}/exam/{examId}/take', [ExamController::class, 'showExam'])->name('exam.take');
 // Route for saving changes to a question
-Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [ExamController::class, 'updateQuestion'])->name('exam.updateQuestion');
+Route::post('/class/{classId}/exam/{examId}/take/editQuestion', [ExamController::class, 'updateQuestion'])->name('exam.updateQuestion');
+
+    // Token management
+    Route::post('/token/update', [ExamController::class, 'editToken'])->name('updateToken');
+    
+    // Timer management
+    Route::post('/timer/update', [ExamController::class, 'editTimer'])->name('updateTimer');
 
 
 
