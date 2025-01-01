@@ -80,39 +80,21 @@ class MigrateQuizToExamData extends Migration
                     }
 
                     // Create exam score
-                    ExamScore::create([
-                        'student_id' => $score->student_id,
-                        'exam_id' => $exam->id,
-                        'score' => $score->score,
-                        'token_used' => $score->token_used ?? false,
-                        'total_score' => $score->total_score
-                    ]);
-                    
-                    Log::info('Score migrated for student: ' . $score->student_id);
-                }
-
-                // 4. Migrate Student Question Answers
-                $answers = StudentQuestionAnswers::where('challenge_id', $quiz->id)->get();
-                Log::info('Migrating ' . $answers->count() . ' student question answers for quiz ' . $quiz->id);
-
-                foreach ($answers as $answer) {
-                    // Get the new question ID from our mapping
-                    $newQuestionId = $questionMapping[$quiz->id][$answer->question_id] ?? null;
-                    
-                    if ($newQuestionId) {
-                        ExamQuestionAnswer::create([
-                            'student_id' => $answer->student_id,
-                            'exam_id' => $exam->id,
-                            'question_id' => $newQuestionId,
-                            'answer' => $answer->answer,
-                            'is_correct' => $answer->is_correct
-                        ]);
-                        Log::info('Migrated answer for student: ' . $answer->student_id);
-                    } else {
-                        Log::warning('Could not find mapping for question_id ' . $answer->question_id . ' in quiz ' . $quiz->id);
+                    try {
+                        // Update challenge_type from 'quiz' to 'exam'
+                        DB::table('student_challenge_scores')
+                            ->where('challenge_type', 'quiz')
+                            ->update(['challenge_type' => 'exam']);
+            
+                        Log::info('Successfully updated challenge_type from quiz to exam');
+                        DB::commit();
+                    } catch (\Exception $e) {
+                        DB::rollBack();
+                        Log::error('Failed to update challenge_type: ' . $e->getMessage());
+                        throw $e;
                     }
                 }
-            }
+            }            
     
             DB::commit();
             Log::info('Migration completed successfully!');
