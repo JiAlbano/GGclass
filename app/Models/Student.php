@@ -11,6 +11,14 @@ class Student extends Model
 
     protected $primaryKey = 'school_id'; // school_id is the primary key
 
+    protected $fillable = [
+        'school_id',
+        'full_name',
+        'in_game_name',
+        'email',
+        'course'
+    ];
+
     // A student has many scores for different assessment types
     public function scores()
     {

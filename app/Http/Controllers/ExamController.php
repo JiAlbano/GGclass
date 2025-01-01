@@ -3,191 +3,166 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classes as Classroom;
-use App\Models\Quiz; // Assuming you have a Quiz model
-use App\Models\StudentChallengeScore;
+use App\Models\Exam;
+use App\Models\ExamScore;
+use App\Models\ExamQuestion;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Question;
+
 class ExamController extends Controller
 {
     public function show($classId)
     {
-        $user = Auth::user(); // Fetch all users
-        $class = Classroom::findOrFail($classId); // Fetch the class
-   // Fetch quizzes related to the class
-   $quizzes = Quiz::where('class_id', $classId)->get();
-        return view('exam', compact('class', 'user', 'quizzes')); // Pass both variables to the view
+        $user = Auth::user();
+        $class = Classroom::findOrFail($classId);
+        // Change from Quiz to Exam
+        $exams = Exam::where('class_id', $classId)->get();
+        return view('exam', compact('class', 'user', 'exams'));
     }
 
-
-public function store(Request $request)
-{
-    // Validate the request
-    $validated = $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'class_id' => 'required|exists:classes,id',
-        'questions' => 'required|array',
-    ]);
-    // Create a new quiz
-    $quiz = Quiz::create([
-        'title' => $validated['title'],
-        'description' => $validated['description'],
-        'class_id' => $validated['class_id'],
-    ]);
-
-    // Store questions
-    $index = 1;
-    foreach ($validated['questions'] as $question) {
-        // Create the question in the quiz
-        $createdQuiz = $quiz->questions()->create([
-            'type' => $question['type'],
-            'question' => $question['question'],
-            'correct_answer' => $question['correct_answer'] ?? null, // Handle if 'correct_answer' is nullable
-            'options'   => $question['options'] ?? null
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'class_id' => 'required|exists:classes,id',
+            'questions' => 'required|array',
         ]);
-        if ($request->hasFile("questions.$index.uploadFile")) {
-            $file = $request->file("questions.$index.uploadFile");
-            // Store the uploaded file
-            $filePath = $file->store('quiz-files', 'public');
-            // Save the file path in the created question
-            $createdQuiz->image = $filePath;
-            $createdQuiz->save();
+
+        // Create new exam instead of quiz
+        $exam = Exam::create([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'class_id' => $validated['class_id'],
+            'type' => 'final', // Add type field
+            'enable_token' => false,
+            'time_duration' => 0
+        ]);
+
+        // Store questions using ExamQuestion model
+        $index = 1;
+        foreach ($validated['questions'] as $question) {
+            $createdQuestion = $exam->questions()->create([
+                'exam_id' => $exam->id,
+                'type' => $question['type'],
+                'question' => $question['question'],
+                'correct_answer' => $question['correct_answer'] ?? null,
+                'options' => $question['options'] ?? null
+            ]);
+
+            if ($request->hasFile("questions.$index.uploadFile")) {
+                $file = $request->file("questions.$index.uploadFile");
+                $filePath = $file->store('exam-files', 'public');
+                $createdQuestion->image = $filePath;
+                $createdQuestion->save();
+            }
+            $index++;
         }
-        $index++;
+
+        return redirect()->route('exam.show', [
+            'classId' => $validated['class_id'],
+            'examId' => $exam->id
+        ])->with('success', 'Exam created successfully!');
     }
 
-    // Redirect to the show route (which is a GET request)
-    return redirect()->route('exam.show', [
-        'classId' => $validated['class_id'],
-        'quizId' => $quiz->id
-    ])->with('success', 'Quiz created successfully!');
-}
+    public function displayExam($classId, $examId)
+    {
+        $exam = Exam::where('id', $examId)
+                    ->where('class_id', $classId)
+                    ->firstOrFail();
+        $user = Auth::user();
+        $questions = $exam->questions;
+        $class = Classroom::findOrFail($classId);
 
-public function displayQuiz($classId, $quizId)
-{
-    // Fetch the specific quiz by ID
-    $quiz = Quiz::where('id', $quizId)->where('class_id', $classId)->firstOrFail();
-
-    // Fetch all users
-    $user = Auth::user();
-
-    // Optionally, fetch related data like questions
-    $questions = $quiz->questions;
-
-    // Fetch the class details
-    $class = Classroom::findOrFail($classId);
-
-    // Pass the quiz, class, questions, and users to the view
-    return view('exam-titles', compact('class', 'quiz', 'questions', 'user'));
-}
-
-public function update(Request $request, $quizId)
-{
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'required|string',
-    ]);
-
-    $quiz = Quiz::findOrFail($quizId);
-    $quiz->update([
-        'title' => $request->title,
-        'description' => $request->description,
-    ]);
-
-    return response()->json(['success' => true]);
-}
-
-public function showQuiz($classId, $quizId)
-{
-// Fetch the specific quiz by ID
-$quiz = Quiz::findOrFail($quizId);
-
-$questions = Question::where('quiz_id', $quizId)->get(); // Fetch the questions related to the quiz
-// Fetch all users
-$user = Auth::user();
-
-// Fetch the class details
-$class = Classroom::findOrFail($classId);
-
-// Pass the quiz, class, and questions to the view
-return view('exam-take', compact('class', 'quiz', 'questions', 'user'));
-}
-
-public function updateQuestion(Request $request, $classId, $quizId)
-{
-// Retrieve the question by ID
-$questionId = $request->input('id');
-$question = Question::find($questionId);
-
-// Update the question text
-$question->question = $request->input('question');
-
-// Check question type and update accordingly
-if ($question->type === 'multipleChoice') {
-    // Store the options as an array, not a string
-    $options = $request->input('options');
-
-    // Assuming 'options' column in your database is of type JSON
-    $question->options = $options;
-}
-
-if ($question->type === 'trueFalse') {
-    // Get the correct answer from the request (should be 'true' or 'false')
-    $correctAnswer = $request->input('correct_answer');
-
-    // Ensure the value is either 'true' or 'false'
-    if (in_array($correctAnswer, ['True', 'False'])) {
-        $question->correct_answer = $correctAnswer;
-    } else {
-        return response()->json(['error' => 'Invalid answer for True/False question'], 400);
+        return view('exam-titles', compact('class', 'exam', 'questions', 'user'));
     }
-}
 
-if ($question->type === 'identification') {
-    // Update correct answer for identification
-    $question->correct_answer = $request->input('correct_answer');
-}
+    public function update(Request $request, $examId)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
 
-// Save the updated question
-$question->save();
+        $exam = Exam::findOrFail($examId);
+        $exam->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
 
-// Return a success response with the updated question text
-return response()->json([
-    'success' => true,
-    'updatedQuestion' => $question->question,
-    'updatedAnswer' => $question->correct_answer ?? '',
-    'options' => $question->options ?? ''
-]);
-}
+        return response()->json(['success' => true]);
+    }
 
-public function editToken(Request $request) {
-$quizId = $request->input('quizId');
-$enableToken = $request->input('tokenStatus');
-$quiz = Quiz::findOrFail($quizId);
-$quiz->enable_token = $enableToken;
-return $quiz->save();
-}
+    public function showExam($classId, $examId)
+    {
+        $exam = Exam::findOrFail($examId);
+        $questions = $exam->questions;
+        $user = Auth::user();
+        $class = Classroom::findOrFail($classId);
 
-public function editTimer(Request $request) {
-$timer = $request->input('timer');
-$quizId = $request->input('quizId');
-$quiz = Quiz::findOrFail($quizId);
-$quiz->time_duration = $timer;
-return $quiz->save();
-}
+        return view('exam-take', compact('class', 'exam', 'questions', 'user'));
+    }
 
-public function editScore(Request $request) {
-$id = $request->input('id');
-$newScore = $request->input('newScore');
+    public function updateQuestion(Request $request, $classId, $examId)
+    {
+        $questionId = $request->input('id');
+        $question = ExamQuestion::find($questionId);
 
+        $question->question = $request->input('question');
 
-$score = StudentChallengeScore::find($id);
-$score->total_score = $newScore;
-if($score->save())
-    return 1;
-return 0;
-}
+        if ($question->type === 'multipleChoice') {
+            $question->options = $request->input('options');
+        }
 
+        if ($question->type === 'trueFalse') {
+            $correctAnswer = $request->input('correct_answer');
+            if (in_array($correctAnswer, ['True', 'False'])) {
+                $question->correct_answer = $correctAnswer;
+            } else {
+                return response()->json(['error' => 'Invalid answer for True/False question'], 400);
+            }
+        }
+
+        if ($question->type === 'identification') {
+            $question->correct_answer = $request->input('correct_answer');
+        }
+
+        $question->save();
+
+        return response()->json([
+            'success' => true,
+            'updatedQuestion' => $question->question,
+            'updatedAnswer' => $question->correct_answer ?? '',
+            'options' => $question->options ?? ''
+        ]);
+    }
+
+    public function editToken(Request $request)
+    {
+        $examId = $request->input('examId');
+        $enableToken = $request->input('tokenStatus');
+        $exam = Exam::findOrFail($examId);
+        $exam->enable_token = $enableToken;
+        return $exam->save();
+    }
+
+    public function editTimer(Request $request)
+    {
+        $timer = $request->input('timer');
+        $examId = $request->input('examId');
+        $exam = Exam::findOrFail($examId);
+        $exam->time_duration = $timer;
+        return $exam->save();
+    }
+
+    public function editScore(Request $request)
+    {
+        $id = $request->input('id');
+        $newScore = $request->input('newScore');
+
+        $score = ExamScore::find($id);
+        $score->total_score = $newScore;
+        return $score->save() ? 1 : 0;
+    }
 }
