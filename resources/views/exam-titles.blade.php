@@ -151,7 +151,7 @@
         <div class="container-adviser">
     <div class="container-sm d-flex flex-column align-items-center position-relative p-3">
         <!-- Open Button -->
-        <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('exam.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+        <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('exam.take', ['classId' => $class->id, 'examId' => $exam->id]) }}'">
             <i class="fas fa-play-circle"></i> Open
         </button>
 
@@ -165,7 +165,7 @@
             <div class="grid-item">
                 <div class="info-box">
                     <label for="quiz-title2" class="qtitle font-weight-bold mb-1 color">Quiz Title:</label>
-                    <h3 class="mb-2 text-white" id="quiz-title2">{{ $quiz->title }}</h3>
+                    <h3 class="mb-2 text-white" id="quiz-title2">{{ $exam->title }}</h3>
                 </div>
             </div>
 
@@ -173,7 +173,7 @@
             <div class="grid-item">
                 <div class="info-box">
                     <label for="quiz-description" class="font-weight-bold color white mb-1">Description:</label>
-                    <p class="qdescription mb-2 text-white" id="quiz-description">{{ $quiz->description }}</p>
+                    <p class="qdescription mb-2 text-white" id="quiz-description">{{ $exam->description }}</p>
                 </div>
             </div>
 
@@ -181,7 +181,7 @@
             <div class="grid-item">
                 <div class="info-box">
                     <label for="quiz-creation-date" class="qtitle font-weight-bold mb-1 color">Created on:</label>
-                    <p class="mb-2 text-white" id="quiz-creation-date">{{ $quiz->created_at->format('F j, Y') }}</p>
+                    <p class="mb-2 text-white" id="quiz-creation-date">{{ $exam->created_at->format('F j, Y') }}</p>
                 </div>
             </div>
 
@@ -189,7 +189,7 @@
             <div class="grid-item">
                 <div class="info-box">
                     <label for="quiz-questions-count" class="qtitle font-weight-bold mb-1 color">Number of Questions:</label>
-                    <p class="qnumber mb-2 text-white" id="quiz-questions-count">{{ $quiz->questions->count() }}</p>
+                    <p class="qnumber mb-2 text-white" id="quiz-questions-count">{{ $exam->questions->count() }}</p>
                 </div>
             </div>
         </div>
@@ -255,9 +255,9 @@ label.color.white {
 
     {{-- <div class="quiz-container">
         <button id="edit-button" class="edit-button">Edit</button>
-        <h1 id="quiz-title2">{{ $quiz->title }}</h1>
-        <p id="quiz-description">{{ $quiz->description }}</p>
-        <button class="open-button" id="open-button" onclick="window.location.href='{{ route('quiz.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+        <h1 id="quiz-title2">{{ $exam->title }}</h1>
+        <p id="quiz-description">{{ $exam->description }}</p>
+        <button class="open-button" id="open-button" onclick="window.location.href='{{ route('quiz.take', ['classId' => $class->id, 'quizId' => $exam->id]) }}'">Open</button>
     </div> --}}
 
     <!-- Modal for editing -->
@@ -266,11 +266,11 @@ label.color.white {
             <span class="close-button" id="close-modal">&times;</span>
             <h2 class="edit-quiz">Edit Quiz</h2>
             <label class="edit-title" for="new-title">Quiz Title:</label>
-            <input type="text" id="new-title" placeholder="Enter new title" value="{{ $quiz->title }}">
+            <input type="text" id="new-title" placeholder="Enter new title" value="{{ $exam->title }}">
             <br>
             <label for="new-description" class="quiz-description">Quiz Description:</label>
             <br>
-            <textarea id="new-description" placeholder="Enter new description">{{ $quiz->description }}</textarea>
+            <textarea id="new-description" placeholder="Enter new description">{{ $exam->description }}</textarea>
             <button class="save" id="save-button">Save</button>
         </div>
     </div>
@@ -294,7 +294,7 @@ label.color.white {
             // Check if new title and description are provided
             if (newTitle && newDescription) {
                 // Send an AJAX request to update the quiz
-                fetch("{{ route('exam.update', ['quizId' => $quiz->id]) }}", {
+                fetch("{{ route('exam.update', ['examId' => $exam->id]) }}", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

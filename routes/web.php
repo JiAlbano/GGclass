@@ -185,10 +185,10 @@ Route::get('/class/{classId}/exam/{examId}/take', [ExamController::class, 'showE
 // Route for saving changes to a question
 Route::post('/class/{classId}/exam/{examId}/take/editQuestion', [ExamController::class, 'updateQuestion'])->name('exam.updateQuestion');
 
-    // Token management
+    //EXAM Token management
     Route::post('/token/update', [ExamController::class, 'editToken'])->name('updateToken');
     
-    // Timer management
+    //EXAM Timer management
     Route::post('/timer/update', [ExamController::class, 'editTimer'])->name('updateTimer');
 
 
