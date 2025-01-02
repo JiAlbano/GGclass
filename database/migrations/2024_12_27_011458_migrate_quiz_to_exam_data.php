@@ -83,9 +83,45 @@ class MigrateQuizToExamData extends Migration
                     try {
                         // Update challenge_type from 'quiz' to 'exam'
                         DB::table('student_challenge_scores')
-                            ->where('challenge_type', 'quiz')
-                            ->update(['challenge_type' => 'exam']);
-            
+                        ->where('challenge_id', $quiz->id)
+                        ->update([
+                            'challenge_type' => 'exam',
+                            'exam_type' => $exam->type, // Use the new exam's type
+                        ]);
+
+                        // Migrate Student Answers and Update Challenge Type
+                        foreach ($quiz->questions as $question) {
+                            $studentAnswers = StudentQuestionAnswers::where('question_id', $question->id)->get();
+                        
+                            foreach ($studentAnswers as $answer) {
+                                // Map old question ID to new exam question ID
+                                $newQuestionId = $questionMapping[$quiz->id][$question->id] ?? null;
+                        
+                                if (!$newQuestionId) {
+                                    Log::warning('No mapping found for question ID: ' . $question->id);
+                                    continue;
+                                }
+                        
+                                // Update the existing student_question_answers table
+                                DB::table('student_question_answers')
+                                ->where('id', $answer->id)
+                                ->update([
+                                    'question_id' => $newQuestionId, // Correct the mapping here
+                                    'challenge_type' => 'exam',     // Update the challenge type
+                                    'exam_type' => $exam->type,     // Set the exam type
+                                ]);
+                                Log::info('Updated student answer for question: ' . $question->id . ' to exam question: ' . $newQuestionId);
+                            }
+                        }
+                        
+                        // After processing all answers for this quiz, update `student_challenge_scores`
+                        DB::table('student_challenge_scores')
+                            ->where('challenge_id', $quiz->id)
+                            ->update([
+                                'challenge_type' => 'exam',
+                                'exam_type' => $exam->type, // Use the new exam's type
+                            ]);
+                        
                         Log::info('Successfully updated challenge_type from quiz to exam');
                         DB::commit();
                     } catch (\Exception $e) {
@@ -94,6 +130,7 @@ class MigrateQuizToExamData extends Migration
                         throw $e;
                     }
                 }
+                
             }            
     
             DB::commit();
