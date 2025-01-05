@@ -42,7 +42,7 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    background: #2e3667;
+    background: #283891;
     font-family: Georgia;
     position: fixed;
     height: 65px;
@@ -117,7 +117,7 @@ body {
     padding: 5px;
     border: none;
     border-radius: 5px;
-    color: #2e3667;
+    color: #283891;
     cursor: pointer;
     width: 250px;
     font-family: "Georgia";
@@ -126,7 +126,7 @@ body {
 }
 
 .challenge-btn.active {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     transition: all 0.3s ease;
     font-family: "Georgia";
@@ -201,7 +201,7 @@ body {
 
 .btn1:hover {
     background-color: #ffc62e;
-    color: #2e3667;
+    color: #283891;
     font-weight: bold;
 }
 
@@ -274,9 +274,9 @@ body {
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 10px 5px;
     font-size: 14px;
     font-weight: bold;
@@ -312,7 +312,7 @@ body {
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -494,7 +494,7 @@ body {
 .bulletin-title {
     font-size: 14px;
     font-weight: bold;
-    color: #2e3667;
+    color: #283891;
     margin: 0;
 }
 
@@ -519,5 +519,5 @@ body {
 }
 
 .options-btn:hover {
-    color: #2e3667;
+    color: #283891;
 }

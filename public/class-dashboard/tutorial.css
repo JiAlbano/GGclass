@@ -1,0 +1,54 @@
+.right-container {
+    width: 80%;
+    position: relative;
+    left: 20px;
+}
+
+.create-tutorial {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 65px;
+    width: auto;
+    background-color: white;
+    border: 1px solid #757575;
+    margin-bottom: 10px;
+}
+/* .create-tutorial:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease;
+    background-color: #4a90e2;
+    cursor: pointer;
+} */
+
+.created-tutorial {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 65px;
+    width: auto;
+    background-color: white;
+    border: 1px solid #757575;
+    margin-bottom: 10px;
+}
+
+.lesson-img {
+    height: 40px;
+    margin-left: 20px;
+}
+
+.hamburger-img {
+    height: 30px;
+    position: relative;
+    left: 430px;
+}
+
+.tut-text {
+    font-family: "Roboto", serif;
+    font-size: 17px;
+    font-weight: 400;
+    font-style: normal;
+    color: #2e3667;
+    position: relative;
+    top: 8px;
+}
