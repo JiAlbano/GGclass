@@ -41,15 +41,15 @@ use App\Http\Controllers\CreateQuizController;
 use App\Http\Controllers\CreateExamController;
 // autorun
 
-Route::get('/migrate', function () {
-    Artisan::call('migrate --force');
-    return 'Migrations completed!';
-});
+// {{Route::get('/migrate', function () {
+//     Artisan::call('migrate --force');
+//     return 'Migrations completed!';
+// });
 
-Route::get('/seed', function () {
-    Artisan::call('db:seed --force');
-    return 'Seeders executed!';
-});
+// Route::get('/seed', function () {
+//     Artisan::call('db:seed --force');
+//     return 'Seeders executed!';
+// });
 
 // Public Routes
 Route::get('/', function () {
