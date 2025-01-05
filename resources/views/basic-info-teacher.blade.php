@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ secure_asset('basic-info-teacher.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('basic-info-teacher.css') }}">
 </head>
+
 <body>
     <button class="logout-btn" onclick="logout()">Back</button>
 
@@ -18,7 +20,7 @@
             alert('You have been logged out!');
 
             // Redirect to the login page
-            window.location.href = 'auth.view';
+            window.location.href = '/';
         }
     </script>
 
@@ -33,9 +35,10 @@
                     <!-- Input Fields with Labels -->
                     <div class="form-group">
                         <label for="first-name" class="first-name">First Name:</label>
-                        <input type="text" id="first-name" name="first_name" value="{{ $user->first_name }}" disabled>
+                        <input type="text" id="first-name" name="first_name" value="{{ $user->first_name }}"
+                            disabled>
                     </div>
-<!--                     <div class="form-group">
+                    <!--                     <div class="form-group">
                         <label for="middle-name">Middle Initial:</label>
                         <input type="text" id="middle-initial" name="middle_initial" value="{{ $user->middle_initial }}" disabled>
                     </div> -->
@@ -55,8 +58,8 @@
                         <label for="department">Department:</label>
                         <select id="department" name="department" required>
                             <option value="" disabled selected>Select your department</option>
-                            @foreach($departments as $department)
-                            <option value="{{ $department->id }}">{{ $department->department_name }}</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->department_name }}</option>
                             @endforeach
                         </select>
                     </div>

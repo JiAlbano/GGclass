@@ -1,0 +1,207 @@
+.tutorial-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.tut-text {
+    margin-left: 40px;
+    font-family: "Roboto", serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: normal;
+    color: #2e3667;
+}
+
+/* Tutorial Body */
+
+.tutorial-body {
+    height: auto;
+    width: 1220px;
+    background-color: #ffffff;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+}
+.tutorial-content {
+    margin: 20px 0 20px 0;
+}
+
+/* Form Content */
+
+.title-text {
+    font-family: "Roboto", serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: normal;
+    color: #2e3667;
+}
+
+.input-field-title {
+    height: 50px;
+    width: 1000px;
+    background-color: white;
+    border: 2px solid #757575;
+    margin-bottom: 10px;
+}
+
+.input-field-description {
+    width: 1000px;
+    min-height: 120px;
+    background-color: white;
+    border: 2px solid #757575;
+    resize: none;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-bottom: 10px;
+}
+
+/* Tutorial Upload */
+.tutorial-upload {
+    width: 1000px;
+    height: 70px;
+    border: 2px solid #757575;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.upload-file-text {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.uploaded-img {
+    height: 60px;
+    width: 60px;
+    margin: 0 10px 0 5px;
+}
+
+.file-name-upload {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    color: #2e3667;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    top: 8px;
+}
+
+.upload-delete {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger-img {
+    height: 30px;
+    margin-right: 20px;
+}
+
+/* Tutorial Buttons // Upload-Link */
+
+.tutorial-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.upload-link {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.upload-links {
+    display: flex;
+}
+
+.upload-img {
+    height: 40px;
+    width: 40px;
+}
+
+.upload-text {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 10px;
+}
+
+.text-upload,
+.text-opacity {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    color: #2e3667;
+}
+
+.text-upload {
+    font-size: 16px;
+    font-weight: 500;
+}
+.text-opacity {
+    font-size: 12px;
+    font-weight: 300;
+    position: relative;
+    top: -25%;
+}
+
+/* Link Img */
+
+.link-links {
+    display: flex;
+}
+
+.link-img {
+    height: 40px;
+    width: 40px;
+}
+
+.link-text {
+    position: relative;
+    left: 10px;
+}
+
+.text-link {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    color: #2e3667;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    top: 8px;
+}
+
+/* Cancel- Create Buttons */
+
+.create-button {
+    height: 45px;
+    width: 120px;
+    background-color: #283891;
+    border: 2px solid #ffd700;
+    color: white;
+}
+
+.cancel-button {
+    height: 45px;
+    width: 120px;
+    border: 2px solid #283891;
+    background-color: white;
+    color: #2e3667;
+}
+
+.create-button,
+.cancel-button {
+    font-family: "Roboto", serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+}

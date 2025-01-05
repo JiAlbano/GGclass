@@ -41,49 +41,65 @@ use App\Http\Controllers\CreateQuizController;
 use App\Http\Controllers\CreateExamController;
 // autorun
 
-Route::get('/migrate', function () {
-    Artisan::call('migrate --force');
-    return 'Migrations completed!';
-});
+// {{Route::get('/migrate', function () {
+//     Artisan::call('migrate --force');
+//     return 'Migrations completed!';
+// });
 
-Route::get('/seed', function () {
-    Artisan::call('db:seed --force');
-    return 'Seeders executed!';
-});
+// Route::get('/seed', function () {
+//     Artisan::call('db:seed --force');
+//     return 'Seeders executed!';
+// });
 
-// Public Routes
+
+
+ Route::post('/auth.view', function () {
+     return view('login');
+ })->name('login');
+
+// Login page
 Route::get('/', function () {
-    return view('home');
-});
-
-Route::post('/auth.view', function () {
-    return view('login');
-})->name('login');
-
-Route::post('/logout', [GoogleController::class, 'logout'])->name('logout');
-
-Route::get('/auth.view', function () {
-    return view('welcome');
+return view('welcome');
 })->name('welcome');
 
+// Google Authentication Routes
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('googleRedirect');
+Route::get('auth/callback/google', [GoogleController::class, 'handleGoogleCallback']);
+Route::post('/logout', [GoogleController::class, 'logout'])->name('logout');
+
+// Class Dashboard Routes
+Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
+Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
+Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
+Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
+Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
+
+Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
+
+Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
+Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
+Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('create-tutorials');
+
+Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
+Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
+
+
 Route::get('/basic-info-teacher.view', function () {
-    return view('basic-info-teacher');
+return view('basic-info-teacher');
 })->name('basic.info.teacher');
 
 Route::get('/basic-info-student.view', function () {
-    return view('basic-info-student');
+return view('basic-info-student');
 })->name('basic.info.student');
 
 Route::get('/signup-teacher', function () {
-    return view('signup_teacher');
+return view('signup_teacher');
 })->name('signup.teacher');
 
 // Use the controller method for signup student
 Route::get('/signup-student', [SignupStudentController::class, 'showSignupForm'])->name('signup.student');
 
-// Google Authentication Routes
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('googleRedirect');
-Route::get('auth/callback/google', [GoogleController::class, 'handleGoogleCallback']);
+
 
 // Signup Form Handling
 Route::post('signup-teacher', [SignupTeacherController::class, 'handleSignup']);
@@ -91,58 +107,49 @@ Route::post('signup-student', [SignupStudentController::class, 'handleSignup']);
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
-    // Classroom Routes
-    Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.index');
+// Classroom Routes
+Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.index');
 
-    Route::get('basic-info-teacher', [GoogleController::class, 'basicInfoTeacher'])->name('basic-info-teacher');
-    Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])->name('basic-info-student');
-    Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
-    Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
-    Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
-
-    Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
-    Route::get('/tutorials/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
-    Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');
-    Route::get('/attendance/{classId}', [AttendanceController::class, 'show'])->name('attendance');
-    Route::get('/grade/{classId}', [GradeController::class, 'show'])->name('grade');
-    Route::get('/feedback/{classId}', [FeedbackController::class, 'show'])->name('feedback');
-    Route::get('/gradebook/{classId}', [GradebookController::class, 'show'])->name('gradebook');
-    Route::get('/grade/{classId}/grade-quiz-title', [GradequiztitleController::class, 'show'])->name('grade-quiz-title');
-    Route::get('/grade/{classId}/grade-quiz-title/grade-quiz/{quizId}', [GradequizController::class, 'show'])->name('grade-quiz');
-    Route::get('/gradebook/{classId}/grade-components', [GradecomponentsController::class, 'show'])->name('grade-components');
-    Route::get('/gradebook/{classId}/data', [GradedataController::class, 'show'])->name(name: 'data');
-    Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
-
-    // Class Dashboard Routes
-    Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
-    Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
-    Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
-    Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
-    Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
- 
-
-    //Student routes
-    Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');
-     //Student quiz routes
-    Route::get('/studentchallenges/{classId}', [StudentchallengesController::class, 'show'])->name('challenges-student');
-    Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::class, 'show'])->name('quiz-student');
-    Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student/{quizId}', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
-    Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student/{quizId}', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
+Route::get('basic-info-teacher', [GoogleController::class, 'basicInfoTeacher'])->name('basic-info-teacher');
+Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])->name('basic-info-student');
+Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
+Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
+// Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
 
 
-    Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
-    Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');
-    //Student Info routes
-    Route::get('/profile/{classId}', [StudentprofilestudentController::class, 'show'])->name('profile-student');
-    Route::get('/studentattendance/{classId}', [StudentattendanceController::class, 'show'])->name('attendance-student');
-    //student grades
-    Route::get('/studentgrade/{classId}', [StudentgradeController::class, 'show'])->name('grade-student');
-    Route::get('/studentgradequiz/{classId}', [StudentgradeController::class, 'showQuiz'])->name('test_and_quizzes_student.show');
-    Route::get('/studentfeedback/{classId}', [StudentfeedbackController::class, 'show'])->name('feedback-student');
+Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');
+Route::get('/attendance/{classId}', [AttendanceController::class, 'show'])->name('attendance');
+Route::get('/grade/{classId}', [GradeController::class, 'show'])->name('grade');
+Route::get('/feedback/{classId}', [FeedbackController::class, 'show'])->name('feedback');
+Route::get('/gradebook/{classId}', [GradebookController::class, 'show'])->name('gradebook');
+Route::get('/grade/{classId}/grade-quiz-title', [GradequiztitleController::class, 'show'])->name('grade-quiz-title');
+Route::get('/grade/{classId}/grade-quiz-title/grade-quiz/{quizId}', [GradequizController::class, 'show'])->name('grade-quiz');
+Route::get('/gradebook/{classId}/grade-components', [GradecomponentsController::class, 'show'])->name('grade-components');
+Route::get('/gradebook/{classId}/data', [GradedataController::class, 'show'])->name(name: 'data');
+Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
 
-    // Challenges Routes
-    Route::get('/challenges/{classId}', [ChallengesController::class, 'index'])->name('challenges');
-    Route::post('/challenges/{classId}/create', [ChallengesController::class, 'create'])->name('challenges.create');
+//Student routes
+Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');
+//Student quiz routes
+Route::get('/studentchallenges/{classId}', [StudentchallengesController::class, 'show'])->name('challenges-student');
+Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::class, 'show'])->name('quiz-student');
+Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student/{quizId}', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
+Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student/{quizId}', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
+
+
+Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
+Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');
+//Student Info routes
+Route::get('/profile/{classId}', [StudentprofilestudentController::class, 'show'])->name('profile-student');
+Route::get('/studentattendance/{classId}', [StudentattendanceController::class, 'show'])->name('attendance-student');
+//student grades
+Route::get('/studentgrade/{classId}', [StudentgradeController::class, 'show'])->name('grade-student');
+Route::get('/studentgradequiz/{classId}', [StudentgradeController::class, 'showQuiz'])->name('test_and_quizzes_student.show');
+Route::get('/studentfeedback/{classId}', [StudentfeedbackController::class, 'show'])->name('feedback-student');
+
+// Challenges Routes
+Route::get('/challenges/{classId}', [ChallengesController::class, 'index'])->name('challenges');
+Route::post('/challenges/{classId}/create', [ChallengesController::class, 'create'])->name('challenges.create');
 
 // Routes for different types of challenges
 
@@ -185,11 +192,11 @@ Route::get('/class/{classId}/exam/{examId}/take', [ExamController::class, 'showE
 // Route for saving changes to a question
 Route::post('/class/{classId}/exam/{examId}/take/editQuestion', [ExamController::class, 'updateQuestion'])->name('exam.updateQuestion');
 
-    //EXAM Token management
-    Route::post('/token/update', [ExamController::class, 'editToken'])->name('updateToken');
-    
-    //EXAM Timer management
-    Route::post('/timer/update', [ExamController::class, 'editTimer'])->name('updateTimer');
+//EXAM Token management
+Route::post('/token/update', [ExamController::class, 'editToken'])->name('updateToken');
+
+//EXAM Timer management
+Route::post('/timer/update', [ExamController::class, 'editTimer'])->name('updateTimer');
 
 
 
