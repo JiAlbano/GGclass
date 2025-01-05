@@ -1,0 +1,86 @@
+/* Tutorial Content */
+
+.tutorial-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 20px;
+    color: #2e3667;
+}
+
+.title-content {
+    height: 50px;
+    width: 1000px;
+    border: 2px solid #757575;
+    background-color: #ffffff;
+}
+
+.description-content {
+    display: flex;
+    height: 150px;
+    width: 1000px;
+    border: 2px solid #757575;
+    background-color: #ffffff;
+    color: #2e3667;
+}
+
+.text-content {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    color: #2e3667;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0 10px 10px;
+}
+
+.hamburger-img {
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+/* Tutorial Upload */
+.tutorial-upload {
+    width: 1000px;
+    height: 70px;
+    border: 1px solid #757575;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.upload-file-text {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.uploaded-img {
+    height: 60px;
+    width: 60px;
+    margin: 0 10px 0 5px;
+}
+
+.file-name-upload {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    color: #2e3667;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    top: 8px;
+}
+
+.upload-delete {
+    display: flex;
+    align-items: center;
+}
+
+.hamburgers-img {
+    height: 30px;
+    margin-right: 20px;
+}

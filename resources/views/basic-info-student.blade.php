@@ -20,7 +20,7 @@
             alert('You have been logged out!');
 
             // Redirect to the login page
-            window.location.href = 'auth.view';
+            window.location.href = '/';
         }
     </script>
 

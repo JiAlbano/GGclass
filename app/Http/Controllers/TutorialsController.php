@@ -16,4 +16,20 @@ class TutorialsController extends Controller
 
         return view('tutorials', compact('class', 'user')); // Pass both variables to the view
     }
+
+    public function create($classId)
+    {
+        $user = Auth::user(); // Fetch all users
+        $class = Classroom::findOrFail($classId); // Fetch the class
+
+        return view('tutorial-dashboard.create-tutorial', compact('class', 'user')); // Pass both variables to the view
+    }
+
+    public function display($classId)
+    {
+        $user = Auth::user(); // Fetch all users
+        $class = Classroom::findOrFail($classId); // Fetch the class
+
+        return view('tutorial-dashboard.display-tutorial', compact('class', 'user')); // Pass both variables to the view
+    }
 }
