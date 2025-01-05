@@ -51,10 +51,7 @@ use App\Http\Controllers\CreateExamController;
 //     return 'Seeders executed!';
 // });
 
-// Public Routes
- Route::get('/', function () {
-     return view('home');
- });
+
 
  Route::post('/auth.view', function () {
      return view('login');
