@@ -52,13 +52,13 @@ use App\Http\Controllers\CreateExamController;
 // });
 
 // Public Routes
-// Route::get('/', function () {
-//     return view('home');
-// });
+ Route::get('/', function () {
+     return view('home');
+ });
 
-// Route::post('/auth.view', function () {
-//     return view('login');
-// })->name('login');
+ Route::post('/auth.view', function () {
+     return view('login');
+ })->name('login');
 
 // Login page
 Route::get('/', function () {
