@@ -27,7 +27,7 @@
         <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
             <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
             <h1 class="ggclass-font">GGclass</h1>
-            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
+         {{--    <!-- <h2 class="section-font">{{ $class->section }}</h2> --> --}}
     </div>
 
 <!-- {{-- <div class="navbar">
@@ -37,7 +37,7 @@
         <h2 class="section-font">{{ $class->section }}</h2>
     </div> --}} -->
 
-<!-- 
+<!--{{-- 
     <div class="right-section">
         <button class="back-button" onclick="goBack()">Back</button>
         <script>
@@ -49,7 +49,7 @@
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
 </div>
-    {{-- <div class="right-section">
+     <div class="right-section">
         <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Back to Classroom</button>
         <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
     </div>
@@ -178,18 +178,18 @@
            
 
            <!-- Display Challenges -->
-
-           <div class="challenge-list">
-    @foreach($quizzes as $quiz)
-        <button class="challenge-item"  onclick="window.location.href='{{ route('exam.showQuiz', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+<!-- Display Exams -->
+<div class="challenge-list">
+    @foreach($exams as $exam)
+        <button class="challenge-item" onclick="window.location.href='{{ route('exam.showQuiz', ['classId' => $class->id, 'examId' => $exam->id]) }}'">
             <div class="challenge-icon">
                 <img src="{{ asset('megaphone.png') }}" />
             </div>
             <div class="challenge-content">
                 <p class="challenge-title">
-                    Exam Title: {{ $quiz->title }}
+                    Exam Title: {{ $exam->title }}
                 </p>
-                <p class="challenge-date">{{ $quiz->created_at->format('M d, Y') }}</p>
+                <p class="challenge-date">{{ $exam->created_at->format('M d, Y') }}</p>
             </div>
             <div class="challenge-options">
                 <span class="options-btn">•••</span>
@@ -197,7 +197,6 @@
         </button>
     @endforeach
 </div>
-
     <script>
         const modal = document.getElementById("challengeModal");
         const addBtn = document.getElementById("addBtn");
@@ -223,6 +222,7 @@
 
 </div>
 
+{{--
   <!-- Display profile picture -->
 
 
@@ -250,7 +250,7 @@
 
 
 
-{{--
+
 <!-- Modal Structure 
 <div id="quizModal" class="modal">
     <div class="modal-content">

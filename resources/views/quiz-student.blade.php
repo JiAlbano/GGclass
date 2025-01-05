@@ -144,6 +144,8 @@
     @foreach($quizzes as $quiz)
         <?php $disable = in_array($quiz->id, $studentChallengesTaken->toArray()); ?>
         <button type="button" class="bulletin-item {{ $disable ? 'disabled-btn' : 'quiz-button' }}"
+                {{ $disable ? 'disabled' : '' }}
+                style="background-color: {{ $disable ? '#cdcdcd' : '' }};"
                 onclick="window.location.href='{{ route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
             <div class="bulletin-icon">
                 <img src="{{ asset('megaphone.png') }}" />
