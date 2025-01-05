@@ -31,19 +31,6 @@
             {{-- <h2 class="section-font">{{ $class->section }}</h2> --}}
     </div>
 
-    <!-- <div class="right-section">
-        <button class="back-button" onclick="goBack()">Back</button>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-        <button class="back-button"onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
-        <img class="profile-img" src="{{ asset('ainz.jpg') }}" alt="Create">
-    </div>
-</div> -->
-    
-
 <!-- User Profile -->
 <div class="profile-container" style="display: flex; position: relative;">
         <img class="profile-img"
@@ -117,93 +104,86 @@
 </div>
 
 
-<!-- Display profile picture -->
-
-<!-- <div class="info-container ">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-    <hr>
-        <div class="container-buttons">
-            <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->class_id]) }}'">ATTENDANCE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->class_id]) }}'">GRADE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->class_id]) }}'">FEEDBACK</button>
-            <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->class_id]) }}'">GRADEBOOK</button>
-        </div>
-</div> -->
-
-<div class="dashboard-container">
-    <!-- Back Button -->
-<!--     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
-    </div>
- -->
     <div class="content-container">
         <!-- Class Card -->
         <div class="class-card">
-    <div class="class-header">
-        <p>School Year: {{ $class->school_year }}</p>
-        <p>Semester: {{ $class->semester }}</p>
-        <p>Section: {{ $class->section }}</p>
-        <p>Class Code: {{ $class->class_code }} </p>
-    </div>
-    <div class="class-details">
-        <h2>{{ $class->subject }}</h2>
-        <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
-        <p>Room: {{ $class->room }}</p>
-    </div>
-    <div class="class-buttons">
-         <button class="btn" onclick="window.location.href='{{ route('attendance', ['classId' => $class->class_id]) }}'">Attendance</button>
-        <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->class_id]) }}'">Feedback</button>
-        <button href="#">Gradebook</button>
-    </div>
-</div>
+            <div class="class-header">
+                <p>School Year: {{ $class->school_year }}</p>
+                <p>Semester: {{ $class->semester }}</p>
+                <p>Section: {{ $class->section }}</p>
+                <p>Class Code: {{ $class->class_code }} </p>
+            </div>
+            <div class="class-details">
+                <h2>{{ $class->subject }}</h2>
+                <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                <p>Room: {{ $class->room }}</p>
+            </div>
+            <div class="class-buttons">
+                 <button class="btn" onclick="window.location.href='{{ route('attendance', ['classId' => $class->class_id]) }}'">Attendance</button>
+                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->class_id]) }}'">Feedback</button>
+                <button href="#">Gradebook</button>
+            </div>
+        </div>
 
         <div class="dashboard-container">
-
-    <div class="container d-flex justify-content-between align-items-center custom adviser">
-        <div class="d-flex align-items-center">
-            <img src="{{ asset($class->google_profile_image) }}" alt="Profile Picture" class="profile-pic">
-            <div class="profile-name">{{ucfirst($class->ign)}}</div>
-        </div>
-        <div class="profile-role">Adviser</div>
-    </div>
-
-
-
-<div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
-    <!-- First container2 -->
-    <div class="d-flex justify-content-between align-items-start w-100" style="background-color:white;">
-        <!-- Profile Member on the left -->
-        <div class="profile-member">Members</div>
-        <!-- Profile Rank on the right -->
-        <div class="profile-rank">Rank</div>
-    </div>
-
-    <!-- First Member Container -->
-        @foreach($class_player as $player)
-            <div class="container2 d-flex justify-content-between align-items-center w-100">    
+            <div class="container d-flex justify-content-between align-items-center custom adviser">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset($player->google_profile_image) }}" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-name">{{ucfirst($player->ign)}}</div>
+                    <img src="{{ asset($class->google_profile_image) }}" alt="Profile Picture" class="profile-pic">
+                    <div class="profile-name">{{ucfirst($class->ign)}}</div>
                 </div>
-                <div class="rank-section">
-                    <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
-                </div>
+                <div class="profile-role">Adviser</div>
             </div>
-            @endforeach
-    </div>
 
+            <div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
+                <!-- First container2 -->
+                <div class="d-flex justify-content-between align-items-start w-100">
+                    <!-- Profile Member on the left -->
+                    <div class="profile-member">Players</div>
+                    <!-- Profile Rank on the right -->
+                    <div class="profile-rank">Rank</div>
+                </div>
+
+            <!-- First Member Container -->
+                @foreach($class_player as $player)
+                    @php
+                        // Check if total_items is greater than zero to avoid division by zero
+                        $percentage = 0;
+                        if ($player->total_items > 0) {
+                            // Calculate the percentage of total_score based on total_items
+                            $percentage = ($player->total_score / $player->total_items) * 100;
+                        }
+                        
+                        // Determine the badge based on the thresholds
+                        $badge = '';
+                        if ($percentage >= 76) {
+                            $badge = 'gold.png'; // Gold badge
+                        } elseif ($percentage >= 51) {
+                            $badge = 'silver.png'; // Silver badge
+                        } elseif ($percentage >= 26) {
+                            $badge = 'bronze.png'; // Bronze badge
+                        } else {
+                            $badge = 'NO BADGE'; // No badge
+                        }
+                    @endphp
+
+                    <div class="container2 d-flex justify-content-between align-items-center w-100">    
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset($player->google_profile_image) }}" alt="Profile Picture" class="profile-pic">
+                            <div class="profile-players">{{ucfirst($player->first_name)}} {{ucfirst($player->last_name)}} - {{ ucfirst($player->ign) }}</div>
+                        </div>
+
+                        <div class="rank-section">
+                            @if($badge === 'NO BADGE')
+                                <span class="no-badge">{{ $badge }}</span> <!-- Apply class for NO BADGE -->
+                            @else
+                                <img src="{{ url($badge) }}" alt="{{ $badge }} Badge" class="badge-img">
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
-</div>
 
     
 

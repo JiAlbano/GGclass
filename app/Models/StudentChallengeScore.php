@@ -10,6 +10,7 @@ class StudentChallengeScore extends Model
 
     use HasFactory;
 
+    protected $table = 'student_challenge_scores';
     protected $fillable = [
         'challenge_id', 'student_id', 'score', 'token_used', 'total_score',
     ];
