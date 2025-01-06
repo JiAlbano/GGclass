@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('student_challenge_scores', function (Blueprint $table) {
             // Add exam_type column
-            $table->enum('exam_type', ['prelim', 'midterm', 'prefinal', 'final'])->nullable();
+            $table->enum('exam_type', ['prelim', 'midterm', 'prefinal', 'final'])->nullable()->after('challenge_type');
         });
     }
 
