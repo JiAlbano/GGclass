@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes as Classroom;
 use App\Models\Exam;
-use App\Models\ExamScore;
+use App\Models\StudentChallengeScore;
 use App\Models\ExamQuestion;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -72,7 +72,7 @@ class CreateExamController extends Controller
         $questions = $exam->questions;
         $class = Classroom::findOrFail($classId);
 
-        return view('exam-title', compact('class', 'exam', 'questions', 'user'));
+        return view('exam-titles', compact('class', 'exam', 'questions', 'user'));
     }
 
     public function update(Request $request, $examId)
@@ -93,11 +93,13 @@ class CreateExamController extends Controller
 
     public function showExam($classId, $examId)
     {
+        $user = Auth::user();
         $exam = Exam::findOrFail($examId);
         $questions = $exam->questions;
         $class = Classroom::findOrFail($classId);
+        
 
-        return view('exam-take', compact('class', 'exam', 'questions'));
+        return view('exam-take', compact('class', 'exam', 'questions','user'));
     }
 
     public function updateQuestion(Request $request, $classId, $examId)
@@ -157,7 +159,7 @@ class CreateExamController extends Controller
         $id = $request->input('id');
         $newScore = $request->input('newScore');
 
-        $score = ExamScore::find($id);
+        $score = StudentChallengeScore::find($id);
         $score->total_score = $newScore;
         return $score->save() ? 1 : 0;
     }

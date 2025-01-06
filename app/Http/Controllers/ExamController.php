@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes as Classroom;
 use App\Models\Exam;
-use App\Models\ExamScore;
+use App\Models\StudentChallengeScore;
 use App\Models\ExamQuestion;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +16,6 @@ class ExamController extends Controller
     {
         $user = Auth::user();
         $class = Classroom::findOrFail($classId);
-        // Change from Quiz to Exam
         $exams = Exam::where('class_id', $classId)->get();
         return view('exam', compact('class', 'user', 'exams'));
     }
@@ -30,17 +29,15 @@ class ExamController extends Controller
             'questions' => 'required|array',
         ]);
 
-        // Create new exam instead of quiz
         $exam = Exam::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'class_id' => $validated['class_id'],
-            'type' => 'final', // Add type field
+            'type' => 'final',
             'enable_token' => false,
             'time_duration' => 0
         ]);
 
-        // Store questions using ExamQuestion model
         $index = 1;
         foreach ($validated['questions'] as $question) {
             $createdQuestion = $exam->questions()->create([
@@ -96,12 +93,13 @@ class ExamController extends Controller
 
     public function showExam($classId, $examId)
     {
+        $user = Auth::user();
         $exam = Exam::findOrFail($examId);
         $questions = $exam->questions;
-        $user = Auth::user();
         $class = Classroom::findOrFail($classId);
+        
 
-        return view('exam-take', compact('class', 'exam', 'questions', 'user'));
+        return view('exam-take', compact('class', 'exam', 'questions','user'));
     }
 
     public function updateQuestion(Request $request, $classId, $examId)
@@ -161,7 +159,7 @@ class ExamController extends Controller
         $id = $request->input('id');
         $newScore = $request->input('newScore');
 
-        $score = ExamScore::find($id);
+        $score = StudentChallengeScore::find($id);
         $score->total_score = $newScore;
         return $score->save() ? 1 : 0;
     }
