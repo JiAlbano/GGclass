@@ -76,6 +76,12 @@ Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])-
 Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
 Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
 
+Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
+
+
+
+
+
 Route::get('/basic-info-teacher.view', function () {
 return view('basic-info-teacher');
 })->name('basic.info.teacher');
@@ -109,7 +115,19 @@ Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.
 
 Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
 
+
+// Tutorials Dashboard
+
 Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
+Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
+Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
+
+Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
+
+// Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
+// Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
+
+
 Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
 Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('create-tutorials');
 
