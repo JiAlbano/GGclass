@@ -79,9 +79,12 @@ Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.
 
 Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
 
+
+// Tutorials Dashboard
+
 Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
 Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
-Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('create-tutorials');
+Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 
 Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
 Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
