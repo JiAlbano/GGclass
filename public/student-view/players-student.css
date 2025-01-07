@@ -233,7 +233,7 @@
     border: 2px solid #2e3667;
     padding: 10px;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #2e3667;
     width: 1000px;
     height: 60px;
     margin-left: 35px;
@@ -252,14 +252,21 @@
 
 .profile-name {
     font-size: 14px;
-    color: #000;
+    color: #ffffff;
+    margin-left: 15px;
+    font-family: georgia;
+}
+
+.profile-players{
+    font-size: 14px;
+    color: #ffffff;
     margin-left: 15px;
     font-family: georgia;
 }
 
 .profile-role {
     font-size: 14px;
-    color: #000;
+    color: #FFD700;
     text-align:right;
     margin-right: 40px;
     font-weight: bold;
@@ -289,7 +296,7 @@
 }
 
 .profile-member {
-    margin-left: 35px; /* Adjust spacing between elements */
+    margin-left: 30px; /* Adjust spacing between elements */
 }
 
 .profile-rank {
@@ -302,7 +309,7 @@
     border: 2px solid #2e3667;
     padding: 10px;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #2e3667;
     width: 1000px;
     height: 50px;
     align-self: flex-start; /* Ensures it stays at the top */
@@ -342,6 +349,7 @@
 
     .profile-name, .profile-role {
         font-size: 10px;
+        color: #ffffff;
     }
 
     .profile-member, .profile-rank {
@@ -716,4 +724,20 @@
     margin-bottom: auto;
     flex-direction: column;
 
+}
+
+.badge-img{
+        width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+    margin-right: 37px;
+}
+
+.no-badge {
+    font-weight: bold;
+    font-size: 11px;
+    margin-right: 27px;
+    color: #FFD700;
 }

@@ -41,24 +41,24 @@ use App\Http\Controllers\CreateQuizController;
 use App\Http\Controllers\CreateExamController;
 // autorun
 
-Route::get('/migrate', function () {
-Artisan::call('migrate --force');
-return 'Migrations completed!';
-});
-
-Route::get('/seed', function () {
-Artisan::call('db:seed --force');
-return 'Seeders executed!';
-});
-
-// Public Routes
-// Route::get('/', function () {
-//     return view('home');
+// {{Route::get('/migrate', function () {
+//     Artisan::call('migrate --force');
+//     return 'Migrations completed!';
 // });
 
-// Route::post('/auth.view', function () {
-//     return view('login');
-// })->name('login');
+// Route::get('/seed', function () {
+//     Artisan::call('db:seed --force');
+//     return 'Seeders executed!';
+// });
+
+// Public Routes
+//  Route::get('/', function () {
+//      return view('home');
+//  });
+
+ Route::post('/auth.view', function () {
+     return view('login');
+ })->name('login');
 
 // Login page
 Route::get('/', function () {
