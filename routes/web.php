@@ -56,9 +56,9 @@ use App\Http\Controllers\CreateExamController;
 //     return view('home');
 // });
 
-// Route::post('/auth.view', function () {
-//     return view('login');
-// })->name('login');
+ Route::post('/', function () {
+    return view('welcome');
+ })->name('login');
 
 // Login page
 Route::get('/', function () {
