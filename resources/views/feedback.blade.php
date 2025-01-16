@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
-    <title>Bulletins</title>
+    <title>Feedback</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ secure_asset('bulletins.css') }}"> <!-- New CSS file for the container -->
-    <link rel="stylesheet" href="{{ asset('bulletins.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('feedback.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('feedback.css') }}">
 </head>
 
 
@@ -160,33 +160,37 @@
                 <button href="#">Gradebook</button>
             </div>
         </div>
+        <div class="dashboard-container">
+            <!-- Add Challenge Button -->
+            <div class="add-challenge-container">
+                <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
+                    <div class="icon">
+                        <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+                    </div>
+                    <div class="text">Create a new feedback to your class</div>
+                </button>
+            </div>
+
+            <!-- Bulletin List -->
+            <div class="bulletin-list">
+                <div class="bulletin-item">
+                    <div class="bulletin-icon">
+                        <img src="{{ asset('megaphone.png') }}"/>
+                    </div>
+                    <div class="bulletin-content">
+                        <p class="bulletin-title">You posted new feedback to your class.</p>
+                        <p class="bulletin-date">Dec 21, 2024</p>
+                    </div>
+                    <div class="bulletin-options">
+                        <button class="options-btn">•••</button>
+                    </div>
+                </div>
+                <!-- Repeat other bulletin items -->
+            </div>
+        </div>
     </div>
 </div>
 
 
-{{-- <div class="info-container">
-        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
-
-
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-@endforeach
-
-
-<hr>
-        <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('attendance') }}'">Attendance</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade') }}'">Grade</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback') }}'">Feedback</button>
-            <button class="btn"onclick="window.location.href='{{ route('gradebook') }}'">Gradebook</button>
-        </div>
-    </div> --}}
 </body>
 </html>
