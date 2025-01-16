@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Classes as Classroom;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\StudentChallengeScore;
 
 class StudentprofilestudentController extends Controller
 {
@@ -13,6 +15,21 @@ class StudentprofilestudentController extends Controller
         $user = Auth::user(); // Fetch all users
         $class = Classroom::findOrFail($classId); // Fetch the class
 
-        return view('profile-student', compact('class', 'user')); // Pass both variables to the view
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+        // dd($totalScores);
+
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
+        // $sumOfScores = 1000;
+        // dd($sumOfScores);
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+        // dd($numberOfItems/3);
+
+        // Pass the data to the view
+        return view('profile-student', compact('class', 'user', 'totalScores', 'sumOfScores', 'numberOfItems'));
     }
 }
+

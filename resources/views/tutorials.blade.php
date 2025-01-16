@@ -7,10 +7,10 @@
 
     <div class="right-container">
 
-        <div class="create-tutorial">
+        <a href="{{ route('create-tutorials', $class->id) }}" class="create-tutorial">
             <img src="{{ asset('img/lesson.png') }}" alt="lesson-img" class="lesson-img">
             <p class="tut-text"> Create a tutorial to your class</p>
-        </div>
+        </a>
 
         <div class="created-tutorial">
             <img src="{{ asset('img/lesson.png') }}" alt="lesson-img" class="lesson-img">

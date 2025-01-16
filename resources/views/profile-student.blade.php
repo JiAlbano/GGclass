@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
     <title>Badge</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
@@ -21,73 +22,19 @@
     <link rel="stylesheet" href="{{ secure_asset('student-view/profile-student.css') }}">
     <!-- New CSS file for the container -->
     <link rel="stylesheet" href="{{ asset('student-view/profile-student.css') }}">
+    <script src="/js/profile-badge.js"></script>
 </head>
 
 <body>
+    
+<!-- Navbar -->
+@extends('layouts.app')
 
-    <div class="navbar">
+@section('title', 'Players')
 
-        <div class="left-section" style="cursor: pointer;"
-            onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">
-            <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass</h1>
-        </div>
+@section('content')
 
-        <!-- User Profile -->
-        <div class="left-section">
-            <div class="profile-container" style="display: flex; position: relative;">
-                <img class="profile-img" src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile"
-                    id="logout-btn" aria-expanded="false">
-                <div class="text-container">
-                    <p class="in-game-name">{{ $user->ign }}</p>
-                    <p class="user-type">{{ $user->user_type }}</p>
-                </div>
-                <!-- Logout Dropdown -->
-                <div class="logout-container"
-                    style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
-                    <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
-                        <li class="logout-item" style="padding: 8px 12px;">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
-                        </li>
-                        <li class="logout-item" style="padding: 8px 12px;">
-                            <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'"
-                                style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript for Logout Dropdown -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const logoutButton = document.querySelector('#logout-btn');
-            const logoutDropdown = document.querySelector('.logout-container');
-
-            // Toggle the dropdown when the profile image is clicked
-            logoutButton.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevents the click from bubbling up
-                logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' :
-                    'none'; // Toggle visibility of the dropdown
-            });
-
-            // Close the dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!logoutButton.contains(event.target) && !logoutDropdown.contains(event.target)) {
-                    logoutDropdown.style.display = 'none'; // Hide the dropdown
-                }
-            });
-        });
-
-        function handleLogout(event) {
-            event.preventDefault();
-            document.getElementById('logout-form').submit(); // Submit the Laravel logout form
-        }
-    </script>
+@endsection
 
 
     <div class="top-buttons containers" style=" margin-top: 84px;">
@@ -111,30 +58,6 @@
         </div>
     </div>
 
-
-    <!-- <div class="info-container ">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="rank-section">
-            <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
-        </div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-
-        <div class="container-buttons">
-            <button class="btn1"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
-        </div>
-    </div> -->
-
     <div class="dashboard-container">
         <div class="content-container">
             <!-- Class Card -->
@@ -156,6 +79,85 @@
                         onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
                     <button class="btn challenge-btn active"
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
+                </div>
+            </div>
+
+            <div class="container-sm my-4 d-flex flex-column justify-content-center align-items-center position-relative">
+                <!-- Points and Badges Progress Section -->
+                <div class="d-flex flex-column align-items-center w-100">
+                    <div class="progress-container" style="color: #ffffff;">
+                        <h2>Points and Badges Progress</h2>
+                        <div class="progress-info text-center" style="color: #ffffff;">
+                            <p>
+                                <span id="current-badge"></span>
+                            </p>
+                            <p>Current Points: <span id="current-points">{{ $sumOfScores }}</span></p>
+                            <p>Points to Next Badge: 
+                                <span id="points-to-next"></span>
+                            </p>
+                            <p>Next Badge: 
+                                <span id="next-badge"></span>
+                            </p>
+                        </div>
+
+                        <!-- Pass sumOfScores to JavaScript -->
+                        <input type="hidden" id="number-of-items" value="{{ $numberOfItems }}">
+                        <input type="hidden" id="sum-of-scores" value="{{ $sumOfScores }}">
+
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div class="badge bronze-badge"></div>
+                                <div class="badge silver-badge"></div>
+                                <div class="badge gold-badge"></div>
+                                <div class="progress" id="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- "Available Badges" Button -->
+                <button id="available-badges-btn" class="btn btn-primary position-absolute" style="top: 10px; right: 10px;">
+                    Available Badges
+                </button>
+            </div>
+
+
+            <!-- Modal for Available Badges -->
+            <div class="modal" tabindex="-1" id="badges-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Available Badges</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Here are your available badges that you can get!</p>
+
+                            <!-- Badge List -->
+                            <div class="badge-list d-flex justify-content-around">
+                                <!-- Bronze Badge -->
+                                <div class="badge-item text-center">
+                                    <img src="{{ asset('bronze.png') }}" alt="Bronze Badge" class="badge-img">
+                                    <h5>1st Pillar-Bronze Medallion</h5>
+                                    <p class="badge-description">Awarded for completing your first challenge.</p>
+                                </div>
+
+                                <!-- Silver Badge -->
+                                <div class="badge-item text-center">
+                                    <img src="{{ asset('silver.png') }}" alt="Silver Badge" class="badge-img">
+                                    <h5>2nd Pillar-Silver Medallion</h5>
+                                    <p class="badge-description">Earned for consistent performance across multiple challenges.</p>
+                                </div>
+
+                                <!-- Gold Badge -->
+                                <div class="badge-item text-center">
+                                    <img src="{{ asset('gold.png') }}" alt="Gold Badge" class="badge-img">
+                                    <h5>3rd Pillar-Gold Medallion</h5>
+                                    <p class="badge-description">Given for completing expert-level challenges with excellence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

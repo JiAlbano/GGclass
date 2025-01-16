@@ -109,12 +109,11 @@
 
 .tutorial-buttons {
     display: flex;
-    gap: 10px;
     justify-content: space-between;
     margin-top: 30px;
 }
 
-.upload-link {
+.upload-file {
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -182,6 +181,13 @@
 
 /* Cancel- Create Buttons */
 
+.cancel-create {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    left: 30px;
+}
+
 .create-button {
     height: 45px;
     width: 120px;
@@ -196,6 +202,8 @@
     border: 2px solid #283891;
     background-color: white;
     color: #2e3667;
+    position: relative;
+    left: 15px;
 }
 
 .create-button,

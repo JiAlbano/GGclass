@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentQuestionAnswers extends Model
 {
-
     use HasFactory;
 
     protected $fillable = [
-        'challenge_id', 'question_id', 'answer', 'student_id', 'is_correct',
+        'challenge_id', 
+        'question_id', 
+        'answer', 
+        'student_id', 
+        'is_correct', 
+        'challenge_type', 
+        'exam_type', // Ensure this column exists
     ];
 }

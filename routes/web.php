@@ -51,10 +51,13 @@ use App\Http\Controllers\CreateExamController;
 //     return 'Seeders executed!';
 // });
 
+// Public Routes
+// Route::get('/', function () {
+//     return view('home');
+// });
 
-
- Route::post('/auth.view', function () {
-     return view('login');
+ Route::post('/', function () {
+    return view('welcome');
  })->name('login');
 
 // Login page
@@ -67,21 +70,16 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('
 Route::get('auth/callback/google', [GoogleController::class, 'handleGoogleCallback']);
 Route::post('/logout', [GoogleController::class, 'logout'])->name('logout');
 
-// Class Dashboard Routes
-Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
-Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
-Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
-Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
-Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
+// User Authentication Routes
+Route::get('basic-info-teacher', [GoogleController::class, 'basicInfoTeacher'])->name('basic-info-teacher');
+Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])->name('basic-info-student');
+Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
+Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
 
 Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
 
-Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
-Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
-Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('create-tutorials');
 
-Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
-Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
+
 
 
 Route::get('/basic-info-teacher.view', function () {
@@ -107,13 +105,40 @@ Route::post('signup-student', [SignupStudentController::class, 'handleSignup']);
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+
+    // Class Dashboard Routes
+Route::get('/create-class', [ClassController::class, 'create'])->name('create-class');
+Route::post('/class-list', [ClassController::class, 'joinClass'])->name('join.class');
+Route::get('/class-list', [ClassController::class, 'index'])->name('class-list');
+Route::get('/create-list', [ClassController::class, 'user'])->name('create-user');
+Route::post('/classes/store', [ClassController::class, 'store'])->name('classes.store');
+
+Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
+
+
+// Tutorials Dashboard
+
+Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
+Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
+Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
+
+Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
+
+// Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
+// Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
+
+
+Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
+Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('create-tutorials');
+
+Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
+Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
+
+
 // Classroom Routes
 Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.index');
 
-Route::get('basic-info-teacher', [GoogleController::class, 'basicInfoTeacher'])->name('basic-info-teacher');
-Route::get('basic-info-student', [GoogleController::class, 'basicInfoStudent'])->name('basic-info-student');
-Route::post('/basic-info-student/update', [GoogleController::class, 'updateBasicInfo'])->name('basic-info-student.update');
-Route::post('/basic-info-teacher/update', [GoogleController::class, 'updateBasicInfoTeacher'])->name('basic-info-teacher.update');
+
 // Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
 
 

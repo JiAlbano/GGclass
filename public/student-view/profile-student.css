@@ -1,3 +1,11 @@
+
+body {
+    font-family: Georgia;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .ggclass-font {
     color: white;
     display: flex;
@@ -8,7 +16,7 @@
     text-decoration: none;
     position: relative;
     left: -1px;
-    top: -10px;
+    top: -2px;
 }
 
 .ggclass-font:hover {
@@ -31,7 +39,7 @@
     height: 60px;
     margin-right: 10px;
     position: relative;
-    top: -16px;
+    top: -10px;
     margin-left: 10px;
 }
 
@@ -106,12 +114,6 @@
     margin-left: 10px; /* Reduce space between the image and text */
 }
 
-body {
-    font-family: Georgia;
-    background-color: #f0f0f0;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
 
 .left-section {
     display: flex;
@@ -474,3 +476,327 @@ body {
 .options-btn:hover {
     color: #2b52b2;
 }
+
+.container-sm {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center;
+    border: 2px solid #2e3667;
+    border-radius: 10px;
+    background-color: #2e3667;
+    width: 950px;
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-left: 40px;
+/*    padding: 100px;*/
+    padding-top: 0; /* Reduce top padding */
+}
+
+.progress-container {
+    margin-top: 0;
+    padding-top: 0;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+
+h2 {
+    margin-top: 0; /* Ensure no top margin */
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-align: center; /* Center h2 */
+}
+
+
+p {
+    margin: 5px 0;
+    text-align: center; /* Ensure paragraphs are centered */
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    background: #4a4a4a;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+.progress {
+    background: linear-gradient(90deg, #FFD700, #FFB800, #FF9E00); /* Ateneo-inspired gold shades */
+    height: 100%;
+    width: 40%; /* Adjust dynamically based on progress */
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+
+.badge {
+    position: absolute;
+    top: -20px;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+}
+
+.bronze-badge {
+    left: 10%; /* Bronze badge position */
+    background-image: url('https://path/to/bronze-badge.png'); /* Replace with your bronze badge image URL */
+}
+
+.silver-badge {
+    left: 50%; /* Silver badge position */
+    background-image: url('https://path/to/silver-badge.png'); /* Replace with your silver badge image URL */
+}
+
+.gold-badge {
+    left: 90%; /* Gold badge position */
+    background-image: url('https://path/to/gold-badge.png'); /* Replace with your gold badge image URL */
+}
+
+@media (max-width: 600px) {
+    .progress-container {
+        padding: 15px;
+    }
+
+    .progress-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .progress-bar {
+        height: 30px;
+    }
+
+    .badge {
+        width: 30px;
+        height: 30px;
+        top: -15px;
+    }
+}
+
+.rank-pic {
+    width: 120px; /* Adjust size as needed */
+    height: 120px; /* Adjust size as needed */
+    object-fit: contain; /* Ensures the image keeps its aspect ratio */
+}
+
+
+/* Add any specific styles for this component here */
+
+#available-badges-btn {
+    margin-top: 15px;
+    margin-right: 15px;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    background-color: #ffffff;
+    color: #2e3667;
+}
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+    #available-badges-btn {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    #available-badges-btn {
+        font-size: 14px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* General Modal Styling */
+#badges-modal .modal-content {
+    background-color: #2e3667; /* Softer Ateneo Blue */
+    color: #fff; /* White text for contrast */
+    border-radius: 12px;
+    border: 1px solid #3A5578; /* Slightly darker blue for the border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+    width: 750px; /* Keep the original width */
+    
+    /* Centering the modal content */
+    position: absolute;
+    top: 50%; /* Move to the center vertically */
+    left: 50%; /* Move to the center horizontally */
+    transform: translate(-50%, -50%); /* Offset by 50% of its own width and height */
+    margin-top: 60%; /* You can adjust this as needed */
+}
+
+/* Modal Header */
+#badges-modal .modal-header {
+    background-color: #2e3667; /* Darker blue for header */
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-between; /* Keeps the button on the right */
+    align-items: center; /* Centers the title vertically */
+}
+
+/* Modal Title */
+#badges-modal .modal-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #FFD700; /* Gold Accent for the title */
+    text-transform: uppercase;
+    margin-left: 27%; /* Ensures the title is centered */
+}
+
+/* Close Button */
+#badges-modal .btn-close {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+}
+
+/* Modal Body */
+#badges-modal .modal-body {
+    padding: 25px;
+    text-align: center;
+}
+
+#badges-modal .modal-body p {
+    font-size: 14px;
+}
+
+/* Badge List */
+.badge-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    overflow-x: auto; /* Allow horizontal scrolling if the badges exceed the container width */
+    gap: 20px;
+}
+
+.badge-item {
+    max-width: 180px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for the badge items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badge-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.badge-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    border: 2px solid #4C6B98; /* Softer blue border for images */
+    padding: 5px;
+}
+
+/* Badge List Text Color */
+.badge-item h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2e3667; /* Updated color for badge names */
+    margin-bottom: 10px;
+}
+
+.badge-description {
+    font-size: 12px;
+    color: #2e3667; /* Updated color for the description text */
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    /* For Tablets */
+    #badges-modal .modal-content {
+        width: 90%; /* Make the modal smaller on tablets */
+    }
+
+    .badge-item {
+        max-width: 150px; /* Smaller badge items */
+    }
+
+    #badges-modal .modal-title {
+        font-size: 1.5rem;
+    }
+
+    #badges-modal .modal-body p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* For Mobile Phones */
+    #badges-modal .modal-content {
+        width: 95%; /* Further decrease width on small screens */
+    }
+
+    .badge-list {
+        justify-content: flex-start; /* Align badges to the left on small screens */
+    }
+
+    .badge-item {
+        max-width: 120px; /* Smaller badge items */
+    }
+
+    #badges-modal .modal-title {
+        font-size: 1.3rem;
+    }
+
+    #badges-modal .modal-body p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* For Very Small Screens */
+    #badges-modal .modal-content {
+        width: 100%; /* Make the modal full width */
+    }
+
+    .badge-item {
+        max-width: 100px; /* Smaller badge items */
+    }
+
+    #badges-modal .modal-title {
+        font-size: 1.2rem;
+    }
+
+    #badges-modal .modal-body p {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Progress bar container with a lighter background */
+#progress-bar-container {
+    width: 100%;
+    background: linear-gradient(135deg, #3e3e3e, #555555); /* Lighter black gradient */
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for depth */
+}
+
+/* Progress bar with light blue */
+#progress {
+    height: 100%;
+    width: 0; /* Initially zero width */
+    border-radius: 10px; /* Rounded edges for a sleek look */
+}
+
+

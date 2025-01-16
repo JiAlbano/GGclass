@@ -29,7 +29,7 @@ class GoogleController extends Controller
 
         //checking if acc is similar acc as @gbox.adnu.edu.ph
         if (strpos($googleUser->getEmail(), '@gbox.adnu.edu.ph') === false) {
-                return redirect('/auth.view')->withErrors('Only Gbox account are allowed.');
+                return redirect('/')->withErrors('Only Gbox account are allowed.');
             }
 
    // Find the user by email
