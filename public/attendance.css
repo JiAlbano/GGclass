@@ -1,71 +1,57 @@
-/* General reset and box-sizing */
-/* General reset and box-sizing */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
  
-
-
 }
-
-.text-container {
-    display: flex;
-    flex-direction: column;  /* Align text vertically */
-    justify-content: center; /* Center text vertically in the container */
-    margin-left: 10px; /* Reduce space between the image and text */
-<<<<<<< HEAD
-=======
-}
-
-.in-game-name {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 14px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
-.user-type {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 12px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
-body {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    background-color: #f0f0f0;
->>>>>>> 3314c6f62b0b14f8cc0bcfef4a350b950fd691cf
-}
-
-.in-game-name {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 14px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
-.user-type {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 12px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
 
 body {
     font-family: Georgia;
     background-color: #f0f0f0;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+
+.text-container {
+    display: flex;
+    flex-direction: column;  /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
+}
+
+.in-game-name {
+    color: #f5f5f5;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 14px; /* Increased font size */
+    margin: 0; /* Remove extra margin */
+}
+
+.user-type {
+    color: #f5f5f5;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 12px; /* Increased font size */
+    margin: 0; /* Remove extra margin */
+}
+
+
+.in-game-name {
+    color: #f5f5f5;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 14px; /* Increased font size */
+    margin: 0; /* Remove extra margin */
+}
+
+.user-type {
+    color: #f5f5f5;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 12px; /* Increased font size */
+    margin: 0; /* Remove extra margin */
 }
 
 
@@ -696,7 +682,7 @@ color:#FFC62E;
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 50px;
+    margin: 70px;
     margin-top: 20px;
     height: 440px;
 }
@@ -791,3 +777,185 @@ color:#FFC62E;
 }
 
 
+.dashboard-container {
+    display: flex;
+    margin-bottom: auto;
+    flex-direction: column;
+    position: relative; /* To position the label relative to this container */
+    transform: translateY(-8px); /* Move everything up slightly */
+}
+
+.attendance-header {
+    position: absolute;
+    top: -15px; /* Position the label and date picker */
+    left: 5px; /* Align the header to the left */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the label and date picker */
+    width: 100%; /* Ensures the header takes the full width */}
+
+.attendance-search {
+    padding: 5px;
+    font-size: 13px;
+    border: 1px solid #2e3667;
+    border-radius: 5px;
+    font-family: georgia;
+    color: #2e3667;
+    background-color: #ffffff;
+    width: 200px; /* Adjust the width as needed */
+    margin-right: 5px;
+}
+
+
+.student-container.filtered {
+    order: -1; /* Moves the filtered student to the top */
+}
+
+.attendance-label {
+    color: #2e3667;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 18px; /* Adjust as needed */
+    border-radius: 5px; /* Rounded label edges */
+    font-family: georgia; /* Matches your overall design */
+}
+
+.attendance-date-picker {
+    padding: 5px;
+    font-size: 13px;
+    border: 1px solid #2e3667;
+    border-radius: 5px;
+    font-family: georgia;
+    color: #2e3667;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.container-sm {
+    display: flex;
+    align-items: center;
+    border: 2px solid #2e3667;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 480px;
+    overflow-x: auto; /* Enable horizontal scrollbar */
+    overflow-y: auto; /* Always show vertical scrollbar */
+    flex-direction: column; /* Make sure content is stacked vertically */
+}
+
+/* The parent container where multiple student containers will be placed */
+.student-container {
+    display: flex;
+    flex-direction: column; /* Stack student containers vertically */
+    gap: 10px; /* Space between student containers */
+    width: 100%;
+}
+
+/* Each student's container */
+.container2 {
+    align-items: center;
+    border: 2px solid #2e3667;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2e3667;
+    width: 1000px;
+    height: 60px;
+    align-self: flex-start; /* Ensures it stays at the top */
+    margin-top: 10px;
+}
+
+
+.student-info {
+    display: flex;
+    align-items: center;
+}
+
+.student-image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* Circle image */
+    margin-right: 25px; /* Space between image and name */
+    margin-left: 10px;
+}
+
+.student-name {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family:georgia;
+}
+
+.student-note {
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.student-note label {
+    color: white;  /* Make the label text color white */
+    margin-right: 10px; /* Optional: Adjust spacing between label and input */
+}
+
+.note-input {
+    width: 200px; /* Adjust width as needed */
+    margin-right: 10px;
+    background-color: transparent;  /* Transparent background by default */
+    color: #ffffff;  /* White text color */
+    border: 1px solid white; /* Optional: Add a white border for visibility */
+    padding: 5px; /* Optional: Adjust padding */
+    font-size: 14px; /* Optional: Adjust font size */
+}
+
+/* Change color of placeholder text when input is not focused */
+.note-input::placeholder {
+    color: white;  /* White placeholder text */
+}
+
+.note-input:focus {
+    background-color: white;  /* Background turns white when focused */
+    color: black;  /* Text turns black when focused */
+    border: 1px solid #00bcd4; /* Optional: Highlight the border on focus */
+}
+
+/* Show save button when input is focused */
+.note-input:focus + .btn-save-note {
+    display: block;
+}
+
+.btn-save-note {
+    display: none;
+    color: #ffffff;
+}
+
+
+
+
+
+.attendance-dropdown .btn-dropdown {
+    font-size: 14px;
+    color: #ffffff;
+    background-color: transparent; /* Ensures the background doesn't change */
+    border: none; /* Remove the border on hover if it's being changed */
+    font-weight: normal; /* Set default font weight */
+    transition: none; /* Disable any transition effects */
+}
+
+.attendance-dropdown .dropdown-menu {
+    min-width: 120px;
+    padding: 10px;
+}
+
+.attendance-dropdown .dropdown-item {
+    font-size: 14px;
+    font-weight: normal; /* Ensure the font weight is consistent */
+}
+
+/* Override hover behavior */
+.attendance-dropdown .btn-dropdown:hover {
+    background-color: transparent; /* Prevent background color change */
+    color: #ffd700; /* Keep the text color the same */
+    border: none; /* Prevent border changes on hover */
+    font-weight: normal; /* Keep the font weight the same */
+    font-size: 14px; /* Keep the font size the same */
+}

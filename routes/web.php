@@ -129,7 +129,9 @@ Route::get('/gradebook/{classId}/data', [GradedataController::class, 'show'])->n
 Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
 
 //Student routes
-Route::get('/studentbulletins/{classId}', [StudentBulletinsController::class, 'show'])->name('studentbulletins');
+Route::get('/studentbulletins/{classId?}', [StudentBulletinsController::class, 'show'])
+    ->name('studentbulletins'); 
+    
 //Student quiz routes
 Route::get('/studentchallenges/{classId}', [StudentchallengesController::class, 'show'])->name('challenges-student');
 Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::class, 'show'])->name('quiz-student');

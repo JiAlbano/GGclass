@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
-    <title>Bulletins</title>
+    <title>Attendance</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
@@ -16,9 +16,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+
     <!--CSS-->
-    <link rel="stylesheet" href="{{ secure_asset('bulletins.css') }}"> <!-- New CSS file for the container -->
-    <link rel="stylesheet" href="{{ asset('bulletins.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('attendance.css') }}"> <!-- New CSS file for the container -->
+    <link rel="stylesheet" href="{{ asset('attendance.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/attendance-teacher.js') }}"></script>
+
 </head>
 
 
@@ -59,7 +63,6 @@
             </ul>
         </div>
     </div>
-
 </div>
 
 
@@ -109,37 +112,6 @@
 </div>
 
 
-<!-- Display profile picture -->
-
-
-
-<!-- <div class="info-container ">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-
-    <div class="container-buttons">
-            <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-            <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-        </div>
-</div> -->
-
-<div class="dashboard-container">
-    <!-- Back Button -->
-<!--     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
-    </div> -->
-
     <div class="content-container">
         <!-- Class Card -->
         <div class="class-card">
@@ -160,33 +132,54 @@
                 <button href="#">Gradebook</button>
             </div>
         </div>
-    </div>
-</div>
 
+        <div class="dashboard-container">
+            <!-- Attendance label, date picker, and search input -->
+            <div class="attendance-header">
+                <label class="attendance-label">Student's Attendance</label>
+                <input type="date" class="attendance-date-picker" id="attendance-date">
+                <!-- Search Input Added -->
+                <input type="text" class="attendance-search" id="student-search" placeholder="Search Student">
+            </div>
 
-{{-- <div class="info-container">
-        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
+            <!-- Main content container -->
+            <div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
+                <!-- Student Containers -->
+                <div class="student-container d-flex flex-column justify-content-start align-items-center w-100">
+                    <div class="container2 d-flex justify-content-between align-items-center w-100">
+                        <!-- Left side: Student's picture and name -->
+                        <div class="student-info d-flex align-items-center">
+                            <img src="{{ asset('img/ainz.jpg') }}" alt="Student Picture" class="student-image">
+                            <span class="student-name">John Ignacious Albano</span>
+                        </div>
 
+                        <!-- Middle: Input note -->
+                        <div class="student-note d-flex align-items-center">
+                            <input type="text" class="form-control note-input" placeholder="Enter note here" id="note-1">
+                            <button class="btn btn-save-note" id="save-note-1" style="display: none;">Save</button>
+                        </div>
 
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-@endforeach
+                        <!-- Right side: Dropdown button -->
+                        <div class="attendance-dropdown">
+                            <button id="status-btn" class="btn btn-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Status
+                            </button>
+                            <ul class="dropdown-menu" id="status-dropdown">
+                                <li><a class="dropdown-item" href="#" data-status="Present">Present</a></li>
+                                <li><a class="dropdown-item" href="#" data-status="Absent">Absent</a></li>
+                                <li><a class="dropdown-item" href="#" data-status="Late">Late</a></li>
+                                <li><a class="dropdown-item" href="#" data-status="Excuse">Excuse</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-
-<hr>
-        <div class="container-buttons">
-            <button class="btn"onclick="window.location.href='{{ route('attendance') }}'">Attendance</button>
-            <button class="btn"onclick="window.location.href='{{ route('grade') }}'">Grade</button>
-            <button class="btn"onclick="window.location.href='{{ route('feedback') }}'">Feedback</button>
-            <button class="btn"onclick="window.location.href='{{ route('gradebook') }}'">Gradebook</button>
+                <!-- Repeat the above structure for each student -->
+            </div>
         </div>
-    </div> --}}
+    </div>
+
+<script src="/js/attendance-teacher.js"></script>
+
 </body>
 </html>

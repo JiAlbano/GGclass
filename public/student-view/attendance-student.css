@@ -210,7 +210,6 @@ body {
 /* General container styling */
 .class-card {
     width: 300px;
-    height: 441px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -219,8 +218,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 50px;
+    margin: 70px;
     margin-top: 50px;
+    height: 440px;
 }
 
 /* Header section */
@@ -472,4 +472,190 @@ body {
 
 .options-btn:hover {
     color: #2b52b2;
+}
+
+.dashboard-container {
+    display: flex;
+    margin-bottom: auto;
+    flex-direction: column;
+    position: relative; /* To position the label relative to this container */
+    transform: translateY(-8px); /* Move everything up slightly */
+    top: 30px;
+}
+
+.attendance-header {
+    position: absolute;
+    top: -10px; /* Position the label and date picker */
+    left: 5px; /* Align the header to the left */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the label and date picker */
+    width: 100%; /* Ensures the header takes the full width */}
+
+
+.student-container.filtered {
+    order: -1; /* Moves the filtered student to the top */
+}
+
+.attendance-label {
+    color: #2e3667;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 18px; /* Adjust as needed */
+    border-radius: 5px; /* Rounded label edges */
+    font-family: georgia; /* Matches your overall design */
+}
+
+
+.container-sm {
+    display: flex;
+    align-items: center;
+    border: 2px solid #2e3667;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 480px;
+    overflow-x: auto; /* Enable horizontal scrollbar */
+    overflow-y: auto; /* Always show vertical scrollbar */
+    flex-direction: column; /* Make sure content is stacked vertically */
+    top: 10px;
+}
+
+/* Container holding the user profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    position: absolute; /* To position at top-left */
+    top: 40px;
+    left: 20px;
+}
+
+/* Styling for the user's picture */
+.user-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* This makes it circular */
+    object-fit: cover; /* Ensures the image covers the circle properly */
+    margin-right: 10px; /* Spacing between the image and the name */
+}
+
+/* Styling for the user's name */
+.user-name {
+    font-family: georgia;
+    font-size: 17px;
+    font-weight: 800;
+    margin-top: 0px; /* This will push the name down by 20px */
+}
+
+
+.student-container {
+    display: flex;
+    flex-direction: column; /* Stack student containers vertically */
+    gap: 10px; /* Space between student containers */
+    width: 100%;
+}
+
+/* Each student's container */
+.container2 {
+    align-items: center;
+    border: 2px solid #2e3667;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2e3667;
+    width: 1000px;
+    height: 50px;
+    align-self: flex-start; /* Ensures it stays at the top */
+    margin-bottom: 10px;
+}
+
+
+.student-info {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family:georgia;
+    margin-left: 20px;
+}
+
+.student-note {
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.student-note label {
+    color: white;  /* Make the label text color white */
+    margin-right: 10px; /* Optional: Adjust spacing between label and input */
+}
+
+.note-input {
+    width: 200px; /* Adjust width as needed */
+    margin-right: 10px;
+    background-color: transparent;  /* Transparent background by default */
+    color: #ffffff;  /* White text color */
+    border: 1px solid white; /* Optional: Add a white border for visibility */
+    padding: 5px; /* Optional: Adjust padding */
+    font-size: 14px; /* Optional: Adjust font size */
+}
+
+/* Change color of placeholder text when input is not focused */
+.note-input::placeholder {
+    color: white;  /* White placeholder text */
+}
+
+.note-input:focus {
+    background-color: white;  /* Background turns white when focused */
+    color: black;  /* Text turns black when focused */
+    border: 1px solid #00bcd4; /* Optional: Highlight the border on focus */
+}
+
+/* Show save button when input is focused */
+.note-input:focus + .btn-save-note {
+    display: block;
+}
+
+.attendance-dropdown .btn-dropdown {
+    font-size: 14px;
+    color: #ffffff;
+    background-color: transparent; /* Ensures the background doesn't change */
+    border: none; /* Remove the border on hover if it's being changed */
+    font-weight: normal; /* Set default font weight */
+    transition: none; /* Disable any transition effects */
+}
+
+.attendance-dropdown .dropdown-menu {
+    min-width: 120px;
+    padding: 10px;
+}
+
+.attendance-dropdown .dropdown-item {
+    font-size: 14px;
+    font-weight: normal; /* Ensure the font weight is consistent */
+}
+
+/* Override hover behavior */
+.attendance-dropdown .btn-dropdown:hover {
+    background-color: transparent; /* Prevent background color change */
+    color: #ffd700; /* Keep the text color the same */
+    border: none; /* Prevent border changes on hover */
+    font-weight: normal; /* Keep the font weight the same */
+    font-size: 14px; /* Keep the font size the same */
+}
+
+.note{
+    color: #ffffff;
+    font-family: georgia;
+    font-size: 16px;
+}
+
+.status{
+    color: #ffffff;
+    font-family: georgia;
+    font-size: 16px;
+    margin-right: 15px;
 }
