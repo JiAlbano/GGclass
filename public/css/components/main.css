@@ -89,15 +89,16 @@
 
 .user-settings {
     position: absolute;
-    top: 100%; /* Places dropdown directly below the image */
-    left: -15px; /* Center aligns the dropdown under the image */
-    transform: translateX(-50%); /* Corrects horizontal centering */
+    top: 100%; /* Position below the triggering element */
+    left: 30%; /* Center horizontally */
+    transform: translateX(-50%); /* Align horizontally under the parent */
+    z-index: 9999; /* Ensure it stays on top */
     background-color: white;
     border: 1px solid #757575;
     border-radius: 10px;
     height: 150px;
-    width: 180px; /* Optional: Set dropdown width */
-    text-align: left; /* Centers the menu items */
+    width: 180px;
+    text-align: left;
     display: none; /* Hidden by default */
 }
 
