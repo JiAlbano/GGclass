@@ -17,7 +17,8 @@ class ClassController extends Controller
     private function fetchClassesForUser($user)
     {
         if ($user->user_type === 'teacher') {
-            return Classroom::all(); // All classes for teachers
+            // Fetch only classes created by the authenticated teacher
+            return Classroom::where('teacher_id', $user->id)->get();
         } else {
             return $user->classes()->get(); // Only user's classes for students
         }
