@@ -56,7 +56,7 @@
     </div>
 
 
-    <!-- <div class="info-container ">
+    {{-- <!-- <div class="info-container ">
     <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
     <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
     <div class="rank-section">
@@ -77,7 +77,7 @@
             <button class="btn1"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
             <button class="btn1"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
         </div>
-    </div> -->
+    </div> --> --}}
 
     <div class="dashboard-container">
         <div class="content-container">
@@ -100,6 +100,7 @@
                         onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
                     <button
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
+                        <button onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">Grade</button>
                 </div>
             </div>
 
