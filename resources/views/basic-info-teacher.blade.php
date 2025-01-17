@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Basic Information</title>
-    <link rel="stylesheet" type="text/css" href="{{ secure_asset('basic-info-teacher.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('basic-info-student.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('basic-info-student.css') }}">
 </head>
 
