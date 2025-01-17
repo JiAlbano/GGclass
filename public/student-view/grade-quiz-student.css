@@ -3,31 +3,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #f0f0f0;
-    overflow-x: auto; /* Enable horizontal scrollbar */
-
+body{
+    overflow-x: hidden;
 }
+
+.text-container {
+    display: flex;
+    flex-direction: column;  /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
+}
+
+.in-game-name {
+    position: relative;
+    left: -33px;
+    top: 5px;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 16px;
+    color: #f5f5f5;
+}
+
+.user-type {
+    position: relative;
+    top: -15px;
+    left: -33px;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 15px;
+    color: white;
+}
+
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(145deg, #14171D, #2A2E34); /* Dark gradient for a modern feel */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    color: #FFC62E;
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    background: #2e3667;
+    font-family: Georgia;
     position: fixed;
+    height: 65px;
     width: 100%;
     top: 0;
     z-index: 999;
-    border-bottom: 2px solid #FFC62E;
 }
+
 
 .left-section {
     display: flex;
@@ -35,34 +56,47 @@ body {
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 20px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+    height: 60px;
+    margin-right: 10px;
+    position: relative;
+    top: -16px;
+    margin-left: 10px;
+    margin-top: 9.5px;
 }
 
 .ggclass-font {
-    font-size: 16px;
-    color: #FFC62E;
-    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
-    margin-right: 10px;
-    margin-top: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -1px;
+    top: -5.5px;
+}
+
+.ggclass-font:hover {
+    color: #ffd700;
 }
 
 .section-font {
     font-size: 16px;
-    color: #FFC62E;
-    opacity: 0.8;
+    color: white;
     margin-left: 10px;
     margin-top: 10px;
 }
 
 .profile-img {
-    width: 40px;
-    height: 40px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
-    transition: transform 0.3s, box-shadow 0.3s;
+    object-fit: cover;
+    margin-right: 12px;
+    position: relative;
+    left: -25px;
+    margin-bottom: 25px;
 }
 
 .profile-img:hover {
@@ -70,58 +104,51 @@ body {
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
-.challenge-btn.active {
-    color: #2A2E34; /* White text color for the active button */
-    font-weight: bold;
-    background-color: #FFC62E;
-    transition: all 0.3s ease;
-}
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    text-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Glowing text effect */
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
-}
-
-.row .col-12 {
-    padding: 0 10px; /* Add horizontal padding for equal spacing between buttons */
-}
 
 .row .btn {
-    padding: 10px 15px; /* Add padding inside the buttons */
+    padding: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #f0f0f0;
-    color: #676767;
+    color: #2e3667;
     cursor: pointer;
-    width: 100%; /* Make buttons take the full width of their column */
+    width: 250px;
+    font-family: "Georgia";
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+.challenge-btn1.active{
+    background-color: #283891;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    font-family: "Georgia";
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    width: 80%;
+    height: 40px;
 }
 
 .btn:hover {
-    color: #2A2E34;
     font-weight: bold;
 }
 
 .info-container {
-    border: 2px solid #FFC62E;
+    border: 2px solid #ffc62e;
     padding: 20px;
-    background-color: #2A2E34;
+    background-color: #2e3667;
     width: 300px;
     text-align: center;
-    margin: 20px auto;
     float: left;
     margin: 50px;
-    margin-top: 60px;
+    margin-top: 50px;
     border-radius: 20px;
     position: relative;
     width: 265px;
     height: 490px;
-    position: relative;
 }
 
 .container-picture {
@@ -131,7 +158,7 @@ body {
     object-fit: cover; /* Ensures the image covers the entire circle without distortion */
     display: block; /* Optional: Ensures the image is a block element */
     margin: 0 auto; /* Optional: Center the image horizontally */
-    border: 3px solid #2A2E34;
+    border: 3px solid #050834;
     position: absolute; /* Position the image relative to the container */
     top: -8%; /* Move the image up to flow outside the container */
     left: 50%; /* Center the image horizontally */
@@ -142,50 +169,18 @@ body {
     font-size: 15px;
     font-weight: bold;
     margin: 10px 0;
-    color: #f0f0f0;
-    font-family: 'Press Start 2P', cursive;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    color: white;
+    font-family: Georgia;
+    margin-top: 50px;
+    margin-bottom: 35px;
 }
-
-.rank-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #E4E4E4;
-    margin: 10px 0;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.container-info-section {
-    margin: 10px 0;
-    font-size: 12px;
-    color: #f0f0f0;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-.container-info-name {
-    margin: 0;
-    font-size: 9px;
-    color: #f0f0f0;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 
 .container-info-email {
-    margin: 10px 0;
     font-size: 10px;
-    color: #f0f0f0;
+    color: white;
     margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 7px;
+    margin-bottom: 18.5px;
+    font-size: 8px;
 }
 
 /* .container-info p {
@@ -202,12 +197,11 @@ hr {
     gap: 8px; /* Adds space between the buttons */
 }
 
-.btn {
+.btn1 {
     background-color: #E4E4E4;
-    color: #2A2E34;
+    color: #050834;
     border: none;
     padding: 10px 20px;
-    margin: 0px;
     cursor: pointer;
     border-radius: 20px;
     width: 100px;
@@ -217,161 +211,316 @@ hr {
     display: flex;
     justify-content: center;
     font-size: 7px;
-    font-family: 'Press Start 2P', cursive;
+    font-family:Georgia;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: #FFC62E;
+    color:#050834;
+    font-weight: bold;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.role {
+    text-align: right;
 }
 
 
 
 
-/* Members */
-.container-sm{
-    display: flex;
-    align-items: center;
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (max-width 768px) */
+@media screen and (max-width: 768px) {
+    .container2 {
+        width: 100%; /* Take up full width */
+        margin-left: 10px; /* Adjust margin */
+        margin-right: 10px;
+    }
+
+    .container, .container-sm{
+        width: 100%;
+        margin-left:50px;
+    }
+
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .profile-name, .profile-role {
+        font-size: 10px;
+        color: #ffffff;
+    }
+
+    .profile-member, .profile-rank {
+        font-size: 10px;
+    }
+
+    .container-sm {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+
+    .rank-pic {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+
+    .container2 {
+        width: 90%; /* Adjust width */
+        height: 45px; /* Adjust height */
+    }
+}
+
+/* For very small screens (max-width 480px) */
+@media screen and (max-width: 480px) {
+    .container, .container-sm, .container2 {
+        width: 100%;
+        margin-left: 5px; /* More compact margins */
+    }
+
+    .profile-pic {
+        width: 25px;
+        height: 25px;
+    }
+
+    .profile-name, .profile-role {
+        font-size: 9px; /* Smaller font for very small screens */
+    }
+
+    .profile-member, .profile-rank {
+        font-size: 9px;
+    }
+
+    .container-sm {
+        height: 250px; /* Further reduced height for small screens */
+    }
+
+    .rank-pic {
+        width: 25px;
+        height: 25px;
+    }
+
+    .container2 {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.btn-add2{
+    margin-right: 45px;
+    background-color: #2A2E34;
+    border: 2px solid #FFC62E;
+    border-radius: 15px;
+    color: #f0f0f0;
+    width: 75px;
+    height: 25px;
+    font-size: x-small;
+}
+
+.btn-add2:hover{
+    background-color: #FFC62E;
+    color: #2A2E34;
     border: 2px solid #2A2E34;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #FFC62E;
-    width: 1070px;
-    height: 488px;
-    margin-top: 60px;
-    /* max-height: 352px; */
-    overflow-x: auto; /* Enable horizontal scrollbar */
-    overflow-y: scroll; /* Always show vertical scrollbar */
 }
 
-        .student-container {
-            width: 180px;
-            height: 160px;
-            background-color: #2A2E34;
-            color: white;
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin: 7px;
-        }
+    .logout-container {
+        background-color: white; /* Background color of the dropdown */
+        border: 1px solid #ccc; /* Border color */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    }
+    
+    .logout-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .logout-item {
+        cursor: pointer;
+    }
+    
+    .logout-item:hover {
+        background-color: #f0f0f0; /* Highlight on hover */
+    }
+    
+    .profile-container {
+        position: relative; /* Ensures that the dropdown is positioned correctly */
+    }
+    
+    .dropdown-item {
+        display: block;
+        padding: 10px 15px;
+        color: #000; /* Default text color */
+        text-decoration: none; /* Remove underline */
+    }
+    
+    .dropdown-item:hover {
+        background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
+        color: red; /* Change text color to red on hover */
+    }
 
-        .student-name h5 {
-            font-size: 13px; /* Change the font size */
-            text-shadow: none; /* Remove any text shadow */
-            /* margin: 0; */
-            margin-top: 20px;
-        }
+    /* General container styling */
+/* General container styling */
+.class-card {
+    width: 300px;
+    height: 441px;
+    border: 2px solid #050834;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    position: relative;
+    margin: 50px;
+    margin-top: 50px;
+}
 
-        .student-score p {
-            margin: 0;
-            text-shadow: none;
-            margin-bottom: 20px;
-        }
+/* Header section */
+.class-header {
+    background-color: #2e3667;
+    color: white;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
 
-        .quiz-button {
-            background-color: transparent;
-            color: white;
-            border: 1px solid #FFC62E;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+/* Details section */
+.class-details {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
 
-        .quiz-button:hover {
-            background-color: #FFC62E;
-            color: #2A2E34;
-        }
+.class-details h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #050834;
+    font-weight: bold;
+}
+
+.class-details p {
+    margin: 5px 0;
+    color: #333333;
+    font-size: 14px;
+}
+
+/* Buttons */
+.class-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.class-buttons button {
+    background-color: #2e3667;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: georgia;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.class-buttons button:hover {
+    background-color: #1f3a8b;
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 400px) {
+    .class-card {
+        width: 90%;
+    }
+
+    .class-buttons button {
+        width: 100%;
+    }
+}
 
 
-        .class-name {
-            margin: 0;                   /* Remove default margins */
-            padding: 2px 0;              /* Small vertical padding for spacing */
-            line-height: 1.3;            /* Line height for readability */
-            font-weight: bold;           /* Bold font for emphasis */
-            color: #4CAF50;              /* Green color for class name */
-            background-color: rgba(76, 175, 80, 0.1); /* Light green background */
-            border-radius: 4px;          /* Rounded corners */
-            padding: 5px;                /* Padding around the text */
-            font-size: 10px;
-        }
-        
-        .subject {
-            margin: 0;                   /* Remove default margins */
-            padding: 2px 0;              /* Small vertical padding for spacing */
-            line-height: 1.3;            /* Line height for readability */
-            font-weight: bold;           /* Bold font for emphasis */
-            color: #2196F3;              /* Blue color for subject */
-            background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
-            border-radius: 4px;          /* Rounded corners */
-            padding: 5px;                /* Padding around the text */
-            font-size: 10px;
-        }
-        
-        .section {
-            margin: 0;                   /* Remove default margins */
-            padding: 2px 0;              /* Small vertical padding for spacing */
-            line-height: 1.3;            /* Line height for readability */
-            font-weight: bold;           /* Bold font for emphasis */
-            color: #FF9800;              /* Orange color for section */
-            background-color: rgba(255, 152, 0, 0.1); /* Light orange background */
-            border-radius: 4px;          /* Rounded corners */
-            padding: 5px;                /* Padding around the text */
-            font-size: 10px;
-        }
-        
-        .logout-container {
-            background-color: white; /* Background color of the dropdown */
-            border: 1px solid #ccc; /* Border color */
-            border-radius: 5px; /* Rounded corners */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        }
-        
-        .logout-menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .logout-item {
-            cursor: pointer;
-        }
-        
-        .logout-item:hover {
-            background-color: #f0f0f0; /* Highlight on hover */
-        }
-        
-        .profile-container {
-            position: relative; /* Ensures that the dropdown is positioned correctly */
-        }
-        
-        .dropdown-item {
-            display: block;
-            padding: 10px 15px;
-            color: #000; /* Default text color */
-            text-decoration: none; /* Remove underline */
-        }
-        
-        .dropdown-item:hover {
-            background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
-            color: red; /* Change text color to red on hover */
-        }
-        
-        .back-button {
-            background-color: #FFC62E;
-            color: #14171D;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin-left:1000px;
-            cursor: pointer;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-        
-        .back-button:hover {
-            background-color: #FFB700;
-        }
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+    
+
+/* General Adjustments */
+.dashboard-container {
+    display: flex;
+    margin-bottom: auto;
+    flex-direction: column;
+
+}
+
+
+/* Table container styles */
+.container-sm {
+    display: flex;
+    flex-direction: column; /* Align content vertically */
+    align-items: flex-start; /* Align content to the left */
+    justify-content: flex-start; /* Align content to the top */
+    border: 2px solid #2e3667;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-left: 35px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+ .table-blue {
+    background-color: #f0f8ff;
+    color: #007bff;
+    border-color: #2e3667;
+    border-top-left-radius: 10px; /* Rounded top-left corner */
+    border-top-right-radius: 10px; /* Rounded top-right corner */
+    border-bottom-left-radius: 0; /* No rounding for bottom-left corner */
+    border-bottom-right-radius: 0; /* No rounding for bottom-right corner */
+    overflow: hidden; /* Ensures the rounded corners are applied properly */
+}
+
+.table-blue th, .table-blue td {
+    text-align: center;
+    padding: 10px;
+}
+
+.table-blue th {
+    background-color: #2e3667;
+    color: white;
+}
+
+.table-blue td p {
+    margin: 5px 0;
+}
+
+.container-sm {
+    max-width: 100%;
+}
+
+.table-container {
+    width: 90%;
+    margin-top: 10px;
+}
