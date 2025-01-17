@@ -173,6 +173,7 @@ Route::get('/studentattendance/{classId}', [StudentattendanceController::class, 
 Route::get('/studentgrade/{classId}', [StudentgradeController::class, 'show'])->name('grade-student');
 Route::get('/studentgradequiz/{classId}', [StudentgradeController::class, 'showQuiz'])->name('test_and_quizzes_student.show');
 Route::get('/studentfeedback/{classId}', [StudentfeedbackController::class, 'show'])->name('feedback-student');
+Route::get('/studentgrades/{classId}', [GradeController::class, 'show'])->name('grade.show');
 
 // Challenges Routes
 Route::get('/challenges/{classId}', [ChallengesController::class, 'index'])->name('challenges');

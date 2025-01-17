@@ -19,7 +19,7 @@ class GradeController extends Controller
         $class = Classroom::findOrFail($classId);
 
         // Pass class, users, and challenges to the view
-        return view('grade', compact('class', 'user'));
+        return view('Grade-quiz-student', compact('class', 'user'));
     }
 
 
