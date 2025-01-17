@@ -109,36 +109,7 @@
 </div>
 
 
-<!-- Display profile picture -->
 
-
-
-<!-- <div class="info-container ">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-        <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-
-    <div class="container-buttons">
-            <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-            <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-        </div>
-</div> -->
-
-<div class="dashboard-container">
-    <!-- Back Button -->
-<!--     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
-    </div> -->
 
     <div class="content-container">
         <!-- Class Card -->
