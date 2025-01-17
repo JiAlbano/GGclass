@@ -28,7 +28,8 @@
     </div>
 
     <!-- Create Class Modal -->
-    <div class="modal fade" id="createClassModal" tabindex="-1" aria-labelledby="createClassModalLabel" aria-hidden="true">
+    <div class="modal fade" id="createClassModal" data-bs-backdrop="static" tabindex="-1"
+        aria-labelledby="createClassModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered"> <!-- Center the modal -->
             <div class="modal-content">
                 <button class="close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
@@ -67,16 +68,8 @@
                         <!-- Schedule Day -->
                         <div class="form-group">
                             <label for="schedule_day">Schedule Day</label>
-                            <select id="schedule_day" name="schedule_day" required>
-                                <option value="M">M</option>
-                                <option value="T">T</option>
-                                <option value="W">W</option>
-                                <option value="TH">TH</option>
-                                <option value="F">F</option>
-                                <option value="S">S</option>
-                                <option value="MW">MW</option>
-                                <option value="TTH">TTH</option>
-                            </select>
+                            <input type="text" id="schedule_day" name="schedule_day" placeholder="e.g MW, TTH"
+                                required />
                         </div>
                         <!-- Start Time -->
                         <div class="form-group-start">

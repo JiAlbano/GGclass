@@ -1,32 +1,21 @@
 /* Header */
-.navbar {
-    display: flex;
-    align-items: center;
-    background: #283891;
-    font-family: Georgia;
-    height: 65px;
-    width: 100%;
+
+.main-body {
+    background-color: #f5f5f5;
+    padding-bottom: 30px;
 }
 
-.left-section {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.nav-design {
+    height: 65px;
+    background: #283891;
 }
 
 .logo-img {
     height: 60px;
     margin-right: 10px;
-    position: relative;
-    top: -16px;
-    margin-left: 10px;
 }
 
-.profile-container {
-    display: flex;
-}
-
-.ggclass-font {
+.logo-text {
     color: white;
     display: flex;
     align-items: center;
@@ -34,35 +23,36 @@
     font-weight: bold;
     font-size: 30px;
     text-decoration: none;
+}
+
+.logo-text:hover {
+    color: #ffd700;
+}
+
+.user-text {
+    margin-left: auto;
     position: relative;
-    left: -1px;
-    top: -10px;
+    left: 30px;
 }
 
-.ggclass-font:hover {
-    color: #ffc62e;
+.logo-user-text {
+    display: flex;
+    position: relative;
+    right: 20px;
 }
 
-.profile-img {
+.user-img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 12px;
-    position: relative;
-    left: -25px;
-}
-
-.text-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
+    margin-top: 15px;
 }
 
 .in-game-name {
     position: relative;
-    left: -33px;
-    top: 5px;
+    top: 20px;
     font-family: "Georgia";
     font-weight: bold;
     font-size: 16px;
@@ -71,12 +61,55 @@
 
 .user-type {
     position: relative;
-    top: -15px;
-    left: -33px;
+    top: 2px;
     font-family: "Georgia";
     font-weight: normal;
     font-size: 15px;
     color: white;
+}
+
+.user-settings {
+    position: absolute;
+    top: 100%; /* Position below the triggering element */
+    left: 30%; /* Center horizontally */
+    transform: translateX(-50%); /* Align horizontally under the parent */
+    z-index: 9999; /* Ensure it stays on top */
+    background-color: white;
+    border: 1px solid #757575;
+    border-radius: 10px;
+    height: 150px;
+    width: 180px;
+    text-align: left;
+    display: none; /* Hidden by default */
+}
+
+.user-icon {
+    height: 15px;
+    width: 15px;
+    margin-right: 15px;
+}
+
+.dropdown-item {
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 15px;
+    color: #2e3667;
+}
+
+.user-menu {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.user-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: black;
+}
+
+.user-item:hover {
+    background-color: #f0f0f0;
 }
 
 /* Nav CSS */

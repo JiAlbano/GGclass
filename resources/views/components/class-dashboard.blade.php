@@ -20,45 +20,63 @@
     <!--Custom CSS-->
     <link rel="stylesheet" href="{{ secure_asset('components/class-dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('components/class-dashboard.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/components/main.css') }}"> --}}
 
 </head>
 
 <body>
 
     <header>
-        <div class="navbar">
-            <div class="left-section"
-                onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
-                <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-                <h1 class="ggclass-font">GGclass</h1>
-            </div>
+        <nav class="navbar navbar-expand-lg nav-design">
+            <div class="container-fluid nav-body">
 
-            <!-- User Profile -->
-            <div class="profile-container">
-                <img class="profile-img" src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile"
-                    id="logout-btn" aria-expanded="false">
-                <div class="text-container">
-                    <p class="in-game-name">{{ $user->ign }}</p>
-                    <p class="user-type">{{ $user->user_type }}</p>
+                <div class="logo-text">
+                    <a class="logo-text" href="#">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-img">
+                        GGclass
+                    </a>
                 </div>
-                <!-- Logout Dropdown -->
-                <div class="logout-container"
-                    style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
-                    <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
-                        <li class="logout-item" style="padding: 8px 12px;">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
-                        </li>
-                        <li class="logout-item" style="padding: 8px 12px;">
-                            <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'"
-                                style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
-                        </li>
-                    </ul>
+
+                <div class="logo-user-text">
+
+                    <!-- User Image -->
+                    <div class="user-image">
+                        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="User Image"
+                            class="user-img d-inline-block" align-text-top id="logout-btn" aria-expanded="false" />
+
+                        <!-- Logout Dropdown -->
+                        <div class="user-settings" id="logout-dropdown">
+                            <ul class="user-menu">
+                                <li class="user-item"> <a class="dropdown-item" href="#"
+                                        onclick="handleArchiveClass(event)"> <img src="{{ asset('img/archieve.png') }}"
+                                            alt="archieve-icon" class="user-icon"> Archive Class</a> </li>
+                                <li class="user-item"> <a class="dropdown-item" href="#"
+                                        onclick="handleProfileSettings(event)">
+                                        <img src="{{ asset('img/settings.png') }}" alt="settings-icon"
+                                            class="user-icon">
+                                        Profile Settings</a> </li>
+                                <li class="user-item">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf </form>
+                                    <a class="dropdown-item" href="#" onclick="handleLogout(event)">
+                                        <img src="{{ asset('img/logout.png') }}" alt="logout-icon" class="user-icon">
+                                        Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-container">
+                        <p class="in-game-name">{{ $user->ign }} </p>
+                        <p class="user-type">{{ $user->user_type }}</p>
+                    </div>
+
                 </div>
+
+
             </div>
-        </div>
+        </nav>
+
     </header>
 
     <nav>
@@ -134,29 +152,55 @@
 
     <!-- JavaScript for Logout Dropdown -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const logoutButton = document.querySelector('#logout-btn');
-            const logoutDropdown = document.querySelector('.logout-container');
-
-            // Toggle the dropdown when the profile image is clicked
-            logoutButton.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevents the click from bubbling up
-                logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' :
-                    'none'; // Toggle visibility of the dropdown
-            });
-
-            // Close the dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!logoutButton.contains(event.target) && !logoutDropdown.contains(event.target)) {
-                    logoutDropdown.style.display = 'none'; // Hide the dropdown
-                }
-            });
+        // Toggle Dropdown Visibility
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            const dropdown = document.getElementById('logout-dropdown');
+            dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'block' :
+                'none';
         });
 
+        // Close Dropdown When Clicking Outside
+        document.addEventListener('click', (event) => {
+            const dropdown = document.getElementById('logout-dropdown');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            if (!logoutBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Handle Logout Action
         function handleLogout(event) {
             event.preventDefault();
-            document.getElementById('logout-form').submit(); // Submit the Laravel logout form
+            document.getElementById('logout-form').submit();
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize modals using Bootstrap's API
+            const createClassModal = new bootstrap.Modal(document.getElementById('createClassModal'));
+            const joinClassModal = new bootstrap.Modal(document.getElementById('joinClassModal'));
+
+            // Open Create Class Modal
+            document.querySelectorAll('.create-class-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    createClassModal.show(); // Use Bootstrap's .show()
+                });
+            });
+
+            // Open Join Class Modal
+            document.getElementById('join-class-option')?.addEventListener('click', (event) => {
+                event.preventDefault();
+                joinClassModal.show();
+            });
+
+            // Clean up modal-backdrop after any modal is closed
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('hidden.bs.modal', () => {
+                    document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop
+                        .remove());
+                });
+            });
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
