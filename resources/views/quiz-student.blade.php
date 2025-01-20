@@ -83,6 +83,7 @@
                         onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
                     <button
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
+                        <button onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
                 </div>
             </div>
 
