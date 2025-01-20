@@ -29,67 +29,8 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="left-section">
-            <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass</h1>
-            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
-        </div>
-        <!-- User Profile -->
-        <div class="left-section">
-            <div class="profile-container" style="display: flex; position: relative;">
-                <img class="profile-img" src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile"
-                    id="logout-btn" aria-expanded="false">
-                <div class="text-container">
-                    <p class="in-game-name">{{ $user->ign }}</p>
-                    <p class="user-type">{{ $user->user_type }}</p>
-                </div>
-                <!-- Logout Dropdown -->
-                <div class="logout-container"
-                    style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
-                    <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
-                        <li class="logout-item" style="padding: 8px 12px;">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
-                        </li>
-                        <li class="logout-item" style="padding: 8px 12px;">
-                            <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'"
-                                style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- JavaScript for Logout Dropdown -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const logoutButton = document.querySelector('#logout-btn');
-            const logoutDropdown = document.querySelector('.logout-container');
 
-            // Toggle the dropdown when the profile image is clicked
-            logoutButton.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevents the click from bubbling up
-                logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' :
-                    'none'; // Toggle visibility of the dropdown
-            });
-
-            // Close the dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!logoutButton.contains(event.target) && !logoutDropdown.contains(event.target)) {
-                    logoutDropdown.style.display = 'none'; // Hide the dropdown
-                }
-            });
-        });
-
-        function handleLogout(event) {
-            event.preventDefault();
-            document.getElementById('logout-form').submit(); // Submit the Laravel logout form
-        }
-    </script>
     @if($taken > 0)
         <div class="container d-flex justify-content-center align-items-center mt-4">
             <div class="timer-container text-center p-3" style="width: 100%; height: 500px;">

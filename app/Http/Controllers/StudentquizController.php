@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quiz;
 
+
 class StudentquizController extends Controller
 {
     public function show($classId)
@@ -18,6 +19,16 @@ class StudentquizController extends Controller
         $studentChallengesTaken = StudentChallengeScore::where('student_id', Auth::id())
                 ->distinct()  // Ensure distinct results
                 ->pluck('challenge_id'); 
-        return view('quiz-student', compact('class', 'user', 'quizzes', 'studentChallengesTaken')); // Pass both variables to the view
+
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+
+        return view('quiz-student', compact('class', 'user', 'quizzes', 'studentChallengesTaken', 'totalScores', 'sumOfScores', 'numberOfItems')); // Pass both variables to the view
     }
 }

@@ -126,7 +126,7 @@ body {
 }
 
 .challenge-btn.active {
-    background-color: #283891;
+    background-color: #2e3667;
     color: white;
     transition: all 0.3s ease;
     font-family: "Georgia";
@@ -259,7 +259,7 @@ body {
 /* General container styling */
 .class-card {
     width: 300px;
-    height: 441px;
+    height: 460px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -274,9 +274,9 @@ body {
 
 /* Header section */
 .class-header {
-    background-color: #283891;
+    background-color: #2e3667;
     color: white;
-    text-align: left;
+    text-align: center;
     padding: 10px 5px;
     font-size: 14px;
     font-weight: bold;
@@ -312,7 +312,7 @@ body {
 }
 
 .class-buttons button {
-    background-color: #283891;
+    background-color: #2e3667;
     color: white;
     border: none;
     border-radius: 5px;

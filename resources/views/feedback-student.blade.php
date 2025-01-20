@@ -105,21 +105,20 @@
             </div>
 
             <!-- Bulletin List -->
-<!--             <div class="bulletin-list">
+            <div class="bulletin-list">
                 <div class="bulletin-item">
                     <div class="bulletin-icon">
                         <img src="{{ asset('megaphone.png') }}" />
                     </div>
                     <div class="bulletin-content">
-                        <p class="bulletin-title"> bulletin(#): Title</p>
+                        <p class="bulletin-title"> Feedback: Title</p>
                         <p class="bulletin-date">Dec 21, 2024</p>
                     </div>
                     <div class="bulletin-options">
                         <button class="options-btn">•••</button>
                     </div>
                 </div>
-                <!-- Repeat other bulletin items -->
-            </div> -->
+            </div>
         </div>
     </div>
 

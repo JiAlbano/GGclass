@@ -4,35 +4,47 @@
         <h1 class="ggclass-font">GGclass</h1>
     </div>
 
+    <div class="profile-section">
+        <!-- Badge Progress -->
+        <div class="badge-progress-container">
+            <img id="currentBadge" alt="Current Badge" style="width: 35px; height: 35px;">
+            <p class="current-points" id="currentPoints">{{ $sumOfScores }} pts</p>
+            <span class="arrow">&rarr;</span>
+            <p class="next-points" id="nextPoints"></p>
+            <img id="nextBadge"alt="Next Badge" style="width: 35px; height: 35px;">
+        </div>
 
-    <!-- User Profile -->
-    <div class="profile-container">
-        <img class="profile-img"
-             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
-             alt="Profile"
-             id="logout-btn"
-             aria-expanded="false">
-             <div class="text-container">
+        <!-- User Profile -->
+        <div class="profile-container">
+            <img class="profile-img"
+                 src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
+                 alt="Profile"
+                 id="logout-btn"
+                 aria-expanded="false">
+            <div class="text-container">
                 <p class="in-game-name">{{ $user->ign }}</p>
                 <p class="user-type">{{ $user->user_type }}</p>
             </div>
-            
-        <!-- Logout Dropdown -->
-        <div class="logout-container" style="display: none;">
-            <ul class="logout-menu">
-                <li class="logout-item">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    <a href="#" class="dropdown-item" onclick="handleLogout(event)">Log out</a>
-                </li>
-                <li class="logout-item">
-                    <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'">Class-List</button>
-                </li>
-            </ul>
+
+            <!-- Logout Dropdown -->
+            <div class="logout-container">
+                <ul class="logout-menu">
+                    <li class="logout-item">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="#" class="dropdown-item" onclick="handleLogout(event)">Log out</a>
+                    </li>
+                    <li class="logout-item">
+                        <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'">Class-List</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- JavaScript for Logout Dropdown -->
 <script>
@@ -60,3 +72,8 @@
     }
 </script>
 
+<script src="{{ asset('js/navbar-badge.js') }}"></script>
+<script>
+    var sumOfScores = {{ $sumOfScores }};  // Pass sum of scores
+    var numberOfItems = {{ $numberOfItems }};  // Pass number of items
+</script>

@@ -25,68 +25,14 @@
 </head>
 <body>
 
-<div class="navbar">
-        <div class="left-section" style="cursor: pointer;"
-            onclick="window.location.href='{{ route('studentbulletins', ['classId' => $class->id]) }}'">
-            <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass</h1>
-            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
-        </div>
+    <!-- Navbar -->
+@extends('layouts.app')
 
+@section('title', 'Players')
 
-        <!-- User Profile -->
-        <div class="profile-container" style="display: flex; position: relative;">
-            <img class="profile-img" src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile"
-                id="logout-btn" aria-expanded="false">
-            <div class="text-container">
-                <p class="in-game-name">{{ $user->ign }}</p>
-                <p class="user-type">{{ $user->user_type }}</p>
-            </div>
-            <!-- Logout Dropdown -->
-            <div class="logout-container"
-                style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
-                <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
-                    <li class="logout-item" style="padding: 8px 12px;">
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                        <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
-                    </li>
-                    <li class="logout-item" style="padding: 8px 12px;">
-                        <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'"
-                            style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+@section('content')
 
-    <!-- JavaScript for Logout Dropdown -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const logoutButton = document.querySelector('#logout-btn');
-            const logoutDropdown = document.querySelector('.logout-container');
-
-            // Toggle the dropdown when the profile image is clicked
-            logoutButton.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevents the click from bubbling up
-                logoutDropdown.style.display = logoutDropdown.style.display === 'none' ? 'block' :
-                    'none'; // Toggle visibility of the dropdown
-            });
-
-            // Close the dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!logoutButton.contains(event.target) && !logoutDropdown.contains(event.target)) {
-                    logoutDropdown.style.display = 'none'; // Hide the dropdown
-                }
-            });
-        });
-
-        function handleLogout(event) {
-            event.preventDefault();
-            document.getElementById('logout-form').submit(); // Submit the Laravel logout form
-        }
-    </script>
+@endsection
 
 
     <div class="top-buttons containers" style=" margin-top: 84px;">
@@ -141,28 +87,30 @@
             </div>
 
             <div class="bulletin-list">
-    @foreach($quizzes as $quiz)
-        <?php $disable = in_array($quiz->id, $studentChallengesTaken->toArray()); ?>
-        <button type="button" class="bulletin-item {{ $disable ? 'disabled-btn' : 'quiz-button' }}"
-                {{ $disable ? 'disabled' : '' }}
-                style="background-color: {{ $disable ? '#cdcdcd' : '' }};"
-                onclick="window.location.href='{{ route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
-            <div class="bulletin-icon">
-                <img src="{{ asset('megaphone.png') }}" />
-            </div>
-            <div class="container-adviser" style="display: flex; flex-direction: column; align-items: flex-start;">
-                <div class="bulletin-content">
-                    <p class="bulletin-title">Quiz: {{ $quiz->title }}</p>
-                    <p class="bulletin-date">{{ $quiz->created_at->format('M d, Y') }}</p>
-                </div>
-            </div>
+                @foreach($quizzes as $quiz)
+                    <?php $disable = in_array($quiz->id, $studentChallengesTaken->toArray()); ?>
+                    <button type="button" class="bulletin-item {{ $disable ? 'disabled-btn' : 'quiz-button' }}"
+                            {{ $disable ? 'disabled' : '' }}
+                            style="background-color: {{ $disable ? '#cdcdcd' : '' }};"
+                            onclick="window.location.href='{{ route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+                        <div class="bulletin-icon">
+                            <img src="{{ asset('megaphone.png') }}" />
+                        </div>
+                        <div class="container-adviser" style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <div class="bulletin-content">
+                                <p class="bulletin-title">Quiz: {{ $quiz->title }}</p>
+                                <p class="bulletin-date">{{ $quiz->created_at->format('M d, Y') }}</p>
+                            </div>
+                        </div>
 
-            <div class="bulletin-options">
-                <div class="options-btn">•••</div>
+                        <div class="bulletin-options">
+                            <div class="options-btn">•••</div>
+                        </div>
+                    </button>
+                @endforeach
             </div>
-        </button>
-    @endforeach
-</div>
+        </div>
+    </div>
 
    
 

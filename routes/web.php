@@ -169,6 +169,10 @@ Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'
 //Student Info routes
 Route::get('/profile/{classId}', [StudentprofilestudentController::class, 'show'])->name('profile-student');
 Route::get('/studentattendance/{classId}', [StudentattendanceController::class, 'show'])->name('attendance-student');
+
+// navbar route (badge)
+Route::get('/get-navbar-badge-data', [StudentprofilestudentController::class, 'getNavbarBadgeData']);
+
 //student grades
 Route::get('/studentgrade/{classId}', [StudentgradeController::class, 'show'])->name('grade-student');
 Route::get('/studentgradequiz/{classId}', [StudentgradeController::class, 'showQuiz'])->name('test_and_quizzes_student.show');
