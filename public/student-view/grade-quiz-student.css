@@ -124,7 +124,7 @@ body{
     background-color: #283891;
     color: #ffffff;
     transition: all 0.3s ease;
-    font-family: "Georgia";
+/*    font-family: "Georgia";*/
     font-size: 14px;
     font-weight: bold;
     border: none;
@@ -211,7 +211,7 @@ body{
     display: flex;
     justify-content: center;
     font-size: 7px;
-    font-family:Georgia;
+/*    font-family:Georgia;*/
 }
 
 .btn1:hover {
@@ -436,7 +436,7 @@ body{
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    font-family: georgia;
+/*    font-family: georgia;*/
     text-transform: uppercase;
     transition: background-color 0.3s ease;
 }
