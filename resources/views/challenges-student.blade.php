@@ -80,7 +80,7 @@
                         <button onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
                 </div>
             </div>
-        </div>
+       
 
         <!-- Bulletin List -->
         <div class="bulletin-list">
@@ -100,6 +100,7 @@
             </div>
         @endforeach
         </div>
+    </div>
     </div>
 
         
