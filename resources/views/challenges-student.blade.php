@@ -18,9 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ secure_asset('student-view/tutorials-student.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('student-view/challenges-student.css') }}">
     <!-- New CSS file for the container -->
-    <link rel="stylesheet" href="{{ asset('student-view/tutorials-student.css') }}">
+    <link rel="stylesheet" href="{{ asset('student-view/challenges-student.css') }}">
 </head>
 
 <body>

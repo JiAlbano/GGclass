@@ -210,6 +210,7 @@ body {
 /* General container styling */
 .class-card {
     width: 300px;
+    height: 460px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -218,9 +219,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 70px;
+    margin-right: 50px;
     margin-top: 50px;
-    height: 440px;
+    margin-left: 70px;
 }
 
 /* Header section */
@@ -232,6 +233,7 @@ body {
     font-size: 14px;
     font-weight: bold;
 }
+
 
 /* Details section */
 .class-details {

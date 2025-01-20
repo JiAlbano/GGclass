@@ -605,10 +605,9 @@ body{
     }
 
     /* General container styling */
-/* General container styling */
 .class-card {
     width: 300px;
-    height: 441px;
+    height: 460px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -630,6 +629,7 @@ body{
     font-size: 14px;
     font-weight: bold;
 }
+
 
 /* Details section */
 .class-details {
@@ -670,7 +670,7 @@ body{
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    font-family: georgia;
+/*    font-family: georgia;*/
     text-transform: uppercase;
     transition: background-color 0.3s ease;
 }

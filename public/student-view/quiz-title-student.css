@@ -9,7 +9,7 @@ body {
     font-family: Georgia;
     background-color: #f0f0f0;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .navbar {
@@ -279,12 +279,12 @@ body {
     border: 2px solid #ffc62e;
     padding: 10px;
     border-radius: 10px;
-    background-color: #283891;
+    background-color: #2e3667;
     width: 900px;
     height: 300px;
     position: relative;
     left: 50px;
-    margin-top: 5px;
+/*    margin-top: 5px;*/
     display: flex;
 }
 
@@ -430,7 +430,7 @@ body {
 
 .class-card {
     width: 300px;
-    height: 441px;
+    height: 460px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -440,13 +440,13 @@ body {
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 6px;
+    margin-top: 1px;
     margin-left: 70px;
 }
 
 /* Header section */
 .class-header {
-    background-color: #283891;
+    background-color: #2e3667;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -474,7 +474,6 @@ body {
     font-size: 14px;
 }
 
-/* Buttons */
 .class-buttons {
     display: flex;
     flex-direction: column;
@@ -484,7 +483,7 @@ body {
 }
 
 .class-buttons button {
-    background-color: #283891;
+    background-color: #2e3667;
     color: white;
     border: none;
     border-radius: 5px;
@@ -511,6 +510,7 @@ body {
         width: 100%;
     }
 }
+
 
 /* Back Button */
 .back-button {

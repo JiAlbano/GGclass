@@ -214,7 +214,7 @@ body {
 /* General container styling */
 .class-card {
     width: 300px;
-    height: 441px;
+    height: 460px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -236,6 +236,7 @@ body {
     font-size: 14px;
     font-weight: bold;
 }
+
 
 /* Details section */
 .class-details {

@@ -5,12 +5,13 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Georgia;
-    background-color: #f0f0f0;
-    overflow-x: hidden;
-    overflow-y: auto;
+.text-container {
+    display: flex;
+    flex-direction: column; /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
 }
+
 .in-game-name {
     position: relative;
     left: -33px;
@@ -31,10 +32,17 @@ body {
     color: white;
 }
 
+body {
+    font-family: Georgia;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .navbar {
     display: flex;
     align-items: center;
-    background: #2e3667;
+    background: #283891;
     font-family: Georgia;
     position: fixed;
     height: 65px;
@@ -56,14 +64,6 @@ body {
     margin-left: 10px;
 }
 
-.quiz-container {
-    /* display: flex;
-    justify-content: center;
-    position: inherit;
-    width: 50%;
-    align-items: center; */
-}
-
 .ggclass-font {
     color: white;
     display: flex;
@@ -81,30 +81,6 @@ body {
     color: #ffc62e;
 }
 
-.challenge-icon {
-    width: 35px;
-    height: 35px;
-    position: relative;
-    left: -330px;
-}
-
-.hamburger-menu {
-    width: 35px;
-    height: 35px;
-    position: relative;
-    left: 350px;
-}
-
-.challenge-text-type {
-    font-family: "Roboto", serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 20px;
-    color: #2e3667;
-    position: relative;
-    left: -300px;
-}
-
 .section-font {
     font-size: 16px;
     color: white;
@@ -119,17 +95,12 @@ body {
     object-fit: cover;
     margin-right: 12px;
     position: relative;
-    left: -35px;
+    left: -25px;
 }
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
 .row {
@@ -169,22 +140,6 @@ body {
     font-weight: bold;
 }
 
-.info-container {
-    border: 2px solid #ffc62e;
-    padding: 20px;
-    background-color: #050834;
-    width: 300px;
-    text-align: center;
-    float: left;
-    margin: 50px;
-    margin-top: 50px;
-    border-radius: 20px;
-    position: relative;
-    width: 265px;
-    height: 490px;
-    position: relative;
-}
-
 .container-picture {
     width: 80px; /* Adjust the size of the image as needed */
     height: 80px; /* Ensure the height is equal to the width for a perfect circle */
@@ -206,38 +161,15 @@ body {
     color: white;
     font-family: "Press Start 2P", cursive;
     margin-top: 50px;
-    margin-bottom: 10px;
-}
-
-.rank-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    /* margin-bottom: 10px; */
+    margin-bottom: 35px;
 }
 
 .container-info-email {
     font-size: 10px;
     color: white;
-    /* margin-top: 10px; */
+    margin-top: 20px;
     margin-bottom: 40px;
     font-size: 8px;
-}
-
-.container-info-section {
-    margin: 10px 0;
-    font-size: 12px;
-    color: #f0f0f0;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.container-info-name {
-    margin: 0;
-    font-size: 9px;
-    color: #f0f0f0;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .container-buttons {
@@ -269,34 +201,8 @@ body {
 
 .btn1:hover {
     background-color: #ffc62e;
-    color: #050834;
+    color: #283891;
     font-weight: bold;
-}
-
-.container-q {
-    display: flex;
-    justify-content: center;
-    position: inherit;
-    width: 50%;
-}
-
-.quiz-button {
-    height: 60px;
-    width: 1000px;
-    font-family: "Roboto", serif;
-    font-weight: 600;
-    font-style: normal;
-    border-radius: 10px;
-    margin-top: 50px;
-    position: relative;
-    left: 20px;
-    background-color: #ffffff;
-}
-
-.quiz-button:hover,
-.challenge-text-type:hover {
-    background-color: #4a90e2;
-    color: white;
 }
 
 .class-name {
@@ -335,52 +241,25 @@ body {
     font-weight: 100;
 }
 
-.logout-container {
-    background-color: white; /* Background color of the dropdown */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+.info-container {
+    border: 2px solid #ffc62e;
+    padding: 20px;
+    background-color: #050834;
+    width: 300px;
+    text-align: center;
+    float: left;
+    margin: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+    position: relative;
+    width: 265px;
+    height: 490px;
 }
 
-.logout-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.logout-item {
-    cursor: pointer;
-}
-
-.logout-item:hover {
-    background-color: #f0f0f0; /* Highlight on hover */
-}
-
-.profile-container {
-    position: relative; /* Ensures that the dropdown is positioned correctly */
-}
-
-.dropdown-item {
-    display: block;
-    padding: 10px 15px;
-    color: #000; /* Default text color */
-    text-decoration: none; /* Remove underline */
-}
-
-.dropdown-item:hover {
-    background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
-    color: red; /* Change text color to red on hover */
-}
-
-.content-container {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
+/* General container styling */
 .class-card {
     width: 300px;
-    height: 441px;
+    height: 460px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -391,7 +270,6 @@ body {
     position: relative;
     margin: 50px;
     margin-top: 50px;
-    margin-left: 70px;
 }
 
 /* Header section */
@@ -460,4 +338,186 @@ body {
     .class-buttons button {
         width: 100%;
     }
+}
+
+.logout-container {
+    background-color: white; /* Background color of the dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.logout-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-item {
+    cursor: pointer;
+}
+
+.logout-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.profile-container {
+    position: relative; /* Ensures that the dropdown is positioned correctly */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #000; /* Default text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 198, 46, 0.1); /* Change background on hover */
+    color: red; /* Change text color to red on hover */
+}
+
+.container-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Remove padding to prevent extra space */
+}
+
+/* General button styles */
+.first-button,
+.second-button,
+.third-button,
+.fourth-button {
+    height: 35px; /* Same height for all buttons */
+    width: 150px; /* Same width for all buttons */
+    background-color: #d9d9d9; /* Default color for the buttons */
+    border-radius: 50px; /* Rounded edges */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #2a2e34; /* Default text color */
+    cursor: pointer;
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+/* Hover effect for all buttons */
+.first-button:hover,
+.second-button:hover,
+.third-button:hover,
+.fourth-button:hover {
+    transform: scale(1.03); /* Slight enlargement on hover */
+    background-color: #ffc62e; /* Color change on hover */
+}
+
+/* Back Button */
+.back-button {
+    margin-bottom: 10px;
+}
+
+.back-button button {
+    background-color: transparent;
+    color: #002171;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-button button:hover {
+    text-decoration: underline;
+}
+
+/* General Adjustments */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.content-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Bulletin List Container */
+.bulletin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Spacing between items */
+    width: 120%;
+    max-width: 600px;
+    margin: 20px auto;
+    margin-left: 10px;
+}
+
+/* Individual Bulletin Item */
+.bulletin-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #151414e6;
+    border-radius: 5px;
+    width: 150%;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+    margin-top: 30px;
+}
+
+.bulletin-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Section */
+.bulletin-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Bulletin Content */
+.bulletin-content {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.bulletin-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #283891;
+    margin: 0;
+}
+
+.bulletin-date {
+    font-size: 12px;
+    color: #888;
+    margin: 5px 0 0 0;
+}
+
+/* Options Button */
+.bulletin-options {
+    margin-left: auto;
+}
+
+.options-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.options-btn:hover {
+    color: #283891;
 }
