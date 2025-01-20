@@ -92,15 +92,14 @@
                             <p>
                                 <span id="current-badge"></span>
                             </p>
-                            <p>Current Points: <span id="current-points">{{ $sumOfScores }}</span></p>
+                            <p>Current Points: <span id="current-points" style="color: gold; font-weight: bolder; font-size: 24px; margin-left: 5px;">{{ $sumOfScores }}</span></p>
                             <p>Points to Next Badge: 
-                                <span id="points-to-next"></span>
+                                <span id="points-to-next" style="color: gold; font-weight: bolder; font-size: 24px; margin-left: 5px;"></span>
                             </p>
                             <p>Next Badge: 
-                                <span id="next-badge"></span>
+                                <span id="next-badge" style="color: gold; font-weight: bolder; font-size: 16px; margin-left: 5px;"></span>
                             </p>
                         </div>
-
                         <!-- Pass sumOfScores to JavaScript -->
                         <input type="hidden" id="number-of-items" value="{{ $numberOfItems }}">
                         <input type="hidden" id="sum-of-scores" value="{{ $sumOfScores }}">

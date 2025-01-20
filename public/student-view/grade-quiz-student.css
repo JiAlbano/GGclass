@@ -443,6 +443,7 @@ body{
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
+    color: #ffffff;
 }
 
 /* Optional: Add responsive behavior */

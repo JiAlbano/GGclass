@@ -117,12 +117,19 @@
 
 
 /* Profile section wrapping badge and profile */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between profile section and profile container */
+
+}
+
 .profile-section {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 15px; /* Space from the edge */
     gap: 20px; /* Space between badge and profile container */
+    margin-right: 50px;
 }
 
 .badge-progress-container {
@@ -131,24 +138,25 @@
     gap: 10px; /* Space between badge elements */
     color: white;
     position: relative; /* Allows the use of top, left, right, and bottom */
-    top: -18px; /* Moves the container upward */
-    margin-right: 20px;
+    top: -20px; /* Moves the container upward */
 }
 
 .badge-progress-container img {
     width: 35px;
     height: 35px;
     object-fit: cover;
-    border-radius: 50%; /* Optional: Makes the badge images circular */
+    border-radius: 50%; /* Makes the badge images circular */
 }
 
 .badge-progress-container p {
     font-size: 14px;
     color: white;
-    position: relative; /* Allows individual positioning adjustments */
 }
 
 .arrow {
     font-size: 16px;
     color: white;
+    position: relative;
+    top: 3px; /* Adjust this value to move the arrow down */
 }
+

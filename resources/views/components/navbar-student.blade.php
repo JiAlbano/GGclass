@@ -1,17 +1,21 @@
-<div class="navbar">
+    <div class="navbar">
+    <!-- Left Section -->
     <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('studentbulletins') }}'">
         <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
         <h1 class="ggclass-font">GGclass</h1>
     </div>
 
-    <div class="profile-section">
+    <!-- Right Section (Profile + Badge Progress) -->
+    <div class="right-section">
         <!-- Badge Progress -->
-        <div class="badge-progress-container">
-            <img id="currentBadge" alt="Current Badge" style="width: 35px; height: 35px;">
-            <p class="current-points" id="currentPoints">{{ $sumOfScores }} pts</p>
-            <span class="arrow">&rarr;</span>
-            <p class="next-points" id="nextPoints"></p>
-            <img id="nextBadge"alt="Next Badge" style="width: 35px; height: 35px;">
+        <div class="profile-section">
+            <div class="badge-progress-container">
+                <span id="currentBadge" alt="Current Badge"></span>
+                <p class="current-points" id="currentPoints">{{ $sumOfScores }} pts</p>
+                <span class="arrow">&rarr;</span>
+                <p class="next-points" id="nextPoints"></p>
+                <span id="nextBadge" alt="Next Badge" style="width: 35px; height: 35px;"></span>
+            </div>
         </div>
 
         <!-- User Profile -->

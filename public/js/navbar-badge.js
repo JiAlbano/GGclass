@@ -18,26 +18,33 @@ document.addEventListener("DOMContentLoaded", function() {
         var nextPoints = document.getElementById('nextPoints');
 
         // Adjust the marginTop to move the currentPoints and nextPoints down
-        currentPoints.style.marginTop = "22px"; // Adjust this value as needed
-        nextPoints.style.marginTop = "22px";    // Adjust this value as needed
+        currentPoints.style.marginTop = "22px";
+        nextPoints.style.marginTop = "22px";
+
+        // If the percentage exceeds 100, adjust it to 100
+        if (percentage > 100) {
+            percentage = 100;
+            currentPoints.textContent = sumOfScores + " pts";  // Show the exceeded points
+        } else {
+            currentPoints.textContent = sumOfScores + " pts";  // Show the current points
+        }
 
         // Determine current badge and next badge based on percentage
         if (percentage >= badgeThresholds.gold[0] && percentage <= badgeThresholds.gold[1]) {
-            currentBadge.src = "{{ asset('/images/gold.png') }}";
-            nextBadge.src = "{{ asset('/images/gold.png') }}";
-            nextPoints.textContent = "N/A";  // No next points since already at Gold
+            currentBadge.innerHTML = '<img src="/gold.png" alt="Gold Badge" style="width: 40px; height: 40px;">';
+            nextPoints.innerHTML = '<span style="color: gold;">Max-Rank</span>';  // Max rank and points
         } else if (percentage >= badgeThresholds.silver[0] && percentage <= badgeThresholds.silver[1]) {
-            currentBadge.src = "{{ asset('/images/silver.png') }}";
-            nextBadge.src = "{{ asset('/images/gold.png') }}";  // Next badge will be gold
-            nextPoints.textContent = Math.ceil(((badgeThresholds.gold[0] - percentage) / 100) * numberOfItems) + " pts";  // Next points to reach Gold
+            currentBadge.innerHTML = '<img src="/silver.png" alt="Silver Badge" style="width: 40px; height: 40px; margin-top:6px;">';
+            nextBadge.innerHTML = '<img src="/gold.png" alt="Gold Badge" style="width: 40px; height: 40px;">';
+            nextPoints.textContent = Math.ceil(((badgeThresholds.gold[0] - percentage) / 100) * numberOfItems) + " pts";
         } else if (percentage >= badgeThresholds.bronze[0] && percentage <= badgeThresholds.bronze[1]) {
-            currentBadge.src = "{{ asset('/images/bronze.png') }}";
-            nextBadge.src = "{{ asset('/images/silver.png') }}";  // Next badge will be silver
-            nextPoints.textContent = Math.ceil(((badgeThresholds.silver[0] - percentage) / 100) * numberOfItems) + " pts";  // Next points to reach Silver
+            currentBadge.innerHTML = '<img src="/bronze.png" alt="Bronze Badge" style="width: 40px; height: 40px;">';
+            nextBadge.innerHTML = '<img src="/silver.png" alt="Silver Badge" style="width: 40px; height: 40px;">';
+            nextPoints.textContent = Math.ceil(((badgeThresholds.silver[0] - percentage) / 100) * numberOfItems) + " pts";
         } else {
-            currentBadge.src = "{{ asset('/images/bronze.png') }}";
-            nextBadge.src = "{{ asset('/images/bronze.png') }}";  // No next badge
-            nextPoints.textContent = Math.ceil(((badgeThresholds.bronze[0] - percentage) / 100) * numberOfItems) + " pts";  // Next points to reach Bronze
+            currentBadge.innerHTML = '<span style="color: red; position: relative; top: 2px;">No Badge</span>';
+            nextBadge.innerHTML = '<img src="/bronze.png" alt="Bronze Badge" style="width: 40px; height: 40px;">';
+            nextPoints.textContent = Math.ceil(((badgeThresholds.bronze[0] - percentage) / 100) * numberOfItems) + " pts";
         }
     }
 
