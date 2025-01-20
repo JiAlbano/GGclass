@@ -7,6 +7,8 @@ use App\Models\ClassUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\StudentChallengeScore;
+
 
 class StudentplayersController extends Controller
 {
@@ -47,9 +49,18 @@ class StudentplayersController extends Controller
             ->groupBy('users.id', 'users.ign', 'users.google_profile_image') // Group by user to get the sum per user
             ->get();
 
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+
 
         // Pass the class, user, and player data to the view
-        return view('players-student', compact('class', 'user', 'class_player'));
+        return view('players-student', compact('class', 'user', 'class_player', 'totalScores', 'sumOfScores', 'numberOfItems'));
     }
 
 
