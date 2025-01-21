@@ -268,8 +268,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 50px;
-    margin-top: 50px;
+    margin: 26px;
+    margin-left: 50px;
+/*    margin-top: 50px;*/
 }
 
 /* Header section */
@@ -414,9 +415,6 @@ body {
 }
 
 /* Back Button */
-.back-button {
-    margin-bottom: 10px;
-}
 
 .back-button button {
     background-color: transparent;

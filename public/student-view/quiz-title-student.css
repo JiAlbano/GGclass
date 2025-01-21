@@ -439,8 +439,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 50px;
-    margin-top: 1px;
+    margin: 26px;
     margin-left: 70px;
 }
 
@@ -513,23 +512,18 @@ body {
 
 
 /* Back Button */
-.back-button {
-    margin: 20px;
-    margin-top: 0%;
-}
 
 .back-button button {
     background-color: transparent;
     color: #002171;
     border: none;
-    font-size: 25px;
+    font-size: 16px;
     cursor: pointer;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 5px;
-    position: relative;
-    left: 60px;
+    margin-left: 20px;
 }
 
 .back-button button:hover {
