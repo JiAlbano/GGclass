@@ -137,7 +137,10 @@
                         onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
                     <button class="btns"
                         onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-                    <button class="btns" href="#">Gradebook</button>
+
+                        <button class="btns"
+                        onclick="window.location.href='{{ route('grade-components', ['classId' => $class->id]) }}'">Gradebook</button>
+                    
                 </div>
 
             </div>

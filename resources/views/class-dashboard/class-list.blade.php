@@ -20,8 +20,7 @@
                                 <p class="school-year">School Year: {{ $class->school_year }}</p>
                                 <p class="semester">Semester: {{ $class->semester }}</p>
                                 <p class="section">Section: {{ $class->section }}</p>
-                                <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Logo"
-                                    class="user-picture">
+                                <img src="{{ $class->teacher->google_profile_image ?? asset('ainz.jpg') }}" alt="Teacher's Profile" class="user-picture">
                             </div>
                             <div class="class-info">
                                 <p class="subject">{{ $class->subject }}</p>
