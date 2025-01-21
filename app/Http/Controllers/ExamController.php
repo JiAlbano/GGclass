@@ -20,22 +20,24 @@ class ExamController extends Controller
         return view('exam', compact('class', 'user', 'exams'));
     }
 
+  
     public function store(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'class_id' => 'required|exists:classes,id',
+            'exam_type' => 'required|string|in:prelim,midterm,prefinal,final', // Validate exam type
             'questions' => 'required|array',
         ]);
-
+    
         $exam = Exam::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'class_id' => $validated['class_id'],
-            'type' => 'final',
+            'type' => $validated['exam_type'], // Use validated exam_type here
             'enable_token' => false,
-            'time_duration' => 0
+            'time_duration' => 0,
         ]);
 
         $index = 1;
