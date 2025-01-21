@@ -141,6 +141,21 @@
                 <input type="text" id="quizTitle" name="title" class="form-control" placeholder="Untitled Exam" required>
             </div>
 
+            <div class="form-group">
+                <label for="quizDescription">Exam Description</label>
+                <textarea id="quizDescription" name="description" class="form-control" placeholder="Exam Description"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="quizDescription">Exam Type</label>
+                <select id="quizDescription" name="exam_type" class="form-control">
+                    <option value="" disabled>Select Exam Type</option>
+                    <option value="prelim" {{ old('exam_type', $exam->exam_type ?? '') === 'prelim' ? 'selected' : '' }}>Prelim</option>
+                    <option value="midterm" {{ old('exam_type', $exam->exam_type ?? '') === 'midterm' ? 'selected' : '' }}>Midterm</option>
+                    <option value="prefinal" {{ old('exam_type', $exam->exam_type ?? '') === 'prefinal' ? 'selected' : '' }}>Pre-Final</option>
+                    <option value="final" {{ old('exam_type', $exam->exam_type ?? '') === 'final' ? 'selected' : '' }}>Final</option>
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="quizDescription">Exam Type</label>
