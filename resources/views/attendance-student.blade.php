@@ -90,13 +90,11 @@
                 <!-- Main content container -->
                     <div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
                         <!-- User profile section -->
-                        <div class="user-profile d-flex align-items-center">
+                      <!--   <div class="user-profile d-flex align-items-center">
                             <img src="{{ asset('img/ainz.jpg') }}" alt="User" class="user-picture">
                             <span class="user-name">John Ignacious Albano</span>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
+                        </div> -->
+
                         <div class="student-container d-flex flex-column justify-content-start align-items-center w-100">
                             <div class="container2 d-flex justify-content-between align-items-center w-100">
                                 <!-- Left side: Student's picture and name -->

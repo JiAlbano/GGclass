@@ -521,6 +521,7 @@ body {
     overflow-y: auto; /* Always show vertical scrollbar */
     flex-direction: column; /* Make sure content is stacked vertically */
     top: 10px;
+    padding: 10px;
 }
 
 /* Container holding the user profile */
@@ -555,6 +556,7 @@ body {
     flex-direction: column; /* Stack student containers vertically */
     gap: 10px; /* Space between student containers */
     width: 100%;
+/*    margin-bottom: 10px;*/
 }
 
 /* Each student's container */
@@ -568,6 +570,7 @@ body {
     height: 50px;
     align-self: flex-start; /* Ensures it stays at the top */
     margin-bottom: 10px;
+/*    margin-top: 10px;*/
 }
 
 

@@ -842,6 +842,7 @@ color:#FFC62E;
     overflow-x: auto; /* Enable horizontal scrollbar */
     overflow-y: auto; /* Always show vertical scrollbar */
     flex-direction: column; /* Make sure content is stacked vertically */
+    padding-top: 10px;
 }
 
 /* The parent container where multiple student containers will be placed */
@@ -862,7 +863,7 @@ color:#FFC62E;
     width: 1000px;
     height: 60px;
     align-self: flex-start; /* Ensures it stays at the top */
-    margin-top: 10px;
+/*    margin-top: 10px;*/
 }
 
 
@@ -887,9 +888,8 @@ color:#FFC62E;
 }
 
 .student-note {
-    margin: 0 15px;
     display: flex;
-    align-items: center;
+/*    align-items: center;*/
 }
 
 .student-note label {
@@ -899,7 +899,7 @@ color:#FFC62E;
 
 .note-input {
     width: 200px; /* Adjust width as needed */
-    margin-right: 10px;
+/*    margin-right: 10px;*/
     background-color: transparent;  /* Transparent background by default */
     color: #ffffff;  /* White text color */
     border: 1px solid white; /* Optional: Add a white border for visibility */
