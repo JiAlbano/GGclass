@@ -83,52 +83,40 @@
                 </div>
             </div>
 
-<div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center position-relative">
-    <div class="table-container w-100">
-        <table class="table table-bordered table-striped table-blue">
-            <thead>
-                <tr>
-                    <th>Test and Quizzes</th>
-                    <th>Exam</th>
-                    <th>Project</th>
-                    <th>Term Paper</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 1 - <span style="color: black; font-weight: normal;">10/15</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 2 - <span style="color: black; font-weight: normal;">15/15</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 3 - <span style="color: black; font-weight: normal;">20/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 4 - <span style="color: black; font-weight: normal;">18/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 5 - <span style="color: black; font-weight: normal;">17/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 6 - <span style="color: black; font-weight: normal;">14/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 7 - <span style="color: black; font-weight: normal;">19/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 8 - <span style="color: black; font-weight: normal;">16/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 9 - <span style="color: black; font-weight: normal;">20/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Quiz 10 - <span style="color: black; font-weight: normal;">13/15</span></p>
-                    </td>
-                    <td>
-                        <p style="color: #2e3667; font-weight: bold;">Prelim - <span style="color: black; font-weight: normal;">90/100</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Midterm - <span style="color: black; font-weight: normal;">100/100</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Prefinals - <span style="color: black; font-weight: normal;">85/100</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Finals - <span style="color: black; font-weight: normal;">95/100</span></p>
-                    </td>
-                    <td>
-                        <p style="color: #2e3667; font-weight: bold;">Project 1 - <span style="color: black; font-weight: normal;">100/100</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Project 2 - <span style="color: black; font-weight: normal;">90/100</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Project 3 - <span style="color: black; font-weight: normal;">85/100</span></p>
-                    </td>
-                    <td>
-                        <p style="color: #2e3667; font-weight: bold;">Term Paper 1 - <span style="color: black; font-weight: normal;">20/20</span></p>
-                        <p style="color: #2e3667; font-weight: bold;">Term Paper 2 - <span style="color: black; font-weight: normal;">30/30</span></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
+            <div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center position-relative">
+                <div class="table-container w-100">
+                    <table class="table table-bordered table-striped table-blue">
+                        <thead>
+                            <tr>
+                                <th>Test and Quizzes</th>
+                                <th>Exam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!-- Test and Quizzes Column -->
+                                <td style="text-align: center;">
+                                    <ul>
+                                        @foreach($quizData as $quiz)
+                                            <strong>{{ $quiz->title }}:</strong> 
+                                            {{ $quiz->total_score }}/{{ $quiz->number_of_items }}
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <!-- Exam Column -->
+                                <td style="text-align: center;">
+                                    <ul>
+                                        @foreach($examData as $exam)
+                                            <strong>{{ $exam->exam_type }}:</strong> 
+                                            {{ $exam->total_score }}/{{ $exam->number_of_items }}
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
