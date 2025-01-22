@@ -141,9 +141,13 @@ Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.ind
 
 // Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
 
-
+// players
 Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');
+
+// Attendance route
 Route::get('/attendance/{classId}', [AttendanceController::class, 'show'])->name('attendance');
+Route::post('/attendance/save', [AttendanceController::class, 'saveAttendance'])->name('attendance.save');
+
 Route::get('/grade/{classId}', [GradeController::class, 'show'])->name('grade');
 Route::get('/feedback/{classId}', [FeedbackController::class, 'show'])->name('feedback');
 Route::get('/gradebook/{classId}', [GradebookController::class, 'show'])->name('gradebook');

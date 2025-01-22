@@ -139,22 +139,22 @@
                 <label class="attendance-label">Student's Attendance</label>
                 <input type="date" class="attendance-date-picker" id="attendance-date">
                 <!-- Search Input Added -->
-                <input type="text" class="attendance-search" id="student-search" placeholder="Search Student">
+                <!-- <input type="text" class="attendance-search" id="student-search" placeholder="Search Student"> -->
             </div>
 
             <!-- Main content container -->
             <div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
                 <!-- Student Containers -->
                 <div class="student-container d-flex flex-column justify-content-start align-items-center w-100">
+                    @foreach ($classUsers as $classUser)
                     <div class="container2 d-flex justify-content-between align-items-center w-100">
                         <!-- Left side: Student's picture and name -->
                         <div class="student-info d-flex align-items-center">
-                            <img src="{{ asset('img/ainz.jpg') }}" alt="Student Picture" class="student-image">
-                            <span class="student-name">John Ignacious Albano</span>
+                            <img src="{{ $classUser->google_profile_image }}" alt="Student Picture" class="student-image">
+                            <span class="student-name">{{ $classUser->first_name }} {{ $classUser->last_name }} ({{ $classUser->ign }})</span>
                         </div>
-
                         <!-- Middle: Input note -->
-                        <div class="student-note d-flex align-items-center">
+                        <div class="student-note">
                             <input type="text" class="form-control note-input" placeholder="Enter note here" id="note-1">
                             <button class="btn btn-save-note" id="save-note-1" style="display: none;">Save</button>
                         </div>
@@ -172,9 +172,8 @@
                             </ul>
                         </div>
                     </div>
+                    @endforeach     
                 </div>
-
-                <!-- Repeat the above structure for each student -->
             </div>
         </div>
     </div>
