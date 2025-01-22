@@ -163,6 +163,11 @@ Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::c
 Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student/{quizId}', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
 Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student/{quizId}', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
 
+//Student exam routes
+Route::get('/studentchallenges/{classId}/studentexam', [ExamController::class, 'studentexam'])->name('exam-student');
+Route::get('/studentchallenges/{classId}/studentexam/exam-title-student/{quizId}', [ExamController::class, 'showtitleexam'])->name('exam-title-student');
+Route::get('/studentchallenges/{classId}/exam-title-student/exam-take-student/{quizId}', [ExamController::class, 'showtakeexam'])->name('exam-take-student');
+
 
 Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
 Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');
@@ -205,6 +210,10 @@ Route::post('/class/{classId}/quiz/{quizId}/take/editQuestion', [QuizController:
 Route::get('/student/exam/{classId}', [ExamController::class, 'show'])->name('exam_student.show');
 
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');
+
+
+
+
 
 
 Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');

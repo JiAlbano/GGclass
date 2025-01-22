@@ -20,4 +20,9 @@ class Challenge extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function scores()
+{
+    return $this->hasMany(StudentChallengeScore::class, 'challenge_id');
+}
+
 }
