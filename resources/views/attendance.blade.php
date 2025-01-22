@@ -155,8 +155,8 @@
                         </div>
                         <!-- Middle: Input note -->
                         <div class="student-note">
-                            <input type="text" class="form-control note-input" placeholder="Enter note here" id="note-1">
-                            <button class="btn btn-save-note" id="save-note-1" style="display: none;">Save</button>
+                            <input type="text" class="form-control note-input" placeholder="Enter note here">
+                            <button class="btn btn-save-note" style="display: none;">Save</button>
                         </div>
 
                         <!-- Right side: Dropdown button -->

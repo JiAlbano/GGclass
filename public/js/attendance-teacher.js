@@ -38,6 +38,7 @@ $(document).ready(function() {
         const saveButton = $(this);
         const noteInput = saveButton.prev('.note-input');
         const noteValue = noteInput.val().trim();
+        console.log(noteValue)
 
         if (noteValue !== "") {
             // Implement the logic to save the note (e.g., send it to the server or store it locally)

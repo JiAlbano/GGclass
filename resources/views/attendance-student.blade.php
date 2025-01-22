@@ -96,40 +96,22 @@
                         </div> -->
 
                         <div class="student-container d-flex flex-column justify-content-start align-items-center w-100">
+                         @foreach ($attendanceData as $attendance)
                             <div class="container2 d-flex justify-content-between align-items-center w-100">
                                 <!-- Left side: Student's picture and name -->
                                 <div class="student-info d-flex align-items-center">
-                                    <span class="date">15/01/2024</span>
+                                    <span class="date">{{ \Carbon\Carbon::parse($attendance->date)->format('F d, Y') }}</span>
                                 </div>
-
                                 <!-- Middle: Input note -->
                                 <div class="student-note d-flex align-items-center">
-                                    <span class="note">Note</span>
+                                    <span class="note">{{ $attendance->note }}</span>
                                 </div>
-
                                 <!-- Right side: Dropdown button -->
                                 <div class="attendance-dropdown">
-                                    <span class="status">Present</span>
+                                    <span class="status" style="color:gold; font-weight: bold;">{{ $attendance->status }}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="student-container d-flex flex-column justify-content-start align-items-center w-100">
-                            <div class="container2 d-flex justify-content-between align-items-center w-100">
-                                <!-- Left side: Student's picture and name -->
-                                <div class="student-info d-flex align-items-center">
-                                    <span class="date">15/03/2024</span>
-                                </div>
-
-                                <!-- Middle: Input note -->
-                                <div class="student-note d-flex align-items-center">
-                                    <span class="note">Fever</span>
-                                </div>
-
-                                <!-- Right side: Dropdown button -->
-                                <div class="attendance-dropdown">
-                                    <span class="status">Excuse</span>
-                                </div>
-                            </div>
+                        @endforeach
                         </div>
                     </div>
                 </div>
