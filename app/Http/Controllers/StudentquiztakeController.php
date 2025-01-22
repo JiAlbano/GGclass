@@ -18,7 +18,7 @@ class StudentquiztakeController extends Controller
         $questions = Question::where('quiz_id', $quizId)->get();
         $taken = StudentChallengeScore::where('challenge_id', $quizId)->where('student_id', $user->id)->count();
         $quiz = Quiz::find($quizId);
-
+        $challengetype = 'quiz';
         // Get the total_score scores of the user
         $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
 
@@ -28,6 +28,6 @@ class StudentquiztakeController extends Controller
         // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
         $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
 
-        return view('quiz-take-student', compact('class', 'user', 'questions', 'quiz', 'taken', 'totalScores', 'sumOfScores', 'numberOfItems')); // Pass both variables to the view
+        return view('quiz-take-student', compact('class', 'user', 'questions', 'quiz', 'taken', 'totalScores', 'sumOfScores', 'numberOfItems', 'challengetype')); // Pass both variables to the view
     }
 }

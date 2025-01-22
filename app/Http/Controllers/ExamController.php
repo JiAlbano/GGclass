@@ -27,19 +27,21 @@ class ExamController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'class_id' => 'required|exists:classes,id',
-            'exam_type' => 'required|string|in:prelim,midterm,prefinal,final', // Validate exam type
-            'questions' => 'required|array',
+            'exam_type' => 'in:prelim,midterm,prefinal,final', // Validate exam type
+            'questions' => 'required|array', // Ensure the questions are provided
         ]);
     
+        // Create the exam
         $exam = Exam::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'class_id' => $validated['class_id'],
-            'type' => $validated['exam_type'], // Use validated exam_type here
+            'exam_type' => $validated['exam_type'], // Use validated exam_type here
             'enable_token' => false,
             'time_duration' => 0,
         ]);
-
+    
+        // Loop through the questions provided and store them in the database
         $index = 1;
         foreach ($validated['questions'] as $question) {
             $createdQuestion = $exam->questions()->create([
@@ -49,7 +51,8 @@ class ExamController extends Controller
                 'correct_answer' => $question['correct_answer'] ?? null,
                 'options' => $question['options'] ?? null
             ]);
-
+    
+            // Handle file upload for images in the questions
             if ($request->hasFile("questions.$index.uploadFile")) {
                 $file = $request->file("questions.$index.uploadFile");
                 $filePath = $file->store('exam-files', 'public');
@@ -58,12 +61,13 @@ class ExamController extends Controller
             }
             $index++;
         }
-
+    
         return redirect()->route('exam.show', [
             'classId' => $validated['class_id'],
             'examId' => $exam->id
         ])->with('success', 'Exam created successfully!');
     }
+    
 
     public function displayExam($classId, $examId)
     {
@@ -165,4 +169,66 @@ class ExamController extends Controller
         $score->total_score = $newScore;
         return $score->save() ? 1 : 0;
     }
+
+    public function studentexam($classId)
+    {
+        $user = Auth::user();// Fetch all users
+        $class = Classroom::findOrFail($classId); // Fetch the class
+        $quizzes = Exam::where('class_id', $classId)->get();
+        $studentChallengesTaken = StudentChallengeScore::where('student_id', Auth::id())
+                ->distinct()  // Ensure distinct results
+                ->pluck('challenge_id'); 
+                $challengetype = 'exam';
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+
+        return view('quiz-student', compact('class', 'user', 'quizzes', 'studentChallengesTaken', 'totalScores', 'sumOfScores', 'numberOfItems','challengetype' )); // Pass both variables to the view
+    }
+
+    public function showtitleexam($classId, $examId)
+    {
+        $user = Auth::user(); // Fetch all users
+        $class = Classroom::findOrFail($classId); // Fetch the class
+        $quiz = Exam::findOrFail($examId);
+        $challengetype = 'exam';
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+
+        return view('quiz-title-student', compact('class', 'user', 'quiz', 'totalScores', 'sumOfScores', 'numberOfItems', 'challengetype')); // Pass both variables to the view
+    }
+
+    public function showtakeexam($classId, $examId)
+    {
+        $user = Auth::user(); // Fetch all users
+        $class = Classroom::find($classId); // Fetch the class
+        $questions = ExamQuestion::where('exam_id', $examId)->get();
+        $taken = StudentChallengeScore::where('challenge_id', $examId)->where('student_id', $user->id)->count();
+        $quiz = Exam::find($examId);
+
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+        $challengetype = 'exam';
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+
+        return view('quiz-take-student', compact('class', 'user', 'questions', 'quiz', 'taken', 'totalScores', 'sumOfScores', 'numberOfItems', 'challengetype')); // Pass both variables to the view
+    }
+
 }
+
+
