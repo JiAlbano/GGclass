@@ -1,3 +1,4 @@
+<!-- filepath: /c:/code-related/Code/New folder/GGclass/resources/views/tutorials-student.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
     <!--CSS-->
     <link rel="stylesheet" href="{{ secure_asset('student-view/tutorials-student.css') }}">
     <!-- New CSS file for the container -->
@@ -34,7 +34,6 @@
     @section('content')
 
     @endsection
-
 
     <div class="top-buttons containers" style=" margin-top: 84px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
@@ -57,33 +56,8 @@
         </div>
     </div>
 
-
-    <!-- <div class="info-container ">
-    <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Picture" class="container-picture">
-    <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-    <div class="rank-section">
-            <img src="{{ asset('bronze.png') }}" alt="Rank Picture" class="rank-pic">
-        </div>
-    <div class="container-info-section">
-        <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-        <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-        <p class="section">Section: <span>{{ $class->section }}</span></p>
-    </div>
-    <div class="container-info-email">
-        <p>{{ $user->email }}</p>
-    </div>
-
-        <div class="container-buttons">
-            <button class="btn1"onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">PROFILE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('grade-student', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">FEEDBACK</button>
-        </div>
-    </div> -->
-
     <div class="dashboard-container">
         <div class="content-container">
-            <!-- Class Card -->
             <div class="class-card">
                 <div class="class-header">
                     <p>School Year: {{ $class->school_year }}</p>
@@ -106,28 +80,26 @@
                         onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Bulletin List -->
-            <div class="bulletin-list">
-                <div class="bulletin-item">
-                    <div class="bulletin-icon">
-                        <img src="{{ asset('megaphone.png') }}" />
-                    </div>
-                    <div class="bulletin-content">
-                        <p class="bulletin-title"> Tutorial (#): Title </p>
-                        <p class="bulletin-date">Dec 21, 2024</p>
-                    </div>
-                    <div class="bulletin-options">
-                        <button class="options-btn">•••</button>
+        <div class="bulletin-student">
+            <!-- Loop through tutorials and display them -->
+            @foreach ($tutorials as $tutorial)
+                <div class="bulletin-list"
+                    onclick="window.location.href='{{ route('display-student-tutorial', ['classId' => $class->id, 'tutorialId' => $tutorial->id]) }}'">
+                    <div class="bulletin-item">
+                        <div class="bulletin-icon">
+                            <img src="{{ asset('img/lesson.png') }}" />
+                        </div>
+                        <div class="bulletin-content">
+                            <p class="bulletin-title"> Tutorial Title: <span
+                                    class="tutt-title"><b>{{ $tutorial->title }}</b></span> </p>
+                        </div>
                     </div>
                 </div>
-                <!-- Repeat other bulletin items -->
-            </div>
+            @endforeach
         </div>
     </div>
-
-
-
 </body>
 
 </html>

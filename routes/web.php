@@ -129,7 +129,8 @@ Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])
 Route::get('/display-tutorial/{classId}/{tutorialId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
 
-
+Route::get('/studenttutorials/{classId}/{tutorialId}', [StudenttutorialsController::class, 'display'])->name('display-student-tutorial');
+Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
 // Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 
 
@@ -180,7 +181,7 @@ Route::get('/studentchallenges/{classId}/exam-title-student/exam-take-student/{q
 Route::post('/exam/edit-timer', [ExamController::class, 'editTimer']);
 Route::post('/exam/edit-token', [ExamController::class, 'editToken']);
 
-Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
+
 Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');
 //Student Info routes
 Route::get('/profile/{classId}', [StudentprofilestudentController::class, 'show'])->name('profile-student');

@@ -327,7 +327,7 @@ body {
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
-    color:gold;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */
@@ -435,10 +435,8 @@ body {
     text-decoration: underline;
 }
 
-/* General Adjustments */
 .dashboard-container {
     display: flex;
-    flex-direction: column;
     margin: 0 20px;
 }
 
@@ -448,77 +446,53 @@ body {
     flex-wrap: wrap;
 }
 
-/* Bulletin List Container */
 .bulletin-list {
     display: flex;
     flex-direction: column;
-    gap: 2px; /* Spacing between items */
-    width: 120%;
-    max-width: 600px;
-    margin: 20px auto;
-    margin-left: 10px;
+    width: 1050px;
+    align-items: center;
 }
 
-/* Individual Bulletin Item */
 .bulletin-item {
     display: flex;
     align-items: center;
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 150%;
-    padding: 10px 15px;
+    width: 90%;
+    height: 60px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .bulletin-item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon Section */
 .bulletin-icon img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    margin-left: 10px;
 }
 
-/* Bulletin Content */
 .bulletin-content {
-    flex-grow: 1;
     margin-left: 10px;
-    font-family: Arial, sans-serif;
 }
 
 .bulletin-title {
-    font-size: 14px;
-    font-weight: bold;
+    font-family: "Roboto", serif;
+    font-size: 17px;
+    font-weight: 600;
+    font-style: normal;
     color: #283891;
     margin: 0;
 }
 
-.bulletin-date {
-    font-size: 12px;
-    color: #888;
-    margin: 5px 0 0 0;
-}
-
-/* Options Button */
-.bulletin-options {
-    margin-left: auto;
-}
-
-.options-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #888;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.options-btn:hover {
-    color: #283891;
+.bulletin-student {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
 }
