@@ -128,33 +128,33 @@
         </div>
         <div class="dashboard-container">
   <!-- Add Challenge Button -->
-  <div class="add-challenge-container">
-        <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
-            <div class="icon">
-            <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+            <div class="add-challenge-container">
+                <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
+                    <div class="icon">
+                    <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+                    </div>
+                    <div class="text">Create a new challenge to your class</div>
+                </button>
             </div>
-            <div class="text">Create a new challenge to your class</div>
-        </button>
-    </div>
             <!-- Modal Structure -->
             <div id="challengeModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 class="modal-title">Create Challenge</h2>
-        <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
-            @csrf
-                <div class="form-group">
-                    <label for="challengeType" class="form-label">Challenge Type</label>
-                    <select id="challengeType" name="challengeType" class="form-input" required>
-                        <option value="" disabled selected>Select a challenge type</option>
-                        <option value="exam">Exam</option>
-                        <option value="test_and_quizzes">Test and Quizzes</option>
-                    </select>
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2 class="modal-title">Create Challenge</h2>
+                    <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
+                        @csrf
+                            <div class="form-group">
+                                <label for="challengeType" class="form-label">Challenge Type</label>
+                                <select id="challengeType" name="challengeType" class="form-input" required>
+                                    <option value="" disabled selected>Select a challenge type</option>
+                                    <option value="exam">Exam</option>
+                                    <option value="test_and_quizzes">Test and Quizzes</option>
+                                </select>
+                            </div>
+                        <button type="submit" id="createBtn" class="form-button">Create</button>
+                    </form>
                 </div>
-            <button type="submit" id="createBtn" class="form-button">Create</button>
-        </form>
-    </div>
-</div>
+            </div>
         <!-- Display Challenges -->
 
         <!-- <div class="container1">
@@ -214,8 +214,6 @@
 
 
     </div>
-    </div>
-
 </div>
 
 
