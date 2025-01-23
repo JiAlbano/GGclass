@@ -164,7 +164,7 @@
             <!-- Label and Title -->
             <div class="grid-item">
                 <div class="info-box">
-                    <label for="quiz-title2" class="qtitle font-weight-bold mb-1 color">Quiz Title:</label>
+                    <label for="quiz-title2" class="qtitle font-weight-bold mb-1 color">Exam Title:</label>
                     <h3 class="mb-2 text-white" id="quiz-title2">{{ $exam->title }}</h3>
                 </div>
             </div>
@@ -172,7 +172,7 @@
             <!-- Label and Description -->
             <div class="grid-item">
                 <div class="info-box">
-                    <label for="quiz-description" class="font-weight-bold color white mb-1">Description:</label>
+                    <label for="quiz-description" class="font-weight-bold color white mb-1">Exam Description:</label>
                     <p class="qdescription mb-2 text-white" id="quiz-description">{{ $exam->description }}</p>
                 </div>
             </div>
@@ -264,11 +264,11 @@ label.color.white {
     <div id="edit-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" id="close-modal">&times;</span>
-            <h2 class="edit-quiz">Edit Quiz</h2>
-            <label class="edit-title" for="new-title">Quiz Title:</label>
+            <h2 class="edit-quiz">Edit Exam</h2>
+            <label class="edit-title" for="new-title">Exam Title:</label>
             <input type="text" id="new-title" placeholder="Enter new title" value="{{ $exam->title }}">
             <br>
-            <label for="new-description" class="quiz-description">Quiz Description:</label>
+            <label for="new-description" class="quiz-description">Exam Description:</label>
             <br>
             <textarea id="new-description" placeholder="Enter new description">{{ $exam->description }}</textarea>
             <button class="save" id="save-button">Save</button>

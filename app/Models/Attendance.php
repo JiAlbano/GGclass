@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
@@ -12,7 +13,9 @@ class Attendance extends Model
     {
         return $this->belongsTo(User::class);
     }
+    use HasFactory;
 
+
+    // Allow mass assignment for these fields (optional)
     protected $fillable = ['user_id', 'date', 'note', 'status'];
-
 }

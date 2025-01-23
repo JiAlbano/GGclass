@@ -14,7 +14,7 @@ class Exam extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'class_id', 'type', 'enable_token', 'time_duration'
+        'title', 'description', 'class_id', 'exam_type', 'enable_token', 'time_duration'
     ];
 
     public function questions()

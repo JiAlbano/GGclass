@@ -86,19 +86,35 @@
         <!-- Bulletin List -->
         <div class="bulletin-list">
         @foreach($challenges as $challenge)
-            <div class="bulletin-item quiz-button" 
-                 onclick="window.location.href='{{ route('quiz-student', ['classId' => $challenge->id]) }}'">
+           @if ($challenge->type=='exam')
+                <div class="bulletin-item quiz-button" 
+                    onclick="window.location.href='{{ route('exam-student', ['classId' => $challenge->id]) }}'">
                 <div class="bulletin-icon">
                     <img src="{{ asset('megaphone.png') }}" />
                 </div>
-                <div class="bulletin-content">
+                 <div class="bulletin-content">
                     <p class="bulletin-title">Challenge type: {{ ucfirst(str_replace('_', ' ', $challenge->type)) }}</p>
                     <p class="bulletin-date">{{ $challenge->created_at->format('M d, Y') }}</p>
                 </div>
                 <div class="bulletin-options">
-                    <div class="options-btn">•••</div>
+                <div class="options-btn">•••</div>
                 </div>
-            </div>
+                </div>
+            @else
+            <div class="bulletin-item quiz-button" 
+                    onclick="window.location.href='{{ route('quiz-student', ['classId' => $challenge->id]) }}'">
+                <div class="bulletin-icon">
+                    <img src="{{ asset('megaphone.png') }}" />
+                </div>
+                 <div class="bulletin-content">
+                    <p class="bulletin-title">Challenge type: {{ ucfirst(str_replace('_', ' ', $challenge->type)) }}</p>
+                    <p class="bulletin-date">{{ $challenge->created_at->format('M d, Y') }}</p>
+                </div>
+                <div class="bulletin-options">
+                <div class="options-btn">•••</div>
+                </div>
+                </div>
+           @endif
         @endforeach
         </div>
     </div>
