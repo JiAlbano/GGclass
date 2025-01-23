@@ -14,7 +14,7 @@ class TeacherSeeder extends Seeder
         DB::table('users')->insertOrIgnore([
             
             [
-                'email' => 'jlbano@gbox.adnu.edu.ph',
+                'email' => 'jialbano@gbox.adnu.edu.ph',
                 'first_name' => 'John Ignacious',
                 'middle_initial' => 'G.',
                 'last_name' => 'Albano',
