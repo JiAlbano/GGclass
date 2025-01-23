@@ -241,7 +241,7 @@
                     <tbody>
                         @foreach ($classUsers as $classUser)
                             <tr class="table-row"
-                                onclick="location.href='{{ route('student-details', ['id' => $classUser->id_number]) }}'">
+                                onclick="location.href='{{ route('student-details',  ['classId' => $class->id,'id_number' => $classUser->id_number]) }}'">
                                 <td>{{ $classUser->id_number }}</td>
                                 <td>{{ $classUser->first_name }} {{ $classUser->last_name }}</td>
                                 <td>{{ $classUser->course_id }}</td>

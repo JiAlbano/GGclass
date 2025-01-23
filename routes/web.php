@@ -257,15 +257,18 @@ Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('class
 Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name('students-list');
 
 
- 
+ // grade-book.student-data.student-assessment
+Route::get('/students/{classId}/{id_number}', [StudentController::class, 'showschools'])->name('student-details');
+
+// grade-book.student-assessment.student-score
+Route::get('/students-score/{student_id}/{challengetype_id}', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
+
 // grade-book.student-list.student-list
 Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
 
-// grade-book.student-data.student-assessment
-Route::get('/students/{id}', [StudentController::class, 'showschool'])->name('student-details');
 
-// grade-book.student-assessment.student-score
-Route::get('/students/{student_id}/assessment/{assessment_id}/scores', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
+
+
 
 // Route to view a student's exam scores
 Route::get('/students/{student_id}/exam/{exam_id}/scores', [StudentController::class, 'viewExamScores'])->name('student-exam-scores');
