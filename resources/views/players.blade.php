@@ -86,22 +86,22 @@
 </script>
 
 
-<div class="top-buttons containers" style=" margin-top: 84px;">
-    <div class="row justify-content-center"> <!-- Added justify-content-center class -->
-        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->class_id]) }}'">Bulletins</button>
-        </div>
-        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->class_id])}}'">Tutorials</button>
-        </div>
-        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->class_id]) }}'">Challenges</button>
-        </div>
-        <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn challenge-btn active" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->class_id]) }}'">Players</button>
+    <div class="top-buttons containers" style="margin-left: 240px; margin-right: 240px;">
+        <div class="row justify-content-center"> <!-- Added justify-content-center class -->
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
+                <button class="btn" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->class_id]) }}'">Bulletins</button>
+            </div>
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+                <button class="btn" onclick="window.location.href='{{ route('tutorials', ['classId' => $class->class_id])}}'">Tutorials</button>
+            </div>
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+                <button class="btn" onclick="window.location.href='{{ route('challenges', ['classId' => $class->class_id]) }}'">Challenges</button>
+            </div>
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+                <button class="btn challenge-btn active" onclick="window.location.href='{{ route('players', ['classId' => $class->class_id]) }}'">Players</button>
+            </div>
         </div>
     </div>
-</div>
 
 
     <div class="content-container">
@@ -114,13 +114,16 @@
                 <p>Class Code: {{ $class->class_code }} </p>
             </div>
             <div class="class-details">
-                <h2>{{ $class->subject }}</h2>
-                <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                        {{ date('h:iA', strtotime($class->start_time)) }} -
+                        {{ date('h:iA', strtotime($class->end_time)) }}
+                    </p>
                 <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
-                 <button class="btn" onclick="window.location.href='{{ route('attendance', ['classId' => $class->class_id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->class_id]) }}'">Feedback</button>
+                 <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->class_id]) }}'">Attendance</button>
+                <!-- <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->class_id]) }}'">Feedback</button> -->
                 <button href="#">Gradebook</button>
             </div>
         </div>

@@ -117,34 +117,41 @@ body {
     color: white;
 }
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
-}
-
 .row .btn {
-    padding: 5px; /* Add padding inside the buttons */
+    padding: 6px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #283891;
     cursor: pointer;
-    width: 100%; /* Make buttons take the full width of their column */
+    width: 100px;
+    font-family: "Georgia";
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 80px; 
+    border:none; 
+    width: 100px;
 }
 
+
+
 .challenge-btn.active {
-    background-color: #283891; /* Active button color */
-    color: white; /* Text color for active button */
-    transition: all 0.3s ease;
+    background-color: #283891;
+    color: #ffffff;
+/*    transition: all 0.3s ease;*/
+    font-size: 20px;
+    font-family: "Georgia";
+    font-weight: bold;
+    border: none;
+    width: 1000px;
+    transition: none;
 }
 
 .btn:hover {
-    color: #FFC62E;
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
+    width: 100%;
+    transition: none;
 }
 
 
@@ -471,16 +478,13 @@ body {
 }
 
 
-
-
-
 .add-challenge-container {
     display: flex;
     flex-direction: column;
     gap: 2px; /* Spacing between items */
     width: 120%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 10px auto;
     margin-left: 10px;
 }
 
@@ -628,6 +632,7 @@ body {
 /* General container styling */
 .class-card {
     width: 300px;
+    height: 441px;
     border: 2px solid #050834;
     border-radius: 10px;
     overflow: hidden;
@@ -637,8 +642,8 @@ body {
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 20px;
-    height: 440px;
+    margin-top: 12px;
+    margin-left: 80px;
 }
 
 /* Header section */

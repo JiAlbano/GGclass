@@ -32,7 +32,7 @@
     position: relative;
     top: -16px;
     margin-left: 10px;
-    margin-top: 9.5px;
+    margin-top: 3px;
 }
 
 .ggclass-font {
@@ -45,7 +45,7 @@
     text-decoration: none;
     position: relative;
     left: -1px;
-    top: -5.5px;
+    top: -8px;
 }
 
 .ggclass-font:hover {
@@ -106,30 +106,40 @@
 
 
 .row .btn {
-    padding: 5px;
+    padding: 6px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #283891;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     font-family: "Georgia";
     font-size: 20px;
     font-weight: bold;
+    margin-top: 80px; 
+    border:none; 
+    width: 100px;
 }
+
+
 
 .challenge-btn.active {
     background-color: #283891;
     color: #ffffff;
-    transition: all 0.3s ease;
-/*    font-family: "Georgia";*/
+/*    transition: all 0.3s ease;*/
     font-size: 20px;
+    font-family: "Georgia";
     font-weight: bold;
     border: none;
-    width: 70%;
+    width: 1000px;
+    transition: none;
 }
 
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
+    width: 100%;
+    transition: none;
 }
 
 .info-container {
@@ -617,7 +627,8 @@
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 50px;
+    margin-top: 43px;
+    margin-left: 80px;
 }
 
 /* Header section */
