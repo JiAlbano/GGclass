@@ -32,14 +32,27 @@ class Classes extends Model
         {
             return $this->belongsTo(User::class, 'teacher_id'); // 'teacher_id' is the foreign key
         }
-            // Relationship: Class has many players (through ClassUser pivot table)
+    // Relationship: Class has many players (Users) via ClassUser pivot table
     public function players()
     {
         return $this->belongsToMany(User::class, 'class_user', 'class_id', 'user_id')
-            ->withPivot('user_id')
+            ->withPivot('role', 'joined_at') // Example pivot fields
             ->withTimestamps();
     }
-}
 
+    // Relationship: Class has many students
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'class_student', 'class_id', 'student_id')
+            ->withTimestamps();
+    }
+
+    // Relationship: Class has many assessments
+    public function assessments()
+    {
+        return $this->hasMany(Assessment::class, 'class_id');
+    }
+
+}
     
 

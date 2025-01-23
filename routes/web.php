@@ -147,9 +147,13 @@ Route::get('/classroom', [ClassController::class, 'index'])->name('classroom.ind
 
 // Route::post('/create-class', [ClassController::class, 'createClass'])->name('create.class');
 
-
+// players
 Route::get('/players/{classId}', [PlayersController::class, 'show'])->name('players');
+
+// Attendance route
 Route::get('/attendance/{classId}', [AttendanceController::class, 'show'])->name('attendance');
+Route::post('/attendance/save', [AttendanceController::class, 'saveAttendance'])->name('attendance.save');
+
 Route::get('/grade/{classId}', [GradeController::class, 'show'])->name('grade');
 Route::get('/feedback/{classId}', [FeedbackController::class, 'show'])->name('feedback');
 Route::get('/gradebook/{classId}', [GradebookController::class, 'show'])->name('gradebook');
@@ -169,6 +173,12 @@ Route::get('/studentchallenges/{classId}/studentquiz', [StudentquizController::c
 Route::get('/studentchallenges/{classId}/studentquiz/quiz-title-student/{quizId}', [StudentquiztitleController::class, 'show'])->name('quiz-title-student');
 Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student/{quizId}', [StudentquiztakeController::class, 'show'])->name('quiz-take-student');
 
+//Student exam routes
+Route::get('/studentchallenges/{classId}/studentexam', [ExamController::class, 'studentexam'])->name('exam-student');
+Route::get('/studentchallenges/{classId}/studentexam/exam-title-student/{quizId}', [ExamController::class, 'showtitleexam'])->name('exam-title-student');
+Route::get('/studentchallenges/{classId}/exam-title-student/exam-take-student/{quizId}', [ExamController::class, 'showtakeexam'])->name('exam-take-student');
+Route::post('/exam/edit-timer', [ExamController::class, 'editTimer']);
+Route::post('/exam/edit-token', [ExamController::class, 'editToken']);
 
 Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
 Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');
@@ -213,6 +223,10 @@ Route::get('/student/exam/{classId}', [ExamController::class, 'show'])->name('ex
 Route::get('/activity/{classId}', [ActivityController::class, 'show'])->name('activity.show');
 
 
+
+
+
+
 Route::get('/exam/{classId}', [ExamController::class, 'show'])->name('exam.show');
 
 
@@ -246,16 +260,21 @@ Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('class
 
 
 //gradebook functionality
+Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name('students-list');
 
-// students-list.blade.php
+
+ 
+// grade-book.student-list.student-list
 Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
 
-// student-data.blade.php
-// Route::view('/students-data', 'grade-book.student-data.student-data')->name('student-data');
-Route::get('/student/{school_id}', [StudentController::class, 'show'])->name('student.show');
+// grade-book.student-data.student-assessment
+Route::get('/students/{id}', [StudentController::class, 'showschool'])->name('student-details');
 
-// student-assessment.blade.php
-Route::get('/student-assessment/{school_id}/{assessment_id}', [StudentController::class, 'assessment'])->name('student-assessment');
+// grade-book.student-assessment.student-score
+Route::get('/students/{student_id}/assessment/{assessment_id}/scores', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
+
+// Route to view a student's exam scores
+Route::get('/students/{student_id}/exam/{exam_id}/scores', [StudentController::class, 'viewExamScores'])->name('student-exam-scores');
 
 // Route for exporting the Excel file
 Route::get('/students-list/export', [StudentController::class, 'export'])->name('student-list.export');

@@ -8,6 +8,74 @@
 
 }
 
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #283891;
+    font-family: Georgia;
+    position: fixed;
+    height: 65px;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    margin-right: 10px;
+    position: relative;
+    top: -16px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.ggclass-font {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -1px;
+    top: -8px;
+}
+
+.ggclass-font:hover {
+    color: #ffd700;
+}
+
+.section-font {
+    font-size: 16px;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.profile-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    position: relative;
+    left: -25px;
+    margin-top: 5px;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+
 .text-container {
     display: flex;
     flex-direction: column;  /* Align text vertically */
@@ -36,100 +104,42 @@
 }
 
 
-.navbar {
-    display: flex;
-    align-items: center;
-    background: #2e3667;
-    font-family: Georgia;
-    position: fixed;
-    height: 65px;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-}
-
-
-.left-section {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 60px;
-    margin-right: 10px;
-    position: relative;
-    top: -16px;
-    margin-left: 10px;
-    margin-top: 9.5px;
-}
-
-.ggclass-font {
-    color: white;
-    display: flex;
-    align-items: center;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 30px;
-    text-decoration: none;
-    position: relative;
-    left: -1px;
-    top: -5.5px;
-}
-
-.ggclass-font:hover {
-    color: #ffd700;
-}
-
-.section-font {
-    font-size: 16px;
-    color: white;
-    margin-left: 10px;
-    margin-top: 10px;
-}
-
-.profile-img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
-    position: relative;
-    left: -25px;
-    margin-bottom: 25px;
-}
-
-.profile-img:hover {
-    transform: scale(1.1); /* Slight zoom-in effect on hover */
-    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
-}
-
-
 
 .row .btn {
-    padding: 5px;
+    padding: 6px;
     border: none;
-    border-radius: 5px;
-    color: #2e3667;
+    border-radius: 10px;
+    color: #283891;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     font-family: "Georgia";
     font-size: 20px;
     font-weight: bold;
+    margin-top: 80px; 
+    border:none; 
+    width: 100px;
 }
 
+
+
 .challenge-btn.active {
-    background-color: #2e3667;
+    background-color: #283891;
     color: #ffffff;
-    transition: all 0.3s ease;
-/*    font-family: "Georgia";*/
+/*    transition: all 0.3s ease;*/
     font-size: 20px;
+    font-family: "Georgia";
     font-weight: bold;
     border: none;
-    width: 70%;
+    width: 1000px;
+    transition: none;
 }
 
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
+    width: 100%;
+    transition: none;
 }
 
 .info-container {
@@ -233,7 +243,7 @@
     border: 2px solid #2e3667;
     padding: 10px;
     border-radius: 10px;
-    background-color: #2e3667;
+    background-color: #283891;
     width: 1000px;
     height: 60px;
     margin-left: 35px;
@@ -247,11 +257,11 @@
     object-fit: cover;
     margin-right: 15px;
     margin-left: 15px;
-    border: 2px solid #F7D37C;
+    border: 2px solid gold;
 }
 
 .profile-name {
-    font-size: 14px;
+    font-size: 16px;
     color: #ffffff;
     margin-left: 15px;
     font-family: georgia;
@@ -309,7 +319,7 @@
     border: 2px solid #2e3667;
     padding: 10px;
     border-radius: 10px;
-    background-color: #2e3667;
+    background-color: #283891;
     width: 1000px;
     height: 50px;
     align-self: flex-start; /* Ensures it stays at the top */
@@ -617,12 +627,13 @@
     margin: 20px auto;
     position: relative;
     margin: 50px;
-    margin-top: 50px;
+    margin-top: 43px;
+    margin-left: 80px;
 }
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -660,7 +671,7 @@
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -669,13 +680,14 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    font-family: georgia;
+    font-family:Arial, sans-serif;
     text-transform: uppercase;
     transition: background-color 0.3s ease;
 }
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */

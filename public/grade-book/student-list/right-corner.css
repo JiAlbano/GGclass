@@ -1,0 +1,125 @@
+.right-container {
+    width: 100%;
+    position: relative;
+    top: -10px;
+}
+
+.styled-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    width: 100%;
+}
+
+.styled-table .table-head th {
+    font-family: "Roboto", serif;
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    background-color: #283891;
+    color: white;
+    height: 70px;
+}
+.styled-table .table-row {
+    font-family: "Roboto", serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: white;
+    color: #283891;
+    text-align: center;
+    height: 70px;
+}
+
+.styled-table .table-row td {
+    border-top: 1px solid #283891;
+    border-bottom: 1px solid #283891;
+}
+
+.styled-table .table-row td:first-child {
+    border-left: 1px solid #283891;
+}
+.styled-table .table-row td:last-child {
+    border-right: 1px solid #283891;
+}
+
+.styled-table .table-row:hover {
+    background-color: #4a90e2;
+    color: white;
+    /* transform: scale(1.03);
+  transition: transform 0.2s ease; */
+}
+
+.styled-table .table-row:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.styled-table .table-row td:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.styled-table .table-row td:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.styled-table .table-head:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.styled-table .table-head th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.styled-table .table-head th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+/* 
+.student-col {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; 
+}
+
+.col-5 {
+  margin-right: 30px; 
+}
+
+.student-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 25px;
+  background-color: #2A2E34;
+  height: 100px;
+  width: 400px;
+  padding: 20px 1px;
+  color: white;
+  border: 3px solid #FFC300;
+}
+
+.student-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #FFC300;
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.student-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+  color: #ffffff;
+}
+
+.student-list:hover {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+ */

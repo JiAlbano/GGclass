@@ -10,7 +10,6 @@
 
     <!-- Google Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,6 +145,17 @@
                 <textarea id="quizDescription" name="description" class="form-control" placeholder="Exam Description"></textarea>
             </div>
 
+            <div class="form-group">
+                <label for="quizDescription">Exam Type</label>
+                <select id="quizDescription" name="exam_type" class="form-control">
+                    <option value="" disabled selected>Select Exam Type</option>
+                    <option value="prelim" {{ old('exam_type', $exam->exam_type ?? '') === 'prelim' ? 'selected' : '' }}>Prelim</option>
+                    <option value="midterm" {{ old('exam_type', $exam->exam_type ?? '') === 'midterm' ? 'selected' : '' }}>Midterm</option>
+                    <option value="prefinal" {{ old('exam_type', $exam->exam_type ?? '') === 'prefinal' ? 'selected' : '' }}>Pre-Final</option>
+                    <option value="final" {{ old('exam_type', $exam->exam_type ?? '') === 'final' ? 'selected' : '' }}>Final</option>
+                </select>
+            </div>
+
             <div class="question-section">
                 <h3>Questions</h3>
                 <div id="questionsContainer">
@@ -172,34 +182,18 @@ function showQuestionForm(questionNumber) {
     optionsContainer.innerHTML = ''; // Clear previous options
 
     if (selectedType === 'multipleChoice') {
+        // Generate 4 options by default and hide the "Add Option" button
         let mcOptionsHTML = `
             <div id="mcOptions-${questionNumber}">
-                <div id="mcOption-${questionNumber}-1" class="option">
-                    <label for="mcOption-${questionNumber}-1">Option 1:</label>
-                    <input type="text" id="mcOption-${questionNumber}-1" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                        oninput="updateAnswerKeyDropdown(${questionNumber})">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 1)">Delete</button>
-                </div>
-                <div id="mcOption-${questionNumber}-2" class="option">
-                    <label for="mcOption-${questionNumber}-2">Option 2:</label>
-                    <input type="text" id="mcOption-${questionNumber}-2" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                        oninput="updateAnswerKeyDropdown(${questionNumber})">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 2)">Delete</button>
-                </div>
-                <div id="mcOption-${questionNumber}-3" class="option">
-                    <label for="mcOption-${questionNumber}-3">Option 3:</label>
-                    <input type="text" id="mcOption-${questionNumber}-3" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                        oninput="updateAnswerKeyDropdown(${questionNumber})">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 3)">Delete</button>
-                </div>
-                <div id="mcOption-${questionNumber}-4" class="option">
-                    <label for="mcOption-${questionNumber}-4">Option 4:</label>
-                    <input type="text" id="mcOption-${questionNumber}-4" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                        oninput="updateAnswerKeyDropdown(${questionNumber})">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, 4)">Delete</button>
-                </div>
+                ${[1, 2, 3, 4].map((num) => `
+                    <div id="mcOption-${questionNumber}-${num}" class="option">
+                        <label for="mcOption-${questionNumber}-${num}">Option ${num}:</label>
+                        <input type="text" id="mcOption-${questionNumber}-${num}" name="questions[${questionNumber}][options][]" placeholder="Enter Option ${num}" required>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, ${num})">Delete</button>
+                    </div>
+                `).join('')}
             </div>
-            <button type="button" id="addOption-${questionNumber}" class="btn btn-secondary mt-2" onclick="addOption(${questionNumber})">Add Option</button>
+            <button type="button" id="addOption-${questionNumber}" class="btn btn-secondary mt-2" onclick="addOption(${questionNumber})" style="display: none;">Add Option</button>
             <label for="mcAnswerKey-${questionNumber}" class="mt-2 d-flex">Answer Key:</label>
             <select id="mcAnswerKey-${questionNumber}" name="questions[${questionNumber}][correct_answer]">
                 <option value="1">Option 1</option>
@@ -208,11 +202,7 @@ function showQuestionForm(questionNumber) {
                 <option value="4">Option 4</option>
             </select>
         `;
-
         optionsContainer.innerHTML = mcOptionsHTML;
-
-        // Ensure the dropdown is updated with any changes
-        updateAnswerKeyDropdown(questionNumber);
     } else if (selectedType === 'trueFalse') {
         optionsContainer.innerHTML = `
             <label for="tfAnswer-${questionNumber}">Answer:</label>
@@ -229,75 +219,6 @@ function showQuestionForm(questionNumber) {
     }
 }
 
-function addOption(questionNumber) {
-    const optionsContainer = document.getElementById(`mcOptions-${questionNumber}`);
-    const currentOptions = optionsContainer.getElementsByClassName('option');
-    const optionCount = currentOptions.length;
-
-    if (optionCount < 4) {
-        const newOptionNumber = optionCount + 1;
-        const newOptionHTML = `
-            <div id="mcOption-${questionNumber}-${newOptionNumber}" class="option">
-                <label for="mcOption-${questionNumber}-${newOptionNumber}">Option ${newOptionNumber}:</label>
-                <input type="text" id="mcOption-${questionNumber}-${newOptionNumber}" name="questions[${questionNumber}][options][]" placeholder="Enter Option" required
-                    oninput="updateAnswerKeyDropdown(${questionNumber})">
-                <button type="button" class="btn btn-danger btn-sm" onclick="deleteOption(${questionNumber}, ${newOptionNumber})">Delete</button>
-            </div>
-        `;
-        optionsContainer.insertAdjacentHTML('beforeend', newOptionHTML);
-
-        // Update dropdown after adding a new option
-        updateAnswerKeyDropdown(questionNumber);
-
-        // Hide "Add Option" button if max options are reached
-        if (newOptionNumber === 4) {
-            const addOptionButton = document.getElementById(`addOption-${questionNumber}`);
-            addOptionButton.style.display = 'none';
-        }
-    }
-}
-
-
-
-function deleteOption(questionNumber, optionNumber) {
-    const optionDiv = document.getElementById(`mcOption-${questionNumber}-${optionNumber}`);
-    if (optionDiv) {
-        optionDiv.remove();
-
-        const optionsContainer = document.getElementById(`mcOptions-${questionNumber}`);
-        const remainingOptions = optionsContainer.getElementsByClassName('option');
-
-        // Re-order options and update IDs, names, and event handlers
-        for (let i = 0; i < remainingOptions.length; i++) {
-            const optionDiv = remainingOptions[i];
-            const newOptionNumber = i + 1;
-
-            optionDiv.id = `mcOption-${questionNumber}-${newOptionNumber}`;
-            const label = optionDiv.querySelector('label');
-            const input = optionDiv.querySelector('input');
-            const button = optionDiv.querySelector('button');
-
-            label.textContent = `Option ${newOptionNumber}:`;
-            label.setAttribute('for', `mcOption-${questionNumber}-${newOptionNumber}`);
-            input.id = `mcOption-${questionNumber}-${newOptionNumber}`;
-            input.setAttribute('oninput', `updateAnswerKeyDropdown(${questionNumber})`);
-            button.setAttribute('onclick', `deleteOption(${questionNumber}, ${newOptionNumber})`);
-        }
-
-        // Update dropdown after deletion
-        updateAnswerKeyDropdown(questionNumber);
-
-        // Show the "Add Option" button if less than 4 options remain
-        if (remainingOptions.length < 4) {
-            const addOptionButton = document.getElementById(`addOption-${questionNumber}`);
-            addOptionButton.style.display = 'inline-block';
-        }
-    }
-}
-
-
-
-
 function updateAnswerKeyDropdown(questionNumber) {
     const optionsContainer = document.getElementById(`mcOptions-${questionNumber}`);
     const inputs = optionsContainer.getElementsByTagName('input');
@@ -306,13 +227,28 @@ function updateAnswerKeyDropdown(questionNumber) {
     // Clear existing dropdown options
     answerKeySelect.innerHTML = '';
 
+    // Track if valid options exist
+    let hasValidOptions = false;
+
     // Populate dropdown with updated option values
     for (let i = 0; i < inputs.length; i++) {
         const optionValue = inputs[i].value.trim();
-        const option = document.createElement('option');
-        option.value = i + 1;
-        option.textContent = optionValue || `Option ${i + 1}`;
-        answerKeySelect.appendChild(option);
+
+        if (optionValue) {
+            const option = document.createElement('option');
+            option.value = i + 1;
+            option.textContent = optionValue;
+            answerKeySelect.appendChild(option);
+            hasValidOptions = true;
+        }
+    }
+
+    // If no valid options, add a placeholder
+    if (!hasValidOptions) {
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'No valid options';
+        answerKeySelect.appendChild(placeholder);
     }
 }
 
@@ -335,17 +271,12 @@ function addQuestion() {
                 <!-- Options will be dynamically populated here -->
             </div>
 
-
             <button type="button" class="btn btn-danger mt-2" onclick="deleteQuestion(${questionCount})">Delete Question</button>
         </div>
     `;
 
     const questionsContainer = document.getElementById('questionsContainer');
-    const addQuestionContainer = document.getElementById('addQuestionContainer');
     questionsContainer.insertAdjacentHTML('beforeend', questionHTML);
-
-    const newQuestionElement = document.getElementById(`question-${questionCount}`);
-    newQuestionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function deleteQuestion(questionNumber) {

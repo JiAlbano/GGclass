@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
     
             // Foreign key constraints
-            $table->foreign('student_id')->references('school_id')->on('students')->onDelete('cascade');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->foreign('assessment_type_id')->references('assessment_type_id')->on('assessment_types')->onDelete('cascade');
         });
     }

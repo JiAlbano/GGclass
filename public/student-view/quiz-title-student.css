@@ -110,7 +110,7 @@ body {
     padding: 5px;
     border: none;
     border-radius: 5px;
-    color: #2e3667;
+    color: #283891;
     cursor: pointer;
     width: 250px;
     font-family: "Georgia";
@@ -119,7 +119,7 @@ body {
 }
 
 .challenge-btn.active {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     transition: all 0.3s ease;
     font-family: "Georgia";
@@ -279,7 +279,7 @@ body {
     border: 2px solid #ffc62e;
     padding: 10px;
     border-radius: 10px;
-    background-color: #2e3667;
+    background-color: #283891;
     width: 900px;
     height: 300px;
     position: relative;
@@ -330,8 +330,8 @@ body {
 }
 
 .container-adviser .btn-open:hover {
-    background-color: #4a90e2;
-    color: #ffffff;
+    background-color: gold;
+    color: #283891;
 }
 
 @media (max-width: 992px) { /* For medium screens */
@@ -439,14 +439,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 50px;
-    margin-top: 1px;
+    margin: 26px;
     margin-left: 70px;
 }
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -483,7 +482,7 @@ body {
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -498,6 +497,7 @@ body {
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */
@@ -513,23 +513,18 @@ body {
 
 
 /* Back Button */
-.back-button {
-    margin: 20px;
-    margin-top: 0%;
-}
 
 .back-button button {
     background-color: transparent;
     color: #002171;
     border: none;
-    font-size: 25px;
+    font-size: 16px;
     cursor: pointer;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 5px;
-    position: relative;
-    left: 60px;
+    margin-left: 20px;
 }
 
 .back-button button:hover {

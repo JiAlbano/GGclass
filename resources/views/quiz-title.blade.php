@@ -22,33 +22,36 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
-            <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
-            <h1 class="ggclass-font">GGclass</h1>
-            <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
+    
+<div class="navbar">
+    <div class="left-section" style="cursor: pointer;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">
+        <img class="logo-img" src="{{ asset('finalLogo.png') }}" alt="GGclass Logo">
+        <h1 class="ggclass-font">GGclass</h1>
+        <!-- <h2 class="section-font">{{ $class->section }}</h2> -->
     </div>
-
     
     <!-- User Profile -->
-    <div class="profile-container" style="position: relative;">
+    <div class="profile-container" style="display: flex; position: relative;">
         <img class="profile-img"
             src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}"
             alt="Profile"
             id="logout-btn"
             aria-expanded="false">
-
+        <div class="text-container">
+            <p class="in-game-name">{{ $user->ign }}</p>
+            <p class="user-type">{{ $user->user_type }}</p>
+        </div>
         <!-- Logout Dropdown -->
-        <div class="logout-container" style="display: none; position: absolute; right: 0; z-index: 1000;">
-            <ul class="logout-menu">
-                <li class="logout-item">
+        <div class="logout-container" style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
+            <ul class="logout-menu" style="margin: 0; padding: 0; list-style: none;">
+                <li class="logout-item" style="padding: 8px 12px;">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                     <a class="dropdown-item" href="#" onclick="handleLogout(event)">Log out</a>
                 </li>
-                <li class="logout-item">
-                    <button class="dropdown-item" onclick="window.location.href='{{ route('classroom.index') }}'">Class-List</button>
+                <li class="logout-item" style="padding: 8px 12px;">
+                    <button class="dropdown-item" onclick="window.location.href='{{ route('class-list') }}'" style="border: none; background: none; text-decoration: none; color: #333; cursor: pointer;">Class-List</button>
                 </li>
             </ul>
         </div>
@@ -81,47 +84,24 @@
     }
 </script>
 
-    <div class="top-buttons containers" style=" margin-top: 84px;">
+    <div class="top-buttons containers"  style="margin-left: 245px; margin-right: 245px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-                <button class="btn" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+                <button class="btn" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
+                <button class="btn" onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn  challenge-btn active" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+                <button class="btn  challenge-btn active" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
             </div>
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-                <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+                <button class="btn"  onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
             </div>
         </div>
     </div>
 
-
-<!-- Display profile picture -->
-    <!-- <div class="info-container">
-        <img src="{{ $user->google_profile_image ?? asset('ainz.jpg') }}" alt="Profile Picture" class="container-picture">
-         Display user info
-        <div class="container-name">{{ $user->first_name }} {{ $user->last_name }}</div>
-        <div class="container-info-section">
-            <p class="class-name">Class Name: <span>{{ $class->class_name }}</span></p>
-            <p class="subject">Subject: <span>{{ $class->subject }}</span></p>
-            <p class="section">Section: <span>{{ $class->section }}</span></p>
-            <p class="section">Class Code: <span>{{ $class->class_code }}</span></p>
-        </div>
-        <div class="container-info-email">
-            <p>{{ $user->email }}</p>
-        </div>
-        <div class="container-buttons">
-            <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-            <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-            <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-        </div>
-    </div> -->
-
-    <div class="dashboard-container">
+<div class="dashboard-container">
     <!-- Back Button -->
     <div class="back-button">
         <button onclick="window.history.back()">&#8592; Back</button>
@@ -137,128 +117,70 @@
                 <p>Class Code: {{ $class->class_code }}   </p>
             </div>
             <div class="class-details">
-                <h2>{{ $class->subject }}</h2>
-                <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                    {{ date('h:iA', strtotime($class->start_time)) }} -
+                    {{ date('h:iA', strtotime($class->end_time)) }}
+                </p>
                 <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
                 <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                <!-- <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button> -->
                 <button href="#">Gradebook</button>
             </div>
         </div>
 
         <div class="container-adviser">
-    <div class="container-sm d-flex flex-column align-items-center position-relative p-3">
-        <!-- Open Button -->
-        <button class="btn btn-open position-absolute" id="open-button" onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
-            <i class="fas fa-play-circle"></i> Open
-        </button>
+            <div class="container-sm d-flex flex-column align-items-center position-relative p-3">
+                <!-- Open Button -->
+                <button class="btn btn-open position-absolute" id="open-button" 
+                    onclick="window.location.href='{{ route('test_and_quizzes.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+                    <i class="fas fa-play-circle"></i> Open
+                </button>
 
-        <!-- Edit Button -->
-        <button id="edit-button" class="edit-button">
-            <i class="fas fa-edit"></i> Edit
-        </button>
+                <!-- Edit Button -->
+                <button id="edit-button" class="edit-button">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
 
-        <div class="grid-container">
-            <!-- Label and Title -->
-            <div class="grid-item">
-                <div class="info-box">
-                    <label for="quiz-title2" class="qtitle font-weight-bold mb-1 color">Quiz Title:</label>
-                    <h3 class="mb-2 text-white" id="quiz-title2">{{ $quiz->title }}</h3>
-                </div>
-            </div>
+                <div class="grid-container">
+                    <!-- Label and Title -->
+                    <div class="grid-item">
+                        <div class="info-box">
+                            <label for="quiz-title2" class="qtitle font-weight-bold mb-1 color">Quiz Title:</label>
+                            <h3 class="mb-2 text-white" id="quiz-title2">{{ $quiz->title }}</h3>
+                        </div>
+                    </div>
 
-            <!-- Label and Description -->
-            <div class="grid-item">
-                <div class="info-box">
-                    <label for="quiz-description" class="font-weight-bold color white mb-1">Description:</label>
-                    <p class="qdescription mb-2 text-white" id="quiz-description">{{ $quiz->description }}</p>
-                </div>
-            </div>
+                    <!-- Label and Description -->
+                    <div class="grid-item">
+                        <div class="info-box">
+                            <label for="quiz-description" class="font-weight-bold color white mb-1">Description:</label>
+                            <p class="qdescription mb-2 text-white" id="quiz-description">{{ $quiz->description }}</p>
+                        </div>
+                    </div>
 
-            <!-- Label and Creation Date -->
-            <div class="grid-item">
-                <div class="info-box">
-                    <label for="quiz-creation-date" class="qtitle font-weight-bold mb-1 color">Created on:</label>
-                    <p class="mb-2 text-white" id="quiz-creation-date">{{ $quiz->created_at->format('F j, Y') }}</p>
-                </div>
-            </div>
+                    <!-- Label and Creation Date -->
+                    <div class="grid-item">
+                        <div class="info-box">
+                            <label for="quiz-creation-date" class="qtitle font-weight-bold mb-1 color">Created on:</label>
+                            <p class="mb-2 text-white" id="quiz-creation-date">{{ $quiz->created_at->format('F j, Y') }}</p>
+                        </div>
+                    </div>
 
-            <!-- Number of Questions -->
-            <div class="grid-item">
-                <div class="info-box">
-                    <label for="quiz-questions-count" class="qtitle font-weight-bold mb-1 color">Number of Questions:</label>
-                    <p class="qnumber mb-2 text-white" id="quiz-questions-count">{{ $quiz->questions->count() }}</p>
+                    <!-- Number of Questions -->
+                    <div class="grid-item">
+                        <div class="info-box">
+                            <label for="quiz-questions-count" class="qtitle font-weight-bold mb-1 color">Number of Questions:</label>
+                            <p class="qnumber mb-2 text-white" id="quiz-questions-count">{{ $quiz->questions->count() }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<style>
-    .text-white {
-    color: white !important;
-}
-
-/* If you prefer to target specific elements, adjust them directly */
-.qtitle, .qdescription {
-    color: white;
-}
-
-/* You can also specify styles for label elements if needed */
-label.color.white {
-    color: white;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
-    gap: 20px;
-    width: 100%;
-}
-
-/* Style for each grid item */
-.grid-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-/* Info Box styling for each label and data pair */
-.info-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #283891; /* Darker background for the boxes */
-    padding: 10px;
-    border-radius: 8px;
-    width: 100%;
-}
-
-/* Title styling */
-.qtitle {
-    color: white;
-    font-weight: bold;
-}
-
-/* Description styling */
-.qdescription {
-    color: white;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-</style>
-
-
-    {{-- <div class="quiz-container">
-        <button id="edit-button" class="edit-button">Edit</button>
-        <h1 id="quiz-title2">{{ $quiz->title }}</h1>
-        <p id="quiz-description">{{ $quiz->description }}</p>
-        <button class="open-button" id="open-button" onclick="window.location.href='{{ route('quiz.take', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
-    </div> --}}
 
     <!-- Modal for editing -->
     <div id="edit-modal" class="modal">
@@ -271,7 +193,9 @@ label.color.white {
             <label for="new-description" class="quiz-description">Quiz Description:</label>
             <br>
             <textarea id="new-description" placeholder="Enter new description">{{ $quiz->description }}</textarea>
-            <button class="save" id="save-button">Save</button>
+            <div class="button-container">
+                <button class="save" id="save-button">Save</button>
+            </div>
         </div>
     </div>
 

@@ -91,10 +91,16 @@
                     <h3 class="mb-2">{{ $quiz->title }}</h3>
                     <p class="mb-0">{{ $quiz->description }}</p>
                     <!-- Open Button -->
+                    @if ($challengetype =='quiz')
                     <button class="btn btn-open position-absolute"
-                        onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+                    onclick="window.location.href='{{ route('quiz-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button> 
+                    @else
+                    <button class="btn btn-open position-absolute"
+                        onclick="window.location.href='{{ route('exam-take-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">Open</button>
+                    @endif
+                    
                     <label class="note-time">NOTE: Starting this challenge activates the timer. You have
-                        <b>{{ $quiz->time_duration }} {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> and
+                        <b style="color: gold;">{{ $quiz->time_duration }} {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> and
                         can't return to previous questions after moving forward.</label>
                 </div>
             </div>

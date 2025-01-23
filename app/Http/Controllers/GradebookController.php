@@ -12,14 +12,14 @@ class GradebookController extends Controller
     // Function to display the challenges page
     public function show($classId)
     {
-        // Fetch all users
+        // Fetch the authenticated user
         $user = Auth::user();
-
+    
         // Fetch the class details
         $class = Classroom::findOrFail($classId);
-
-        // Pass class, users, and challenges to the view
-        return view('gradebook', compact('class', 'user'));
+    
+        // Pass class details, user, and classId to the view
+        return view('gradebook', compact('class', 'user', 'classId'));
     }
 
 

@@ -16,7 +16,7 @@ class CreateAssessmentsTable extends Migration
         Schema::create('assessments', function (Blueprint $table) {
             $table->unsignedBigInteger('assessment_id')->primary(); 
             $table->string('assessment_name'); 
-            $table->integer('grading_system'); 
+            $table->integer('assessment_percentage'); 
             $table->timestamps(); // 
         });
     }

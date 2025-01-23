@@ -6,28 +6,6 @@
 
 }
 
-.text-container {
-    display: flex;
-    flex-direction: column;  /* Align text vertically */
-    justify-content: center; /* Center text vertically in the container */
-    margin-left: 10px; /* Reduce space between the image and text */
-}
-
-.in-game-name {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 14px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
-.user-type {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 12px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
 
 body {
     font-family: Georgia;
@@ -38,17 +16,14 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: #283891;  /* Dark gradient for a modern feel */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family:Georgia;
+    background-color: #283891;
+    font-family: Georgia;
     position: fixed;
+    height: 65px;
     width: 100%;
     top: 0;
     z-index: 999;
-    border-bottom: 2px solid #FFC62E;
 }
 
 
@@ -58,21 +33,29 @@ body {
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 20px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+    height: 60px;
+    margin-right: 10px;
+    position: relative;
+    top: -16px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .ggclass-font {
-    font-size: 23px;
-    color: #FFFFFF;
-    margin-right: 10px;
-    margin-top: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -1px;
+    top: -6px;
 }
 
 .ggclass-font:hover {
-color:#FFC62E;
+    color: #ffd700;
 }
 
 .section-font {
@@ -82,13 +65,15 @@ color:#FFC62E;
     margin-top: 10px;
 }
 
-
 .profile-img {
-    width: 40px;
     height: 40px;
+    width: 40px;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
-    transition: transform 0.3s, box-shadow 0.3s;
+    object-fit: cover;
+    margin-right: 12px;
+    position: relative;
+    left: -25px;
+    margin-bottom: 25px;
 }
 
 .profile-img:hover {
@@ -96,35 +81,70 @@ color:#FFC62E;
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
 }
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
+.text-container {
+    display: flex;
+    flex-direction: column;  /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
+}
+
+.in-game-name {
+    position: relative;
+    left: -10px;
+    top: -10px;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+}
+
+.user-type {
+    position: relative;
+    top: -21px;
+    left: -33px;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 15px;
+    color: white;
 }
 
 .row .btn {
-    padding: 5px; /* Add padding inside the buttons */
+    padding: 6px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #283891;
     cursor: pointer;
-    width: 100%; /* Make buttons take the full width of their column */
+    width: 100px;
+    font-family: "Georgia";
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 80px; 
+    border:none; 
+    width: 100px;
 }
 
+
+
 .challenge-btn.active {
-    background-color: #283891; /* Active button color */
-    color: white; /* Text color for active button */
-    transition: all 0.3s ease;
+    background-color: #283891;
+    color: #ffffff;
+/*    transition: all 0.3s ease;*/
+    font-size: 20px;
+    font-family: "Georgia";
+    font-weight: bold;
+    border: none;
+    width: 1000px;
+    transition: none;
 }
 
 .btn:hover {
-    color: #FFC62E;
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
+    width: 100%;
+    transition: none;
 }
+
 
 
 .info-container {
@@ -297,9 +317,11 @@ color:#FFC62E;
     transition: background-color 0.3s ease;
     margin-top: 20px;
 }
-/* Hover effect for the open button */
+
 .btn-open:hover {
-    background-color: #FFC62E;
+    background-color: gold; /* Gold background on hover */
+    color: black; /* Black text on hover */
+    width: 55px;
 }
 
 /* Responsive adjustments */
@@ -342,7 +364,10 @@ color:#FFC62E;
 }
 
 .container-adviser .btn-open:hover {
-    background-color: #2be03d;
+    background-color: gold;
+    color: #000;
+    border: 1px solid #000000;
+
 }
 
 /* Styling for the edit button */
@@ -360,7 +385,9 @@ color:#FFC62E;
 }
 
 .edit-button:hover {
-    background-color: #FFC62E;
+    background-color: gold;
+    color: #000;
+    border: 1px solid #000000;
 }
 
 
@@ -378,7 +405,7 @@ color:#FFC62E;
 }
 
 .modal-content {
-    background: #050834;
+    background: #283891;
     color: #f0f0f0;
     padding: 20px;
     border-radius: 8px;
@@ -398,17 +425,21 @@ color:#FFC62E;
 .edit-quiz {
     font-size: 28px;
     color: #FFC62E;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);*/
     margin-bottom: 25px;
     text-align: center;
 }
 
 /* Styling for the labels */
-.edit-title, .quiz-description {
+.edit-title {
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-size: 16px;
     color: #ffffff;
+}
+
+.quiz-description{
+    margin-bottom: 0%;
 }
 
 /* Styling for the input field */
@@ -419,11 +450,11 @@ input[type="text"] {
     border-radius: 10px;
     background-color: #E4E4E4;
     color: #2A2E34;
-    font-size: 11px;
+    font-size: 16px;
     outline: none;
     transition: border-color 0.3s ease;
-    margin-bottom: 40px;
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+/*    margin-bottom: 40px;*/
+    font-family: Georgia; /* Retro-futuristic font */
 }
 
 input[type="text"]:focus {
@@ -433,17 +464,17 @@ input[type="text"]:focus {
 /* Styling for the textarea */
 textarea {
     width: calc(100% - 22px);
-    padding: 20px;
-    padding-bottom: 20px;
+    padding: 10px;
+    padding-bottom: 10px;
     border: 2px solid #2A2E34;
     border-radius: 10px;
     background-color: #E4E4E4;
     color: #2A2E34;
-    font-size: 11px;
+    font-size: 16px;
     resize: vertical; /* Allow vertical resize */
     outline: none;
     transition: border-color 0.3s ease;
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+    font-family:georgia; /* Retro-futuristic font */
     margin-bottom: 20px;
 }
 
@@ -451,31 +482,39 @@ textarea:focus {
     border-color: #FFC62E;
 }
 
-/* Styling for the button */
-button.save {
-    background: #E4E4E4;
-    border-radius: 10px;
-    color: #050834;
-    padding: 15px 15px;
-    font-size: 11px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    display: block;
-    margin-top: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    font-family: 'Press Start 2P', cursive; /* Retro-futuristic font */
+/* Base styles for the save button */
+.button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
 
+/* Save button styles */
+.save {
+    background-color: #E4E4E4; /* Green background */
+    color: #283891; /* White text */
+    border: none; /* Remove default border */
+    width: 100px; /* Fixed width */
+    padding: 8px 0; /* Adjust padding for height */
+    font-size: 14px; /* Smaller font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Slight shadow */
+    transition: all 0.3s ease; /* Smooth hover effect */
+    margin-top: 20px; /* Space above the button */
+    align-self: center; /* Center the button horizontally */
 }
 
-button.save:hover {
-    background: #FFC62E;
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-    color: #2A2E34;
+.save:hover {
+    background-color: gold; /* Darker green on hover */
+    color: black; /* Change text color to black */
 }
 
-button.save:active {
-    transform: scale(0.95); /* Button shrink effect on click */
+.save:active {
+    background-color: #3e8e41; /* Darker green when pressed */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Pressed shadow */
+    transform: translateY(2px); /* Slight movement for press effect */
 }
 
 .logout-container {
@@ -516,123 +555,174 @@ button.save:active {
 }
 
 
-    /* General container styling */
+/* General container styling */
+.class-card {
+    width: 300px;
+    height: 441px;
+    border: 2px solid #050834;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    position: relative;
+    margin: 30px;
+    margin-top: 8px;
+    margin-left: 100px;   
+}
+
+/* Header section */
+.class-header {
+    background-color: #283891;
+    color: white;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Details section */
+.class-details {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.class-details h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #050834;
+    font-weight: bold;
+}
+
+.class-details p {
+    margin: 5px 0;
+    color: #333333;
+    font-size: 14px;
+}
+
+/* Buttons */
+.class-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.class-buttons button {
+    background-color: #283891;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.class-buttons button:hover {
+    background-color: #1f3a8b;
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 400px) {
     .class-card {
-        width: 300px;
-        height: 441px;
-        border: 2px solid #050834;
-        border-radius: 10px;
-        overflow: hidden;
-        background-color: #ffffff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-        margin: 20px auto;
-        position: relative;
-        margin: 50px;
-        margin-left: 70px;
-        margin-top: 16px;
+        width: 90%;
     }
-    
-    /* Header section */
-    .class-header {
-        background-color: #2b52b2;
-        color: white;
-        text-align: center;
-        padding: 10px 5px;
-        font-size: 14px;
-        font-weight: bold;
-    }
-    
-    /* Details section */
-    .class-details {
-        text-align: center;
-        padding: 10px;
-        font-size: 16px;
-    }
-    
-    .class-details h2 {
-        margin: 5px 0;
-        font-size: 18px;
-        color: #050834;
-        font-weight: bold;
-    }
-    
-    .class-details p {
-        margin: 5px 0;
-        color: #333333;
-        font-size: 14px;
-    }
-    
-    /* Buttons */
-    .class-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        align-items: center;
-    }
-    
+
     .class-buttons button {
-        background-color: #2b52b2;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        width: 80%;
-        padding: 10px 0;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: background-color 0.3s ease;
+        width: 100%;
     }
+}
+
+/* Back Button */
+.back-button {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.back-button button {
+    background-color: transparent;
+    color: #002171;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-button button:hover {
+    text-decoration: underline;
+}
+
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+}
     
-    .class-buttons button:hover {
-        background-color: #1f3a8b;
-    }
-    
-    /* Optional: Add responsive behavior */
-    @media (max-width: 400px) {
-        .class-card {
-            width: 90%;
-        }
-    
-        .class-buttons button {
-            width: 100%;
-        }
-    }
-    
-    /* Back Button */
-    .back-button {
-        margin-left: 20px;
-        margin-bottom: 10px;
-    }
-    
-    .back-button button {
-        background-color: transparent;
-        color: #002171;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .back-button button:hover {
-        text-decoration: underline;
-    }
-    
-    .content-container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-        
-    
-    /* General Adjustments */
-    .dashboard-container {
-        display: flex;
-    /*    margin-bottom: auto;*/
-        flex-direction: column;
-    
-    }
+
+/* General Adjustments */
+.dashboard-container {
+    display: flex;
+/*    margin-bottom: auto;*/
+    flex-direction: column;
+
+}
+.text-white {
+    color: white !important;
+}
+
+/* If you prefer to target specific elements, adjust them directly */
+.qtitle, .qdescription {
+    color: white;
+}
+
+/* You can also specify styles for label elements if needed */
+label.color.white {
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 20px;
+    width: 100%;
+}
+
+/* Style for each grid item */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Info Box styling for each label and data pair */
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #283891; /* Darker background for the boxes */
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Title styling */
+.qtitle {
+    color: white;
+    font-weight: bold;
+}
+
+/* Description styling */
+.qdescription {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+}

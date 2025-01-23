@@ -1,12 +1,170 @@
-@extends('components.layout')
+@extends('components.layout2')
 
 
 @section('landing')
 {{-- Custom CSS --}}
-<link rel="stylesheet" href="{{secure_asset('gradebook-css/grade-book/student-data/left-corner.css')}}">
-<link rel="stylesheet" href="{{secure_asset('gradebook-css/grade-book/student-assessment/student-assessment.css')}}">
-<link rel="stylesheet" href="{{asset('gradebook-css/grade-book/student-data/left-corner.css')}}">
-<link rel="stylesheet" href="{{asset('gradebook-css/grade-book/student-assessment/student-assessment.css')}}">
+<link rel="stylesheet" href="{{ secure_asset('css/class-dashboard/class-list.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/class-dashboard/class-dashboard.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/components/main2.css') }}">
+<link rel="stylesheet" href="{{ asset('css/class-dashboard/class-list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/class-dashboard/class-dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('css/components/main2.css') }}">
+
+<link rel="stylesheet" href="{{ secure_asset('grade-book/student-assessment/left-corner.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('grade-book/student-assessment/table.css') }}">
+<link rel="stylesheet" href="{{asset('grade-book/student-assessment/student-assessment.css')}}">
+<style>
+    .nav-design {
+        height: 65px;
+        background: #283891;
+    }
+    
+    .navbar-brand.logo-text {
+        color: white;
+        display: flex;
+        align-items: center;
+        font-family: "Georgia";
+        font-weight: bold;
+        font-size: 30px;
+    }
+    
+    .navbar-brand.user-text {
+        color: white;
+        display: flex;
+        align-items: center;
+        position: relative;
+        right: 20px;
+    }
+    
+    .in-game-name {
+        position: relative;
+        top: 20px;
+        font-family: "Georgia";
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .navbar-brand.user-text:hover {
+        color: white;
+        cursor: default;
+    }
+    
+    .user-type {
+        position: relative;
+        top: 2px;
+        font-family: "Georgia";
+        font-weight: normal;
+        font-size: 15px;
+    }
+    
+    .navbar-brand.logo-text:hover {
+        color: #ffd700;
+    }
+    
+    .logo-img {
+        height: 60px;
+        margin-right: 10px;
+    }
+    
+    .user-img {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+    
+    .create-button {
+        height: 30px;
+        width: 30px;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+    
+    .header a {
+        font-family: "Georgia";
+        color: #2e3667;
+        font-size: 25px;
+        font-weight: bold;
+        margin-right: 160px;
+        text-decoration: none;
+        position: relative;
+        left: 130px;
+    }
+    
+    .header a:hover {
+        color: #ffd700;
+    }
+    
+    .header {
+        position: relative;
+        left: 120px;
+        top: 5px;
+    }
+    
+    .custom-line {
+        height: 2px;
+        background-color: #283891;
+        position: relative;
+        left: 330px;
+        top: 13px;
+    }
+    
+    .first-line {
+        position: relative;
+        left: 320px;
+        top: 10px;
+    }
+    
+    .text {
+        font-family: "Georgia";
+        font-size: 25px;
+        color: #2e3667;
+        font-weight: bold;
+        position: relative;
+        top: -5px;
+    }
+    
+    .export {
+        background-color: #283891;
+        color: white;
+        height: 45px;
+        width: 120px;
+        border-radius: 10px;
+        border-color: #ffd700;
+        font-family: "Roboto", serif;
+        font-size: 18px;
+        font-weight: 500;
+        font-style: normal;
+        text-align: center;
+        position: relative;
+        left: -10px;
+        top: -10px;
+    }
+    
+    .export:hover {
+        transform: scale(1.03);
+        transition: transform 0.2s ease;
+        background-color: #4a90e2;
+        cursor: pointer;
+    }
+    
+    .custom-line-2 {
+        height: 2px;
+        background-color: #283891;
+        position: relative;
+        left: 330px;
+        top: 10px;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .main-body {
+        background-color: #f5f5f5;
+        padding-bottom: 30px;
+    }
+    </style>
 <header>
     <div class="header container-md text-center mt-2">
         <a href="#">Bulletin</a>
@@ -94,6 +252,7 @@
 
   </div>
 </main>
+
 
 
 @endsection

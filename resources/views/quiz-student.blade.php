@@ -56,13 +56,11 @@
         </div>
     </div>
 
+    <div class="back-button" style="margin-left: 20px;">
+        <button onclick="window.history.back()">&#8592; Back</button>
+    </div>
 
     <div class="dashboard-container">
-        <!-- Back Button -->
-        <!--     <div class="back-button">
-        <button onclick="window.history.back()">&#8592; Back</button>
-    </div> -->
-
         <div class="content-container">
             <!-- Class Card -->
             <div class="class-card">
@@ -90,7 +88,8 @@
             <div class="bulletin-list">
                 @foreach($quizzes as $quiz)
                     <?php $disable = in_array($quiz->id, $studentChallengesTaken->toArray()); ?>
-                    <button type="button" class="bulletin-item {{ $disable ? 'disabled-btn' : 'quiz-button' }}"
+                    @if ($challengetype=='quiz')
+                        <button type="button" class="bulletin-item {{ $disable ? 'disabled-btn' : 'quiz-button' }}"
                             {{ $disable ? 'disabled' : '' }}
                             style="background-color: {{ $disable ? '#cdcdcd' : '' }};"
                             onclick="window.location.href='{{ route('quiz-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
@@ -99,7 +98,7 @@
                         </div>
                         <div class="container-adviser" style="display: flex; flex-direction: column; align-items: flex-start;">
                             <div class="bulletin-content">
-                                <p class="bulletin-title">Quiz: {{ $quiz->title }}</p>
+                                <p class="bulletin-title">Title: {{ $quiz->title }}</p>
                                 <p class="bulletin-date">{{ $quiz->created_at->format('M d, Y') }}</p>
                             </div>
                         </div>
@@ -107,7 +106,28 @@
                         <div class="bulletin-options">
                             <div class="options-btn">•••</div>
                         </div>
+                        </button>
+                    @else
+                    <button type="button" class="bulletin-item {{ $disable ? 'disabled-btn' : 'quiz-button' }}"
+                        {{ $disable ? 'disabled' : '' }}
+                        style="background-color: {{ $disable ? '#cdcdcd' : '' }};"
+                        onclick="window.location.href='{{ route('exam-title-student', ['classId' => $class->id, 'quizId' => $quiz->id]) }}'">
+                    <div class="bulletin-icon">
+                        <img src="{{ asset('megaphone.png') }}" />
+                    </div>
+                    <div class="container-adviser" style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <div class="bulletin-content">
+                            <p class="bulletin-title">Title: {{ $quiz->title }}</p>
+                            <p class="bulletin-date">{{ $quiz->created_at->format('M d, Y') }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bulletin-options">
+                        <div class="options-btn">•••</div>
+                    </div>
                     </button>
+                    @endif
+                    
                 @endforeach
             </div>
         </div>

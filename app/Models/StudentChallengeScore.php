@@ -21,4 +21,14 @@ class StudentChallengeScore extends Model
         'number_of_items', 
         'exam_type', // Ensure this column exists
     ];
+    public function challenge()
+{
+    return $this->belongsTo(Challenge::class);
+}
+
+public function student()
+{
+    return $this->belongsTo(User::class, 'student_id');
+}
+
 }

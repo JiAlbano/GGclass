@@ -2,6 +2,7 @@
 <html lang="en">
 <head> 
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
@@ -94,19 +95,19 @@
 </script>
 
 
-<div class="top-buttons containers" style=" margin-top: 84px;">
+<div class="top-buttons containers" style="margin-left: 240px; margin-right: 240px;">
     <div class="row justify-content-center"> <!-- Added justify-content-center class -->
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
-            <button class="btn" style="font-size: 16px; border:none; width: 100%;" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+            <button class="btn" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%; " onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
+            <button class="btn" onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+            <button class="btn" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
         </div>
         <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            <button class="btn" style="font-size: 16px; width: 100%;" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+            <button class="btn" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
         </div>
     </div>
 </div>
@@ -122,13 +123,16 @@
                 <p>Class Code: {{ $class->class_code }}   </p>
             </div>
             <div class="class-details">
-                <h2>{{ $class->subject }}</h2>
-                <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                    {{ date('h:iA', strtotime($class->start_time)) }} -
+                    {{ date('h:iA', strtotime($class->end_time)) }}
+                </p>
                 <p>Room: {{ $class->room }}</p>
             </div>
             <div class="class-buttons">
                 <button class="btn challenge-btn active" onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                <!-- <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button> -->
                 <button href="#">Gradebook</button>
             </div>
         </div>
@@ -137,44 +141,41 @@
             <!-- Attendance label, date picker, and search input -->
             <div class="attendance-header">
                 <label class="attendance-label">Student's Attendance</label>
-                <input type="date" class="attendance-date-picker" id="attendance-date">
+                <input type="date" class="attendance-date-picker" id="attendance-date" value="{{ request()->query('date', Date('Y-m-d')) }}">
                 <!-- Search Input Added -->
-                <input type="text" class="attendance-search" id="student-search" placeholder="Search Student">
+                <!-- <input type="text" class="attendance-search" id="student-search" placeholder="Search Student"> -->
             </div>
 
             <!-- Main content container -->
             <div class="container-sm my-4 d-flex flex-column justify-content-start align-items-center">
                 <!-- Student Containers -->
                 <div class="student-container d-flex flex-column justify-content-start align-items-center w-100">
+                    @foreach ($classUsers as $classUser)
                     <div class="container2 d-flex justify-content-between align-items-center w-100">
                         <!-- Left side: Student's picture and name -->
                         <div class="student-info d-flex align-items-center">
-                            <img src="{{ asset('img/ainz.jpg') }}" alt="Student Picture" class="student-image">
-                            <span class="student-name">John Ignacious Albano</span>
+                            <img src="{{ $classUser->google_profile_image }}" alt="Student Picture" class="student-image">
+                            <span class="student-name">{{ $classUser->first_name }} {{ $classUser->last_name }} ({{ $classUser->ign }})</span>
                         </div>
-
                         <!-- Middle: Input note -->
-                        <div class="student-note d-flex align-items-center">
-                            <input type="text" class="form-control note-input" placeholder="Enter note here" id="note-1">
-                            <button class="btn btn-save-note" id="save-note-1" style="display: none;">Save</button>
+                        <div class="student-note">
+                            <input type="text" class="form-control note-input" placeholder="Enter note here" data-id="{{$classUser->id}}" data-userid="{{$classUser->student_id}}" value="{{$classUser->note}}">
+                            <button class="btn btn-save-note save-note" style="display: none;">Save</button>
                         </div>
 
                         <!-- Right side: Dropdown button -->
                         <div class="attendance-dropdown">
-                            <button id="status-btn" class="btn btn-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Status
-                            </button>
-                            <ul class="dropdown-menu" id="status-dropdown">
-                                <li><a class="dropdown-item" href="#" data-status="Present">Present</a></li>
-                                <li><a class="dropdown-item" href="#" data-status="Absent">Absent</a></li>
-                                <li><a class="dropdown-item" href="#" data-status="Late">Late</a></li>
-                                <li><a class="dropdown-item" href="#" data-status="Excuse">Excuse</a></li>
-                            </ul>
+                            <select class="status">
+                                <option value="">Status</option>
+                                <option value="Present" {{$classUser->status == 'Present' ? 'selected' : ''}}>Present</option>
+                                <option value="Absent" {{$classUser->status == 'Absent' ? 'selected' : ''}}>Absent</option>
+                                <option value="Late" {{$classUser->status == 'Late' ? 'selected' : ''}}>Late</option>
+                                <option value="Excused" {{$classUser->status == 'Excused' ? 'selected' : ''}}>Excused</option>
+                            </select>
                         </div>
                     </div>
+                    @endforeach     
                 </div>
-
-                <!-- Repeat the above structure for each student -->
             </div>
         </div>
     </div>
