@@ -10,26 +10,26 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->integer('token_count')->default(0);
-            $table->string('email')->unique();
-            $table->string('first_name');
-            $table->string('middle_initial')->nullable();
-            $table->string('last_name');
-            $table->string('id_number')->unique()->nullable();
-            $table->unsignedBigInteger('course_id')->default(0);
-            $table->string('ign')->nullable();
-            $table->string('user_type');
-            $table->string('department')->nullable();
-            $table->string('google_profile_image')->nullable(); // For Google profile image
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable(); 
-            $table->rememberToken();
-            $table->timestamps();
-
-        });
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->id();
+        $table->integer('token_count')->default(0);
+        $table->string('email')->unique();
+        $table->string('first_name');
+        $table->string('middle_initial')->nullable();
+        $table->string('last_name');
+        $table->string('id_number')->unique()->nullable();
+        $table->unsignedBigInteger('course_id')->default(0);
+        $table->string('ign')->nullable();
+        $table->string('user_type');
+        $table->string('department')->nullable();
+        $table->string('google_profile_image')->nullable();
+        $table->timestamp('email_verified_at')->nullable();
+        $table->string('password')->nullable();
+        $table->integer('grading_system')->default(2018); // New column
+        $table->rememberToken();
+        $table->timestamps();
+    });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

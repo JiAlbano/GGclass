@@ -15,11 +15,12 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             // Define the columns of the table
-            $table->unsignedBigInteger('school_id')->primary();   
-            $table->string('full_name');            
-            $table->string('in_game_name');          
-            $table->string('email')->unique();      
-            $table->string('course');                
+            $table->unsignedBigInteger('student_id')->primary();   
+            $table->string('full_name');         
+            $table->string('email')->unique();   
+            $table->string('course');      
+            $table->string('in_game_name');       
+            $table->integer('grading_system');     
             $table->timestamps();                   
         });
     }

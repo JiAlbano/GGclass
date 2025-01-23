@@ -46,7 +46,7 @@ $(document).ready(function() {
             score: score,
             token_used: tokenUsed,
             total_score: totalScore,
-            challenge_type: 'exam',
+            challenge_type: 'quiz',
             number_of_items: questions.length
         }]
         submitQuiz();

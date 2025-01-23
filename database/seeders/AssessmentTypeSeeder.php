@@ -13,38 +13,6 @@ class AssessmentTypeSeeder extends Seeder
         DB::table('assessment_types')->insert([
 
             [
-                'assessment_type_name' => 'Prelim Exam',
-                'total_scores' => '60',
-                'assessment_id' => '202400001', // Links to 'Exams'
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-            [
-                'assessment_type_name' => 'Midterm Exam',
-                'total_scores' => '60',
-                'assessment_id' => '202400002', // Links to 'Exams'
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-            [
-                'assessment_type_name' => 'Prefinal Exam',
-                'total_scores' => '60',
-                'assessment_id' => '202400003', // Links to 'Exams'
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-            [
-                'assessment_type_name' => 'Final Exam',
-                'total_scores' => '60',
-                'assessment_id' => '202400004', // Links to 'Exams'
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-            [
                 'assessment_type_name' => 'Quiz 1',
                 'total_scores' => '20',
                 'assessment_id' => '202400005', // Links to 'Tests and Quizzes'

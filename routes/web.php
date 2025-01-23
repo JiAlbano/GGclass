@@ -254,15 +254,19 @@ Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('class
 
 //gradebook functionality
 
-// students-list.blade.php
+ Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name('students-list');
+ 
+// grade-book.student-list.student-list
 Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
 
-// student-data.blade.php
-// Route::view('/students-data', 'grade-book.student-data.student-data')->name('student-data');
-Route::get('/student/{school_id}', [StudentController::class, 'show'])->name('student.show');
+// grade-book.student-data.student-assessment
+Route::get('/students/{id}', [StudentController::class, 'showschool'])->name('student-details');
 
-// student-assessment.blade.php
-Route::get('/student-assessment/{school_id}/{assessment_id}', [StudentController::class, 'assessment'])->name('student-assessment');
+// grade-book.student-assessment.student-score
+Route::get('/students/{student_id}/assessment/{assessment_id}/scores', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
+
+// Route to view a student's exam scores
+Route::get('/students/{student_id}/exam/{exam_id}/scores', [StudentController::class, 'viewExamScores'])->name('student-exam-scores');
 
 // Route for exporting the Excel file
 Route::get('/students-list/export', [StudentController::class, 'export'])->name('student-list.export');

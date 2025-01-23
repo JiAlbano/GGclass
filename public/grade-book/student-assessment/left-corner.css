@@ -1,0 +1,132 @@
+.left-right {
+    display: flex;
+  }
+  
+  .left-container {
+    position: relative;
+    left: -50px;
+    height: 400px;
+    width: 330px;
+    border: 2px solid #283891; 
+    background-color: #FFFFFF;
+    color: white;
+    font-family: "Roboto", serif;
+    font-weight: 200;
+    font-style: normal;
+    border-radius: 15px;
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .class-theme {
+    background-color: #283891;
+    height: 110px;
+    width: 320px;
+    border-radius: 10px 10px 0px 0px;
+    position: relative;
+    top: 0;
+  }
+  
+  .school-year {
+    position: relative;
+    left: 20px;
+  }
+  .semester {
+    position: relative;
+    left: 20px;
+    top: -10px;
+  }
+  .section {
+    position: relative;
+    left: 20px;
+    top: -5px;
+  }
+  
+  .class {
+    color: #2E3667;
+    position: relative;
+    left: 20px;
+    top: -5px
+  }
+  
+  .schedule {
+    color: #2E3667;
+    position: relative;
+    left: 20px;
+    top: -15px
+  }
+  
+  .room {
+    color: #2E3667;
+    position: relative;
+    left: 20px;
+    top: -15px
+  }
+  
+  .line-between {
+    width: 280px;        
+    margin: 0 auto;     
+    border: none;      
+    height: 1px;       
+    background-color: #2E3667;
+    height: 2px;
+    position: relative;
+    top: -10px;
+  }
+  .btns {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: "Roboto", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  .first-button {
+    height: 40px;
+    width: 190px;
+    background-color: #283891;
+    position: relative;
+    left: 65px;
+    top: 10px;
+    border-radius: 10px;
+    border: 2px solid #FFD700; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .second-button {
+    height: 40px;
+    width: 190px;
+    background-color: #283891;
+    position: relative;
+    left: 65px;
+    top: 15px;
+    border-radius: 10px;
+    border: 2px solid #FFD700; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .third-button {
+    height: 40px;
+    width: 190px;
+    background-color: #283891;
+    position: relative;
+    left: 65px;
+    top: 20px;
+    border-radius: 10px;
+    border: 2px solid #FFD700; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .first-button:hover, .second-button:hover, .third-button:hover , .fourth-button:hover{
+    transform: scale(1.03);
+    transition: transform 0.2s ease;
+    background-color: #4A90E2;
+    cursor: pointer;
+  }
+  
