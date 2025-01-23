@@ -141,30 +141,6 @@
                             onclick="window.location.href='{{ route('students-list', ['classId' => $class->id]) }}'">Gradebook</button>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-                <div class="class-details">
-                    <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
-                    <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
-                        {{ date('h:iA', strtotime($class->start_time)) }} -
-                        {{ date('h:iA', strtotime($class->end_time)) }}
-                    </p>
-                    <p class="rm">Room: <span class="uppercase">{{ $class->room }}</span></p>
-                </div>
-
-                <div class="custom-line container-sm container-md container-lg"></div>
-
-                <div class="class-buttons">
-                    <button class="btns"
-                        onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                    <button class="btns"
-                        onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-                        <button class="btns"
-                        onclick="window.location.href='{{ route('students-list', ['classId' => $class->id]) }}'">Gradebook</button>
-                </div>
-
-=======
->>>>>>> 26980eb8b953d2e41726aaffe84776a103a9af7e
             </div>
 
             @yield('landing')
