@@ -77,6 +77,7 @@ const saveAttendance = (noteInput, noteValue, status) => {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(response) {
+            location.reload();
             console.log('Success:', response);
         },
         error: function(xhr, status, error) {
