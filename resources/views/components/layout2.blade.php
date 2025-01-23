@@ -61,14 +61,6 @@
                         <!-- Logout Dropdown -->
                         <div class="user-settings" id="logout-dropdown">
                             <ul class="user-menu">
-                                <li class="user-item"> <a class="dropdown-item" href="#"
-                                        onclick="handleArchiveClass(event)"> <img src="{{ asset('img/archieve.png') }}"
-                                            alt="archieve-icon" class="user-icon"> Archive Class</a> </li>
-                                <li class="user-item"> <a class="dropdown-item" href="#"
-                                        onclick="handleProfileSettings(event)">
-                                        <img src="{{ asset('img/settings.png') }}" alt="settings-icon"
-                                            class="user-icon">
-                                        Profile Settings</a> </li>
                                 <li class="user-item">
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                         @csrf </form>

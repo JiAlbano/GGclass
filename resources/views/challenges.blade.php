@@ -211,20 +211,7 @@
         };
     </script>
 
-    <!-- challenge List -->
-    <!-- <div class="challenge-list">
-        <div class="challenge-item">
-            <div class="challenge-icon">
-                <img src="megaphone-icon.png" alt="Icon">
-            </div>
-            <div class="challenge-content">
-                <p class="challenge-title">You posted a new type of challenge: Quiz</p>
-                <p class="challenge-date">Dec 21, 2024</p>
-            </div>
-            <div class="challenge-options">
-                <button class="options-btn">•••</button>
-            </div>
-        </div> -->
+
 
     </div>
     </div>
@@ -233,36 +220,7 @@
 
 
 
-                <!-- Action buttons -->
-                <!-- <div class="container-buttons">
-                    <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-                    <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-                    <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-                    <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-                </div>
-</div> -->
-
-                    <!-- Modal trigger button -->
-   
-        
-                    <!-- Modal Structure -->
-    <!-- <div id="challengeModal" class="modal">
-        <div class="modal-content">      
-       
-            <h2 class="gamified-title">Add Challenge</h2>
-            <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
-                @csrf
-                {{-- <label for="challengeType" class="gamified-label">Challenge Type:</label> --}}
-                <select id="challengeType" name="challengeType" class="gamified-input" required>
-                    <option value="test_and_quizzes">Test and Quizzes</option>
-                    <option value="exam">Exam</option>
-                    <option value="activity">Activity</option>
-
-                </select>
-                <button type="submit" id="createBtn" class="btn create-btn gamified-button">Create</button>
-            </form>
-        </div>
-    </div> -->
+ 
 
 
 
