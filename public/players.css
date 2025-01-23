@@ -8,38 +8,10 @@
 
 }
 
-.text-container {
-    display: flex;
-    flex-direction: column;  /* Align text vertically */
-    justify-content: center; /* Center text vertically in the container */
-    margin-left: 10px; /* Reduce space between the image and text */
-}
-
-.in-game-name {
-    position: relative;
-    left: -33px;
-    top: 5px;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 16px;
-    color: #f5f5f5;
-}
-
-.user-type {
-    position: relative;
-    top: -15px;
-    left: -33px;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 15px;
-    color: white;
-}
-
-
 .navbar {
     display: flex;
     align-items: center;
-    background: #2e3667;
+    background-color: #283891;
     font-family: Georgia;
     position: fixed;
     height: 65px;
@@ -88,14 +60,14 @@
 }
 
 .profile-img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 12px;
     position: relative;
     left: -25px;
-    margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .profile-img:hover {
@@ -104,12 +76,40 @@
 }
 
 
+.text-container {
+    display: flex;
+    flex-direction: column;  /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
+}
+
+.in-game-name {
+    position: relative;
+    left: -33px;
+    top: 5px;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 16px;
+    color: #f5f5f5;
+}
+
+.user-type {
+    position: relative;
+    top: -15px;
+    left: -33px;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 15px;
+    color: white;
+}
+
+
 
 .row .btn {
     padding: 5px;
     border: none;
     border-radius: 5px;
-    color: #2e3667;
+    color: #283891;
     cursor: pointer;
     width: 250px;
     font-family: "Georgia";
@@ -118,7 +118,7 @@
 }
 
 .challenge-btn.active {
-    background-color: #2e3667;
+    background-color: #283891;
     color: #ffffff;
     transition: all 0.3s ease;
 /*    font-family: "Georgia";*/
@@ -233,7 +233,7 @@
     border: 2px solid #2e3667;
     padding: 10px;
     border-radius: 10px;
-    background-color: #2e3667;
+    background-color: #283891;
     width: 1000px;
     height: 60px;
     margin-left: 35px;
@@ -247,11 +247,11 @@
     object-fit: cover;
     margin-right: 15px;
     margin-left: 15px;
-    border: 2px solid #F7D37C;
+    border: 2px solid gold;
 }
 
 .profile-name {
-    font-size: 14px;
+    font-size: 16px;
     color: #ffffff;
     margin-left: 15px;
     font-family: georgia;
@@ -309,7 +309,7 @@
     border: 2px solid #2e3667;
     padding: 10px;
     border-radius: 10px;
-    background-color: #2e3667;
+    background-color: #283891;
     width: 1000px;
     height: 50px;
     align-self: flex-start; /* Ensures it stays at the top */
@@ -622,7 +622,7 @@
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -660,7 +660,7 @@
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -669,13 +669,14 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    font-family: georgia;
+    font-family:Arial, sans-serif;
     text-transform: uppercase;
     transition: background-color 0.3s ease;
 }
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */
