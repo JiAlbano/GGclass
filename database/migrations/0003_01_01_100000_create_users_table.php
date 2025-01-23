@@ -23,11 +23,11 @@ return new class extends Migration
         $table->string('ign')->nullable();
         $table->string('user_type');
         $table->string('department')->nullable();
+        $table->integer('grading_system')->default(2018);      // New column
         $table->string('google_profile_image')->nullable();
         $table->timestamp('email_verified_at')->nullable();
         $table->string('password')->nullable();
-        $table->integer('grading_system')->default(2018); // New column
-        $table->rememberToken();
+
         $table->timestamps();
     });
 
