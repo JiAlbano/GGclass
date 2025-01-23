@@ -126,7 +126,7 @@ body {
 }
 
 .challenge-btn.active {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     transition: all 0.3s ease;
     font-family: "Georgia";
@@ -275,7 +275,7 @@ body {
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -313,7 +313,7 @@ body {
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -328,6 +328,7 @@ body {
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */

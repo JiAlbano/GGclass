@@ -2,6 +2,7 @@
 <html lang="en">
 <head> 
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="finalLogo.png" type="image/png" sizes="16x16">
@@ -137,7 +138,7 @@
             <!-- Attendance label, date picker, and search input -->
             <div class="attendance-header">
                 <label class="attendance-label">Student's Attendance</label>
-                <input type="date" class="attendance-date-picker" id="attendance-date">
+                <input type="date" class="attendance-date-picker" id="attendance-date" value="{{ request()->query('date', Date('Y-m-d')) }}">
                 <!-- Search Input Added -->
                 <!-- <input type="text" class="attendance-search" id="student-search" placeholder="Search Student"> -->
             </div>
@@ -155,21 +156,19 @@
                         </div>
                         <!-- Middle: Input note -->
                         <div class="student-note">
-                            <input type="text" class="form-control note-input" placeholder="Enter note here" id="note-1">
-                            <button class="btn btn-save-note" id="save-note-1" style="display: none;">Save</button>
+                            <input type="text" class="form-control note-input" placeholder="Enter note here" data-id="{{$classUser->id}}" data-userid="{{$classUser->student_id}}" value="{{$classUser->note}}">
+                            <button class="btn btn-save-note save-note" style="display: none;">Save</button>
                         </div>
 
                         <!-- Right side: Dropdown button -->
                         <div class="attendance-dropdown">
-                            <button id="status-btn" class="btn btn-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Status
-                            </button>
-                            <ul class="dropdown-menu" id="status-dropdown">
-                                <li><a class="dropdown-item" href="#" data-status="Present">Present</a></li>
-                                <li><a class="dropdown-item" href="#" data-status="Absent">Absent</a></li>
-                                <li><a class="dropdown-item" href="#" data-status="Late">Late</a></li>
-                                <li><a class="dropdown-item" href="#" data-status="Excuse">Excuse</a></li>
-                            </ul>
+                            <select class="status">
+                                <option value="">Status</option>
+                                <option value="Present" {{$classUser->status == 'Present' ? 'selected' : ''}}>Present</option>
+                                <option value="Absent" {{$classUser->status == 'Absent' ? 'selected' : ''}}>Absent</option>
+                                <option value="Late" {{$classUser->status == 'Late' ? 'selected' : ''}}>Late</option>
+                                <option value="Excused" {{$classUser->status == 'Excused' ? 'selected' : ''}}>Excused</option>
+                            </select>
                         </div>
                     </div>
                     @endforeach     

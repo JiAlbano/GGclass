@@ -18,7 +18,7 @@ class CreateAttendanceTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to users table
             $table->date('date'); // Attendance date
             $table->text('note')->nullable(); // Note (optional)
-            $table->string('status'); // Attendance status (e.g., Present, Absent, etc.)
+            $table->string('status')->nullable(); // Attendance status (e.g., Present, Absent, etc.)
             $table->timestamps(); // Created_at and updated_at timestamps
         });
     }

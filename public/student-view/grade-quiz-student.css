@@ -110,7 +110,7 @@ body{
     padding: 5px;
     border: none;
     border-radius: 5px;
-    color: #2e3667;
+    color: #283891;
     cursor: pointer;
     width: 250px;
     font-family: "Georgia";
@@ -121,7 +121,7 @@ body{
 
 
 .challenge-btn1.active{
-    background-color: #283891;
+    background-color: #2e3667;
     color: #ffffff;
     transition: all 0.3s ease;
 /*    font-family: "Georgia";*/
@@ -388,7 +388,7 @@ body{
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -427,7 +427,7 @@ body{
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -443,7 +443,7 @@ body{
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
-    color: #ffffff;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */
@@ -509,8 +509,8 @@ body{
 }
 
 .table-blue th {
-    background-color: #2e3667;
-    color: white;
+    background-color: #283891;
+    color: gold;
 }
 
 .table-blue td p {

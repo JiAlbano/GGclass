@@ -5,29 +5,6 @@
     box-sizing: border-box;
 }
 
-.text-container {
-    display: flex;
-    flex-direction: column;  /* Align text vertically */
-    justify-content: center; /* Center text vertically in the container */
-    margin-left: 10px; /* Reduce space between the image and text */
-}
-
-.in-game-name {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 14px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
-.user-type {
-    color: #f5f5f5;
-    font-family: "Georgia";
-    font-weight: normal;
-    font-size: 12px; /* Increased font size */
-    margin: 0; /* Remove extra margin */
-}
-
 
 body {
     font-family: Georgia;
@@ -43,36 +20,18 @@ body {
 }
 
 
-body::after {
-    content: ''; /* Empty content for the pseudo-element */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: inherit; /* Use the same background image */
-    background-size: inherit;
-    background-position: inherit;
-    background-repeat: inherit;
-    filter: blur(3px); /* Apply blur to the background image */
-    z-index: -1; /* Place it behind all content */
-}
-
-
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: #283891;  /* Dark gradient for a modern feel */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Depth with shadow */
-    font-family:Georgia;
+    background-color: #283891;
+    font-family: Georgia;
     position: fixed;
+    height: 65px;
     width: 100%;
     top: 0;
     z-index: 999;
-    border-bottom: 2px solid #FFC62E;
 }
+
 
 .left-section {
     display: flex;
@@ -80,22 +39,29 @@ body::after {
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 20px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(255, 198, 46, 0.6); /* Glowing effect for logo */
+    height: 60px;
+    margin-right: 10px;
+    position: relative;
+    top: -16px;
+    margin-left: -6px;
+    margin-top: 3px;
 }
 
 .ggclass-font {
-    font-size: 23px;
-    color: #FFFFFF;
-    margin-right: 10px;
-    margin-top: 5px;
-    font-family: georgia;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -1px;
+    top: -9px;
 }
 
 .ggclass-font:hover {
-color:#FFC62E;
+    color: #ffd700;
 }
 
 .section-font {
@@ -105,22 +71,47 @@ color:#FFC62E;
     margin-top: 10px;
 }
 
-.right-section {
-    display: flex;
-    align-items: center;
-}
-
 .profile-img {
-    width: 40px;
     height: 40px;
+    width: 40px;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 198, 46, 0.8); /* Neon glow around the profile picture */
-    transition: transform 0.3s, box-shadow 0.3s;
+    object-fit: cover;
+    margin-right: 10px;
+    position: relative;
+    left: -25px;
+    top: 4px;
 }
 
 .profile-img:hover {
     transform: scale(1.1); /* Slight zoom-in effect on hover */
     box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;  /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
+}
+
+.in-game-name {
+    position: relative;
+    left: -22px;
+    top: 3px;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.user-type {
+    position: relative;
+    top: -18px;
+    left: -22px;
+    font-family: "Georgia";
+    font-weight: normal;
+    font-size: 15px;
+    color: white;
 }
 
 

@@ -100,7 +100,7 @@
                     @endif
                     
                     <label class="note-time">NOTE: Starting this challenge activates the timer. You have
-                        <b>{{ $quiz->time_duration }} {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> and
+                        <b style="color: gold;">{{ $quiz->time_duration }} {{ $quiz->time_duration > 1 ? 'minutes' : 'minute' }}</b> and
                         can't return to previous questions after moving forward.</label>
                 </div>
             </div>
