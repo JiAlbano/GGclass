@@ -17,15 +17,21 @@ class AttendanceController extends Controller
         $user = Auth::user();
 
         $classUsers = DB::table('classes')
-            ->join('class_user', 'classes.id', '=', 'class_user.class_id')
-            ->join('users', 'class_user.user_id', '=', 'users.id')
-            ->leftJoin('attendance', 'attendance.user_id', '=', 'users.id')
-            ->where('classes.id', '=', $classId);
-
+            ->leftJoin('class_user', 'classes.id', '=', 'class_user.class_id')
+            ->leftJoin('users', 'class_user.user_id', '=', 'users.id');
         // If a date is provided, filter the attendance by the given date
         if (!empty($date)) {
-            $classUsers->where('attendance.date', '=', $date);
+            // Join attendance and filter by date, but keep all users, even those without attendance
+            $classUsers->leftJoin('attendance', function($join) use ($date) {
+                $join->on('attendance.user_id', '=', 'users.id')
+                     ->where('attendance.date', '=', $date);
+            });
+        } else {
+            // Join attendance without any date condition
+            $classUsers->leftJoin('attendance', 'attendance.user_id', '=', 'users.id');
         }
+            
+        $classUsers->where('classes.id', '=', $classId);
 
         // Select specific user fields and attendance fields
         $classUsers = $classUsers->select(
