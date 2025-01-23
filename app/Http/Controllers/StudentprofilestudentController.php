@@ -16,14 +16,19 @@ class StudentprofilestudentController extends Controller
         $user = Auth::user(); // Fetch all users
         $class = Classroom::findOrFail($classId); // Fetch the class
 
-        // Fetch scores and calculate badge eligibility
-        $totalScores = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId)
-        ->pluck('total_score');
-        $sumOfScores = $totalScores->sum();
-        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId)
-        ->sum('number_of_items');
+        $totalScores = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
+        ->where('student_challenge_scores.student_id', $user->id)
+        ->where('challenges.class_id', $classId) // Use the class_id from the challenges table
+        ->pluck('student_challenge_scores.total_score');
+
+    // Sum scores for the class
+    $sumOfScores = $totalScores->sum();
+
+    // Retrieve the number of items for the class
+    $numberOfItems = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
+        ->where('student_challenge_scores.student_id', $user->id)
+        ->where('challenges.class_id', $classId)
+        ->sum('student_challenge_scores.number_of_items');
 
         // Pass the data to the view
         return view('profile-student', compact('class', 'user', 'totalScores', 'sumOfScores', 'numberOfItems'));
@@ -35,18 +40,19 @@ class StudentprofilestudentController extends Controller
         $user = Auth::user(); // Fetch the authenticated user
         $class = Classroom::findOrFail($classId); // Fetch the class
 
-        // Get the total_score scores of the user for a specific class
-        $totalScores = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId) // Add the class context
-        ->pluck('total_score');
+                $totalScores = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
+                ->where('student_challenge_scores.student_id', $user->id)
+                ->where('challenges.class_id', $classId) // Use the class_id from the challenges table
+                ->pluck('student_challenge_scores.total_score');
 
-        // Calculate the sum of the total scores for the class
-        $sumOfScores = $totalScores->sum();
+            // Sum scores for the class
+            $sumOfScores = $totalScores->sum();
 
-        // Retrieve the number of items for the class
-        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId) // Add the class context
-        ->sum('number_of_items');
+            // Retrieve the number of items for the class
+            $numberOfItems = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
+                ->where('student_challenge_scores.student_id', $user->id)
+                ->where('challenges.class_id', $classId)
+                ->sum('student_challenge_scores.number_of_items');
 
         // Return data (structured similarly to 'show')
         return [

@@ -31,4 +31,15 @@ public function student()
     return $this->belongsTo(User::class, 'student_id');
 }
 
+public function quiz()
+{
+    return $this->belongsTo(Quiz::class, 'challenge_id');
 }
+
+public function exam()
+{
+    return $this->belongsTo(Exam::class, 'challenge_id');
+}
+
+}
+

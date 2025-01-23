@@ -49,18 +49,20 @@ class StudentplayersController extends Controller
             ->groupBy('users.id', 'users.ign', 'users.google_profile_image') // Group by user to get the sum per user
             ->get();
 
-            // Get the total_score scores of the user for a specific class
-            $totalScores = StudentChallengeScore::where('student_id', $user->id)
-                ->where('class_id', $classId) // Add the class context
-                ->pluck('total_score');
+        // Retrieve total scores for the student within a specific class
+        $totalScores = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
+            ->where('student_challenge_scores.student_id', $user->id)
+            ->where('challenges.class_id', $classId) // Use the class_id from the challenges table
+            ->pluck('student_challenge_scores.total_score');
 
-            // Calculate the sum of the total scores for the class
-            $sumOfScores = $totalScores->sum();
+        // Sum scores for the class
+        $sumOfScores = $totalScores->sum();
 
-            // Retrieve the number of items for the class
-            $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
-                ->where('class_id', $classId) // Add the class context
-                ->sum('number_of_items');
+        // Retrieve the number of items for the class
+        $numberOfItems = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
+            ->where('student_challenge_scores.student_id', $user->id)
+            ->where('challenges.class_id', $classId)
+            ->sum('student_challenge_scores.number_of_items');
 
 
         // Pass the class, user, and player data to the view
