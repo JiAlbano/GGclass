@@ -211,23 +211,18 @@
         };
     </script>
 
-    <!-- challenge List -->
-    <!-- <div class="challenge-list">
-        <div class="challenge-item">
-            <div class="challenge-icon">
-                <img src="megaphone-icon.png" alt="Icon">
-            </div>
-            <div class="challenge-content">
-                <p class="challenge-title">You posted a new type of challenge: Quiz</p>
-                <p class="challenge-date">Dec 21, 2024</p>
-            </div>
-            <div class="challenge-options">
-                <button class="options-btn">•••</button>
-            </div>
-        </div> -->
+
 
     </div>
 </div>
+
+
+
+ 
+
+
+
+
 
 
     </body>

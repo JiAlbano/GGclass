@@ -270,7 +270,7 @@ Route::get('/students/{classId}/{id_number}', [StudentController::class, 'showsc
 Route::get('/students-score/{student_id}/{challengetype_id}', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
 
 // grade-book.student-list.student-list
-Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
+// Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
 
 
 
