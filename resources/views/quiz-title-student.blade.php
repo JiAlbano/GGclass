@@ -35,7 +35,7 @@
 @endsection
 
 
-    <div class="top-buttons containers" style=" margin-top: 84px;">
+    <div class="top-buttons containers" style=" margin-top: 84px; margin-left: 240px; margin-right: 240px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
                 <button class="btn" style="border:none; width: 100%;"
@@ -71,15 +71,18 @@
                     <p>Section: {{ $class->section }}</p>
                 </div>
                 <div class="class-details">
-                    <h2>{{ $class->subject }}</h2>
-                    <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                    <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                    <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                        {{ date('h:iA', strtotime($class->start_time)) }} -
+                        {{ date('h:iA', strtotime($class->end_time)) }}
+                    </p>
                     <p>Room: {{ $class->room }}</p>
                 </div>
                 <div class="class-buttons">
                     <button
                         onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">Attendance</button>
-                    <button
-                        onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
+         <!--            <button
+                        onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button> -->
                     <button
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
                         <button onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>

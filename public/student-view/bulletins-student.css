@@ -90,6 +90,8 @@
 
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
 }
 
 /* General reset and box-sizing */

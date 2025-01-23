@@ -74,7 +74,7 @@
                 </div>
 
                 <!-- Buttons on the right -->
-                <div class="button-group">
+                <div class="button-group" style="margin-top: 50px;">
                     <button class="save-btn" onclick="logout()">Cancel</button>
                     <button type="submit" class="save-btn">Save</button>
 

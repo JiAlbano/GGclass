@@ -126,11 +126,13 @@ body{
     font-size: 20px;
     font-weight: bold;
     border: none;
-    width: 70%;
+    width: 100%;
 }
 
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
 }
 
 .info-container {
