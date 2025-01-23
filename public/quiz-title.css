@@ -666,3 +666,54 @@ textarea:focus {
     flex-direction: column;
 
 }
+.text-white {
+    color: white !important;
+}
+
+/* If you prefer to target specific elements, adjust them directly */
+.qtitle, .qdescription {
+    color: white;
+}
+
+/* You can also specify styles for label elements if needed */
+label.color.white {
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 20px;
+    width: 100%;
+}
+
+/* Style for each grid item */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Info Box styling for each label and data pair */
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #283891; /* Darker background for the boxes */
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Title styling */
+.qtitle {
+    color: white;
+    font-weight: bold;
+}
+
+/* Description styling */
+.qdescription {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+}
