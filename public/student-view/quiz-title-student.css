@@ -131,6 +131,8 @@ body {
 
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
 }
 
 .info-container {

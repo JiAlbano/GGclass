@@ -49,14 +49,18 @@ class StudentplayersController extends Controller
             ->groupBy('users.id', 'users.ign', 'users.google_profile_image') // Group by user to get the sum per user
             ->get();
 
-        // Get the total_score scores of the user
-        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+            // Get the total_score scores of the user for a specific class
+            $totalScores = StudentChallengeScore::where('student_id', $user->id)
+                ->where('class_id', $classId) // Add the class context
+                ->pluck('total_score');
 
-        // Calculate the sum of the total scores
-        $sumOfScores = $totalScores->sum();
+            // Calculate the sum of the total scores for the class
+            $sumOfScores = $totalScores->sum();
 
-        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
-        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+            // Retrieve the number of items for the class
+            $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
+                ->where('class_id', $classId) // Add the class context
+                ->sum('number_of_items');
 
 
         // Pass the class, user, and player data to the view

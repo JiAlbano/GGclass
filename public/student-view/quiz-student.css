@@ -138,6 +138,8 @@ body {
 
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
 }
 
 .container-picture {
@@ -468,7 +470,7 @@ body {
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 .bulletin-item:hover {
