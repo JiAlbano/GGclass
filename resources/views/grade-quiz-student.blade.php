@@ -111,7 +111,7 @@
                                     <ul>
                                         {{-- @foreach($examData as $exam)
                                             <strong>{{ $exam->exam_type }}:</strong> 
-                                            {{ $exam->total_score }}/{{ $exam->number_of_items }}
+                                            {{ $exam->total_score }}/{{ $exam->number_of_items }} <br>
                                         @endforeach
                                     </ul>
                                 </td>
