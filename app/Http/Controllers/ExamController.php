@@ -144,7 +144,7 @@ class ExamController extends Controller
 
     public function editToken(Request $request)
     {
-        $examId = $request->input('examId');
+        $examId = $request->input('examid');
         $enableToken = $request->input('tokenStatus');
         $exam = Exam::findOrFail($examId);
         $exam->enable_token = $enableToken;
@@ -154,7 +154,7 @@ class ExamController extends Controller
     public function editTimer(Request $request)
     {
         $timer = $request->input('timer');
-        $examId = $request->input('examId');
+        $examId = $request->input('examid');
         $exam = Exam::findOrFail($examId);
         $exam->time_duration = $timer;
         return $exam->save();
@@ -172,13 +172,14 @@ class ExamController extends Controller
 
     public function studentexam($classId)
     {
+        $challengetype = 'exam';
         $user = Auth::user();// Fetch all users
         $class = Classroom::findOrFail($classId); // Fetch the class
         $quizzes = Exam::where('class_id', $classId)->get();
         $studentChallengesTaken = StudentChallengeScore::where('student_id', Auth::id())
+                ->where('challenge_type', $challengetype)
                 ->distinct()  // Ensure distinct results
                 ->pluck('challenge_id'); 
-                $challengetype = 'exam';
         // Get the total_score scores of the user
         $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
 
@@ -211,10 +212,11 @@ class ExamController extends Controller
 
     public function showtakeexam($classId, $examId)
     {
+        $challengetype = 'exam';
         $user = Auth::user(); // Fetch all users
         $class = Classroom::find($classId); // Fetch the class
         $questions = ExamQuestion::where('exam_id', $examId)->get();
-        $taken = StudentChallengeScore::where('challenge_id', $examId)->where('student_id', $user->id)->count();
+        $taken = StudentChallengeScore::where('challenge_id', $examId)->where('student_id', $user->id)->where('challenge_type', $challengetype)->count();
         $quiz = Exam::find($examId);
 
         // Get the total_score scores of the user

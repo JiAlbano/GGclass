@@ -120,7 +120,7 @@
 
 <div class="switch-container">
     <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" data-examid = {{$exam->id}} id="flexSwitchCheckChecked1" {{$exam->enable_token ? 'checked' : ''}}>
+        <input class="form-check-input" type="checkbox" role="switch" data-examid="{{$exam->id}}" id="flexSwitchCheckChecked1" {{$exam->enable_token ? 'checked' : ''}}>
         <label class="form-check-label" for="flexSwitchCheckChecked1">Token</label>
     </div>
 </div>
@@ -438,7 +438,7 @@ $("#flexSwitchCheckChecked1").change(function() {
     const tokenStatus = ($(this).prop('checked')) ? 1 : 0;
     const examid = $(this).data('examid');
     $.ajax({
-            url: '/quiz/edit-token',  // URL where you want to send the PUT request
+            url: '/exam/edit-token',  // URL where you want to send the PUT request
             type: 'POST',           // Laravel uses POST to handle PUT requests
             data: {tokenStatus: tokenStatus, examid: examid},
             headers: {
@@ -456,8 +456,9 @@ $("#flexSwitchCheckChecked1").change(function() {
 $("#save-button").click(function(){
     const timer = $("#minutes-input").val();
     const examid = $("#flexSwitchCheckChecked1").data('examid');
+    console.log(examid)
     $.ajax({
-        url: '/quiz/edit-timer',  // URL where you want to send the PUT request
+        url: '/exam/edit-timer',  // URL where you want to send the PUT request
         type: 'POST',           // Laravel uses POST to handle PUT requests
         data: {timer: timer, examid: examid},
         headers: {

@@ -171,7 +171,8 @@ Route::get('/studentchallenges/{classId}/quiz-title-student/quiz-take-student/{q
 Route::get('/studentchallenges/{classId}/studentexam', [ExamController::class, 'studentexam'])->name('exam-student');
 Route::get('/studentchallenges/{classId}/studentexam/exam-title-student/{quizId}', [ExamController::class, 'showtitleexam'])->name('exam-title-student');
 Route::get('/studentchallenges/{classId}/exam-title-student/exam-take-student/{quizId}', [ExamController::class, 'showtakeexam'])->name('exam-take-student');
-
+Route::post('/exam/edit-timer', [ExamController::class, 'editTimer']);
+Route::post('/exam/edit-token', [ExamController::class, 'editToken']);
 
 Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
 Route::get('/studentplayers/{classId}', [StudentplayersController::class, 'show'])->name('players-student');

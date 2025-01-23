@@ -40,15 +40,14 @@ $(document).ready(function() {
         tokenUsed = $("#token-used").val() !== "" ? $("#token-used").val() : 0;
         const score = studentAnswers.filter(item => item.is_correct === 1).length
         totalScore = parseInt(tokenUsed) + parseInt(score);
-
         studentScore = [{
-            challenge_id: questions[currentQuestion].quiz_id,
+            challenge_id: questions[currentQuestion].quiz_id ?? questions[currentQuestion].exam_id,
             score: score,
             token_used: tokenUsed,
             total_score: totalScore,
-            challenge_type: 'quiz',
+            challenge_type: questions[currentQuestion].quiz_id ? 'quiz' : 'exam',
             number_of_items: questions.length
-        }]
+        }];
         submitQuiz();
     });
 
@@ -154,10 +153,10 @@ const selectAnswer = (element, answer = '') => {
 
     const questionAnswer = {
         question_id: questions[currentQuestion].id,
-        challenge_id: questions[currentQuestion].quiz_id,
+        challenge_id: questions[currentQuestion].quiz_id ?? questions[currentQuestion].exam_id,
         answer: answerContainer,
         is_correct: isCorrect,
-        challenge_type: 'exam'
+        challenge_type: questions[currentQuestion].quiz_id ? 'quiz' : 'exam',
     };
 
     if(studentAnswers[currentQuestion])

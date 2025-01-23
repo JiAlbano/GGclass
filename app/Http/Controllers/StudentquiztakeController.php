@@ -13,10 +13,11 @@ class StudentquiztakeController extends Controller
 {
     public function show($classId, $quizId)
     {
+        $challengetype = 'quiz';
         $user = Auth::user(); // Fetch all users
         $class = Classroom::find($classId); // Fetch the class
         $questions = Question::where('quiz_id', $quizId)->get();
-        $taken = StudentChallengeScore::where('challenge_id', $quizId)->where('student_id', $user->id)->count();
+        $taken = StudentChallengeScore::where('challenge_id', $quizId)->where('student_id', $user->id)->where('challenge_type', $challengetype)->count();
         $quiz = Quiz::find($quizId);
         $challengetype = 'quiz';
         // Get the total_score scores of the user
