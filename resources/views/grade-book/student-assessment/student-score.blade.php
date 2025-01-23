@@ -44,17 +44,17 @@
 
             <div class="left-container">
 
-                <div class="class-theme">
-                    <h6 class="school-year">In Game Name: {{ $student->in_game_name }}</h6>
-                    <h6 class="semester">Course: {{ $student->course }}</h6>
-                    <h6 class="section">Full Name: {{ $student->full_name }}</h6>
-                </div>
+                <div class ="class-theme">
+                    <h6 class="school-year">In Game Name:{{ $student->ign }} </h6>
+                    {{-- <h6 class="semester ">Course: {{ $student[0]->course_name }}</h6>
+                   <h6 >Name: {{ $student[0]->first_name}} {{ $student[0]->last_name}}</h6>  --}}
+               </div>
 
-                <div class="">
-                    <h6 class="mt-3 class">Student ID: {{ $student->student_id }}</h6>
-                    <h6 class="mt-3 schedule">Email: {{ $student->email }}</h6>
-                    <h6 class="mt-3 room">Grading System: {{ $student->grading_system }}</h6>
-                </div>
+               <div class="">
+                    {{-- <h6 class="mt-3 class">ID number:{{ $student[0]->id_number }} </h6>
+                   <h6 class="mt-3 schedule">Email: {{ $student[0]->email }}</h6>
+                   <h6 class="mt-3 room">Grading System:{{ $student[0]->grading_system }} </h6> --}}
+               </div>
 
                 <div class="line-between"></div>
 
@@ -85,42 +85,42 @@
                     </thead>
                     <tbody>
                         <!-- Handle Assessments -->
-                        @if (isset($assessmentTypes) && !empty($assessmentTypes))
-                            @foreach ($assessmentTypes as $assessmentType)
+                        {{-- @if (isset($assessmentTypes) && !empty($assessmentTypes))
+                            @foreach ($assessmentTypes as $assessmentType) --}}
                                 <tr class="table-row">
                                     <td>
-                                        <p class="challenge">{{ $assessmentType->assessment_type_name }}</p>
+                                        {{-- <p class="challenge">{{ $assessmentType->assessment_type_name }}</p> --}}
                                     </td>
                                     <td>
-                                        <p class="total-points">{{ $assessmentType->total_scores }}</p>
+                                        {{-- <p class="total-points">{{ $assessmentType->total_scores }}</p> --}}
                                     </td>
                                     <td>
                                         <p class="individual-points">
-                                            {{ $scores->firstWhere('assessment_type_id', $assessmentType->assessment_type_id)->score ?? 'No Score' }}
+                                            {{-- {{ $scores->firstWhere('assessment_type_id', $assessmentType->assessment_type_id)->score ?? 'No Score' }} --}}
                                         </p>
                                     </td>
                                 </tr>
-                            @endforeach
-                        @endif
+                            {{-- @endforeach
+                        @endif --}}
 
                         <!-- Handle Exams -->
-                        @if (isset($examTypes) && !empty($examTypes))
-                            @foreach ($examTypes as $examType)
+                        {{-- @if (isset($examTypes) && !empty($examTypes))
+                            @foreach ($examTypes as $examType) --}}
                                 <tr class="table-row">
                                     <td>
-                                        <p class="challenge">{{ $examType->exams_type_name }}</p>
+                                        {{-- <p class="challenge">{{ $examType->exams_type_name }}</p> --}}
                                     </td>
                                     <td>
-                                        <p class="total-points">{{ $examType->total_scores }}</p>
+                                        {{-- <p class="total-points">{{ $examType->total_scores }}</p> --}}
                                     </td>
                                     <td>
                                         <p class="individual-points">
-                                            {{ $examScores->firstWhere('exams_type_id', $examType->exams_type_id)->score ?? 'No Score' }}
+                                            {{-- {{ $examScores->firstWhere('exams_type_id', $examType->exams_type_id)->score ?? 'No Score' }} --}}
                                         </p>
                                     </td>
                                 </tr>
-                            @endforeach
-                        @endif
+                            {{-- @endforeach
+                        @endif --}}
                     </tbody>
 
 

@@ -15,6 +15,10 @@ use App\Models\AssessmentType;
 use App\Models\Score;
 use App\Exports\StudentsExport;
 use Illuminate\Support\Facades\DB;
+use App\Models\StudentChallengeScore;
+use App\Models\Quiz;
+use App\Models\Challenge;
+
 
 class StudentController extends Controller
 {
@@ -29,7 +33,7 @@ class StudentController extends Controller
           ->join('class_user', 'classes.id', '=', 'class_user.class_id')
           ->join('users', 'class_user.user_id', '=', 'users.id')
           ->where('classes.id', '=', $classId)
-          ->select('users.first_name', 'users.last_name', 'users.ign','users.course_id','users.grading_system') // Select specific user fields
+          ->select('users.first_name', 'users.last_name', 'users.ign','users.course_id','users.grading_system', 'users.id_number') // Select specific user fields
           ->get();
 
       // Fetch the class details
@@ -52,7 +56,89 @@ class StudentController extends Controller
 
   //     return view('grade-book.student-list.student-list', compact('student_list', 'user'));
   // }
+//   public function showe($classId)
+//   {
+//       // Fetch the logged-in user
+//       $user = Auth::user();
 
+//       // Fetch the class details
+//       $class = Classroom::findOrFail($classId);
+
+//       // Get the total_score scores of the user
+//       $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+//       // Calculate the sum of the total scores
+//       $sumOfScores = $totalScores->sum();
+
+//       // Retrieve the number of items
+//       $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+
+//       // Retrieve quiz titles, total_score, and number_of_items only for quizzes
+//       $quizData = Quiz::join('student_challenge_scores', 'quizzes.id', '=', 'student_challenge_scores.challenge_id')
+//                       ->where('student_challenge_scores.student_id', $user->id)
+//                       ->where('student_challenge_scores.challenge_type', 'quiz')  // Filter by challenge_type 'quiz'
+//                       ->select('quizzes.title', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
+//                       ->get();
+
+//       // Retrieve exam types and their scores only for exams
+//       $examData = StudentChallengeScore::where('student_id', $user->id)
+//                                         ->where('challenge_type', 'exam')  // Filter by challenge_type 'exam'
+//                                         ->select('exam_type', 'total_score', 'number_of_items')
+//                                         ->get();
+
+//       // Pass data to the view
+//       return view('Grade-quiz-student', compact('class', 'user', 'totalScores', 'sumOfScores', 'numberOfItems', 'quizData', 'examData'));
+//   }
+// }
+
+  public function showschools($classId, $id_number)
+{
+ // Fetch the authenticated user
+ $user = Auth::user();
+
+ // Manually join classes, class_user, and users tables
+//  $classUsers = DB::table('classes')
+//      ->join('class_user', 'classes.id', '=', 'class_user.class_id')
+//      ->join('users', 'class_user.user_id', '=', 'users.id')
+//      ->where('classes.id', '=', $classId)
+//      ->select('users.first_name', 'users.last_name', 'users.ign','users.course_id','users.grading_system') // Select specific user fields
+//      ->get();
+      $student = User::join('courses', 'courses.id','=','users.course_id')
+                      ->where('id_number', $id_number)
+                      ->select('users.first_name','users.last_name', 'users.ign','courses.course_name','users.grading_system', 'users.id_number','users.email', 'users.id')
+                      ->get();
+
+
+      // Get the total_score scores of the user
+      $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+      // Calculate the sum of the total scores
+      $sumOfScores = $totalScores->sum();
+
+      // Retrieve the number of items
+      $numberOfItems = StudentChallengeScore::where('student_id', $student[0]->id)->sum('number_of_items');
+
+      // Retrieve quiz titles, total_score, and number_of_items only for quizzes
+      $quizData = Quiz::join('student_challenge_scores', 'quizzes.id', '=', 'student_challenge_scores.challenge_id')
+                      ->where('student_challenge_scores.student_id', $student[0]->id)
+                      ->where('student_challenge_scores.challenge_type', 'quiz')  // Filter by challenge_type 'quiz'
+                      ->select('quizzes.title')
+                      ->get();
+       $challengetype = Challenge::where('user_id',$user->id) 
+                                  ->where('class_id', $classId) 
+                                  ->get();          
+
+      // Retrieve exam types and their scores only for exams
+      $examData = StudentChallengeScore::where('student_id', $student[0]->id)
+                                        ->where('challenge_type', 'exam')  // Filter by challenge_type 'exam'
+                                        ->select('exam_type', 'total_score', 'number_of_items')
+                                        ->get();
+ // Fetch the class details
+ $class = Classroom::findOrFail($classId);
+
+    // Pass data to the 'student-assessment' view
+    return view('grade-book.student-data.student-assessment', compact('class','challengetype','student' ,'user','totalScores', 'sumOfScores', 'numberOfItems', 'quizData', 'examData'));
+}
 
 
   public function showschool($id)
@@ -70,24 +156,32 @@ class StudentController extends Controller
     return view('grade-book.student-data.student-assessment', compact('student', 'assessments', 'exams', 'user'));
 }
 
-public function viewAssessmentScores($student_id, $assessment_id)
+public function viewAssessmentScores($student_id, $challengetype_id)
 {
-    // Retrieve the student's details using the student ID
-    $student = Student::findOrFail($student_id);
+              // Fetch the authenticated user
+            $user = Auth::user();
 
-    // Convert the full_name to uppercase
-    $student->full_name = strtoupper($student->full_name);
+            $student = User::join('courses', 'courses.id','=','users.course_id')
+            ->where('users.id', $student_id)
+            ->select('users.first_name','users.last_name', 'users.ign','courses.course_name','users.grading_system', 'users.id_number','users.email', 'users.id')
+            ->get();
 
-    // Retrieve all assessment types for the selected assessment
-    $assessmentTypes = AssessmentType::where('assessment_id', $assessment_id)->get();
+    // // Retrieve the student's details using the student ID
+    // $student = Student::findOrFail($student_id);
 
-    // Retrieve the scores for the selected student and assessment types
-    $scores = Score::where('student_id', $student_id)
-                    ->whereIn('assessment_type_id', $assessmentTypes->pluck('assessment_type_id'))
-                    ->get();
+    // // Convert the full_name to uppercase
+    // $student->full_name = strtoupper($student->full_name);
+
+    // // Retrieve all assessment types for the selected assessment
+    // $assessmentTypes = AssessmentType::where('assessment_id', $assessment_id)->get();
+
+    // // Retrieve the scores for the selected student and assessment types
+    // $scores = Score::where('student_id', $student_id)
+    //                 ->whereIn('assessment_type_id', $assessmentTypes->pluck('assessment_type_id'))
+    //                 ->get();
 
     // Pass the data to the Blade view
-    return view('grade-book.student-assessment.student-score', compact('student', 'scores', 'assessmentTypes'));
+    return view('grade-book.student-assessment.student-score',compact('user','student'));
 }
 
 // Method to view a student's exam scores

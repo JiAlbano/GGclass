@@ -195,15 +195,15 @@
             <div class="left-container">
 
                 <div class ="class-theme">
-                    <h6 class="school-year">In Game Name:{{ $student->in_game_name }} </h6>
-                    <h6 class="semester ">Course: {{ $student->course }}</h6>
-                    <h6 class="section ">Name: {{ $student->full_name }}</h6>
+                     <h6 class="school-year">In Game Name:{{ $student[0]->ign }} </h6>
+                     <h6 class="semester ">Course: {{ $student[0]->course_name }}</h6>
+                    <h6 >Name: {{ $student[0]->first_name}} {{ $student[0]->last_name}}</h6> 
                 </div>
 
                 <div class="">
-                    <h6 class="mt-3 class">ID number:{{ $student->student_id }} </h6>
-                    <h6 class="mt-3 schedule">Email: {{ $student->email }}</h6>
-                    <h6 class="mt-3 room">Grading System:{{ $student->grading_system }} </h6>
+                     <h6 class="mt-3 class">ID number:{{ $student[0]->id_number }} </h6>
+                    <h6 class="mt-3 schedule">Email: {{ $student[0]->email }}</h6>
+                    <h6 class="mt-3 room">Grading System:{{ $student[0]->grading_system }} </h6>
                 </div>
 
                 <div class="line-between"></div>
@@ -229,37 +229,24 @@
                             <th>
                                 <p class="challenge">Challenge type</p>
                             </th>
-                            <th>
+                            {{-- <th>
                                 <p class="percentage">Challenge Percentage </p>
-                            </th>
+                            </th> --}}
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($assessments as $assessment)
+                     @foreach ($challengetype as $type) 
                             <tr class="table-row"
-                                onclick="window.location='{{ route('student-assessment-scores', ['student_id' => $student->student_id, 'assessment_id' => $assessment->assessment_id]) }}'">
+                               onclick="window.location='{{ route('student-assessment-scores', ['student_id' => $student[0]->id_number, 'challengetype_id' => $type->id]) }}'"> 
                                 <td>
-                                    <p class="challenge">{{ $assessment->assessment_name }}</p>
+                                   <p class="challenge">{{ $type->title }}</p> 
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <p class="percentage">{{ $assessment->assessment_percentage }}%</p>
-                                </td>
+                                </td> --}}
                             </tr>
-                        @endforeach
-
-                        <!-- New code for exams -->
-                        @foreach ($exams as $exam)
-                            <tr class="table-row"
-                                onclick="window.location='{{ route('student-exam-scores', ['student_id' => $student->student_id, 'exam_id' => $exam->exams_id]) }}'">
-                                <td>
-                                    <p class="challenge">{{ $exam->exam_name }}</p>
-                                </td>
-                                <td>
-                                    <p class="percentage">{{ $exam->exam_percentage }}%</p>
-                                </td>
-                            </tr>
-                        @endforeach
+                       @endforeach
                     </tbody>
 
 
