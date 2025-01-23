@@ -136,8 +136,11 @@ body {
     width: 250px !important;
 }
 
+
 .btn:hover {
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
 }
 
 .container-picture {

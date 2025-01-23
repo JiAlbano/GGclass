@@ -36,7 +36,7 @@
 @endsection
 
 
-    <div class="top-buttons containers" style=" margin-top: 84px;">
+    <div class="top-buttons containers" style=" margin-top: 84px; margin-left: 240px; margin-right: 240px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
                 <button class="btn"
@@ -67,15 +67,18 @@
                     <p>Section: {{ $class->section }}</p>
                 </div>
                 <div class="class-details">
-                    <h2>{{ $class->subject }}</h2>
-                    <p>Schedule: {{ $class->schedule_day }} - {{ $class->start_time }} - {{ $class->end_time }}</p>
+                    <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                    <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                        {{ date('h:iA', strtotime($class->start_time)) }} -
+                        {{ date('h:iA', strtotime($class->end_time)) }}
+                    </p>
                     <p>Room: {{ $class->room }}</p>
                 </div>
                 <div class="class-buttons">
                     <button
                         onclick="window.location.href='{{ route('attendance-student', ['classId' => $class->id]) }}'">Attendance</button>
-                    <button
-                        onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
+                    <!-- <button
+                        onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button> -->
                     <button
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
                     <button  class="btn1 challenge-btn1 active"
@@ -99,7 +102,7 @@
                                     <ul>
                                         @foreach($quizData as $quiz)
                                             <strong>{{ $quiz->title }}:</strong> 
-                                            {{ $quiz->total_score }}/{{ $quiz->number_of_items }}
+                                            {{ $quiz->total_score }}/{{ $quiz->number_of_items }} <br>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -108,7 +111,7 @@
                                     <ul>
                                         @foreach($examData as $exam)
                                             <strong>{{ $exam->exam_type }}:</strong> 
-                                            {{ $exam->total_score }}/{{ $exam->number_of_items }}
+                                            {{ $exam->total_score }}/{{ $exam->number_of_items }} <br>
                                         @endforeach
                                     </ul>
                                 </td>

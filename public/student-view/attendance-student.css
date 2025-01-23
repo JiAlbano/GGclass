@@ -65,17 +65,7 @@
     color: white;
 }
 
-.row .btn {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    color: #2e3667;
-    cursor: pointer;
-    width: 250px;
-    font-family: "Georgia";
-    font-size: 20px;
-    font-weight: bold;
-}
+
 
 .challenge-btn.active {
     background-color: #2e3667;
@@ -90,6 +80,7 @@
 
 .btn:hover {
     font-weight: bold;
+/*    background-color: #283891;*/
 }
 
 /* General reset and box-sizing */
@@ -125,7 +116,7 @@ body {
 }
 
 
-.row .btn {
+.row .btn1 {
     padding: 5px;
     border: none;
     border-radius: 5px;
@@ -137,26 +128,10 @@ body {
     font-weight: bold;
 }
 
-.btn1 {
-    background-color: #e4e4e4;
-    color: #050834;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 20px;
-    width: 100px;
-    height: 25px;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    font-size: 7px;
-    font-family: "Press Start 2P", cursive;
-}
 
 .btn1:hover {
-    background-color: #ffc62e;
-    color: #2e3667;
+    background-color: #283891;
+    color: #ffffff;
     font-weight: bold;
 }
 

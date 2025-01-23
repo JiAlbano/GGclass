@@ -37,13 +37,15 @@ class GradeController extends Controller
                         ->select('quizzes.title', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
                         ->get();
 
-        // Retrieve exam types and their scores only for exams
-        $examData = StudentChallengeScore::where('student_id', $user->id)
-                                          ->where('challenge_type', 'exam')  // Filter by challenge_type 'exam'
-                                          ->select('exam_type', 'total_score', 'number_of_items')
+        // Retrieve exam types and their scores only for exams, now using the exams table for exam_type
+        $examData = StudentChallengeScore::join('exams', 'student_challenge_scores.challenge_id', '=', 'exams.id')
+                                          ->where('student_challenge_scores.student_id', $user->id)
+                                          ->where('student_challenge_scores.challenge_type', 'exam')  // Filter by challenge_type 'exam'
+                                          ->select('exams.exam_type', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
                                           ->get();
 
         // Pass data to the view
-        return view('Grade-quiz-student', compact('class', 'user', 'totalScores', 'sumOfScores', 'numberOfItems', 'quizData', 'examData'));
+        return view('grade-quiz-student', compact('class', 'user', 'totalScores', 'sumOfScores', 'numberOfItems', 'quizData', 'examData'));
     }
+
 }
