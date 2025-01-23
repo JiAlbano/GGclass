@@ -24,12 +24,7 @@ $(document).ready(function() {
         const noteInput = $(this);
         const saveButton = $(this).next('.save-note');
         
-        // Check if the input is empty or not
-        if (noteInput.val().trim() !== "") {
-            saveButton.show();  // Show the save button if there is text
-        } else {
-            saveButton.hide();  // Hide the save button if the input is empty
-        }
+        saveButton.show();  // Show the save button if there is text
     });
 });
 
@@ -39,11 +34,9 @@ $(document).off('click').on('click', '.save-note', function() {
     const noteInput = saveButton.prev('.note-input');
     const status = saveButton.closest('.student-note').next('.attendance-dropdown').find('select');
     const noteValue = noteInput.val().trim();
-    if (noteValue !== "") {
-        saveAttendance(noteInput, noteValue, status);
-        // Hide the save button after saving the note
-        saveButton.hide();
-    }
+    saveAttendance(noteInput, noteValue, status);
+    // Hide the save button after saving the note
+    saveButton.hide();
 });
 
 
@@ -77,6 +70,7 @@ const saveAttendance = (noteInput, noteValue, status) => {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(response) {
+            location.reload();
             console.log('Success:', response);
         },
         error: function(xhr, status, error) {
