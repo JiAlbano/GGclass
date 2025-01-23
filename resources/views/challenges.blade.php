@@ -128,33 +128,33 @@
         </div>
         <div class="dashboard-container">
   <!-- Add Challenge Button -->
-  <div class="add-challenge-container">
-        <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
-            <div class="icon">
-            <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+            <div class="add-challenge-container">
+                <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn" data-bs-target="#addMemberModal">
+                    <div class="icon">
+                    <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+                    </div>
+                    <div class="text">Create a new challenge to your class</div>
+                </button>
             </div>
-            <div class="text">Create a new challenge to your class</div>
-        </button>
-    </div>
             <!-- Modal Structure -->
             <div id="challengeModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 class="modal-title">Create Challenge</h2>
-        <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
-            @csrf
-                <div class="form-group">
-                    <label for="challengeType" class="form-label">Challenge Type</label>
-                    <select id="challengeType" name="challengeType" class="form-input" required>
-                        <option value="" disabled selected>Select a challenge type</option>
-                        <option value="exam">Exam</option>
-                        <option value="test_and_quizzes">Test and Quizzes</option>
-                    </select>
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2 class="modal-title">Create Challenge</h2>
+                    <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
+                        @csrf
+                            <div class="form-group">
+                                <label for="challengeType" class="form-label">Challenge Type</label>
+                                <select id="challengeType" name="challengeType" class="form-input" required>
+                                    <option value="" disabled selected>Select a challenge type</option>
+                                    <option value="exam">Exam</option>
+                                    <option value="test_and_quizzes">Test and Quizzes</option>
+                                </select>
+                            </div>
+                        <button type="submit" id="createBtn" class="form-button">Create</button>
+                    </form>
                 </div>
-            <button type="submit" id="createBtn" class="form-button">Create</button>
-        </form>
-    </div>
-</div>
+            </div>
         <!-- Display Challenges -->
 
         <!-- <div class="container1">
@@ -227,46 +227,7 @@
         </div> -->
 
     </div>
-    </div>
-
 </div>
-
-
-
-                <!-- Action buttons -->
-                <!-- <div class="container-buttons">
-                    <button class="btn1"onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">ATTENDANCE</button>
-                    <button class="btn1"onclick="window.location.href='{{ route('grade', ['classId' => $class->id]) }}'">GRADE</button>
-                    <button class="btn1"onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">FEEDBACK</button>
-                    <button class="btn1"onclick="window.location.href='{{ route('student-list', ['classId' => $class->id]) }}'">GRADEBOOK</button>
-                </div>
-</div> -->
-
-                    <!-- Modal trigger button -->
-   
-        
-                    <!-- Modal Structure -->
-    <!-- <div id="challengeModal" class="modal">
-        <div class="modal-content">      
-       
-            <h2 class="gamified-title">Add Challenge</h2>
-            <form id="challengeForm" method="POST" action="{{ route('challenges.create', ['classId' => $class->id]) }}">
-                @csrf
-                {{-- <label for="challengeType" class="gamified-label">Challenge Type:</label> --}}
-                <select id="challengeType" name="challengeType" class="gamified-input" required>
-                    <option value="test_and_quizzes">Test and Quizzes</option>
-                    <option value="exam">Exam</option>
-                    <option value="activity">Activity</option>
-
-                </select>
-                <button type="submit" id="createBtn" class="btn create-btn gamified-button">Create</button>
-            </form>
-        </div>
-    </div> -->
-
-
-
-
 
 
     </body>

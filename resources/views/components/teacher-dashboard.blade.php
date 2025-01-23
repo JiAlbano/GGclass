@@ -113,33 +113,33 @@
         <div class="dashboard-container container-sm mt-5">
 
             <div class="left-container">
+                <div class="class-card">
+                    <div class="class-header">
+                        <p class="sy">School Year: <span class="uppercase">{{ $class->school_year }}</span></p>
+                        <p class="sem">Semester: <span class="uppercase">{{ $class->semester }}</span></p>
+                        <p class="sec">Section: <span class="uppercase">{{ $class->section }}</span></p>
+                        <p class="cc">Class Code: <span class="uppercase">{{ $class->class_code }} </span></p>
+                    </div>
 
-                <div class="class-header">
-                    <p class="sy">School Year: <span class="uppercase">{{ $class->school_year }}</span></p>
-                    <p class="sem">Semester: <span class="uppercase">{{ $class->semester }}</span></p>
-                    <p class="sec">Section: <span class="uppercase">{{ $class->section }}</span></p>
-                    <p class="cc">Class Code: <span class="uppercase">{{ $class->class_code }} </span></p>
+                    <div class="class-details">
+                        <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                        <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                            {{ date('h:iA', strtotime($class->start_time)) }} -
+                            {{ date('h:iA', strtotime($class->end_time)) }}
+                        </p>
+                        <p class="rm">Room: <span class="uppercase">{{ $class->room }}</span></p>
+                    </div>
+
+                    <div class="custom-line container-sm container-md container-lg"></div>
+
+                    <div class="class-buttons">
+                        <button class="btns"
+                            onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                        <!-- <button class="btns"
+                            onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button> -->
+                        <button class="btns" href="#">Gradebook</button>
+                    </div>
                 </div>
-
-                <div class="class-details">
-                    <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
-                    <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
-                        {{ date('h:iA', strtotime($class->start_time)) }} -
-                        {{ date('h:iA', strtotime($class->end_time)) }}
-                    </p>
-                    <p class="rm">Room: <span class="uppercase">{{ $class->room }}</span></p>
-                </div>
-
-                <div class="custom-line container-sm container-md container-lg"></div>
-
-                <div class="class-buttons">
-                    <button class="btns"
-                        onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                    <button class="btns"
-                        onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
-                    <button class="btns" href="#">Gradebook</button>
-                </div>
-
             </div>
 
             @yield('landing')
