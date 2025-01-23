@@ -79,9 +79,75 @@
 
     </header>
 
+    <nav>
+        <div class="top-buttons container mt-3">
+            <div class="hyperlink">
+
+                <div class="bulletins">
+                    <button class="btn {{ request()->routeIs('bulletins') ? 'active' : '' }}"
+                        onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+                </div>
+
+                <div class="tutorials">
+                    <button class="btn {{ request()->routeIs('tutorials') ? 'active' : '' }}"
+                        onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id]) }}'">Tutorials</button>
+                </div>
+
+                <div class="challenges">
+                    <button class="btn {{ request()->routeIs('challenges') ? 'active' : '' }}"
+                        onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+                </div>
+
+                <div class="players">
+                    <button class="btn {{ request()->routeIs('players') ? 'active' : '' }}"
+                        onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
     <main>
 
-        @yield('landing')
+        <div class="dashboard-container container-sm mt-5">
+
+            <div class="left-container">
+
+                <div class="class-header">
+                    <p class="sy">School Year: <span class="uppercase">{{ $class->school_year }}</span></p>
+                    <p class="sem">Semester: <span class="uppercase">{{ $class->semester }}</span></p>
+                    <p class="sec">Section: <span class="uppercase">{{ $class->section }}</span></p>
+                    <p class="cc">Class Code: <span class="uppercase">{{ $class->class_code }} </span></p>
+                </div>
+
+                <div class="class-details">
+                    <p class="sub"> Subject: <span class="uppercase">{{ $class->subject }} </span></p>
+                    <p class="sched">Schedule: <span class="uppercase">{{ $class->schedule_day }} </span>
+                        {{ date('h:iA', strtotime($class->start_time)) }} -
+                        {{ date('h:iA', strtotime($class->end_time)) }}
+                    </p>
+                    <p class="rm">Room: <span class="uppercase">{{ $class->room }}</span></p>
+                </div>
+
+                <div class="custom-line container-sm container-md container-lg"></div>
+
+                <div class="class-buttons">
+                    <button class="btns"
+                        onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                    <button class="btns"
+                        onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                    <button class="btns" href="#">Gradebook</button>
+                </div>
+
+            </div>
+
+            @yield('landing')
+
+        </div>
+
+
+
     </main>
 
     <!-- JavaScript for Logout Dropdown -->
@@ -142,5 +208,36 @@
     </script>
 
 </body>
+
+<!-- Bulletin List -->
+{{-- <div class="dashboard-container">
+                    <!-- Add Challenge Button -->
+                    <div class="add-challenge-container">
+                        <button type="button" class="add-challenge-btn" data-bs-toggle="modal" id="addBtn"
+                            data-bs-target="#addMemberModal">
+                            <div class="icon">
+                                <img src="{{ asset('challenge.png') }}" alt="Add Challenge Icon" class="icon-img">
+                            </div>
+                            <div class="text">Create a new tutorial to your class</div>
+                        </button>
+                    </div>
+    
+                    <!-- Bulletin List -->
+                    <div class="bulletin-list">
+                        <div class="bulletin-item">
+                            <div class="bulletin-icon">
+                                <img src="{{ asset('megaphone.png') }}" />
+                            </div>
+                            <div class="bulletin-content">
+                                <p class="bulletin-title">You posted new bulletin to your class.</p>
+                                <p class="bulletin-date">Dec 21, 2024</p>
+                            </div>
+                            <div class="bulletin-options">
+                                <button class="options-btn">•••</button>
+                            </div>
+                        </div>
+                  
+                    </div>
+                </div> --}}
 
 </html>

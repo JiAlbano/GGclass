@@ -154,107 +154,87 @@
     right: 30px; */
 }
 
-.left-container {
-    flex: 0 0 300px;
-    height: auto;
-    border: 2px solid #757575;
-    border-radius: 12px;
+/* General container styling */
+.class-card {
+    width: 300px;
+    min-width: 300px;
+    height: 441px;
+    border: 2px solid #050834;
+    border-radius: 10px;
+    overflow: hidden;
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    position: relative;
+    left: -20px;
 }
 
+/* Header section */
 .class-header {
     background-color: #283891;
     color: white;
+    text-align: center;
     padding: 10px 5px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 130px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.sy,
-.sem,
-.sec,
-.cc {
-    font-family: "Roboto", serif;
-    font-size: 16px;
-    position: relative;
-    left: 10px;
-}
-.uppercase {
-    text-transform: uppercase;
-}
-
-.sem {
-    position: relative;
-    top: -20px;
-}
-.sec {
-    position: relative;
-    top: -10px;
-}
-.cc {
-    position: relative;
-    top: -30px;
-    font-weight: 500;
-    font-style: normal;
-}
-
+/* Details section */
 .class-details {
-    font-family: "Roboto", serif;
+    text-align: center;
+    padding: 10px;
     font-size: 16px;
-    font-style: normal;
-    color: #2e3667;
 }
 
-.sub,
-.sched,
-.rm {
-    position: relative;
-    left: 15px;
-}
-.sub {
-    font-weight: 500;
-    position: relative;
-    top: 5px;
+.class-details h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #050834;
+    font-weight: bold;
 }
 
-.sched {
-    position: relative;
-    top: 10px;
+.class-details p {
+    margin: 5px 0;
+    color: #333333;
+    font-size: 14px;
 }
 
-.rm {
-    position: relative;
-    top: -10px;
-}
-
-.custom-line {
-    height: 2px;
-    background-color: #283891;
-    width: 250px;
-    position: relative;
-    top: -10px;
-}
-
+/* Buttons */
 .class-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
     align-items: center;
-    margin-bottom: 10px;
 }
 
-.btns {
+.class-buttons button {
     background-color: #283891;
     color: white;
     border: none;
-    width: 80%;
-    height: 50px;
-    cursor: pointer;
     border-radius: 5px;
-    font-family: "Roboto", serif;
-    font-size: 16px;
-    font-style: normal;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
-    border: 2px solid #ffd700;
+    font-family:Arial, sans-serif;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.class-buttons button:hover {
+    background-color: #1f3a8b;
+    color: gold;
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 400px) {
+    .class-card {
+        width: 90%;
+    }
+
+    .class-buttons button {
+        width: 100%;
+    }
 }

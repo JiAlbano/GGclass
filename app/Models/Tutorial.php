@@ -27,4 +27,16 @@ class Tutorial extends Model
     {
         return $this->belongsTo(Classes::class);
     }
+
+    // Relationship with TutorialFile
+    public function files()
+    {
+        return $this->hasMany(TutorialFile::class);
+    }
+
+    // Relationship with TutorialLink
+    public function links()
+    {
+        return $this->hasMany(TutorialLink::class);
+    }
 }

@@ -38,7 +38,7 @@ body {
     position: relative;
     top: -16px;
     margin-left: 10px;
-    margin-top: 9.5px;
+    margin-top: 10px;
 }
 
 .ggclass-font {
@@ -51,7 +51,7 @@ body {
     text-decoration: none;
     position: relative;
     left: -1px;
-    top: -5.5px;
+    top: -6px;
 }
 
 .ggclass-font:hover {
@@ -108,35 +108,43 @@ body {
     color: white;
 }
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
-}
-
 .row .btn {
-    padding: 5px; /* Add padding inside the buttons */
+    padding: 6px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #283891;
     cursor: pointer;
-    width: 100%; /* Make buttons take the full width of their column */
+    width: 100px;
+    font-family: "Georgia";
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 80px; 
+    border:none; 
+    width: 100px;
 }
 
+
+
 .challenge-btn.active {
-    background-color: #283891; /* Active button color */
-    color: white; /* Text color for active button */
-    transition: all 0.3s ease;
+    background-color: #283891;
+    color: #ffffff;
+/*    transition: all 0.3s ease;*/
+    font-size: 20px;
+    font-family: "Georgia";
+    font-weight: bold;
+    border: none;
+    width: 1000px;
+    transition: none;
 }
 
 .btn:hover {
-    color: #FFC62E;
     font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
+    width: 100%;
+    transition: none;
 }
+
 
 
 .info-container {
@@ -313,6 +321,7 @@ body {
 .btn-open:hover {
     background-color: gold; /* Gold background on hover */
     color: black; /* Black text on hover */
+    width: 55px;
 }
 
 /* Responsive adjustments */
@@ -558,9 +567,9 @@ textarea:focus {
     font-family: Arial, sans-serif;
     margin: 20px auto;
     position: relative;
-    margin: 50px;
-    margin-left: 70px;
-    margin-top: 16px;
+    margin: 30px;
+    margin-top: 8px;
+    margin-left: 100px;   
 }
 
 /* Header section */

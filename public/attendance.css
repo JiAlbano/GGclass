@@ -38,7 +38,7 @@ body {
     position: relative;
     top: -16px;
     margin-left: 10px;
-    margin-top: 9.5px;
+    margin-top: -1px;
 }
 
 .ggclass-font {
@@ -51,7 +51,7 @@ body {
     text-decoration: none;
     position: relative;
     left: -1px;
-    top: -5.5px;
+    top: -10px;
 }
 
 .ggclass-font:hover {
@@ -119,6 +119,7 @@ body {
     padding: 0 15px; /* Add padding to the left and right */
     margin-left: 10px;
     position: inherit;
+    margin-top: 87px;
 }
 
 .row .btn {
@@ -679,7 +680,8 @@ body {
     margin: 20px auto;
     position: relative;
     margin: 70px;
-    margin-top: 20px;
+    margin-left: 100px;
+    margin-top: 10px;
     height: 440px;
 }
 
@@ -739,6 +741,7 @@ body {
 .class-buttons button:hover {
     background-color: #1f3a8b;
     color: gold;
+    width: 80%;
 }
 
 /* Optional: Add responsive behavior */
@@ -834,7 +837,7 @@ body {
     border: 2px solid #2e3667;
     border-radius: 10px;
     background-color: #ffffff;
-    width: 1000px;
+    width: 900px;
     height: 480px;
     overflow-x: auto; /* Enable horizontal scrollbar */
     overflow-y: auto; /* Always show vertical scrollbar */
@@ -977,3 +980,32 @@ body {
         background-color: #ffffff; /* White background for options */
         color: #000; /* Text color */
     }
+
+.top-buttons{
+    margin-left:157px;
+    margin-right: 220px;
+    margin-top: -5px;
+}
+
+
+.row .btn {
+    padding: 6px;
+    border: none;
+    border-radius: 10px;
+    color: #283891;
+    cursor: pointer;
+    width: 100px;
+    font-family: "Georgia";
+    font-size: 20px;
+    font-weight: bold;
+/*    margin-top: 80px; */
+    border:none; 
+}
+
+.btn:hover {
+    font-weight: bold;
+    background-color: #283891;
+    color: #ffffff;
+    width: 100%;
+    transition: none;
+}

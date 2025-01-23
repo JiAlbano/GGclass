@@ -118,21 +118,27 @@ Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('
 
 // Tutorials Dashboard
 
+// Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
+// Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
+// Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
+// Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
+
 Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
 Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
-Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 
+Route::get('/display-tutorial/{classId}/{tutorialId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
+
+
+// Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
+
+
 
 // Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
 // Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
 
-
-Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
-Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('create-tutorials');
-
-Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
-Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
+// Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
+// Route::view('/display-tutorial', 'tutorial-dashboard.display-tutorial')->name('display-tutorial');
 
 
 // Classroom Routes

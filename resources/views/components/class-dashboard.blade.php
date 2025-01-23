@@ -82,7 +82,6 @@
     <nav>
         <div class="top-buttons container mt-3">
             <div class="hyperlink">
-
                 <div class="bulletins">
                     <button class="btn {{ request()->routeIs('bulletins') ? 'active' : '' }}"
                         onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
@@ -102,8 +101,6 @@
                     <button class="btn {{ request()->routeIs('players') ? 'active' : '' }}"
                         onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
                 </div>
-
-
             </div>
         </div>
     </nav>
@@ -112,7 +109,7 @@
 
         <div class="dashboard-container container-sm mt-5">
 
-            <div class="left-container">
+            <div class="class-card">
 
                 <div class="class-header">
                     <p class="sy">School Year: <span class="uppercase">{{ $class->school_year }}</span></p>
@@ -130,13 +127,13 @@
                     <p class="rm">Room: <span class="uppercase">{{ $class->room }}</span></p>
                 </div>
 
-                <div class="custom-line container-sm container-md container-lg"></div>
+                <!-- <div class="custom-line container-sm container-md container-lg"></div> -->
 
                 <div class="class-buttons">
                     <button class="btns"
                         onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
-                    <button class="btns"
-                        onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button>
+                    <!-- <button class="btns"
+                        onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button> -->
 
                         <button class="btns"
                         onclick="window.location.href='{{ route('students-list', ['classId' => $class->id]) }}'">Gradebook</button>

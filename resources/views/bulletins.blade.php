@@ -1,4 +1,4 @@
-@extends('components.class-dashboard')
+@extends('components.teacher-dashboard')
 
 @section('landing')
     <link rel="stylesheet" href="{{ secure_asset('class-dashboard/tutorial.css') }}">
