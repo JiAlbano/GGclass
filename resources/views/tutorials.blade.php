@@ -18,8 +18,7 @@
             <div class="created-tutorial"
                 onclick="window.location.href='{{ route('display-tutorials', ['classId' => $class->id, 'tutorialId' => $tutorial->id]) }}'">
                 <img src="{{ asset('img/lesson.png') }}" alt="lesson-img" class="lesson-img">
-                <p class="tut-text"> You posted a tutorial to your class: <span
-                        class="tutt-title"><b>{{ $tutorial->title }}</b></span></p>
+                <p class="tut-text"> Tutorial Title: <span class="tutt-title"><b>{{ $tutorial->title }}</b></span></p>
 
                 <img src="{{ asset('img/hamburger.png') }}" alt="lesson-img" class="hamburger-img" data-bs-toggle="dropdown"
                     aria-expanded="false" onclick="event.stopPropagation();">
