@@ -2,6 +2,7 @@
     width: 80%;
     position: relative;
     left: 20px;
+    height: 40px;
 }
 
 .create-tutorial {
@@ -40,8 +41,9 @@
 
 .hamburger-img {
     height: 30px;
+    margin-left: auto;
     position: relative;
-    left: 430px;
+    right: 30px;
 }
 
 .tut-text {
@@ -52,4 +54,9 @@
     color: #2e3667;
     position: relative;
     top: 8px;
+}
+
+.dropdown-menu {
+    position: relative;
+    right: 100px;
 }

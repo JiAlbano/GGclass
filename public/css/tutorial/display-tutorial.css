@@ -7,12 +7,11 @@
     justify-content: center;
     align-items: center;
     height: auto;
-    margin-top: 20px;
     color: #2e3667;
 }
 
 .title-content {
-    height: 50px;
+    height: auto;
     width: 1000px;
     border: 2px solid #757575;
     background-color: #ffffff;
@@ -20,7 +19,7 @@
 
 .description-content {
     display: flex;
-    height: 150px;
+    min-height: 120px;
     width: 1000px;
     border: 2px solid #757575;
     background-color: #ffffff;
@@ -48,15 +47,30 @@
     height: 70px;
     border: 1px solid #757575;
     background-color: #ffffff;
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+}
+
+.tutorial-link {
+    width: 1000px;
+    height: 70px;
+    border: 1px solid #757575;
+    background-color: #ffffff;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .upload-file-text {
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.upload-link-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .uploaded-img {
@@ -83,4 +97,10 @@
 .hamburgers-img {
     height: 30px;
     margin-right: 20px;
+}
+
+.uploaded-link {
+    height: 60px;
+    width: 60px;
+    margin: 0 10px 0 5px;
 }
