@@ -164,17 +164,136 @@
                 background-color: #f5f5f5;
                 padding-bottom: 30px;
             }
+
+            .row .btn {
+                padding: 6px;
+                border: none;
+                border-radius: 10px;
+                color: #283891;
+                cursor: pointer;
+                width: 100px;
+                font-family: "Georgia";
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 10px; 
+                border:none; 
+                width: 100px;
+            }
+
+            .challenge-btn.active {
+                background-color: #2e3667;
+                color: #ffffff;
+            /*    transition: all 0.3s ease;*/
+                font-size: 16px;
+/*                font-family: "Georgia";*/
+                font-weight: bold;
+                border: none;
+                width: 80%;
+                transition: none;
+            }
+
+            .btn:hover {
+                font-weight: bold;
+                background-color: #283891;
+                color: #ffffff;
+                width: 80%;
+                transition: none;
+            }
+
+            .container{
+                margin-top: -10px;
+            }
+
+            .text{
+                font-size: 22px;
+                margin-left: 25px;
+                margin-top: 8px;
+            }
+
+            .styled-table{
+                margin-top: -60px;
+                margin-left: -30px;
+            }
+
+            .left-container{
+                width: 420px;
+                height: 440px;
+                border: 2px solid #050834;
+                border-radius: 10px;
+                overflow: hidden;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+                margin: 20px auto;
+                position: relative;
+                margin-right: 50px;
+                margin-top: -93px;
+                margin-left: 22px;
+            }
+
+            .class-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+                align-items: center;
+            }
+
+            .class-buttons button {
+                background-color: #283891;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                width: 80%;
+                padding: 10px 0;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                text-transform: uppercase;
+                transition: background-color 0.3s ease;
+            }
+
+            .class-buttons button:hover {
+                background-color: #1f3a8b;
+                color: gold;
+            }
+
+            /* Optional: Add responsive behavior */
+            @media (max-width: 400px) {
+                .class-card {
+                    width: 90%;
+                }
+
+                .class-buttons button {
+                    width: 100%;
+                }
+            }
+
+            header .export {
+                margin-top: -40px; /* Adjust the value to move the button upward */
+            }
             </style>
             
-        <div class="header container-md text-center mt-2">
-            <a href="#">Bulletin</a>
-            <a href="#">Tutorials</a>
-            <a href="#">Challenges</a>
-            <a href="#">Players</a>
+    <div class="top-buttons containers" style="margin-left: 240px; margin-right: 240px;">
+        <div class="row justify-content-center"> <!-- Added justify-content-center class -->
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
+                <button class="btn" onclick="window.location.href='{{ route('bulletins', ['classId' => $class->id]) }}'">Bulletins</button>
+            </div>
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+                <button class="btn" onclick="window.location.href='{{ route('tutorials', ['classId' => $class->id])}}'">Tutorials</button>
+            </div>
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+                <button class="btn" onclick="window.location.href='{{ route('challenges', ['classId' => $class->id]) }}'">Challenges</button>
+            </div>
+            <div class="col-12 col-md-3 mb-2 d-flex justify-content-center">
+                <button class="btn" onclick="window.location.href='{{ route('players', ['classId' => $class->id]) }}'">Players</button>
+            </div>
         </div>
+    </div>
+
     </header>
 
-    <div class="custom-line container-sm container-md container-lg"></div>
+    
 
     <header>
         <div class="container first-line">
@@ -183,16 +302,14 @@
                     <h1 class="text">Student Assessment</h1>
                 </div>
 
-                <div class="col-md-4 mt-4">
+                <div class=" col-md-4 mt-4">
                     <a href="{{ route('student-list.export') }}"> <button type="button" class="export">Export</button> </a>
                 </div>
-
-
             </div>
         </div>
     </header>
 
-    <div class="custom-line-2 container-sm container-md container-lg"></div>
+    <!-- <div class="custom-line-2 container-sm container-md container-lg"></div> -->
 
 
     <main>
@@ -212,18 +329,11 @@
                     <h6 class="room">{{ $class->room }}</h6>
                 </div>
 
-                <div class="line-between"></div>
-
-                <div class="first-button">
-                    <a href="" class="btns">Attendance</a>
-                </div>
-
-                <div class="second-button">
-                    <a href="" class="btns">Feedback</a>
-                </div>
-
-                <div class="third-button">
-                    <a href="" class="btns">Gradebook</a>
+                <div class="class-buttons">
+                    <button onclick="window.location.href='{{ route('attendance', ['classId' => $class->id]) }}'">Attendance</button>
+                    <!-- <button onclick="window.location.href='{{ route('feedback', ['classId' => $class->id]) }}'">Feedback</button> -->
+                    <button class="btn challenge-btn active"
+                    onclick="window.location.href='{{ route('students-list', ['classId' => $class->id]) }}'">Gradebook</button>
                 </div>
 
             </div>
