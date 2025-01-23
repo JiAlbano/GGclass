@@ -21,18 +21,23 @@ class GradeController extends Controller
         // Fetch the class details
         $class = Classroom::findOrFail($classId);
 
-        // Get the total_score scores of the user
-        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+                // Get the total_score scores of the user for a specific class
+                $totalScores = StudentChallengeScore::where('student_id', $user->id)
+                ->where('class_id', $classId) // Add the class context
+                ->pluck('total_score');
 
-        // Calculate the sum of the total scores
-        $sumOfScores = $totalScores->sum();
+                // Calculate the sum of the total scores for the class
+                $sumOfScores = $totalScores->sum();
 
-        // Retrieve the number of items
-        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+                // Retrieve the number of items for the class
+                $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
+                ->where('class_id', $classId) // Add the class context
+                ->sum('number_of_items');
 
         // Retrieve quiz titles, total_score, and number_of_items only for quizzes
         $quizData = Quiz::join('student_challenge_scores', 'quizzes.id', '=', 'student_challenge_scores.challenge_id')
                         ->where('student_challenge_scores.student_id', $user->id)
+                        ->where('student_challenge_scores.class_id', $classId) // Filter by class_id
                         ->where('student_challenge_scores.challenge_type', 'quiz')  // Filter by challenge_type 'quiz'
                         ->select('quizzes.title', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
                         ->get();
@@ -40,6 +45,7 @@ class GradeController extends Controller
         // Retrieve exam types and their scores only for exams, now using the exams table for exam_type
         $examData = StudentChallengeScore::join('exams', 'student_challenge_scores.challenge_id', '=', 'exams.id')
                                           ->where('student_challenge_scores.student_id', $user->id)
+                                          ->where('student_challenge_scores.class_id', $classId) // Filter by class_id
                                           ->where('student_challenge_scores.challenge_type', 'exam')  // Filter by challenge_type 'exam'
                                           ->select('exams.exam_type', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
                                           ->get();
