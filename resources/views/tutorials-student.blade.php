@@ -27,13 +27,13 @@
 <body>
 
     <!-- navbar -->
-@extends('layouts.app')
+    @extends('layouts.app')
 
-@section('title', 'Bulletins')
+    @section('title', 'Bulletins')
 
-@section('content')
+    @section('content')
 
-@endsection
+    @endsection
 
 
     <div class="top-buttons containers" style=" margin-top: 84px;">
@@ -102,7 +102,8 @@
                         onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button>
                     <button
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
-                        <button onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
+                    <button
+                        onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
                 </div>
             </div>
 
