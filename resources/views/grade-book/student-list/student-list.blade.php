@@ -202,14 +202,14 @@
 
                 <div class ="class-theme">
                     <h6 class="mt-3 school-year">School Year: 2024-2025</h6>
-                    <h6 class="mt-3 semester ">Semester: 1st</h6>
-                    <h6 class="mt-3 section ">Section: N1Am</h6>
+                        <h6 class="mt-3 semester">Semester: 1st</h6>
+                        <h6 class="mt-3 section">Section: {{ $class->section }}</h6>
                 </div>
 
-                <div class="">
-                    <h6 class="mt-3 class">CSDC105</h6>
-                    <h6 class="mt-3 schedule"> TTH 9:00AM - 10:30AM </h6>
-                    <h6 class="mt-3 room">411B</h6>
+                <div class="mt-3">
+                    <h6 class="class">{{ $class->name }}</h6>
+                    <h6 class="schedule">{{ $class->schedule }}</h6>
+                    <h6 class="room">{{ $class->room }}</h6>
                 </div>
 
                 <div class="line-between"></div>
@@ -228,32 +228,33 @@
 
             </div>
 
-            <div class="right-container ">
+            <div class="right-container">
                 <table class="styled-table">
                     <thead>
                         <tr class="table-head">
-                            <th>ID number</th>
+                            <th>ID Number</th>
                             <th>Name</th>
                             <th>Course</th>
                             <th>Grading System</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        @foreach ($student_list as $students)
+                        @foreach ($classUsers as $classUser)
                             <tr class="table-row"
-                                onclick="location.href='{{ route('student-details', ['id' => $students->student_id]) }}'">
-                                <td>{{ $students->student_id }}</td>
-                                <td>{{ $students->full_name }}</td>
-                                <td>{{ $students->course }}</td>
-                                <td>{{ $students->grading_system }}</td>
+                                onclick="location.href='{{ route('student-details', ['id' => $classUser->id_number]) }}'">
+                                <td>{{ $classUser->id_number }}</td>
+                                <td>{{ $classUser->first_name }} {{ $classUser->last_name }}</td>
+                                <td>{{ $classUser->course_id }}</td>
+                                <td>{{ $classUser->grading_system }}</td>
                             </tr>
                         @endforeach
                     </tbody>
-
                 </table>
             </div>
+        </div>
 
         </div>
     </main>
+
+        
 @endsection

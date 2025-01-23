@@ -29,7 +29,7 @@ class StudentController extends Controller
           ->join('class_user', 'classes.id', '=', 'class_user.class_id')
           ->join('users', 'class_user.user_id', '=', 'users.id')
           ->where('classes.id', '=', $classId)
-          ->select('users.first_name', 'users.last_name', 'users.ign') // Select specific user fields
+          ->select('users.first_name', 'users.last_name', 'users.ign','users.course_id','users.grading_system') // Select specific user fields
           ->get();
 
       // Fetch the class details
@@ -39,19 +39,19 @@ class StudentController extends Controller
       return view('grade-book.student-list.student-list', compact('class', 'user', 'classUsers'));
   }
 
-  public function index()
-  {
-      // Retrieve all students and sort them by full_name in ascending order
-      $student_list = Student::orderBy('full_name')->get();
-      $user = Auth::user();   
-      // Convert each student's full_name to uppercase
-      $student_list->transform(function ($student) {
-          $student->full_name = strtoupper($student->full_name);
-          return $student;
-      });
+  // public function index()
+  // {
+  //     // Retrieve all students and sort them by full_name in ascending order
+  //     $student_list = Student::orderBy('full_name')->get();
+  //     $user = Auth::user();   
+  //     // Convert each student's full_name to uppercase
+  //     $student_list->transform(function ($student) {
+  //         $student->full_name = strtoupper($student->full_name);
+  //         return $student;
+  //     });
 
-      return view('grade-book.student-list.student-list', compact('student_list', 'user'));
-  }
+  //     return view('grade-book.student-list.student-list', compact('student_list', 'user'));
+  // }
 
 
 

@@ -44,6 +44,7 @@ class User extends Authenticatable
         'birthday',
         'course_id',
         'token_count',
+        'grading_system', // Add this field
 
     ];
 

@@ -254,8 +254,9 @@ Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('class
 
 
 //gradebook functionality
+Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name('students-list');
 
- Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name('students-list');
+
  
 // grade-book.student-list.student-list
 Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
