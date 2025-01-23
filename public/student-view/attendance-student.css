@@ -78,7 +78,7 @@
 }
 
 .challenge-btn.active {
-    background-color: #283891;
+    background-color: #2e3667;
     color: #ffffff;
     transition: all 0.3s ease;
     font-size: 14px;
@@ -86,6 +86,7 @@
     border: none;
     width: 80%px;
 }
+
 
 .btn:hover {
     font-weight: bold;
@@ -123,14 +124,17 @@ body {
     margin-top: 10px;
 }
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
+
+.row .btn {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #283891;
+    cursor: pointer;
+    width: 250px;
+    font-family: "Georgia";
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .btn1 {
@@ -226,7 +230,7 @@ body {
 
 /* Header section */
 .class-header {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     text-align: center;
     padding: 10px 5px;
@@ -265,7 +269,7 @@ body {
 }
 
 .class-buttons button {
-    background-color: #2e3667;
+    background-color: #283891;
     color: white;
     border: none;
     border-radius: 5px;
@@ -281,6 +285,7 @@ body {
 
 .class-buttons button:hover {
     background-color: #1f3a8b;
+    color: gold;
 }
 
 /* Optional: Add responsive behavior */
@@ -500,7 +505,7 @@ body {
 }
 
 .attendance-label {
-    color: #2e3667;
+    color: #283891;
     padding: 5px 10px;
     font-weight: 600;
     font-size: 18px; /* Adjust as needed */
@@ -565,7 +570,7 @@ body {
     border: 2px solid #2e3667;
     padding: 20px;
     border-radius: 10px;
-    background-color: #2e3667;
+    background-color: #283891;
     width: 1000px;
     height: 50px;
     align-self: flex-start; /* Ensures it stays at the top */
@@ -653,7 +658,7 @@ body {
 }
 
 .note{
-    color: #ffffff;
+    color: gold;
     font-family: georgia;
     font-size: 16px;
 }
