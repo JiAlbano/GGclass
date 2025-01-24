@@ -261,9 +261,9 @@
                     <h1 class="text">Assessment Type</h1>
                 </div>
                 <div class="col-md-4 mt-4">
-                    <a href="{{ route('student-list.export') }}">
+                    {{-- <a href="{{ route('student-list.export',['classId' => $class->id]) }}}">
                         <button type="button" class="export">Export</button>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -316,7 +316,8 @@
                     <tbody>
                      @foreach ($challengetype as $type) 
                             <tr class="table-row"
-                               onclick="window.location='{{ route('student-assessment-scores', ['student_id' => $student[0]->id_number, 'challengetype_id' => $type->id]) }}'"> 
+              
+                               onclick="window.location='{{ route('student-assessment-scores', ['student_id' => $student[0]->id_number, 'challengetype_id' => $type->id, 'challengetype' => $type->type])  }}'"> 
                                 <td>
                                    <p class="challenge">{{ $type->title }}</p> 
                                 </td>

@@ -303,7 +303,7 @@
                 </div>
 
                 <div class=" col-md-4 mt-4">
-                    <a href="{{ route('student-list.export') }}"> <button type="button" class="export">Export</button> </a>
+                    <a href="{{ route('student-list.export',['classId' => $class->id]) }}"> <button type="button" class="export">Export</button> </a>
                 </div>
             </div>
         </div>

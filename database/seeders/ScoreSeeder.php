@@ -13,14 +13,14 @@ class ScoreSeeder extends Seeder
         DB::table('scores')->insert([
             // Jan Raphael's Scores
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 1, // Quiz 1
                 'score' => 9,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 2, // Quiz 2
                 'score' => 10,
                 'created_at' => now(),
@@ -28,7 +28,7 @@ class ScoreSeeder extends Seeder
             ],
           
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 3, // Activity 1
                 'score' => 21,
                 'created_at' => now(),
@@ -36,7 +36,7 @@ class ScoreSeeder extends Seeder
             ],
 
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 4, // Activity 2
                 'score' => 22,
                 'created_at' => now(),
@@ -44,7 +44,7 @@ class ScoreSeeder extends Seeder
             ],
 
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 5, // Project 1
                 'score' => 90,
                 'created_at' => now(),
@@ -52,7 +52,7 @@ class ScoreSeeder extends Seeder
             ],
 
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 6, // Project 2
                 'score' => 95,
                 'created_at' => now(),
@@ -60,7 +60,7 @@ class ScoreSeeder extends Seeder
             ],
 
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 7, // Term Paper 1
                 'score' => 98,
                 'created_at' => now(),
@@ -68,7 +68,7 @@ class ScoreSeeder extends Seeder
             ],
 
             [
-                'student_id' => '202010501',
+                'student_id' => '12213212',
                 'assessment_type_id' => 8, // Term Paper 2
                 'score' => 99,
                 'created_at' => now(),

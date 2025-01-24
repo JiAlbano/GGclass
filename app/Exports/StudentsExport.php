@@ -2,6 +2,8 @@
 
 namespace App\Exports;
 
+use App\Models\Classes as Classroom;
+use App\Models\User;
 use App\Models\Student;
 use App\Models\Assessment;
 use App\Models\AssessmentType;
@@ -10,21 +12,22 @@ use App\Models\Score;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use DB;
 
 class StudentsExport
 {
-    public function export()
+    public function export($classId)
     {
         $filePath = storage_path('app/public/adnugradebook.xlsx'); 
         $spreadsheet = IOFactory::load($filePath); 
         // Populate the first sheet
-        $this->populateFirstSheet($spreadsheet);
+        $this->populateFirstSheet($classId, $spreadsheet);
 
         // Populate the second sheet
-        $this->populateSecondSheet($spreadsheet);
+        $this->populateSecondSheet($classId,$spreadsheet);
 
-        // Populate the third sheet
-        $this->populateThirdSheet($spreadsheet);
+        // // Populate the third sheet
+        // $this->populateThirdSheet($spreadsheet);
 
         // Save the modified file to a temporary location
         $writer = new Xlsx($spreadsheet);
@@ -35,21 +38,29 @@ class StudentsExport
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
 
-    private function populateFirstSheet($spreadsheet)
+    private function populateFirstSheet($classId, $spreadsheet)
     {
         $sheet1 = $spreadsheet->getSheet(0); // First sheet
 
-        $students = Student::all();
+        $classUsers = DB::table('classes')
+        ->join('class_user', 'classes.id', '=', 'class_user.class_id')
+        ->join('users', 'class_user.user_id', '=', 'users.id')
+        ->join('courses', 'users.course_id', '=', 'courses.id')
+        ->where('classes.id', '=', $classId)
+        ->select('users.first_name', 'users.last_name', 'users.ign','users.course_id','users.grading_system', 'users.id_number','courses.course_name') // Select specific user fields
+        ->get();
+
+
         $assessments = Assessment::take(6)->get();
 
         // Populate student details (B22 to E121)
         $startRow = 22;
-        foreach ($students as $index => $student) {
+        foreach ($classUsers as $index => $student) {
             $row = $startRow + $index;
 
-            $sheet1->setCellValue("B{$row}", $student->student_id);      // Student ID
-            $sheet1->setCellValue("C{$row}", $student->full_name);      // Full Name
-            $sheet1->setCellValue("D{$row}", $student->course);         // Course
+            $sheet1->setCellValue("B{$row}", $student->id_number);      // Student ID
+            $sheet1->setCellValue("C{$row}", $student->first_name . ' ' . $student->last_name);      // Full Name
+            $sheet1->setCellValue("D{$row}", $student->course_name);         // Course
             $sheet1->setCellValue("E{$row}", $student->grading_system); // Grading System
         }
 
@@ -61,10 +72,18 @@ class StudentsExport
         }
     }
 
-    private function populateSecondSheet($spreadsheet)
+    private function populateSecondSheet($classId, $spreadsheet)
     {
         $sheet2 = $spreadsheet->getSheet(1); // Second sheet
-        $students = Student::all();
+
+        $classUsers = DB::table('classes')
+        ->join('class_user', 'classes.id', '=', 'class_user.class_id')
+        ->join('users', 'class_user.user_id', '=', 'users.id')
+        ->join('courses', 'users.course_id', '=', 'courses.id')
+        ->where('classes.id', '=', $classId)
+        ->select('users.first_name', 'users.last_name', 'users.ign','users.course_id','users.grading_system', 'users.id_number','courses.course_name') // Select specific user fields
+        ->get();
+
         $assessments = Assessment::with('assessmentTypes')->get();
         $startColumnIndex = 7; // Column G
 
@@ -79,8 +98,8 @@ class StudentsExport
                 $sheet2->setCellValue("{$column}3", (int) $type->total_scores);
 
                 // Populate student scores (rows 4-103)
-                foreach ($students as $rowIndex => $student) {
-                    $score = Score::where('student_id', $student->student_id)
+                foreach ($classUsers as $rowIndex => $student) {
+                    $score = Score::where('student_id', $student->id_number)
                                   ->where('assessment_type_id', $type->assessment_type_id)
                                   ->first();
                     $sheet2->setCellValue("{$column}" . (4 + $rowIndex), $score->score ?? 0);

@@ -61,10 +61,10 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row" style="display:none;">
                     <div class="form-group">
                         <label for="department">Department:</label>
-                        <select id="department" name="department" required>
+                        <select id="department" name="department">
                             <option value="" disabled selected>Select your department</option>
                             @foreach ($departments as $department)
                                 <option value="{{ $department->id }}">{{ $department->department_name }}</option>

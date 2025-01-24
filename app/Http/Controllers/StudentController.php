@@ -79,12 +79,12 @@ class StudentController extends Controller
        $challengetype = Challenge::where('user_id',$user->id) 
                                   ->where('class_id', $classId) 
                                   ->get();          
+                            $examData = StudentChallengeScore::where('student_id', $student[0]->id)
+                                  ->where('challenge_type', 'exam')  // Filter by challenge_type 'exam'
+                                  ->select('exam_type', 'total_score', 'number_of_items')
+                                  ->get();
+                            
 
-      // Retrieve exam types and their scores only for exams
-      $examData = StudentChallengeScore::where('student_id', $student[0]->id)
-                                        ->where('challenge_type', 'exam')  // Filter by challenge_type 'exam'
-                                        ->select('exam_type', 'total_score', 'number_of_items')
-                                        ->get();
  // Fetch the class details
  $class = Classroom::findOrFail($classId);
 
@@ -108,7 +108,7 @@ class StudentController extends Controller
 //     return view('grade-book.student-data.student-assessment', compact('student', 'assessments', 'exams', 'user'));
 // }
 
-public function viewAssessmentScores($student_id, $challengetype_id)
+public function viewAssessmentScores($student_id, $challengetype_id, $challengetype)
 {
               // Fetch the authenticated user
             $user = Auth::user();
@@ -126,12 +126,24 @@ public function viewAssessmentScores($student_id, $challengetype_id)
     // Retrieve the number of items
     $numberOfItems = StudentChallengeScore::where('student_id', $student[0]->id)->sum('number_of_items');
 
-    // Retrieve quiz titles, total_score, and number_of_items only for quizzes
+   
+            if($challengetype=='exam'){
+                    // Retrieve exam types and their scores only for exams
+      $quizData = StudentChallengeScore::join('exams', 'exams.id', '=', 'student_challenge_scores.challenge_id')
+      ->where('student_challenge_scores.student_id', $student[0]->id)
+      ->where('student_challenge_scores.challenge_type', 'exam')  // Filter by challenge_type 'exam'
+      ->select('student_challenge_scores.exam_type', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items','exams.title')
+      ->get();
+
+            }else{
+               // Retrieve quiz titles, total_score, and number_of_items only for quizzes
     $quizData = Quiz::join('student_challenge_scores', 'quizzes.id', '=', 'student_challenge_scores.challenge_id')
-                    ->where('student_challenge_scores.student_id', $student[0]->id)
-                    ->where('student_challenge_scores.challenge_type', 'quiz')  // Filter by challenge_type 'quiz'
-                    ->select('quizzes.title', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
-                    ->get();
+    ->where('student_challenge_scores.student_id', $student[0]->id)
+    ->where('student_challenge_scores.challenge_type', 'quiz')  // Filter by challenge_type 'quiz'
+    ->select('quizzes.title', 'student_challenge_scores.total_score', 'student_challenge_scores.number_of_items')
+    ->get();
+            }
+            
 
 
     return view('grade-book.student-assessment.student-score',compact('user','student','quizData','totalScores', 'sumOfScores', 'numberOfItems'));
@@ -155,10 +167,11 @@ public function viewExamScores($student_id, $exam_id)
 }
 
 
-public function export()
+public function export($classId)
     {
+      
       $studentsExport = new StudentsExport();
-        return $studentsExport->export();
+        return $studentsExport->export($classId);
     }
 
 
