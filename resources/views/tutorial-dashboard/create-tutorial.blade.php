@@ -263,7 +263,7 @@
 
                 // Create an image element for the delete button
                 const deleteImg = document.createElement('img');
-                deleteImg.src = '{{ asset('img/hamburger.png') }}';
+                deleteImg.src = '{{ asset('img/trash.png') }}';
                 deleteImg.classList.add('hamburger-img');
                 deleteImg.addEventListener('click', function() {
                     // Remove the file div when the delete button is clicked

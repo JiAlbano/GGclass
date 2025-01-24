@@ -88,7 +88,24 @@ class TutorialsController extends Controller
                                  ->with('success', 'Tutorial created successfully!');
             }
 
-            
+            public function destroy($classId, $tutorialId)
+{
+    // Fetch the tutorial to be deleted
+    $tutorial = Tutorial::findOrFail($tutorialId);
+
+    // Delete associated files
+    foreach ($tutorial->files as $file) {
+        Storage::disk('public')->delete($file->file_path);
+        $file->delete();
+    }
+
+    // Delete the tutorial itself
+    $tutorial->delete();
+
+    // Redirect back to the tutorials page with a success message
+    return redirect()->route('tutorials', ['classId' => $classId])
+                     ->with('success', 'Tutorial deleted successfully!');
+}
 
 }
 

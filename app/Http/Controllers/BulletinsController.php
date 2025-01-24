@@ -16,10 +16,10 @@ class BulletinsController extends Controller
     public function show($classId)
     {
         $user = Auth::user(); // Fetch the authenticated user
-        $class = Classroom::findOrFail($classId); // Fetch the class
-        $tutorials = Bulletin::where('class_id', $classId)->get(); // Fetch bulletin for the class
+        $class = Classroom::findOrFail($classId);
+        $tutorials = Bulletin::where('class_id', $classId)->get();
 
-        return view('bulletins', compact('class', 'user', 'tutorials')); // Pass variables to the view
+        return view('bulletins', compact('class', 'user', 'tutorials')); 
     }
 
     public function create($classId)
@@ -84,4 +84,23 @@ class BulletinsController extends Controller
         return redirect()->route('bulletins', ['classId' => $classId])
                          ->with('success', 'Bulletin created successfully!');
     }
+
+    public function destroy($classId, $bulletinId)
+{
+    // Fetch the bulletin to be deleted
+    $bulletin = Bulletin::findOrFail($bulletinId);
+
+    // Delete associated files
+    foreach ($bulletin->files as $file) {
+        Storage::disk('public')->delete($file->file_path);
+        $file->delete();
+    }
+
+    // Delete the bulletin itself
+    $bulletin->delete();
+
+    // Redirect back to the bulletins page with a success message
+    return redirect()->route('bulletins', ['classId' => $classId])
+                     ->with('success', 'Bulletin deleted successfully!');
+}
 }

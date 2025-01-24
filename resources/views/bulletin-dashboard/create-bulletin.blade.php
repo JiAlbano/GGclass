@@ -91,16 +91,16 @@
                                 </div>
                             </div>
 
-                            <div class="link-links">
+                            {{-- <div class="link-links">
                                 <img src="{{ asset('img/link.png') }}" alt="link-img" class="link-img"
                                     data-bs-toggle="modal" data-bs-target="#addLink" data-bs-target="#staticBackdrop">
                                 <div class="link-text">
                                     <p class="text-link">Upload a link</p>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!-- Modal for uploading links -->
-                            <div class="modal fade" id="addLink" data-bs-backdrop="static" tabindex="-1"
+                            {{-- <div class="modal fade" id="addLink" data-bs-backdrop="static" tabindex="-1"
                                 aria-labelledby="link" aria-hidden="true">
                                 <div class="modal-dialog modal-layout">
                                     <div class="modal-content" style="border: 2px solid #283891">
@@ -123,7 +123,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -263,7 +263,7 @@
 
                 // Create an image element for the delete button
                 const deleteImg = document.createElement('img');
-                deleteImg.src = '{{ asset('img/hamburger.png') }}';
+                deleteImg.src = '{{ asset('img/trash.png') }}';
                 deleteImg.classList.add('hamburger-img');
                 deleteImg.addEventListener('click', function() {
                     // Remove the file div when the delete button is clicked

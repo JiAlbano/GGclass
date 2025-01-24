@@ -34,7 +34,11 @@
 
     @endsection
 
+
     <div class="top-buttons containers" style=" margin-top: 84px; margin-left: 240px; margin-right: 240px;">
+
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
             <div class="col-12 col-md-3 mb-2 d-flex justify-content-center"> <!-- Center buttons within the column -->
                 <button class="btn challenge-btn active"

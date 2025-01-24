@@ -498,3 +498,7 @@ body {
     flex-direction: column;
     margin-top: 35px;
 }
+
+.goback {
+    display: flex;
+}

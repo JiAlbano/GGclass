@@ -26,8 +26,15 @@
                     aria-expanded="false" onclick="event.stopPropagation();">
 
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item edit" href="#">Edit</a></li>
-                    <li><a class="dropdown-item delete" href="#">Delete</a></li>
+                    <li>
+                        <form
+                            action="{{ route('delete-bulletin', ['classId' => $class->id, 'bulletinId' => $tutorial->id]) }}"
+                            method="POST" onsubmit="return confirm('Are you sure you want to delete this bulletin?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="dropdown-item delete">Delete</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         @endforeach

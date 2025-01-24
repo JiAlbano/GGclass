@@ -123,26 +123,29 @@ Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('
 // Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 // Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
 
+
+//  Teacher Tutorial
 Route::get('/tutorial/{classId}', [TutorialsController::class, 'show'])->name('tutorials');
 Route::get('/create-tutorial/{classId}', [TutorialsController::class, 'create'])->name('create-tutorials');
-
 Route::get('/display-tutorial/{classId}/{tutorialId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
+Route::delete('/tutorials/{classId}/{tutorialId}', [TutorialsController::class, 'destroy'])->name('delete-tutorial');
 
+//  Student Tutorial
 Route::get('/studenttutorials/{classId}/{tutorialId}', [StudenttutorialsController::class, 'display'])->name('display-student-tutorial');
-
 Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
+
 // Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 
+// Teacher Bulletins
 Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
 Route::get('/create-bulletins/{classId}', [BulletinsController::class, 'create'])->name('create-bulletins');
 Route::get('/display-bulletins/{classId}/{tutorialId}', [BulletinsController::class, 'display'])->name('display-bulletins');
 Route::post('/store-bulletins/{classId}', [BulletinsController::class, 'store'])->name('store-bulletins');
+Route::delete('/bulletins/{classId}/{bulletinId}', [BulletinsController::class, 'destroy'])->name('delete-bulletin');
 
-
-//Student routes
+// Student Bulletins
 Route::get('/studentbulletins/{classId?}', [StudentBulletinsController::class, 'show'])->name('studentbulletins'); 
-
 Route::get('/display-student-bulletin/{classId}/{bulletinId}', [StudentBulletinsController::class, 'display'])->name('display-student-bulletin');
 
 
