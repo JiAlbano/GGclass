@@ -203,9 +203,9 @@
                     <h1 class="text" style="margin-top: 45px; margin-left: 15px;">Assessment Scores</h1>
                 </div>
                 <div class="col-md-4 mt-4">
-                    <a href="{{ route('student-list.export') }}">
+                    {{-- <a href="{{ route('student-list.export',['classId' => $class->id]) }}">
                         <button type="button" class="export">Export</button>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -255,7 +255,7 @@
                                 <p class="total-points">Total Points</p>
                             </th>
                             <th>
-                                <p class="individual-points">Points Obtained</p>
+                                <p class="individual-points">Number of Items</p>
                             </th>
                         </tr>
                     </thead>
@@ -265,14 +265,14 @@
                             @foreach ($quizData as $quiz) 
                                 <tr class="table-row">
                                     <td>
-                                        <p class="challenge">{{ $quiz->title }}</p>
+                                        <p class="challenge">{{ $quiz->title }}</p> 
                                     </td>
                                     <td>
-                                        {{-- <p class="total-points">{{ $assessmentType->total_scores }}</p> --}}
+                                         <p class="total-points">{{ $quiz->total_score }}</p> 
                                     </td>
                                     <td>
                                         <p class="individual-points">
-                                            {{-- {{ $scores->firstWhere('assessment_type_id', $assessmentType->assessment_type_id)->score ?? 'No Score' }} --}}
+                                            <p class="total-points">{{ $quiz->number_of_items }}</p> 
                                         </p>
                                     </td>
                                 </tr>

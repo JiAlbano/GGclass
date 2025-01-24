@@ -259,6 +259,9 @@ Route::get('/student/activity/{classId}', [ActivityController::class, 'show'])->
 Route::put('/classes/{id}', [ClassController::class, 'update'])->name('classes.update');
 Route::delete('/classes/{id}', [ClassController::class, 'destroy'])->name('classes.destroy');
 
+// Route for exporting the Excel file
+Route::get('/students-list/export/{classId}', [StudentController::class, 'export'])->name('student-list.export');
+
 
 //gradebook functionality
 Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name('students-list');
@@ -268,7 +271,7 @@ Route::get('/students-list/{classId}', [StudentController::class, 'show'])->name
 Route::get('/students/{classId}/{id_number}', [StudentController::class, 'showschools'])->name('student-details');
 
 // grade-book.student-assessment.student-score
-Route::get('/students-score/{student_id}/{challengetype_id}', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
+Route::get('/students-score/{student_id}/{challengetype_id}/{challengetype}', [StudentController::class, 'viewAssessmentScores'])->name('student-assessment-scores');
 
 // grade-book.student-list.student-list
 // Route::get('/students-list', [StudentController::class, 'index'])->name('student-list');
@@ -280,8 +283,7 @@ Route::get('/students-score/{student_id}/{challengetype_id}', [StudentController
 // Route to view a student's exam scores
 Route::get('/students/{student_id}/exam/{exam_id}/scores', [StudentController::class, 'viewExamScores'])->name('student-exam-scores');
 
-// Route for exporting the Excel file
-Route::get('/students-list/export', [StudentController::class, 'export'])->name('student-list.export');
+
 
 
 

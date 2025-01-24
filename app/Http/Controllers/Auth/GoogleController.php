@@ -92,7 +92,7 @@ class GoogleController extends Controller
         }
     } else {
         // User is a teacher
-        if ($user->department !== NULL) {
+        if ($user->ign !== NULL) {
             // Check if the class-list has any data with the teacher_id
             if (Classes::where('teacher_id', $user->id)->exists()) {
                 // If there are classes with the teacher_id, redirect to class-list
@@ -153,12 +153,12 @@ class GoogleController extends Controller
 
         // Validate the form inputs
         $request->validate([
-            'department' => 'required|exists:departments,id',
+
             'ign' => 'required|string|max:255',
         ]);
 
         // Update the user's course and ID number
-        $user->department = $request->input('department');
+
         $user->ign = $request->input('ign');
         $user->save();
 
