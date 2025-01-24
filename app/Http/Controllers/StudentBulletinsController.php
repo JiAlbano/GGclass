@@ -23,6 +23,7 @@ class StudentBulletinsController extends Controller
 
         // Retrieve the number of items
         $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
+        
 
         return view('studentbulletins', compact('class', 'user', 'numberOfItems', 'totalScores', 'sumOfScores' )); // Pass both variables to the view
     }
