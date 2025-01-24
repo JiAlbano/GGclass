@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Classes as Classroom;
 class Quiz extends Model
 {
     use HasFactory;
@@ -17,4 +17,8 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class);
     }
+    public function classroom()
+{
+    return $this->belongsTo(Classroom::class, 'class_id');
+}
 }

@@ -51,7 +51,7 @@ class StudentplayersController extends Controller
 
             // Get the total_score scores of the user for a specific class
             $totalScores = StudentChallengeScore::where('student_id', $user->id)
-                ->where('class_id', $classId) // Add the class context
+
                 ->pluck('total_score');
 
             // Calculate the sum of the total scores for the class
@@ -59,7 +59,7 @@ class StudentplayersController extends Controller
 
             // Retrieve the number of items for the class
             $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
-                ->where('class_id', $classId) // Add the class context
+           
                 ->sum('number_of_items');
 
 

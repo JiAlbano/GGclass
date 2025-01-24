@@ -16,14 +16,14 @@ class StudentprofilestudentController extends Controller
         $user = Auth::user(); // Fetch all users
         $class = Classroom::findOrFail($classId); // Fetch the class
 
-        // Fetch scores and calculate badge eligibility
-        $totalScores = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId)
-        ->pluck('total_score');
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
+
+        // Calculate the sum of the total scores
         $sumOfScores = $totalScores->sum();
-        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId)
-        ->sum('number_of_items');
+
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
 
         // Pass the data to the view
         return view('profile-student', compact('class', 'user', 'totalScores', 'sumOfScores', 'numberOfItems'));
@@ -35,18 +35,14 @@ class StudentprofilestudentController extends Controller
         $user = Auth::user(); // Fetch the authenticated user
         $class = Classroom::findOrFail($classId); // Fetch the class
 
-        // Get the total_score scores of the user for a specific class
-        $totalScores = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId) // Add the class context
-        ->pluck('total_score');
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
 
-        // Calculate the sum of the total scores for the class
+        // Calculate the sum of the total scores
         $sumOfScores = $totalScores->sum();
 
-        // Retrieve the number of items for the class
-        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)
-        ->where('class_id', $classId) // Add the class context
-        ->sum('number_of_items');
+        // Retrieve the number of items
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
 
         // Return data (structured similarly to 'show')
         return [
