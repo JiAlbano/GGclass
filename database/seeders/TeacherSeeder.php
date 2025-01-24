@@ -27,6 +27,7 @@ class TeacherSeeder extends Seeder
                 'google_id' => NULL,
                 'google_access_token' => NULL,
             ],
+            
             [
                 'email' => 'japeoro@gbox.adnu.edu.ph',
                 'first_name' => 'Jan Raphael',
@@ -62,6 +63,22 @@ class TeacherSeeder extends Seeder
                 'first_name' => 'Ma. Theresal',
                 'middle_initial' => 'M.',
                 'last_name' => 'Aguilar',
+                'id_number' => NULL,
+                'course_id' => 0,
+                'ign' => NULL,
+                'user_type' => 'teacher',
+                'department' => NULL,
+                'google_profile_image' => NULL,
+                'google_id' => NULL,
+                'google_access_token' => NULL,
+            ],
+
+            
+            [
+                'email' => 'rgaray@gbox.adnu.edu.ph',
+                'first_name' => 'Raphael Henry',
+                'middle_initial' => 'M.',
+                'last_name' => 'Garay',
                 'id_number' => NULL,
                 'course_id' => 0,
                 'ign' => NULL,
