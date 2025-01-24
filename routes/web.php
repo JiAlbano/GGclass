@@ -130,6 +130,7 @@ Route::get('/display-tutorial/{classId}/{tutorialId}', [TutorialsController::cla
 Route::post('/store-tutorial/{classId}', [TutorialsController::class, 'store'])->name('store-tutorial');
 
 Route::get('/studenttutorials/{classId}/{tutorialId}', [StudenttutorialsController::class, 'display'])->name('display-student-tutorial');
+
 Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
 // Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 
@@ -137,6 +138,12 @@ Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('
 Route::get('/create-bulletins/{classId}', [BulletinsController::class, 'create'])->name('create-bulletins');
 Route::get('/display-bulletins/{classId}/{tutorialId}', [BulletinsController::class, 'display'])->name('display-bulletins');
 Route::post('/store-bulletins/{classId}', [BulletinsController::class, 'store'])->name('store-bulletins');
+
+
+//Student routes
+Route::get('/studentbulletins/{classId?}', [StudentBulletinsController::class, 'show'])->name('studentbulletins'); 
+
+Route::get('/display-student-bulletin/{classId}/{bulletinId}', [StudentBulletinsController::class, 'display'])->name('display-student-bulletin');
 
 
 // Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
@@ -168,9 +175,7 @@ Route::get('/gradebook/{classId}/grade-components', [GradecomponentsController::
 Route::get('/gradebook/{classId}/data', [GradedataController::class, 'show'])->name(name: 'data');
 Route::get('/gradebook/{classId}/class-record', [GradeclassrecordController::class, 'show'])->name(name: 'class-record');
 
-//Student routes
-Route::get('/studentbulletins/{classId?}', [StudentBulletinsController::class, 'show'])
-    ->name('studentbulletins'); 
+
     
 //Student quiz routes
 Route::get('/studentchallenges/{classId}', [StudentchallengesController::class, 'show'])->name('challenges-student');

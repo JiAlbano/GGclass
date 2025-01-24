@@ -1,48 +1,15 @@
-.ggclass-font {
-    color: white;
+/* General reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.text-container {
     display: flex;
-    align-items: center;
-    font-family: "Georgia";
-    font-weight: bold;
-    font-size: 30px;
-    text-decoration: none;
-    position: relative;
-    left: -1px;
-    top: -10px;
-}
-
-.ggclass-font:hover {
-    color: #ffd700;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    background: #2e3667;
-    font-family: Georgia;
-    position: fixed;
-    height: 65px;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-}
-
-.logo-img {
-    height: 60px;
-    margin-right: 10px;
-    position: relative;
-    top: -16px;
-    margin-left: 10px;
-}
-
-.profile-img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
-    position: relative;
-    left: -25px;
+    flex-direction: column; /* Align text vertically */
+    justify-content: center; /* Center text vertically in the container */
+    margin-left: 10px; /* Reduce space between the image and text */
 }
 
 .in-game-name {
@@ -65,6 +32,87 @@
     color: white;
 }
 
+body {
+    font-family: Georgia;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background: #283891;
+    font-family: Georgia;
+    position: fixed;
+    height: 65px;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    margin-right: 10px;
+    position: relative;
+    top: -16px;
+    margin-left: 10px;
+}
+
+.ggclass-font {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Georgia";
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: -1px;
+    top: -10px;
+}
+
+.ggclass-font:hover {
+    color: #ffc62e;
+}
+
+.section-font {
+    font-size: 16px;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.profile-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    position: relative;
+    left: -25px;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    box-shadow: 0 0 20px rgba(255, 198, 46, 1); /* Stronger glow on hover */
+}
+
+.row {
+    width: 100%; /* Make the container full-width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align the buttons to the right */
+    font-size: 12px;
+    padding: 0 15px; /* Add padding to the left and right */
+    margin-left: 10px;
+    position: inherit;
+}
+
 .row .btn {
     padding: 5px;
     border: none;
@@ -82,10 +130,10 @@
     color: white;
     transition: all 0.3s ease;
     font-family: "Georgia";
-    font-size: 20px;
+    font-size: 20px !important;
     font-weight: bold;
     border: none;
-    width: 250px;
+    width: 250px !important;
 }
 
 .btn:hover {
@@ -94,47 +142,46 @@
     color: #ffffff;
 }
 
-/* General reset and box-sizing */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.container-picture {
+    width: 80px; /* Adjust the size of the image as needed */
+    height: 80px; /* Ensure the height is equal to the width for a perfect circle */
+    border-radius: 50%; /* This makes the image circular */
+    object-fit: cover; /* Ensures the image covers the entire circle without distortion */
+    display: block; /* Optional: Ensures the image is a block element */
+    margin: 0 auto; /* Optional: Center the image horizontally */
+    border: 3px solid #050834;
+    position: absolute; /* Position the image relative to the container */
+    top: -8%; /* Move the image up to flow outside the container */
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-50%); /* Center the image based on its own width */
 }
 
-.text-container {
-    display: flex;
-    flex-direction: column; /* Align text vertically */
-    justify-content: center; /* Center text vertically in the container */
-    margin-left: 10px; /* Reduce space between the image and text */
-}
-
-body {
-    font-family: Georgia;
-    background-color: #f0f0f0;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.left-section {
-    display: flex;
-    align-items: center;
-}
-
-.section-font {
-    font-size: 16px;
+.container-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
     color: white;
-    margin-left: 10px;
-    margin-top: 10px;
+    font-family: "Press Start 2P", cursive;
+    margin-top: 50px;
+    margin-bottom: 35px;
 }
 
-.row {
-    width: 100%; /* Make the container full-width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: flex-end; /* Align the buttons to the right */
-    font-size: 12px;
-    padding: 0 15px; /* Add padding to the left and right */
-    margin-left: 10px;
-    position: inherit;
+.container-info-email {
+    font-size: 10px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 8px;
+}
+
+.container-buttons {
+    /* margin: 20px 0; */
+    margin-top: 20px; /* Adds space between the info and the buttons */
+    width: 100%; /* Ensures buttons take up full width */
+    display: flex;
+    flex-direction: column; /* Stacks buttons vertically */
+    align-items: center; /* Centers the buttons horizontally */
+    gap: 8px; /* Adds space between the buttons */
 }
 
 .btn1 {
@@ -156,7 +203,7 @@ body {
 
 .btn1:hover {
     background-color: #ffc62e;
-    color: #2e3667;
+    color: #283891;
     font-weight: bold;
 }
 
@@ -390,10 +437,8 @@ body {
     text-decoration: underline;
 }
 
-/* General Adjustments */
 .dashboard-container {
     display: flex;
-    flex-direction: column;
     margin: 0 20px;
 }
 
@@ -403,77 +448,53 @@ body {
     flex-wrap: wrap;
 }
 
-/* Bulletin List Container */
 .bulletin-list {
     display: flex;
     flex-direction: column;
-    gap: 2px; /* Spacing between items */
-    width: 120%;
-    max-width: 600px;
-    margin: 20px auto;
-    margin-left: 10px;
+    width: 1050px;
+    align-items: center;
 }
 
-/* Individual Bulletin Item */
 .bulletin-item {
     display: flex;
     align-items: center;
     background-color: white;
     border: 1px solid #151414e6;
     border-radius: 5px;
-    width: 150%;
-    padding: 10px 15px;
+    width: 90%;
+    height: 60px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .bulletin-item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon Section */
 .bulletin-icon img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    margin-left: 10px;
 }
 
-/* Bulletin Content */
 .bulletin-content {
-    flex-grow: 1;
     margin-left: 10px;
-    font-family: Arial, sans-serif;
 }
 
 .bulletin-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: #2b52b2;
+    font-family: "Roboto", serif;
+    font-size: 17px;
+    font-weight: 600;
+    font-style: normal;
+    color: #283891;
     margin: 0;
 }
 
-.bulletin-date {
-    font-size: 12px;
-    color: #888;
-    margin: 5px 0 0 0;
-}
-
-/* Options Button */
-.bulletin-options {
-    margin-left: auto;
-}
-
-.options-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #888;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.options-btn:hover {
-    color: #2b52b2;
+.bulletin-student {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
 }
