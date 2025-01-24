@@ -20,20 +20,14 @@ class StudentquiztakeController extends Controller
         $taken = StudentChallengeScore::where('challenge_id', $quizId)->where('student_id', $user->id)->where('challenge_type', $challengetype)->count();
         $quiz = Quiz::find($quizId);
         $challengetype = 'quiz';
+        // Get the total_score scores of the user
+        $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
 
-                        $totalScores = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
-                        ->where('student_challenge_scores.student_id', $user->id)
-                        ->where('challenges.class_id', $classId) // Use the class_id from the challenges table
-                        ->pluck('student_challenge_scores.total_score');
+        // Calculate the sum of the total scores
+        $sumOfScores = $totalScores->sum();
 
-                    // Sum scores for the class
-                    $sumOfScores = $totalScores->sum();
-
-                    // Retrieve the number of items for the class
-                    $numberOfItems = StudentChallengeScore::join('challenges', 'student_challenge_scores.challenge_id', '=', 'challenges.id')
-                        ->where('student_challenge_scores.student_id', $user->id)
-                        ->where('challenges.class_id', $classId)
-                        ->sum('student_challenge_scores.number_of_items');
+        // Retrieve the number of items (assuming it's stored in StudentChallengeScore model)
+        $numberOfItems = StudentChallengeScore::where('student_id', $user->id)->sum('number_of_items');
 
         return view('quiz-take-student', compact('class', 'user', 'questions', 'quiz', 'taken', 'totalScores', 'sumOfScores', 'numberOfItems', 'challengetype')); // Pass both variables to the view
     }
