@@ -32,36 +32,42 @@ $(document).ready(function() {
         switchQuestion(currentQuestion);
     });
 
-    // submit button
-    $("#submit-btn").click(function() {
-        $(this).prop('disabled', true);
-        $(this).css('background-color', 'grey');
+// Submit button
+$("#submit-btn").click(function () {
+    $(this).prop("disabled", true); // Disable the submit button
+    $(this).css("background-color", "grey");
 
-        tokenUsed = $("#token-used").val() !== "" ? $("#token-used").val() : 0;
-        const score = studentAnswers.filter(item => item.is_correct === 1).length
-        totalScore = parseInt(tokenUsed) + parseInt(score);
-        studentScore = [{
+    // Disable the back button and style it as locked
+    $("#back-btn").prop("disabled", true);
+    $("#back-btn").css("background-color", "grey");
+
+    tokenUsed = $("#token-used").val() !== "" ? $("#token-used").val() : 0;
+    const score = studentAnswers.filter((item) => item.is_correct === 1).length;
+    totalScore = parseInt(tokenUsed) + parseInt(score);
+
+    studentScore = [
+        {
             challenge_id: questions[currentQuestion].quiz_id ?? questions[currentQuestion].exam_id,
             score: score,
             token_used: tokenUsed,
             total_score: totalScore,
-            challenge_type: questions[currentQuestion].quiz_id ? 'quiz' : 'exam',
-            number_of_items: questions.length
-        }];
-        submitQuiz();
-    });
+            challenge_type: questions[currentQuestion].quiz_id ? "quiz" : "exam",
+            number_of_items: questions.length,
+        },
+    ];
 
-    $(".question-number").click(function() {
-        $(".question-number").removeClass('active');
-        $(this).addClass('active');
-        if(currentQuestion == (totalQuestions - 1)) {
-            $("#submit-btn").show();
-            $("#next-btn").hide();
-        } else {
-            $("#submit-btn").hide();
-            $("#next-btn").show();
-        }
-    });
+    submitQuiz();
+});
+
+// Back button
+$("#back-btn").click(function () {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        $("#submit-btn").hide();
+        $("#next-btn").show();
+        switchQuestion(currentQuestion);
+    }
+});
 
     $('#scoreModal').modal({
         backdrop: 'static',
