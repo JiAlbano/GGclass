@@ -25,14 +25,14 @@
 
 <body>
 
-<!-- navbar -->
-@extends('layouts.app')
+    <!-- navbar -->
+    @extends('layouts.app')
 
-@section('title', 'Bulletins')
+    @section('title', 'Bulletins')
 
-@section('content')
+    @section('content')
 
-@endsection
+    @endsection
 
     <div class="top-buttons containers" style=" margin-top: 84px; margin-left: 240px; margin-right: 240px;">
         <div class="row justify-content-center"> <!-- Added justify-content-center class -->
@@ -79,25 +79,29 @@
                         onclick="window.location.href='{{ route('feedback-student', ['classId' => $class->id]) }}'">Feedback</button> -->
                     <button
                         onclick="window.location.href='{{ route('profile-student', ['classId' => $class->id]) }}'">Badge</button>
-                        <button onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
+                    <button
+                        onclick="window.location.href='{{ route('grade.show', ['classId' => $class->id]) }}'">Grade</button>
                 </div>
             </div>
 
             <!-- Bulletin List -->
-            <div class="bulletin-list">
-                <div class="bulletin-item">
-                    <div class="bulletin-icon">
-                        <img src="{{ asset('megaphone.png') }}" />
-                    </div>
-                    <div class="bulletin-content">
-                        <p class="bulletin-title"> bulletin(#): Title</p>
-                        <p class="bulletin-date">Dec 21, 2024</p>
-                    </div>
-                    <div class="bulletin-options">
-                        <button class="options-btn">•••</button>
-                    </div>
+            <div class="bulletin-student">
+                <div class="bulletin-list">
+                    @foreach ($bulletins as $bulletin)
+                        <div class="bulletin-list"
+                            onclick="window.location.href='{{ route('display-student-bulletin', ['classId' => $class->id, 'bulletinId' => $bulletin->id]) }}'">
+                            <div class="bulletin-item">
+                                <div class="bulletin-icon">
+                                    <img src="{{ asset('img/lesson.png') }}" />
+                                </div>
+                                <div class="bulletin-content">
+                                    <p class="bulletin-title"> Tutorial Title: <span
+                                            class="tutt-title"><b>{{ $bulletin->title }}</b></span> </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <!-- Repeat other bulletin items -->
             </div>
         </div>
     </div>
