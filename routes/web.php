@@ -133,6 +133,10 @@ Route::get('/studenttutorials/{classId}/{tutorialId}', [StudenttutorialsControll
 Route::get('/studenttutorials/{classId}', [StudenttutorialsController::class, 'show'])->name('tutorials-student');
 // Route::get('/display-tutorial/{classId}', [TutorialsController::class, 'display'])->name('display-tutorials');
 
+Route::get('/bulletins/{classId}', [BulletinsController::class, 'show'])->name('bulletins');
+Route::get('/create-bulletins/{classId}', [BulletinsController::class, 'create'])->name('create-bulletins');
+Route::get('/display-bulletins/{classId}/{tutorialId}', [BulletinsController::class, 'display'])->name('display-bulletins');
+Route::post('/store-bulletins/{classId}', [BulletinsController::class, 'store'])->name('store-bulletins');
 
 
 // Route::view('/create-tutorial', 'tutorial-dashboard.create-tutorial')->name('create-tutorial');
