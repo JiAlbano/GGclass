@@ -165,20 +165,42 @@
             background-color: #f5f5f5;
             padding-bottom: 30px;
         }
+
+
+        .back-button button {
+            background-color: transparent;
+            color: #002171;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 20px;
+            margin-top: -40px;
+        }
+
+        .back-button button:hover {
+            text-decoration: underline;
+        }
+
+
         </style>
 
     <header>
-        <div class="header container-sm text-center mt-2">
+<!--         <div class="header container-sm text-center mt-2">
             <a href="#">Bulletin</a>
             <a href="#">Tutorials</a>
             <a href="#">Challenges</a>
             <a href="#">Players</a>
-        </div>
+        </div> -->
+
 
         <div class="container-sm first-line">
             <div class="row justify-content-between">
                 <div class="col-md-4 mt-4">
-                    <h1 class="text">Assessment Scores</h1>
+                    <h1 class="text" style="margin-top: 45px; margin-left: 15px;">Assessment Scores</h1>
                 </div>
                 <div class="col-md-4 mt-4">
                     <a href="{{ route('student-list.export') }}">
@@ -188,17 +210,19 @@
             </div>
         </div>
 
-        <div class="custom-line-2 container-sm container-md container-lg"></div>
+        <!-- <div class="custom-line-2 container-sm container-md container-lg"></div> -->
     </header>
-
+    <div class="back-button">
+        <button onclick="window.history.back()">&#8592; Back</button>
+    </div>
     <main>
         <div class="left-right container mt-4">
 
-            <div class="left-container">
+            <div class="left-container" style="margin-top: -75px; width: 400px; height: 440px; border: 2px solid #050834; margin-left: 20px;">
 
-                <div class ="class-theme">
-                    <h6 class="school-year">In Game Name:{{ $student[0]->ign }} </h6>
-                    <h6 class="semester ">Course: {{ $student[0]->course_name }}</h6>
+                <div class ="class-theme" style="padding: 15px;">
+                    <h6>In Game Name:{{ $student[0]->ign }} </h6>
+                    <h6>Course: {{ $student[0]->course_name }}</h6>
                    <h6 >Name: {{ $student[0]->first_name}} {{ $student[0]->last_name}}</h6> 
                </div>
 
@@ -208,7 +232,7 @@
                    <h6 class="mt-3 room">Grading System:{{ $student[0]->grading_system }} </h6>
                </div>
 
-                <div class="line-between"></div>
+                <!-- <div class="line-between"></div> -->
 
                 <div class="first-button">
                     <a href="" class="btns">Attendance</a>
@@ -221,7 +245,7 @@
             </div>
 
             <div class="right-container">
-                <table class="styled-table">
+                <table class="styled-table" style="margin-top: -80px; margin-left: -10px;">
                     <thead>
                         <tr class="table-head">
                             <th>
