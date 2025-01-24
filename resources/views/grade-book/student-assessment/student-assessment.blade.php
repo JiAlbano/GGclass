@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="{{ secure_asset('grade-book/student-assessment/left-corner.css') }}">
 <link rel="stylesheet" href="{{ secure_asset('grade-book/student-assessment/table.css') }}">
-<link rel="stylesheet" href="{{asset('grade-book/student-assessment/student-assessment.css')}}">
+<link rel="stylesheet" href="{{secure_asset('grade-book/student-assessment/student-assessment.css')}}">
 <style>
     .nav-design {
         height: 65px;

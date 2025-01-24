@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             AssessmentSeeder::class,
             AssessmentTypeSeeder::class,
-            ScoreSeeder::class,
             DepartmentSeeder::class,
             TeacherSeeder::class,
             // Add more seeders as needed...
