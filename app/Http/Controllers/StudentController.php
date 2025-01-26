@@ -113,10 +113,11 @@ public function viewAssessmentScores($student_id, $challengetype_id, $challenget
               // Fetch the authenticated user
             $user = Auth::user();
 
-            $student = User::join('courses', 'courses.id','=','users.course_id')->get();
-            // ->where('users.id', $student_id)
-            // ->select('users.first_name','users.last_name', 'users.ign','courses.course_name','users.grading_system', 'users.id_number','users.email', 'users.id')
-
+            // $student = User::join('courses', 'courses.id','=','users.course_id')->get();
+            $student = User::join('courses', 'courses.id','=','users.course_id')
+            ->where('users.id_number', $student_id)
+            ->select('users.first_name','users.last_name', 'users.ign','courses.course_name','users.grading_system', 'users.id_number','users.email', 'users.id')
+            ->get();
     // Get the total_score scores of the user
     $totalScores = StudentChallengeScore::where('student_id', $user->id)->pluck('total_score');
 

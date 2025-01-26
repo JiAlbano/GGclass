@@ -42,7 +42,7 @@ class PlayersController extends Controller
                 'users.last_name',
                 'users.google_profile_image',
             )
-            ->groupBy('users.id', 'users.ign', 'users.google_profile_image') // Group by user to get the sum per user
+            // ->groupBy('users.id', 'users.ign', 'users.google_profile_image') // Group by user to get the sum per user
             ->get();
 
 
