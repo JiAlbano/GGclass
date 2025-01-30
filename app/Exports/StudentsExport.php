@@ -27,8 +27,8 @@ class StudentsExport
         // Populate the second sheet
         $this->populateSecondSheet($classId,$spreadsheet);
 
-        // // Populate the third sheet
-        // $this->populateThirdSheet($spreadsheet);
+        // Populate the third sheet
+         $this->populateThirdSheet($spreadsheet);
 
         // Save the modified file to a temporary location
         $writer = new Xlsx($spreadsheet);
@@ -160,12 +160,16 @@ class StudentsExport
     private function populateThirdSheet($spreadsheet)
     {
         $sheet3 = $spreadsheet->getSheet(2); // Third sheet
-        $assessments = Assessment::all();
+    
+        // Set the column index to 5 (Column E)
+        $startColumnIndex = 5;
+    
+        // Convert the column index to a letter (E)
+        $column = Coordinate::stringFromColumnIndex($startColumnIndex);
+    
+        // Set the value in the second row of column E to "Test and Quiz"
+        $sheet3->setCellValue("{$column}2", "Test and Quizzes");
+    
 
-        $startColumnIndex = 5; // Column E
-        foreach ($assessments as $index => $assessment) {
-            $column = Coordinate::stringFromColumnIndex($startColumnIndex + $index * 3);
-            $sheet3->setCellValue("{$column}2", $assessment->assessment_name);
-        }
     }
 }
