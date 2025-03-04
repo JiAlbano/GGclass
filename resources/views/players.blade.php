@@ -176,12 +176,15 @@
                             <div class="profile-players">{{ucfirst($player->first_name)}} {{ucfirst($player->last_name)}} - {{ ucfirst($player->ign) }}</div>
                         </div>
 
-                        <div class="rank-section">
-                            @if($badge === 'NO BADGE')
-                                <span class="no-badge">{{ $badge }}</span> <!-- Apply class for NO BADGE -->
-                            @else
-                                <img src="{{ url($badge) }}" alt="{{ $badge }} Badge" class="badge-img">
-                            @endif
+                        <div class="score-badge-section d-flex align-items-center">
+                            <span class="total-score" style="color:gold; margin-right: 5px; font-family: georgia;">{{ $player->total_score ?? 0 }} pts</span>
+                            <div class="rank-section">
+                                @if($badge === 'NO BADGE')
+                                    <span class="no-badge">{{ $badge }}</span> <!-- Apply class for NO BADGE -->
+                                @else
+                                    <img src="{{ url($badge) }}" alt="{{ $badge }} Badge" class="badge-img">
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
