@@ -117,6 +117,7 @@ class ExamController extends Controller
 
         if ($question->type === 'multipleChoice') {
             $question->options = $request->input('options');
+            $question->correct_answer = $request->input('correct_answer');
         }
 
         if ($question->type === 'trueFalse') {

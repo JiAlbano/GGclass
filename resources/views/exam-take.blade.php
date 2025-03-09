@@ -273,15 +273,22 @@
             </div>
             <!-- Options for Multiple Choice -->
             <div id="edit-options-container" style="display:none;">
+                <input type="radio" name="edit-option" id="radio-option-1" />
                 <label for="edit-option-1" class="option-text">Option 1:</label>
                 <input type="text" id="edit-option-1" />
                 <br>
+
+                <input type="radio" name="edit-option" id="radio-option-2" />
                 <label for="edit-option-2" class="option-text">Option 2:</label>
                 <input type="text" id="edit-option-2" />
                 <br>
+
+                <input type="radio" name="edit-option" id="radio-option-3" />
                 <label for="edit-option-3" class="option-text">Option 3:</label>
                 <input type="text" id="edit-option-3" />
                 <br>
+
+                <input type="radio" name="edit-option" id="radio-option-4" />
                 <label for="edit-option-4" class="option-text">Option 4:</label>
                 <input type="text" id="edit-option-4" />
             </div>
@@ -334,6 +341,9 @@
 
             for (let i = 0; i < options.length; i++) {
                 document.getElementById('edit-option-' + (i + 1)).value = options[i] || '';
+                if(question.correct_answer === options[i]) {
+                    document.getElementById('radio-option-' + (i + 1)).checked = true;
+                }
             }
 
         } else if (question.type === 'trueFalse') {
@@ -376,11 +386,13 @@
 
         // Update for multiple choice options
         if (question.type === 'multipleChoice') {
+            const correctAnswer = $('input[name="edit-option"]:checked').next('label').next('input[type="text"]').val();
             for (let i = 0; i < 4; i++) {
                 let optionValue = document.getElementById('edit-option-' + (i + 1)).value;
                 data.options.push(optionValue);
             }
             question.options = data.options;
+            data.correct_answer = correctAnswer;
 
         } else if (question.type === 'trueFalse') {
             // Get the updated true/false value

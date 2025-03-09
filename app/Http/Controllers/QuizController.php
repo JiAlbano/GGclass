@@ -140,6 +140,7 @@ public function updateQuestion(Request $request, $classId, $quizId)
 
         // Assuming 'options' column in your database is of type JSON
         $question->options = $options;
+        $question->correct_answer = $request->input('correct_answer');
     }
 
     if ($question->type === 'trueFalse') {
